@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevation Analytics | Mentory International®</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #F4E4BC 50%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(212,175,55,0.15); }
+        .progress-bar { background: linear-gradient(90deg, #D4AF37, #F4E4BC); }
+        .risk-high { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+        .risk-medium { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+        .risk-low { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen text-white">
+    <header class="glass sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold gold-gradient">ELEVATION ANALYTICS</h1>
+                <p class="text-gray-400 text-sm">Mentory International® | Dashboard de Inteligência</p>
+            </div>
+            <div class="text-right">
+                <p class="text-sm text-gray-400">Última atualização</p>
+                <p id="lastUpdate" class="text-lg font-semibold text-amber-400">23/03/2026 10:44</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="glass rounded-2xl p-6 card-hover">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm uppercase tracking-wide">Total Mensagens</p>
+                        <p class="text-4xl font-bold gold-gradient">800</p>
+                    </div>
+                    <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                        <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <p class="text-gray-500 text-xs mt-2">Período: Ago/2025 - Mar/2026</p>
+            </div>
+
+            <div class="glass rounded-2xl p-6 card-hover">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm uppercase tracking-wide">Mentorados Ativos</p>
+                        <p class="text-4xl font-bold text-emerald-400">25</p>
+                    </div>
+                    <div class="w-14 h-14 bg-emerald-500/20 rounded-xl flex items-center justify-center">
+                        <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <p class="text-gray-500 text-xs mt-2">Com 2+ interações</p>
+            </div>
+
+            <div class="glass rounded-2xl p-6 card-hover">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm uppercase tracking-wide">Respostas Líderes</p>
+                        <p class="text-4xl font-bold text-blue-400">481</p>
+                    </div>
+                    <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                        <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <p class="text-gray-500 text-xs mt-2">Ed + Clara + Kellton + Raquel</p>
+            </div>
+
+            <div class="glass rounded-2xl p-6 card-hover">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm uppercase tracking-wide">Tópico #1</p>
+                        <p class="text-2xl font-bold text-purple-400">Tech/IA</p>
+                    </div>
+                    <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                        <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <p class="text-gray-500 text-xs mt-2">123 menções</p>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="glass rounded-2xl p-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <span class="w-3 h-3 bg-amber-400 rounded-full"></span>
+                    Atividade por Mês
+                </h3>
+                <canvas id="monthlyChart" height="200"></canvas>
+            </div>
+
+            <div class="glass rounded-2xl p-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <span class="w-3 h-3 bg-blue-400 rounded-full"></span>
+                    Distribuição de Respostas (Líderes)
+                </h3>
+                <canvas id="leadersChart" height="200"></canvas>
+            </div>
+        </section>
+
+        <section class="glass rounded-2xl p-6 mb-8">
+            <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                <span class="w-3 h-3 bg-purple-400 rounded-full"></span>
+                Tópicos Mais Discutidos
+            </h3>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4"><span class="w-36 text-sm text-gray-300">Tech/IA</span><div class="flex-1 h-6 bg-gray-700 rounded-full overflow-hidden"><div class="h-full progress-bar rounded-full" style="width: 100%"></div></div><span class="w-12 text-right text-amber-400 font-semibold">123</span></div>
+                <div class="flex items-center gap-4"><span class="w-36 text-sm text-gray-300">Conteúdo/Redes</span><div class="flex-1 h-6 bg-gray-700 rounded-full overflow-hidden"><div class="h-full progress-bar rounded-full" style="width: 27%"></div></div><span class="w-12 text-right text-amber-400 font-semibold">34</span></div>
+                <div class="flex items-center gap-4"><span class="w-36 text-sm text-gray-300">ICP/Nicho</span><div class="flex-1 h-6 bg-gray-700 rounded-full overflow-hidden"><div class="h-full progress-bar rounded-full" style="width: 10%"></div></div><span class="w-12 text-right text-amber-400 font-semibold">12</span></div>
+                <div class="flex items-center gap-4"><span class="w-36 text-sm text-gray-300">Presencial/Evento</span><div class="flex-1 h-6 bg-gray-700 rounded-full overflow-hidden"><div class="h-full progress-bar rounded-full" style="width: 7%"></div></div><span class="w-12 text-right text-amber-400 font-semibold">9</span></div>
+                <div class="flex items-center gap-4"><span class="w-36 text-sm text-gray-300">Ticket/Preço</span><div class="flex-1 h-6 bg-gray-700 rounded-full overflow-hidden"><div class="h-full progress-bar rounded-full" style="width: 6%"></div></div><span class="w-12 text-right text-amber-400 font-semibold">8</span></div>
+                <div class="flex items-center gap-4"><span class="w-36 text-sm text-gray-300">Lançamento/Vendas</span><div class="flex-1 h-6 bg-gray-700 rounded-full overflow-hidden"><div class="h-full progress-bar rounded-full" style="width: 5%"></div></div><span class="w-12 text-right text-amber-400 font-semibold">6</span></div>
+                <div class="flex items-center gap-4"><span class="w-36 text-sm text-gray-300">Time Comercial</span><div class="flex-1 h-6 bg-gray-700 rounded-full overflow-hidden"><div class="h-full progress-bar rounded-full" style="width: 3%"></div></div><span class="w-12 text-right text-amber-400 font-semibold">4</span></div>
+            </div>
+        </section>
+
+        <section class="glass rounded-2xl p-6 mb-8">
+            <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                <span class="w-3 h-3 bg-emerald-400 rounded-full"></span>
+                Ranking de Mentorados
+            </h3>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left text-gray-400 text-sm border-b border-gray-700">
+                            <th class="pb-3 font-medium">#</th>
+                            <th class="pb-3 font-medium">Mentorado</th>
+                            <th class="pb-3 font-medium text-center">Mensagens</th>
+                            <th class="pb-3 font-medium text-center">Perguntas</th>
+                            <th class="pb-3 font-medium">Última Atividade</th>
+                            <th class="pb-3 font-medium text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">1</td><td class="py-3 font-medium">vanessa_queirozz</td><td class="py-3 text-center text-amber-400 font-semibold">62</td><td class="py-3 text-center text-purple-400">4</td><td class="py-3 text-gray-400">2026-03-17</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-low">🟢 Ativo</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">2</td><td class="py-3 font-medium">livia.bjacinto</td><td class="py-3 text-center text-amber-400 font-semibold">37</td><td class="py-3 text-center text-purple-400">7</td><td class="py-3 text-gray-400">2026-03-18</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-low">🟢 Ativo</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">3</td><td class="py-3 font-medium">valdirene_39184_29065</td><td class="py-3 text-center text-amber-400 font-semibold">24</td><td class="py-3 text-center text-purple-400">0</td><td class="py-3 text-gray-400">2026-03-18</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-low">🟢 Ativo</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">4</td><td class="py-3 font-medium">anacarolmota6820</td><td class="py-3 text-center text-amber-400 font-semibold">23</td><td class="py-3 text-center text-purple-400">4</td><td class="py-3 text-gray-400">2026-02-25</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-medium">🟡 Risco</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">5</td><td class="py-3 font-medium">gabrielletubbs_12234</td><td class="py-3 text-center text-amber-400 font-semibold">22</td><td class="py-3 text-center text-purple-400">4</td><td class="py-3 text-gray-400">2025-10-31</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-high">🔴 Inativo</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">6</td><td class="py-3 font-medium">prof.leticiaribeiro</td><td class="py-3 text-center text-amber-400 font-semibold">22</td><td class="py-3 text-center text-purple-400">0</td><td class="py-3 text-gray-400">2026-02-27</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-medium">🟡 Risco</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">7</td><td class="py-3 font-medium">thaiseloise_64978</td><td class="py-3 text-center text-amber-400 font-semibold">21</td><td class="py-3 text-center text-purple-400">0</td><td class="py-3 text-gray-400">2026-03-17</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-low">🟢 Ativo</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">8</td><td class="py-3 font-medium">juliana_praca</td><td class="py-3 text-center text-amber-400 font-semibold">18</td><td class="py-3 text-center text-purple-400">2</td><td class="py-3 text-gray-400">2026-03-12</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-low">🟢 Ativo</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">9</td><td class="py-3 font-medium">gustavoinoff</td><td class="py-3 text-center text-amber-400 font-semibold">17</td><td class="py-3 text-center text-purple-400">0</td><td class="py-3 text-gray-400">2025-11-27</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-high">🔴 Inativo</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">10</td><td class="py-3 font-medium">priscyllaazevedo</td><td class="py-3 text-center text-amber-400 font-semibold">13</td><td class="py-3 text-center text-purple-400">1</td><td class="py-3 text-gray-400">2026-03-22</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-low">🟢 Ativo</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">11</td><td class="py-3 font-medium">simone_64403</td><td class="py-3 text-center text-amber-400 font-semibold">6</td><td class="py-3 text-center text-purple-400">0</td><td class="py-3 text-gray-400">2026-03-23</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-low">🟢 Ativo</span></td></tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5"><td class="py-3 text-gray-500">12</td><td class="py-3 font-medium">dhijamaria</td><td class="py-3 text-center text-amber-400 font-semibold">5</td><td class="py-3 text-center text-purple-400">0</td><td class="py-3 text-gray-400">2026-03-03</td><td class="py-3 text-center"><span class="px-2 py-1 rounded-full text-xs risk-medium">🟡 Risco</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="glass rounded-2xl p-6">
+            <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                <span class="w-3 h-3 bg-red-400 rounded-full"></span>
+                Últimas Perguntas / Dificuldades
+            </h3>
+            <div class="space-y-3">
+                <div class="bg-gray-800/50 rounded-lg p-4"><div class="flex justify-between items-start mb-2"><span class="text-amber-400 font-medium">@livia.bjacinto</span><span class="text-gray-500 text-xs">2026-03-17</span></div><p class="text-gray-300 text-sm">Então essa bendita isca que não sei até que ponto vou... Fico perdida...</p></div>
+                <div class="bg-gray-800/50 rounded-lg p-4"><div class="flex justify-between items-start mb-2"><span class="text-amber-400 font-medium">@vanessa_queirozz</span><span class="text-gray-500 text-xs">2026-03-09</span></div><p class="text-gray-300 text-sm">Oi Ed, tudo bem? Estou com uma dúvida sobre ICP...</p></div>
+                <div class="bg-gray-800/50 rounded-lg p-4"><div class="flex justify-between items-start mb-2"><span class="text-amber-400 font-medium">@renatavivianesilva</span><span class="text-gray-500 text-xs">2026-03-09</span></div><p class="text-gray-300 text-sm">Boa tarde Kellton, tudo bem? Preciso de ajuda com...</p></div>
+                <div class="bg-gray-800/50 rounded-lg p-4"><div class="flex justify-between items-start mb-2"><span class="text-amber-400 font-medium">@anacarolmota6820</span><span class="text-gray-500 text-xs">2026-01-20</span></div><p class="text-gray-300 text-sm">Tem tutorial? Qual você indica?</p></div>
+                <div class="bg-gray-800/50 rounded-lg p-4"><div class="flex justify-between items-start mb-2"><span class="text-amber-400 font-medium">@priscyllaazevedo</span><span class="text-gray-500 text-xs">2026-01-03</span></div><p class="text-gray-300 text-sm">Oi gente, tenho uma dúvida aqui sobre o quiz...</p></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass mt-12 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center text-sm text-gray-500">
+            <p>© 2026 Mentory International® | Gerado por Éden (AI COO)</p>
+            <p>Server: Elevation | Guild: 1078312460269932655</p>
+        </div>
+    </footer>
+
+    <script>
+        new Chart(document.getElementById('monthlyChart'), {
+            type: 'bar',
+            data: {
+                labels: ['08/25', '09/25', '10/25', '11/25', '12/25', '01/26', '02/26', '03/26'],
+                datasets: [{
+                    label: 'Mensagens',
+                    data: [52, 41, 41, 65, 69, 255, 172, 105],
+                    backgroundColor: 'rgba(212, 175, 55, 0.6)',
+                    borderColor: '#D4AF37',
+                    borderWidth: 1,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#9ca3af' } },
+                    x: { grid: { display: false }, ticks: { color: '#9ca3af' } }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('leadersChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Ed Souza (311)', 'Clara do Vale (124)', 'Raquel (23)', 'Kellton (23)'],
+                datasets: [{
+                    data: [311, 124, 23, 23],
+                    backgroundColor: ['#D4AF37', '#8B5CF6', '#10B981', '#3B82F6'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { position: 'right', labels: { color: '#fff', padding: 15 } } }
+            }
+        });
+    </script>
+</body>
+</html>
