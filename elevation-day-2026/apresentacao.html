@@ -3,420 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Elevation Day 2026 — IA na Mentory</title>
+<title>Elevation Day 2026 — IA na Mentory v3</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css">
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap');
 
-:root {
-  --bg: #0D1A12;
-  --grn: #1B4332;
-  --g: #B8922A;
-  --g2: #D4AA5A;
-  --wh: #FFFFFF;
-  --m: 100px;
-  --mv: 70px;
-}
+*{ box-sizing:border-box; margin:0; padding:0; }
 
 .reveal {
-  font-family: 'DM Sans', sans-serif;
-  background: #0D1A12;
+  font-family:'DM Sans',sans-serif;
+  background:#0D1A12;
 }
-
 .reveal .slides section {
-  text-align: left;
-  height: 100%;
-  box-sizing: border-box;
+  text-align:left;
+  height:100%;
+  overflow:hidden;
 }
 
-.reveal h1, .reveal h2, .reveal h3,
-.reveal p, .reveal ul, .reveal li {
-  margin: 0;
-  padding: 0;
+/* ── Atoms ── */
+.ey {
+  font-size:.36em; letter-spacing:.26em; text-transform:uppercase;
+  font-weight:700; color:#B8922A; margin-bottom:14px; display:block;
 }
-
-/* ── Componentes base ─────────────────────────────── */
-
-.eyebrow {
-  font-size: 0.42em;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #B8922A;
-  margin-bottom: 20px;
-}
-
 .rule {
-  width: 40px;
-  height: 1.5px;
-  background: #B8922A;
-  margin: 20px 0 28px;
+  width:36px; height:1.5px; background:#B8922A; margin:18px 0 22px;
 }
-
 .h1 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 2.6em;
-  font-weight: 800;
-  line-height: 1.08;
-  color: #FFFFFF;
-  letter-spacing: -0.02em;
+  font-family:'DM Sans',sans-serif;
+  font-size:2.3em; font-weight:800; line-height:1.08;
+  color:#FFFFFF; letter-spacing:-.02em;
 }
-
 .h2 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.8em;
-  font-weight: 700;
-  line-height: 1.1;
-  color: #FFFFFF;
-  letter-spacing: -0.02em;
+  font-family:'DM Sans',sans-serif;
+  font-size:1.7em; font-weight:700; line-height:1.1;
+  color:#FFFFFF; letter-spacing:-.015em;
 }
-
-.serif {
-  font-family: 'Playfair Display', serif;
-}
-
 .body {
-  font-size: 0.68em;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.85;
-  font-weight: 400;
+  font-size:.63em; color:rgba(255,255,255,.45);
+  line-height:1.85; font-weight:400;
+}
+.gold { color:#D4AA5A; }
+.serif { font-family:'Playfair Display',serif; }
+.pill {
+  display:inline-block;
+  border:1px solid rgba(184,146,42,.3);
+  color:#D4AA5A; font-size:.38em; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase;
+  padding:5px 14px;
 }
 
-.gold { color: #D4AA5A; }
-
-/* ── Layout base ──────────────────────────────────── */
-
+/* ── Page layouts ── */
 .page {
-  padding: 70px 100px;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding:80px 120px;
+  height:100%; display:flex;
+  flex-direction:column; justify-content:center;
 }
-
 .page-top {
-  padding: 70px 100px;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  padding:80px 120px;
+  height:100%; display:flex;
+  flex-direction:column; justify-content:flex-start;
 }
-
-/* ── Split layout ─────────────────────────────────── */
 .split {
-  display: flex;
-  height: 100%;
+  display:flex; height:100%;
+}
+.sl {
+  width:42%; padding:80px 60px 80px 120px;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.sr {
+  width:58%; padding:80px 120px 80px 60px;
+  display:flex; flex-direction:column; justify-content:center;
+  border-left:1px solid rgba(255,255,255,.05);
 }
 
-.split-l {
-  width: 42%;
-  padding: 70px 70px 70px 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-}
-
-.split-r {
-  width: 58%;
-  padding: 70px 100px 70px 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-}
-
-/* ── Tabela premium ───────────────────────────────── */
-.tbl {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.56em;
-}
+/* ── Tables ── */
+.tbl { width:100%; border-collapse:collapse; font-size:.52em; }
 .tbl th {
-  background: transparent;
-  border-bottom: 1px solid rgba(184,146,42,0.3);
-  color: #B8922A;
-  font-size: 0.9em;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 10px 14px;
-  text-align: left;
+  background:transparent;
+  border-bottom:1px solid rgba(184,146,42,.3);
+  color:#B8922A; font-size:.9em; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase;
+  padding:10px 14px; text-align:left;
 }
 .tbl td {
-  padding: 9px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.65);
-  vertical-align: middle;
+  padding:8px 14px;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  color:rgba(255,255,255,.6); vertical-align:middle;
 }
-.tbl tr:last-child td { border-bottom: none; }
-.tbl .hi-row td {
-  background: rgba(184,146,42,0.08);
-  color: #FFFFFF;
-  font-weight: 700;
-  border-bottom: none;
-  border-top: 1px solid rgba(184,146,42,0.25);
+.tbl tr:last-child td { border-bottom:none; }
+.tbl .hi td {
+  background:rgba(184,146,42,.08);
+  color:#FFFFFF; font-weight:700;
+  border-bottom:none; border-top:1px solid rgba(184,146,42,.25);
 }
-.tbl .name { color: #FFFFFF; font-weight: 600; }
-.tbl .gold { color: #D4AA5A; font-weight: 600; }
+.tbl .nm { color:#FFFFFF; font-weight:600; }
+.tbl .gd { color:#D4AA5A; font-weight:600; }
 
-/* ── Org chart ────────────────────────────────────── */
-.org-root {
-  border: 1px solid #B8922A;
-  padding: 12px 32px;
-  text-align: center;
-  display: inline-block;
-}
-.org-col-head {
-  font-size: 0.42em;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #B8922A;
-  border-bottom: 1px solid rgba(184,146,42,0.25);
-  padding-bottom: 8px;
-  margin-bottom: 10px;
-}
-.org-item {
-  padding: 7px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.org-item:last-child { border-bottom: none; }
-.org-name {
-  font-size: 0.6em;
-  font-weight: 700;
-  color: #FFFFFF;
-}
-.org-role {
-  font-size: 0.5em;
-  color: #D4AA5A;
-  margin-top: 1px;
-}
-.org-desc {
-  font-size: 0.44em;
-  color: rgba(255,255,255,0.35);
-  margin-top: 1px;
-}
-
-/* ── Número big ───────────────────────────────────── */
-.big-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 5em;
-  font-weight: 700;
-  line-height: 1;
-  color: #D4AA5A;
-}
-
-/* ── Stat box ─────────────────────────────────────── */
-.stat {
-  padding: 32px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.stat:last-child { border-bottom: none; }
-
-/* ── Flow step ────────────────────────────────────── */
+/* ── Steps ── */
 .step {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display:flex; align-items:flex-start; gap:18px;
+  padding:11px 0; border-bottom:1px solid rgba(255,255,255,.04);
 }
-.step:last-child { border-bottom: none; }
-.step-n {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6em;
-  font-weight: 700;
-  color: #B8922A;
-  width: 40px;
-  min-width: 40px;
-  line-height: 1;
+.step:last-child { border-bottom:none; }
+.sn {
+  font-family:'Playfair Display',serif;
+  font-size:1.3em; font-weight:700; color:#B8922A;
+  width:36px; min-width:36px; line-height:1.2; padding-top:1px;
 }
-.step-t {
-  font-size: 0.65em;
-  font-weight: 700;
-  color: #FFFFFF;
-  flex: 1;
-}
-.step-d {
-  font-size: 0.55em;
-  color: rgba(255,255,255,0.4);
-  flex: 2;
-  line-height: 1.6;
-}
+.st { font-size:.62em; font-weight:700; color:#FFFFFF; flex:1; padding-top:3px; }
+.sd { font-size:.55em; color:rgba(255,255,255,.38); flex:2; line-height:1.6; padding-top:3px; }
 
-/* ── Pill tag ─────────────────────────────────────── */
-.pill {
-  display: inline-block;
-  border: 1px solid rgba(184,146,42,0.35);
-  color: #D4AA5A;
-  font-size: 0.44em;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 5px 14px;
-}
+/* ── Tool rows ── */
+.tr { display:flex; gap:0; padding:12px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+.tr:last-child { border-bottom:none; }
+.tc { font-size:.4em; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#B8922A; min-width:100px; padding-top:2px; }
+.ti { font-size:.55em; color:rgba(255,255,255,.48); line-height:1.65; }
 
-/* ── Tool row ─────────────────────────────────────── */
-.tool-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-}
-.tool-row:last-child { border-bottom: none; }
-.tool-cat {
-  font-size: 0.44em;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #B8922A;
-  min-width: 110px;
-  padding-top: 2px;
-}
-.tool-items {
-  font-size: 0.58em;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.65;
-}
+/* ── Auto rows ── */
+.ar { display:flex; align-items:center; gap:18px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+.ar:last-child { border-bottom:none; }
+.ac { font-size:.38em; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#B8922A; min-width:78px; }
+.ad { font-size:.54em; color:rgba(255,255,255,.5); flex:1; }
+.af { font-size:.44em; color:rgba(255,255,255,.22); white-space:nowrap; }
 
-/* ── Auto row ─────────────────────────────────────── */
-.auto-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 9px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-}
-.auto-row:last-child { border-bottom: none; }
-.auto-cat {
-  font-size: 0.42em;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #B8922A;
-  min-width: 80px;
-}
-.auto-desc {
-  font-size: 0.56em;
-  color: rgba(255,255,255,0.55);
-  flex: 1;
-}
-.auto-freq {
-  font-size: 0.48em;
-  color: rgba(255,255,255,0.25);
-  white-space: nowrap;
-}
+/* ── For-you rows ── */
+.fy { display:flex; align-items:flex-start; gap:16px; padding:13px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+.fy:last-child { border-bottom:none; }
+.fyt { font-size:.62em; font-weight:700; color:#FFFFFF; margin-bottom:3px; }
+.fyd { font-size:.52em; color:rgba(255,255,255,.38); line-height:1.6; }
 
-/* ── Timeline bar ─────────────────────────────────── */
-.timeline-bar {
-  display: flex;
-  gap: 0;
-  height: 140px;
-  margin: 32px 0;
-}
-.tb-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 28px;
-}
-.tb-divider {
-  width: 1px;
-  background: rgba(255,255,255,0.08);
-  margin: 10px 0;
-}
+/* ── Roadmap ── */
+.rm { display:flex; gap:22px; align-items:flex-start; padding:13px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+.rm:last-child { border-bottom:none; }
+.rq { font-size:.4em; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#B8922A; min-width:72px; padding-top:4px; }
+.rtt { font-size:.6em; font-weight:700; color:#FFFFFF; margin-bottom:3px; }
+.ri { font-size:.5em; color:rgba(255,255,255,.38); line-height:1.65; }
 
-/* ── Roadmap ──────────────────────────────────────── */
-.rm-item {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-}
-.rm-item:last-child { border-bottom: none; }
-.rm-q {
-  font-size: 0.44em;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #B8922A;
-  min-width: 80px;
-  padding-top: 3px;
-}
-.rm-title {
-  font-size: 0.62em;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 4px;
-}
-.rm-items {
-  font-size: 0.52em;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.7;
-}
-
-/* ── For you list ─────────────────────────────────── */
-.fy-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-}
-.fy-item:last-child { border-bottom: none; }
-.fy-icon {
-  font-size: 1.1em;
-  min-width: 28px;
-  padding-top: 2px;
-}
-.fy-title {
-  font-size: 0.64em;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 3px;
-}
-.fy-desc {
-  font-size: 0.54em;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.65;
-}
-
-/* ── Próx passos ──────────────────────────────────── */
-.ps-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-}
-.ps-item:last-child { border-bottom: none; }
-.ps-n {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4em;
-  font-weight: 700;
-  color: #B8922A;
-  line-height: 1;
-  min-width: 32px;
-}
-.ps-body { flex: 1; }
-.ps-title {
-  font-size: 0.64em;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 3px;
-}
-.ps-desc {
-  font-size: 0.54em;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.6;
+/* ── Big number ── */
+.bnum {
+  font-family:'Playfair Display',serif;
+  font-size:5em; font-weight:700; line-height:1; color:#D4AA5A;
 }
 
 </style>
@@ -424,47 +152,40 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div style="display:flex;height:100%;">
-  <!-- Esquerda: conteúdo -->
-  <div style="width:55%;padding:70px 100px;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box;">
-    <div class="eyebrow">Elevation Day &middot; 28.03.2026</div>
+  <div style="width:54%;padding:80px 60px 80px 120px;display:flex;flex-direction:column;justify-content:space-between;">
+    <span class="ey" style="margin-bottom:0;">Elevation Day &middot; 28.03.2026</span>
     <div>
-      <div class="eyebrow" style="margin-bottom:12px;color:rgba(255,255,255,0.3);">Mentory International&reg;</div>
-      <div style="font-family:'Playfair Display',serif;font-size:3.2em;font-weight:700;line-height:1.06;color:#FFFFFF;letter-spacing:-0.01em;">IA na Mentory:<br><span style="color:#D4AA5A;font-style:italic;">O Futuro<br>J&aacute; Come&ccedil;ou.</span></div>
+      <div style="font-size:.4em;letter-spacing:.2em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-bottom:14px;">Mentory International&reg;</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2.8em;font-weight:700;line-height:1.08;color:#FFFFFF;letter-spacing:-.01em;">IA na Mentory:<br><span style="color:#D4AA5A;font-style:italic;">O Futuro<br>J&aacute; Come&ccedil;ou.</span></div>
       <div class="rule"></div>
-      <div class="body" style="max-width:380px;">Como estamos construindo tecnologia propriet&aacute;ria para escalar neg&oacute;cios de alto ticket.</div>
+      <div class="body" style="max-width:360px;">Tecnologia propriet&aacute;ria para escalar neg&oacute;cios de alto ticket.</div>
     </div>
     <div>
-      <div style="font-size:0.42em;letter-spacing:0.2em;color:rgba(255,255,255,0.25);text-transform:uppercase;margin-bottom:6px;">Apresentado por</div>
-      <div style="font-size:0.9em;font-weight:700;color:#FFFFFF;">Kellton Souza</div>
-      <div style="font-size:0.42em;letter-spacing:0.18em;color:#B8922A;text-transform:uppercase;font-weight:600;margin-top:3px;">Head de OP &amp; TECH</div>
+      <div style="font-size:.38em;letter-spacing:.2em;color:rgba(255,255,255,.22);text-transform:uppercase;margin-bottom:5px;">Apresentado por</div>
+      <div style="font-size:.85em;font-weight:700;color:#FFFFFF;">Kellton Souza</div>
+      <div style="font-size:.38em;letter-spacing:.16em;color:#B8922A;text-transform:uppercase;font-weight:600;margin-top:3px;">Head de OP &amp; TECH</div>
     </div>
   </div>
-  <!-- Direita: visual -->
-  <div style="width:45%;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0A1109;">
-    <!-- Círculos sutis -->
-    <div style="position:absolute;width:480px;height:480px;border:1px solid rgba(184,146,42,0.06);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
-    <div style="position:absolute;width:340px;height:340px;border:1px solid rgba(184,146,42,0.09);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
-    <div style="position:absolute;width:200px;height:200px;border:1px solid rgba(184,146,42,0.14);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
-    <!-- Central -->
-    <div style="text-align:center;position:relative;z-index:2;">
-      <div style="margin-bottom:20px;">
-      <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="36" cy="36" r="35" stroke="#B8922A" stroke-width="1.5" stroke-dasharray="4 3"/>
-        <circle cx="36" cy="36" r="24" stroke="#B8922A" stroke-width="0.75" opacity="0.5"/>
-        <line x1="36" y1="12" x2="36" y2="22" stroke="#B8922A" stroke-width="1.5"/>
-        <line x1="36" y1="50" x2="36" y2="60" stroke="#B8922A" stroke-width="1.5"/>
-        <line x1="12" y1="36" x2="22" y2="36" stroke="#B8922A" stroke-width="1.5"/>
-        <line x1="50" y1="36" x2="60" y2="36" stroke="#B8922A" stroke-width="1.5"/>
-        <circle cx="36" cy="36" r="6" fill="#B8922A" opacity="0.9"/>
-        <text x="36" y="40" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="8" font-weight="700" fill="#B8922A" letter-spacing="1">IA</text>
+  <div style="width:46%;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0A1109;">
+    <div style="position:absolute;width:500px;height:500px;border:1px solid rgba(184,146,42,.05);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+    <div style="position:absolute;width:360px;height:360px;border:1px solid rgba(184,146,42,.08);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+    <div style="position:absolute;width:220px;height:220px;border:1px solid rgba(184,146,42,.13);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+    <div style="position:relative;z-index:2;text-align:center;">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="38" stroke="#B8922A" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <circle cx="40" cy="40" r="26" stroke="#B8922A" stroke-width=".75" stroke-opacity=".5"/>
+        <line x1="40" y1="14" x2="40" y2="24" stroke="#B8922A" stroke-width="1.5"/>
+        <line x1="40" y1="56" x2="40" y2="66" stroke="#B8922A" stroke-width="1.5"/>
+        <line x1="14" y1="40" x2="24" y2="40" stroke="#B8922A" stroke-width="1.5"/>
+        <line x1="56" y1="40" x2="66" y2="40" stroke="#B8922A" stroke-width="1.5"/>
+        <circle cx="40" cy="40" r="10" fill="#B8922A" fill-opacity=".15"/>
+        <circle cx="40" cy="40" r="5" fill="#B8922A"/>
       </svg>
+      <div style="font-size:.34em;letter-spacing:.26em;color:rgba(184,146,42,.45);text-transform:uppercase;font-weight:600;margin-top:14px;">Mentory Tech &middot; 2026</div>
     </div>
-      <div style="font-size:0.36em;letter-spacing:0.28em;color:rgba(184,146,42,0.4);text-transform:uppercase;font-weight:500;">Mentory Tech &middot; 2026</div>
-    </div>
-    <!-- Tags no rodapé -->
-    <div style="position:absolute;bottom:40px;display:flex;gap:8px;">
+    <div style="position:absolute;bottom:80px;display:flex;gap:8px;">
       <div class="pill">Miranda AI</div>
       <div class="pill">ClosyIA</div>
       <div class="pill">Mission Control</div>
@@ -472,505 +193,501 @@
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="page" style="align-items:center;text-align:center;">
-  <div style="max-width:780px;">
-    <div class="eyebrow" style="text-align:center;">O momento que estamos vivendo</div>
-    <div style="font-family:'Playfair Display',serif;font-size:2.8em;font-weight:700;line-height:1.12;color:#FFFFFF;margin-bottom:18px;">&ldquo;A IA n&atilde;o vai substituir voc&ecirc;.&rdquo;</div>
+  <div style="max-width:820px;">
+    <span class="ey" style="display:block;text-align:center;margin-bottom:20px;">O momento que estamos vivendo</span>
+    <div style="font-family:'Playfair Display',serif;font-size:2.5em;font-weight:700;line-height:1.14;color:#FFFFFF;margin-bottom:18px;">&ldquo;A IA n&atilde;o vai substituir voc&ecirc;.&rdquo;</div>
     <div class="rule" style="margin:0 auto 22px;"></div>
-    <div style="font-family:'Playfair Display',serif;font-size:2.4em;font-weight:700;line-height:1.12;color:#D4AA5A;font-style:italic;">&ldquo;Mas quem usa IA vai substituir<br>quem n&atilde;o usa.&rdquo;</div>
-    <!-- Stats mínimas -->
-    <div style="display:flex;gap:0;margin-top:48px;border-top:1px solid rgba(255,255,255,0.06);padding-top:36px;justify-content:center;">
-      <div style="padding:0 40px;border-right:1px solid rgba(255,255,255,0.06);text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.4em;font-weight:700;color:#D4AA5A;line-height:1;">14</div><div style="font-size:0.44em;letter-spacing:0.18em;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-top:6px;">Agentes ativos</div></div>
-      <div style="padding:0 40px;border-right:1px solid rgba(255,255,255,0.06);text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.4em;font-weight:700;color:#D4AA5A;line-height:1;">3</div><div style="font-size:0.44em;letter-spacing:0.18em;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-top:6px;">SaaS propriet&aacute;rios</div></div>
-      <div style="padding:0 40px;border-right:1px solid rgba(255,255,255,0.06);text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.4em;font-weight:700;color:#D4AA5A;line-height:1;">24/7</div><div style="font-size:0.44em;letter-spacing:0.18em;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-top:6px;">Opera&ccedil;&atilde;o cont&iacute;nua</div></div>
-      <div style="padding:0 40px;text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.4em;font-weight:700;color:#D4AA5A;line-height:1;">23</div><div style="font-size:0.44em;letter-spacing:0.18em;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-top:6px;">Automa&ccedil;&otilde;es</div></div>
+    <div style="font-family:'Playfair Display',serif;font-size:2.1em;font-weight:700;line-height:1.14;color:#D4AA5A;font-style:italic;">&ldquo;Mas quem usa IA vai substituir quem n&atilde;o usa.&rdquo;</div>
+    <div style="display:flex;gap:0;margin-top:44px;border-top:1px solid rgba(255,255,255,.06);padding-top:32px;justify-content:center;">
+      <div style="padding:0 36px;border-right:1px solid rgba(255,255,255,.06);text-align:center;"><div class="bnum" style="font-size:2.2em;">14</div><div style="font-size:.4em;letter-spacing:.18em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-top:5px;">Agentes ativos</div></div>
+      <div style="padding:0 36px;border-right:1px solid rgba(255,255,255,.06);text-align:center;"><div class="bnum" style="font-size:2.2em;">3</div><div style="font-size:.4em;letter-spacing:.18em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-top:5px;">SaaS propriet&aacute;rios</div></div>
+      <div style="padding:0 36px;border-right:1px solid rgba(255,255,255,.06);text-align:center;"><div class="bnum" style="font-size:2.2em;">24/7</div><div style="font-size:.4em;letter-spacing:.18em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-top:5px;">Opera&ccedil;&atilde;o cont&iacute;nua</div></div>
+      <div style="padding:0 36px;text-align:center;"><div class="bnum" style="font-size:2.2em;">23</div><div style="font-size:.4em;letter-spacing:.18em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-top:5px;">Automa&ccedil;&otilde;es</div></div>
     </div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">Hoje</div>
-    <div class="h1">Agenda</div>
-    <div class="rule"></div>
-    <div class="body">30&ndash;40 minutos de tecnologia que vai mudar como voc&ecirc; pensa automata&ccedil;&atilde;o.</div>
-  </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div class="step"><div class="step-n">01</div><div class="step-t">Os 3 SaaS da Mentory</div><div class="step-d">Miranda AI &middot; ClosyIA &middot; Mission Control</div></div><div class="step"><div class="step-n">02</div><div class="step-t">O Time de Agentes IA</div><div class="step-d">14 especialistas &middot; Organograma &middot; Como funcionam</div></div><div class="step"><div class="step-n">03</div><div class="step-t">Arquitetura e Automa&ccedil;&otilde;es</div><div class="step-d">23 crons &middot; Stack t&eacute;cnica &middot; Infraestrutura</div></div><div class="step"><div class="step-n">04</div><div class="step-t">Economia Real</div><div class="step-d">R$243k/m&ecirc;s &middot; R$2.8M/ano &middot; 262 dias economizados</div></div><div class="step"><div class="step-n">05</div><div class="step-t">Possibilidades para Voc&ecirc;</div><div class="step-d">ClosyIA beta &middot; Miranda &middot; Roadmap 2026</div></div>
-  </div>
+  <div class="sl"><span class="ey">Hoje</span><div class="h1">Agenda</div><div class="rule"></div><div class="body">30&ndash;40 minutos de tecnologia que vai mudar como voc&ecirc; pensa automa&ccedil;&atilde;o.</div></div>
+  <div class="sr"><div class="step"><div class="sn">01</div><div class="st">Os 3 SaaS</div><div class="sd">Miranda AI &middot; ClosyIA &middot; Mission Control</div></div><div class="step"><div class="sn">02</div><div class="st">O Time de Agentes</div><div class="sd">14 especialistas &middot; Organograma</div></div><div class="step"><div class="sn">03</div><div class="st">Arquitetura</div><div class="sd">23 crons &middot; Stack &middot; Infraestrutura</div></div><div class="step"><div class="sn">04</div><div class="st">Economia Real</div><div class="sd">R$243k/m&ecirc;s &middot; R$2.856M/ano</div></div><div class="step"><div class="sn">05</div><div class="st">Para Voc&ecirc;</div><div class="sd">ClosyIA beta &middot; Roadmap 2026</div></div></div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="page" style="align-items:center;text-align:center;">
-  <div style="max-width:900px;width:100%;">
-    <div class="eyebrow" style="text-align:center;">Mentory Tech</div>
+  <div style="max-width:1000px;width:100%;">
+    <span class="ey" style="display:block;text-align:center;">Mentory Tech</span>
     <div class="h1" style="text-align:center;margin-bottom:8px;">3 plataformas. 1 ecossistema integrado.</div>
-    <div class="rule" style="margin:0 auto 40px;"></div>
-    <div style="display:flex;gap:1px;background:rgba(255,255,255,0.05);">
-      <div style="flex:1;padding:40px 36px;background:#0D1A12;text-align:left;">
-        <div style="font-size:0.5em;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:16px;">SaaS 01</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.4em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">Miranda AI</div>
-        <div style="width:24px;height:1px;background:#B8922A;margin-bottom:16px;"></div>
-        <div class="body" style="margin-bottom:20px;">29 ferramentas para criar marca, produto e copy de alto ticket.</div>
-        <div style="font-size:0.44em;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#52B788;">&#10003; Em Produ&ccedil;&atilde;o</div>
+    <div class="rule" style="margin:0 auto 36px;"></div>
+    <div style="display:flex;gap:2px;background:rgba(255,255,255,.04);">
+      <div style="flex:1;padding:38px 32px;background:#0D1A12;text-align:left;">
+        <div style="font-size:.42em;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:14px;">SaaS 01</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.3em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">Miranda AI</div>
+        <div style="width:22px;height:1px;background:#B8922A;margin-bottom:14px;"></div>
+        <div class="body" style="margin-bottom:18px;">29 ferramentas para criar marca, produto e copy de alto ticket.</div>
+        <div style="font-size:.38em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#52B788;">&#10003; Em Produ&ccedil;&atilde;o</div>
       </div>
-      <div style="flex:1;padding:40px 36px;background:#0D1A12;text-align:left;">
-        <div style="font-size:0.5em;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:16px;">SaaS 02</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.4em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">ClosyIA</div>
-        <div style="width:24px;height:1px;background:#B8922A;margin-bottom:16px;"></div>
-        <div class="body" style="margin-bottom:20px;">SDR + Vendedor + CS autom&aacute;ticos. Fecha vendas 24/7 no WhatsApp.</div>
-        <div style="font-size:0.44em;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D4AA5A;">Em Desenvolvimento</div>
+      <div style="flex:1;padding:38px 32px;background:#0D1A12;text-align:left;">
+        <div style="font-size:.42em;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:14px;">SaaS 02</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.3em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">ClosyIA</div>
+        <div style="width:22px;height:1px;background:#B8922A;margin-bottom:14px;"></div>
+        <div class="body" style="margin-bottom:18px;">SDR + Vendedor + CS autom&aacute;ticos. Fecha vendas 24/7 no WhatsApp.</div>
+        <div style="font-size:.38em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4AA5A;">Em Desenvolvimento</div>
       </div>
-      <div style="flex:1;padding:40px 36px;background:#0D1A12;text-align:left;">
-        <div style="font-size:0.5em;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:16px;">SaaS 03</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.4em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">Mission Control</div>
-        <div style="width:24px;height:1px;background:#B8922A;margin-bottom:16px;"></div>
-        <div class="body" style="margin-bottom:20px;">Dashboard: vendas, tr&aacute;fego, criativos e insights por IA em tempo real.</div>
-        <div style="font-size:0.44em;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D4AA5A;">Em Migra&ccedil;&atilde;o</div>
+      <div style="flex:1;padding:38px 32px;background:#0D1A12;text-align:left;">
+        <div style="font-size:.42em;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:14px;">SaaS 03</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.3em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">Mission Control</div>
+        <div style="width:22px;height:1px;background:#B8922A;margin-bottom:14px;"></div>
+        <div class="body" style="margin-bottom:18px;">Dashboard unificado: vendas, tr&aacute;fego, criativos e insights por IA.</div>
+        <div style="font-size:.38em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4AA5A;">Em Migra&ccedil;&atilde;o</div>
       </div>
     </div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">SaaS 01 &middot; Em Produ&ccedil;&atilde;o</div>
+  <div class="sl">
+    <span class="ey">SaaS 01 &middot; Em Produ&ccedil;&atilde;o</span>
     <div class="h1" style="font-family:'Playfair Display',serif;">Miranda AI</div>
     <div class="rule"></div>
-    <div class="body" style="margin-bottom:28px;">Sua Assistente de Marca Pessoal. 29 ferramentas para criar neg&oacute;cios de alto ticket do zero &mdash; em minutos.</div>
-    <div class="pill" style="display:block;width:fit-content;margin-bottom:8px;">app.miranda.ai</div>
-    <div style="font-size:0.44em;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#52B788;margin-top:16px;">&#10003; Em Produ&ccedil;&atilde;o</div>
+    <div class="body" style="margin-bottom:24px;">Sua Assistente de Marca Pessoal. 29 ferramentas para criar neg&oacute;cios de alto ticket do zero &mdash; em minutos.</div>
+    <div class="pill" style="display:block;width:fit-content;margin-bottom:10px;">app.miranda.ai</div>
+    <div style="font-size:.38em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#52B788;margin-top:14px;">&#10003; Em Produ&ccedil;&atilde;o</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div style="font-size:0.44em;letter-spacing:0.18em;text-transform:uppercase;color:#B8922A;font-weight:600;margin-bottom:24px;">29 ferramentas em 5 &aacute;reas</div>
-    <div class="tool-row"><div class="tool-cat">Marca</div><div class="tool-items">Brand Studio &middot; Ess&ecirc;ncia Magn&eacute;tica &middot; Mapa Arquet&iacute;pico &middot; An&aacute;lise de Perfil</div></div>
-    <div class="tool-row"><div class="tool-cat">Produto</div><div class="tool-items">Cria&ccedil;&atilde;o de Produto &middot; Escada de Produtos &middot; Gerador de M&eacute;todo &middot; Estrutura de Oferta</div></div>
-    <div class="tool-row"><div class="tool-cat">Cliente</div><div class="tool-items">Criar ICP &middot; Mapa de Empatia &middot; An&aacute;lise de Perfil &middot; Jornada do Cliente</div></div>
-    <div class="tool-row"><div class="tool-cat">Vendas</div><div class="tool-items">Script de Vendas &middot; Quebra de Obje&ccedil;&atilde;o &middot; Gerador de Ads &middot; VSL &middot; Pitch</div></div>
-    <div class="tool-row"><div class="tool-cat">Conte&uacute;do</div><div class="tool-items">Linha Editorial &middot; Constru&ccedil;&atilde;o Narrativa &middot; Copy de Email &middot; Carrossel</div></div>
+  <div class="sr">
+    <div style="font-size:.4em;letter-spacing:.18em;text-transform:uppercase;color:#B8922A;font-weight:600;margin-bottom:20px;">29 ferramentas em 5 &aacute;reas</div>
+    <div class="tr"><div class="tc">Marca</div><div class="ti">Brand Studio &middot; Ess&ecirc;ncia Magn&eacute;tica &middot; Mapa Arquet&iacute;pico &middot; An&aacute;lise de Perfil</div></div><div class="tr"><div class="tc">Produto</div><div class="ti">Cria&ccedil;&atilde;o de Produto &middot; Escada &middot; Gerador de M&eacute;todo &middot; Estrutura de Oferta</div></div><div class="tr"><div class="tc">Cliente</div><div class="ti">Criar ICP &middot; Mapa de Empatia &middot; An&aacute;lise de Perfil &middot; Jornada</div></div><div class="tr"><div class="tc">Vendas</div><div class="ti">Script &middot; Quebra de Obje&ccedil;&atilde;o &middot; Gerador de Ads &middot; VSL &middot; Pitch</div></div><div class="tr"><div class="tc">Conte&uacute;do</div><div class="ti">Linha Editorial &middot; Narrativa &middot; Copy de Email &middot; Carrossel</div></div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="page" style="align-items:center;text-align:center;">
   <div style="max-width:700px;">
-    <div class="eyebrow" style="text-align:center;">Miranda AI</div>
-    <div class="big-num" style="font-size:7em;margin:0 0 8px;">29</div>
-    <div style="font-size:0.85em;font-weight:700;color:#FFFFFF;letter-spacing:-0.01em;margin-bottom:12px;">ferramentas de IA</div>
-    <div class="rule" style="margin:0 auto 20px;"></div>
-    <div class="body" style="margin-bottom:36px;">&ldquo;Voc&ecirc; coloca os dados. A IA entrega estrat&eacute;gia pronta.&rdquo;</div>
+    <span class="ey" style="display:block;text-align:center;">Miranda AI</span>
+    <div class="bnum" style="font-size:8em;margin:0 0 6px;">29</div>
+    <div style="font-size:.8em;font-weight:700;color:#FFFFFF;margin-bottom:10px;">ferramentas de IA</div>
+    <div class="rule" style="margin:0 auto 18px;"></div>
+    <div class="body" style="margin-bottom:32px;">&ldquo;Voc&ecirc; coloca os dados. A IA entrega estrat&eacute;gia pronta.&rdquo;</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
       <div class="pill">Marca</div><div class="pill">Produto</div><div class="pill">Cliente</div><div class="pill">Vendas</div><div class="pill">Conte&uacute;do</div>
     </div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-r" style="width:55%;border-right:1px solid rgba(255,255,255,0.05);">
-    <div class="eyebrow">SaaS 02 &middot; Em Desenvolvimento</div>
+  <div style="width:55%;padding:80px 60px 80px 120px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(255,255,255,.05);">
+    <span class="ey">SaaS 02 &middot; Em Desenvolvimento</span>
     <div class="h1" style="font-family:'Playfair Display',serif;margin-bottom:8px;">ClosyIA</div>
     <div class="rule"></div>
-    <div class="body" style="margin-bottom:32px;">Vendedora IA que nunca dorme. Enquanto voc&ecirc; dorme, a ClosyIA atende, qualifica, vende e suporta &mdash; 24/7 no WhatsApp.</div>
-    <!-- 3 agentes -->
-    <div style="display:flex;gap:1px;background:rgba(255,255,255,0.05);margin-bottom:24px;">
-      <div style="flex:1;padding:20px 18px;background:#0D1A12;"><div style="font-size:0.55em;font-weight:700;color:#FFFFFF;margin-bottom:4px;">SDR</div><div style="font-size:0.48em;color:rgba(255,255,255,0.35);line-height:1.55;">Qualifica leads 24/7</div></div>
-      <div style="flex:1;padding:20px 18px;background:#0D1A12;"><div style="font-size:0.55em;font-weight:700;color:#FFFFFF;margin-bottom:4px;">Vendedor</div><div style="font-size:0.48em;color:rgba(255,255,255,0.35);line-height:1.55;">Fecha vendas auto.</div></div>
-      <div style="flex:1;padding:20px 18px;background:#0D1A12;"><div style="font-size:0.55em;font-weight:700;color:#FFFFFF;margin-bottom:4px;">CS</div><div style="font-size:0.48em;color:rgba(255,255,255,0.35);line-height:1.55;">Suporte e reten&ccedil;&atilde;o</div></div>
+    <div class="body" style="margin-bottom:28px;">Vendedora IA que nunca dorme. Enquanto voc&ecirc; dorme, a ClosyIA atende, qualifica, vende e suporta &mdash; 24/7 no WhatsApp.</div>
+    <div style="display:flex;gap:2px;background:rgba(255,255,255,.04);margin-bottom:20px;">
+      <div style="flex:1;padding:18px 16px;background:#0D1A12;"><div style="font-size:.5em;font-weight:700;color:#FFFFFF;margin-bottom:3px;">SDR</div><div style="font-size:.44em;color:rgba(255,255,255,.32);">Qualifica 24/7</div></div>
+      <div style="flex:1;padding:18px 16px;background:#0D1A12;"><div style="font-size:.5em;font-weight:700;color:#FFFFFF;margin-bottom:3px;">Vendedor</div><div style="font-size:.44em;color:rgba(255,255,255,.32);">Fecha vendas</div></div>
+      <div style="flex:1;padding:18px 16px;background:#0D1A12;"><div style="font-size:.5em;font-weight:700;color:#FFFFFF;margin-bottom:3px;">CS</div><div style="font-size:.44em;color:rgba(255,255,255,.32);">Suporte e CS</div></div>
     </div>
-    <div style="font-size:0.48em;color:rgba(255,255,255,0.25);">Integra&ccedil;&otilde;es: WhatsApp (Evolution API) &middot; Cademi &middot; Gemini AI &middot; Kiwify</div>
+    <div style="font-size:.44em;color:rgba(255,255,255,.22);">WhatsApp &middot; Evolution API &middot; Cademi &middot; Gemini AI &middot; Kiwify</div>
   </div>
-  <div class="split-l" style="width:45%;padding-left:100px;">
-    <div class="eyebrow" style="color:rgba(255,255,255,0.2);">Beta exclusivo Elevations</div>
-    <div class="big-num" style="font-size:4em;margin:16px 0 8px;">Q2<br>2026</div>
+  <div style="width:45%;padding:80px 120px 80px 60px;display:flex;flex-direction:column;justify-content:center;">
+    <span class="ey" style="color:rgba(255,255,255,.2);">Beta exclusivo Elevations</span>
+    <div class="bnum" style="font-size:4em;margin:14px 0 8px;">Q2<br>2026</div>
     <div class="body">&ldquo;Treina vendedores automaticamente com SUA voz e metodologia.&rdquo;</div>
-    <div style="margin-top:32px;font-size:0.44em;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D4AA5A;">Beta exclusivo para quem<br>est&aacute; aqui hoje.</div>
+    <div style="margin-top:28px;font-size:.4em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4AA5A;">Beta exclusivo para quem<br>est&aacute; aqui hoje.</div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">ClosyIA</div>
+  <div class="sl">
+    <span class="ey">ClosyIA</span>
     <div class="h2">O que ela faz<br>pelo seu neg&oacute;cio</div>
     <div class="rule"></div>
-    <div class="big-num" style="font-size:3.5em;">100%</div>
-    <div class="body" style="margin-top:8px;">treinada com seu jeito de vender.</div>
+    <div class="bnum" style="font-size:3.2em;">100%</div>
+    <div class="body" style="margin-top:6px;">treinada com seu<br>jeito de vender.</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div class="step"><div class="step-n" style="font-size:1em;width:24px;min-width:24px;"></div><div class="step-t">Qualifica&ccedil;&atilde;o</div><div class="step-d">Identifica perfil do lead com perguntas estrat&eacute;gicas antes de qualquer oferta.</div></div><div class="step"><div class="step-n" style="font-size:1em;width:24px;min-width:24px;"></div><div class="step-t">Convers&atilde;o</div><div class="step-d">Aplica seu script de vendas com obje&ccedil;&otilde;es tratadas automaticamente.</div></div><div class="step"><div class="step-n" style="font-size:1em;width:24px;min-width:24px;"></div><div class="step-t">Agendamento</div><div class="step-d">Agenda consultas, reuni&otilde;es e calls sem interven&ccedil;&atilde;o humana.</div></div><div class="step"><div class="step-n" style="font-size:1em;width:24px;min-width:24px;"></div><div class="step-t">Suporte P&oacute;s-venda</div><div class="step-d">Recupera acesso, responde d&uacute;vidas e reduz churn 24/7.</div></div><div class="step"><div class="step-n" style="font-size:1em;width:24px;min-width:24px;"></div><div class="step-t">Personaliza&ccedil;&atilde;o</div><div class="step-d">Treinada com SUA metodologia, SUA voz, SEUS produtos.</div></div><div class="step"><div class="step-n" style="font-size:1em;width:24px;min-width:24px;"></div><div class="step-t">An&aacute;lise</div><div class="step-d">Relat&oacute;rios com taxa de convers&atilde;o e principais obje&ccedil;&otilde;es.</div></div>
-  </div>
+  <div class="sr"><div class="step"><div class="sn" style="font-size:.7em;width:22px;min-width:22px;color:#B8922A;line-height:1.4;">&#9670;</div><div class="st">Qualifica&ccedil;&atilde;o</div><div class="sd">Identifica perfil do lead com perguntas estrat&eacute;gicas.</div></div><div class="step"><div class="sn" style="font-size:.7em;width:22px;min-width:22px;color:#B8922A;line-height:1.4;">&#9670;</div><div class="st">Convers&atilde;o</div><div class="sd">Script de vendas com obje&ccedil;&otilde;es tratadas automaticamente.</div></div><div class="step"><div class="sn" style="font-size:.7em;width:22px;min-width:22px;color:#B8922A;line-height:1.4;">&#9670;</div><div class="st">Agendamento</div><div class="sd">Agenda consultas e calls sem interven&ccedil;&atilde;o humana.</div></div><div class="step"><div class="sn" style="font-size:.7em;width:22px;min-width:22px;color:#B8922A;line-height:1.4;">&#9670;</div><div class="st">P&oacute;s-venda</div><div class="sd">Recupera acesso, responde d&uacute;vidas, reduz churn.</div></div><div class="step"><div class="sn" style="font-size:.7em;width:22px;min-width:22px;color:#B8922A;line-height:1.4;">&#9670;</div><div class="st">Personaliza&ccedil;&atilde;o</div><div class="sd">Treinada com SUA metodologia, SUA voz, SEUS produtos.</div></div><div class="step"><div class="sn" style="font-size:.7em;width:22px;min-width:22px;color:#B8922A;line-height:1.4;">&#9670;</div><div class="st">An&aacute;lise</div><div class="sd">Relat&oacute;rios com taxa de convers&atilde;o e obje&ccedil;&otilde;es.</div></div></div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">SaaS 03 &middot; Em Migra&ccedil;&atilde;o</div>
+  <div class="sl">
+    <span class="ey">SaaS 03 &middot; Em Migra&ccedil;&atilde;o</span>
     <div class="h1" style="font-family:'Playfair Display',serif;margin-bottom:8px;">Mission Control</div>
     <div class="rule"></div>
-    <div class="body" style="margin-bottom:28px;">Centro de comando do neg&oacute;cio. Dashboard unificado com vendas, tr&aacute;fego, criativos e insights por IA &mdash; em tempo real.</div>
-    <div style="font-size:0.48em;color:rgba(255,255,255,0.25);margin-bottom:20px;">Brain &rarr; Mission Control &middot; Em migra&ccedil;&atilde;o</div>
+    <div class="body" style="margin-bottom:24px;">Centro de comando do neg&oacute;cio. Dashboard unificado com vendas, tr&aacute;fego, criativos e insights por IA &mdash; em tempo real.</div>
     <div style="display:flex;gap:6px;flex-wrap:wrap;">
       <div class="pill">Hotmart</div><div class="pill">Kiwify</div><div class="pill">Meta Ads</div><div class="pill">Asaas</div><div class="pill">Guru</div>
     </div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div style="font-size:0.44em;letter-spacing:0.18em;text-transform:uppercase;color:#B8922A;font-weight:600;margin-bottom:24px;">4 m&oacute;dulos</div>
-    <div class="step"><div class="step-n" style="font-size:0.9em;min-width:36px;">&#128202;</div><div class="step-t">Vendas em tempo real</div><div class="step-d">Faturamento, convers&atilde;o e ticket m&eacute;dio ao vivo.</div></div>
-    <div class="step"><div class="step-n" style="font-size:0.9em;min-width:36px;">&#128483;</div><div class="step-t">Performance de tr&aacute;fego</div><div class="step-d">Qual campanha e an&uacute;ncio est&aacute; convertendo.</div></div>
-    <div class="step"><div class="step-n" style="font-size:0.9em;min-width:36px;">&#128444;</div><div class="step-t">Criativos top</div><div class="step-d">IA ranqueia seus melhores materiais automaticamente.</div></div>
-    <div class="step"><div class="step-n" style="font-size:0.9em;min-width:36px;">&#129504;</div><div class="step-t">Insights por IA</div><div class="step-d">Recomenda&ccedil;&otilde;es: onde investir mais. Toda semana.</div></div>
-    <div style="margin-top:24px;font-size:0.48em;color:rgba(255,255,255,0.2);">19 Edge Functions &middot; PostgreSQL &middot; React 18</div>
+  <div class="sr">
+    <div style="font-size:.4em;letter-spacing:.18em;text-transform:uppercase;color:#B8922A;font-weight:600;margin-bottom:20px;">4 m&oacute;dulos</div>
+    <div class="step"><div class="sn" style="font-size:.9em;min-width:32px;">&#128202;</div><div class="st">Vendas em tempo real</div><div class="sd">Faturamento, convers&atilde;o e ticket m&eacute;dio ao vivo.</div></div>
+    <div class="step"><div class="sn" style="font-size:.9em;min-width:32px;">&#128483;</div><div class="st">Performance de tr&aacute;fego</div><div class="sd">Qual campanha e an&uacute;ncio est&aacute; convertendo.</div></div>
+    <div class="step"><div class="sn" style="font-size:.9em;min-width:32px;">&#128444;</div><div class="st">Criativos top</div><div class="sd">IA ranqueia seus melhores materiais.</div></div>
+    <div class="step"><div class="sn" style="font-size:.9em;min-width:32px;">&#129504;</div><div class="st">Insights por IA</div><div class="sd">Onde investir mais. Toda semana.</div></div>
+    <div style="margin-top:20px;font-size:.44em;color:rgba(255,255,255,.18);">19 Edge Functions &middot; PostgreSQL &middot; React 18</div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="page" style="align-items:center;text-align:center;">
   <div style="max-width:600px;">
-    <div class="eyebrow" style="text-align:center;">Mission Control</div>
-    <div class="big-num" style="font-size:7em;margin:0 0 4px;">19</div>
-    <div style="font-size:0.75em;font-weight:700;color:#FFFFFF;margin-bottom:12px;">Edge Functions conectando tudo</div>
-    <div class="rule" style="margin:0 auto 20px;"></div>
+    <span class="ey" style="display:block;text-align:center;">Mission Control</span>
+    <div class="bnum" style="font-size:7.5em;margin:0 0 4px;">19</div>
+    <div style="font-size:.7em;font-weight:700;color:#FFFFFF;margin-bottom:10px;">Edge Functions conectando tudo</div>
+    <div class="rule" style="margin:0 auto 18px;"></div>
     <div class="body">PostgreSQL &middot; React 18 &middot; Supabase &middot; Realtime &middot; Row Level Security</div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">Comparativo</div>
+  <div class="sl">
+    <span class="ey">Comparativo</span>
     <div class="h2">Os 3 SaaS<br>lado a lado</div>
     <div class="rule"></div>
     <div class="body">C&oacute;digo propriet&aacute;rio, construído do zero. Sem depender de terceiros.</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
+  <div class="sr">
     <table class="tbl">
       <tr><th></th><th>Miranda</th><th style="color:#D4AA5A;">ClosyIA</th><th>Mission Control</th></tr>
-      <tr><td style="color:rgba(255,255,255,0.35);font-size:0.85em;">Foco</td><td>Criar marca e produto</td><td style="color:#D4AA5A;">Vender autom&aacute;tico</td><td style="color:rgba(255,255,255,0.5);">Analisar neg&oacute;cio</td></tr><tr><td style="color:rgba(255,255,255,0.35);font-size:0.85em;">P&uacute;blico</td><td>Alunas MI/Elevation</td><td style="color:#D4AA5A;">Empresas (B2B)</td><td style="color:rgba(255,255,255,0.5);">Time interno</td></tr><tr><td style="color:rgba(255,255,255,0.35);font-size:0.85em;">IA</td><td>OpenAI + Gemini</td><td style="color:#D4AA5A;">Gemini</td><td style="color:rgba(255,255,255,0.5);">OpenAI</td></tr><tr><td style="color:rgba(255,255,255,0.35);font-size:0.85em;">WhatsApp</td><td>&mdash;</td><td style="color:#D4AA5A;">&#10003;</td><td style="color:rgba(255,255,255,0.5);">&mdash;</td></tr><tr><td style="color:rgba(255,255,255,0.35);font-size:0.85em;">Multi-tenant</td><td>&mdash;</td><td style="color:#D4AA5A;">&#10003;</td><td style="color:rgba(255,255,255,0.5);">&mdash;</td></tr>
-      <tr class="hi-row"><td>Status</td><td style="color:#52B788;">&#10003; Produ&ccedil;&atilde;o</td><td style="color:#D4AA5A;">Desenvolvimento</td><td style="color:#D4AA5A;">Migra&ccedil;&atilde;o</td></tr>
+      <tr><td style="color:rgba(255,255,255,.32);font-size:.88em;">Foco</td><td>Criar marca e produto</td><td style="color:#D4AA5A;">Vender autom&aacute;tico</td><td style="color:rgba(255,255,255,.48);">Analisar neg&oacute;cio</td></tr><tr><td style="color:rgba(255,255,255,.32);font-size:.88em;">P&uacute;blico</td><td>Alunas MI/Elevation</td><td style="color:#D4AA5A;">Empresas (B2B)</td><td style="color:rgba(255,255,255,.48);">Time interno</td></tr><tr><td style="color:rgba(255,255,255,.32);font-size:.88em;">IA</td><td>OpenAI + Gemini</td><td style="color:#D4AA5A;">Gemini</td><td style="color:rgba(255,255,255,.48);">OpenAI</td></tr><tr><td style="color:rgba(255,255,255,.32);font-size:.88em;">WhatsApp</td><td>&mdash;</td><td style="color:#D4AA5A;">&#10003;</td><td style="color:rgba(255,255,255,.48);">&mdash;</td></tr><tr><td style="color:rgba(255,255,255,.32);font-size:.88em;">Multi-tenant</td><td>&mdash;</td><td style="color:#D4AA5A;">&#10003;</td><td style="color:rgba(255,255,255,.48);">&mdash;</td></tr>
+      <tr class="hi"><td>Status</td><td style="color:#52B788;">&#10003; Produ&ccedil;&atilde;o</td><td style="color:#D4AA5A;">Desenvolvimento</td><td style="color:#D4AA5A;">Migra&ccedil;&atilde;o</td></tr>
     </table>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="page" style="align-items:center;text-align:center;">
   <div style="max-width:720px;">
-    <div class="eyebrow" style="text-align:center;">Time de IA</div>
-    <div class="big-num" style="font-size:7em;margin:0 0 4px;">14</div>
-    <div style="font-size:1em;font-weight:700;color:#FFFFFF;margin-bottom:12px;">Agentes IA trabalhando 24/7</div>
-    <div class="rule" style="margin:0 auto 24px;"></div>
-    <div class="body" style="margin-bottom:36px;">Cada agente &eacute; especialista em uma &aacute;rea do neg&oacute;cio. Trabalham em conjunto, orquestrados por uma IA central que nunca dorme.</div>
+    <span class="ey" style="display:block;text-align:center;">Time de IA</span>
+    <div class="bnum" style="font-size:7.5em;margin:0 0 4px;">14</div>
+    <div style="font-size:.95em;font-weight:700;color:#FFFFFF;margin-bottom:10px;">Agentes IA trabalhando 24/7</div>
+    <div class="rule" style="margin:0 auto 22px;"></div>
+    <div class="body" style="margin-bottom:32px;">Cada agente &eacute; especialista em uma &aacute;rea do neg&oacute;cio. Trabalham em conjunto, orquestrados por uma IA central que nunca dorme.</div>
     <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
-      <div class="pill">Criativo</div>
-      <div class="pill">Tech</div>
-      <div class="pill">Neg&oacute;cio</div>
-      <div class="pill">Sucesso</div>
+      <div class="pill">Criativo</div><div class="pill">Tech</div><div class="pill">Neg&oacute;cio</div><div class="pill">Sucesso</div>
     </div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
-<div style="padding:48px 100px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;">
-  <!-- Header -->
-  <div style="margin-bottom:28px;">
-    <div class="eyebrow">Organograma</div>
-    <div class="h2">14 Especialistas Orquestrados por &Eacute;den</div>
-  </div>
-  <!-- Éden COO -->
-  <div style="display:flex;justify-content:center;margin-bottom:16px;">
-    <div class="org-root">
-      <div style="font-size:0.4em;letter-spacing:0.2em;text-transform:uppercase;color:rgba(184,146,42,0.5);margin-bottom:4px;">COO &middot; Orquestra Tudo</div>
-      <div style="font-size:0.8em;font-weight:800;color:#FFFFFF;letter-spacing:0.08em;">&Eacute;DEN</div>
+<section data-background-color="#0D1A12">
+<div style="padding:60px 120px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;">
+  <div style="margin-bottom:20px;display:flex;align-items:flex-end;justify-content:space-between;">
+    <div>
+      <span class="ey" style="margin-bottom:8px;">Organograma</span>
+      <div class="h2">14 Especialistas Orquestrados por &Eacute;den</div>
     </div>
+    <div style="text-align:right;font-size:.44em;color:rgba(255,255,255,.22);">Cada agente &eacute; um especialista.<br>&Eacute;den &eacute; a intelig&ecirc;ncia central.</div>
   </div>
-  <div style="display:flex;justify-content:center;margin-bottom:12px;"><div style="width:1px;height:16px;background:rgba(184,146,42,0.3);"></div></div>
-  <div style="border-top:1px solid rgba(184,146,42,0.12);margin-bottom:16px;"></div>
-  <!-- 3 colunas -->
-  <div style="display:flex;gap:32px;flex:1;">
-    <div style="flex:1;"><div class="org-col-head">Criativo</div><div class="org-item"><div class="org-name">Armani</div><div class="org-role">Design</div><div class="org-desc">Criativos, identidade</div></div><div class="org-item"><div class="org-name">Lewis</div><div class="org-role">Copy</div><div class="org-desc">Landing pages, roteiros</div></div><div class="org-item"><div class="org-name">Britney</div><div class="org-role">Conte&uacute;do Clara</div><div class="org-desc">Posts, stories, calend&aacute;rio</div></div><div class="org-item"><div class="org-name">Michael</div><div class="org-role">Conte&uacute;do Ed</div><div class="org-desc">Canais do Ed Souza</div></div></div><div style="flex:1;"><div class="org-col-head">Tech</div><div class="org-item"><div class="org-name">Jobs</div><div class="org-role">Dev</div><div class="org-desc">C&oacute;digo, deploys</div></div><div class="org-item"><div class="org-name">Newton</div><div class="org-role">Dados</div><div class="org-desc">Relat&oacute;rios, dashboards</div></div><div class="org-item"><div class="org-name">Phoenix</div><div class="org-role">Migra&ccedil;&atilde;o</div><div class="org-desc">Brain &rarr; Mission Control</div></div><div class="org-item"><div class="org-name">Iris</div><div class="org-role">Vis&atilde;o</div><div class="org-desc">Imagens e v&iacute;deos (Gemini)</div></div></div><div style="flex:1;"><div class="org-col-head">Neg&oacute;cio</div><div class="org-item"><div class="org-name">Sobral</div><div class="org-role">Tr&aacute;fego</div><div class="org-desc">Meta Ads 2x/dia</div></div><div class="org-item"><div class="org-name">Alex</div><div class="org-role">Financeiro</div><div class="org-desc">Receita, proje&ccedil;&otilde;es</div></div><div class="org-item"><div class="org-name">Bia</div><div class="org-role">Comercial</div><div class="org-desc">Apoio comercial</div></div><div class="org-item"><div class="org-name">Jur&iacute;dico</div><div class="org-role">Contratos</div><div class="org-desc">An&aacute;lise jur&iacute;dica</div></div></div>
-  </div>
-  <!-- Chloe -->
-  <div style="display:flex;justify-content:center;margin-top:14px;border-top:1px solid rgba(255,255,255,0.04);padding-top:14px;">
-    <div style="border:1px solid rgba(82,183,136,0.3);padding:8px 28px;text-align:center;">
-      <div class="org-name" style="font-size:0.58em;">Chloe</div>
-      <div class="org-role" style="color:#52B788;">Sucesso do Cliente</div>
-    </div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+    <svg width="1050" height="620" viewBox="0 0 1050 620" xmlns="http://www.w3.org/2000/svg">
+  <!-- Linhas de órbita -->
+  <circle cx="525" cy="310" r="250" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <circle cx="525" cy="310" r="190" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1" stroke-dasharray="3 5"/>
+  
+  <!-- Linhas de conexão -->
+  <line x1="525.0" y1="236.0" x2="525.0" y2="110.0" stroke="#B8922A" stroke-width="1" stroke-opacity=".4"/><circle cx="525.0" cy="236.0" r="5" fill="#B8922A" fill-opacity=".7"/><circle cx="525.0" cy="110.0" r="5" fill="#B8922A" fill-opacity=".7"/><line x1="559.4" y1="244.5" x2="617.9" y2="132.9" stroke="#6A9BAA" stroke-width="1" stroke-opacity=".4"/><circle cx="559.4" cy="244.5" r="5" fill="#6A9BAA" fill-opacity=".7"/><circle cx="617.9" cy="132.9" r="5" fill="#6A9BAA" fill-opacity=".7"/><line x1="585.9" y1="268.0" x2="689.6" y2="196.4" stroke="#D4AA5A" stroke-width="1" stroke-opacity=".4"/><circle cx="585.9" cy="268.0" r="5" fill="#D4AA5A" fill-opacity=".7"/><circle cx="689.6" cy="196.4" r="5" fill="#D4AA5A" fill-opacity=".7"/><line x1="598.5" y1="301.1" x2="723.5" y2="285.9" stroke="#52B788" stroke-width="1" stroke-opacity=".4"/><circle cx="598.5" cy="301.1" r="5" fill="#52B788" fill-opacity=".7"/><circle cx="723.5" cy="285.9" r="5" fill="#52B788" fill-opacity=".7"/><line x1="594.2" y1="336.2" x2="712.0" y2="380.9" stroke="#7BA3A0" stroke-width="1" stroke-opacity=".4"/><circle cx="594.2" cy="336.2" r="5" fill="#7BA3A0" fill-opacity=".7"/><circle cx="712.0" cy="380.9" r="5" fill="#7BA3A0" fill-opacity=".7"/><line x1="574.1" y1="365.4" x2="657.6" y2="459.7" stroke="#B8922A" stroke-width="1" stroke-opacity=".4"/><circle cx="574.1" cy="365.4" r="5" fill="#B8922A" fill-opacity=".7"/><circle cx="657.6" cy="459.7" r="5" fill="#B8922A" fill-opacity=".7"/><line x1="542.7" y1="381.8" x2="572.9" y2="504.2" stroke="#D4AA5A" stroke-width="1" stroke-opacity=".4"/><circle cx="542.7" cy="381.8" r="5" fill="#D4AA5A" fill-opacity=".7"/><circle cx="572.9" cy="504.2" r="5" fill="#D4AA5A" fill-opacity=".7"/><line x1="507.3" y1="381.8" x2="477.1" y2="504.2" stroke="#52B788" stroke-width="1" stroke-opacity=".4"/><circle cx="507.3" cy="381.8" r="5" fill="#52B788" fill-opacity=".7"/><circle cx="477.1" cy="504.2" r="5" fill="#52B788" fill-opacity=".7"/><line x1="475.9" y1="365.4" x2="392.4" y2="459.7" stroke="#9A8A6A" stroke-width="1" stroke-opacity=".4"/><circle cx="475.9" cy="365.4" r="5" fill="#9A8A6A" fill-opacity=".7"/><circle cx="392.4" cy="459.7" r="5" fill="#9A8A6A" fill-opacity=".7"/><line x1="455.8" y1="336.2" x2="338.0" y2="380.9" stroke="#6A8A9A" stroke-width="1" stroke-opacity=".4"/><circle cx="455.8" cy="336.2" r="5" fill="#6A8A9A" fill-opacity=".7"/><circle cx="338.0" cy="380.9" r="5" fill="#6A8A9A" fill-opacity=".7"/><line x1="451.5" y1="301.1" x2="326.5" y2="285.9" stroke="#52B788" stroke-width="1" stroke-opacity=".4"/><circle cx="451.5" cy="301.1" r="5" fill="#52B788" fill-opacity=".7"/><circle cx="326.5" cy="285.9" r="5" fill="#52B788" fill-opacity=".7"/><line x1="464.1" y1="268.0" x2="360.4" y2="196.4" stroke="#D4AA5A" stroke-width="1" stroke-opacity=".4"/><circle cx="464.1" cy="268.0" r="5" fill="#D4AA5A" fill-opacity=".7"/><circle cx="360.4" cy="196.4" r="5" fill="#D4AA5A" fill-opacity=".7"/><line x1="490.6" y1="244.5" x2="432.1" y2="132.9" stroke="#B8922A" stroke-width="1" stroke-opacity=".4"/><circle cx="490.6" cy="244.5" r="5" fill="#B8922A" fill-opacity=".7"/><circle cx="432.1" cy="132.9" r="5" fill="#B8922A" fill-opacity=".7"/>
+  
+  <!-- Nós externos -->
+  
+<circle cx="525.0" cy="60.0" r="48" fill="#0D1A12" stroke="#B8922A" stroke-width="1.8"/>
+<circle cx="525.0" cy="60.0" r="42" fill="#B8922A" fill-opacity=".06"/>
+<text x="525.0" y="53.0" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Sobral</text>
+<text x="525.0" y="68.0" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#B8922A" letter-spacing="1">Tráfego</text>
+<circle cx="641.2" cy="88.6" r="48" fill="#0D1A12" stroke="#6A9BAA" stroke-width="1.8"/>
+<circle cx="641.2" cy="88.6" r="42" fill="#6A9BAA" fill-opacity=".06"/>
+<text x="641.2" y="81.6" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Lewis</text>
+<text x="641.2" y="96.6" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#6A9BAA" letter-spacing="1">Copy</text>
+<circle cx="730.7" cy="168.0" r="48" fill="#0D1A12" stroke="#D4AA5A" stroke-width="1.8"/>
+<circle cx="730.7" cy="168.0" r="42" fill="#D4AA5A" fill-opacity=".06"/>
+<text x="730.7" y="161.0" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Armani</text>
+<text x="730.7" y="176.0" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#D4AA5A" letter-spacing="1">Design</text>
+<circle cx="773.2" cy="279.9" r="48" fill="#0D1A12" stroke="#52B788" stroke-width="1.8"/>
+<circle cx="773.2" cy="279.9" r="42" fill="#52B788" fill-opacity=".06"/>
+<text x="773.2" y="272.9" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Jobs</text>
+<text x="773.2" y="287.9" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#52B788" letter-spacing="1">Dev</text>
+<circle cx="758.8" cy="398.7" r="48" fill="#0D1A12" stroke="#7BA3A0" stroke-width="1.8"/>
+<circle cx="758.8" cy="398.7" r="42" fill="#7BA3A0" fill-opacity=".06"/>
+<text x="758.8" y="391.7" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Newton</text>
+<text x="758.8" y="406.7" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#7BA3A0" letter-spacing="1">Dados</text>
+<circle cx="690.8" cy="497.1" r="48" fill="#0D1A12" stroke="#B8922A" stroke-width="1.8"/>
+<circle cx="690.8" cy="497.1" r="42" fill="#B8922A" fill-opacity=".06"/>
+<text x="690.8" y="490.1" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Britney</text>
+<text x="690.8" y="505.1" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#B8922A" letter-spacing="1">Clara</text>
+<circle cx="584.8" cy="552.7" r="48" fill="#0D1A12" stroke="#D4AA5A" stroke-width="1.8"/>
+<circle cx="584.8" cy="552.7" r="42" fill="#D4AA5A" fill-opacity=".06"/>
+<text x="584.8" y="545.7" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Michael</text>
+<text x="584.8" y="560.7" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#D4AA5A" letter-spacing="1">Ed</text>
+<circle cx="465.2" cy="552.7" r="48" fill="#0D1A12" stroke="#52B788" stroke-width="1.8"/>
+<circle cx="465.2" cy="552.7" r="42" fill="#52B788" fill-opacity=".06"/>
+<text x="465.2" y="545.7" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Alex</text>
+<text x="465.2" y="560.7" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#52B788" letter-spacing="1">Financ.</text>
+<circle cx="359.2" cy="497.1" r="48" fill="#0D1A12" stroke="#9A8A6A" stroke-width="1.8"/>
+<circle cx="359.2" cy="497.1" r="42" fill="#9A8A6A" fill-opacity=".06"/>
+<text x="359.2" y="490.1" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Iris</text>
+<text x="359.2" y="505.1" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#9A8A6A" letter-spacing="1">Visão</text>
+<circle cx="291.2" cy="398.7" r="48" fill="#0D1A12" stroke="#6A8A9A" stroke-width="1.8"/>
+<circle cx="291.2" cy="398.7" r="42" fill="#6A8A9A" fill-opacity=".06"/>
+<text x="291.2" y="391.7" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Phoenix</text>
+<text x="291.2" y="406.7" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#6A8A9A" letter-spacing="1">Migração</text>
+<circle cx="276.8" cy="279.9" r="48" fill="#0D1A12" stroke="#52B788" stroke-width="1.8"/>
+<circle cx="276.8" cy="279.9" r="42" fill="#52B788" fill-opacity=".06"/>
+<text x="276.8" y="272.9" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Chloe</text>
+<text x="276.8" y="287.9" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#52B788" letter-spacing="1">CS</text>
+<circle cx="319.3" cy="168.0" r="48" fill="#0D1A12" stroke="#D4AA5A" stroke-width="1.8"/>
+<circle cx="319.3" cy="168.0" r="42" fill="#D4AA5A" fill-opacity=".06"/>
+<text x="319.3" y="161.0" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Bia</text>
+<text x="319.3" y="176.0" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#D4AA5A" letter-spacing="1">Comercial</text>
+<circle cx="408.8" cy="88.6" r="48" fill="#0D1A12" stroke="#B8922A" stroke-width="1.8"/>
+<circle cx="408.8" cy="88.6" r="42" fill="#B8922A" fill-opacity=".06"/>
+<text x="408.8" y="81.6" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Jurídico</text>
+<text x="408.8" y="96.6" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#B8922A" letter-spacing="1">Contratos</text>
+  
+  <!-- Nó central: Éden -->
+  <circle cx="525" cy="310" r="80" fill="none" stroke="#B8922A" stroke-width=".75" stroke-opacity=".3" stroke-dasharray="3 4"/>
+  <circle cx="525" cy="310" r="72" fill="#1B4332" stroke="#B8922A" stroke-width="1.8"/>
+  <circle cx="525" cy="310" r="62" fill="none" stroke="#B8922A" stroke-width=".5" stroke-opacity=".4"/>
+  <text x="525" y="296" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="16" font-weight="800" fill="#FFFFFF" letter-spacing="2">ÉDEN</text>
+  <text x="525" y="314" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="#B8922A" letter-spacing="2.5">COO · IA</text>
+  <text x="525" y="328" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.35)">Orquestra tudo</text>
+</svg>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
-<div style="padding:48px 100px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;">
-  <div style="margin-bottom:24px;">
-    <div class="eyebrow">Detalhamento</div>
-    <div class="h2">Os 14 Agentes &mdash; Fun&ccedil;&otilde;es e Modelos</div>
-  </div>
-  <div style="flex:1;overflow:hidden;">
+<section data-background-color="#0D1A12">
+<div style="padding:60px 120px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;">
+  <div style="margin-bottom:22px;"><span class="ey">Detalhamento</span><div class="h2">Os 14 Agentes &mdash; Fun&ccedil;&otilde;es e Modelos</div></div>
+  <div style="flex:1;">
     <table class="tbl">
       <tr><th>Agente</th><th>Fun&ccedil;&atilde;o</th><th>Modelo IA</th><th>Superpoderes</th></tr>
-      <tr><td class="name">&Eacute;den</td><td>COO</td><td class="gold">Claude Opus</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Delega, audita, cobra KPIs</td></tr><tr><td class="name">Sobral</td><td>Tr&aacute;fego</td><td class="gold">Claude Haiku</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Meta Ads 2x/dia</td></tr><tr><td class="name">Lewis</td><td>Copywriter</td><td class="gold">Claude Sonnet</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Landing pages, emails, roteiros</td></tr><tr><td class="name">Armani</td><td>Designer</td><td class="gold">Claude Sonnet</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Criativos, identidade visual</td></tr><tr><td class="name">Jobs</td><td>Dev</td><td class="gold">Claude Sonnet</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">C&oacute;digo, automa&ccedil;&otilde;es, deploys</td></tr><tr><td class="name">Newton</td><td>Dados</td><td class="gold">Claude Haiku</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Relat&oacute;rios, m&eacute;tricas</td></tr><tr><td class="name">Britney</td><td>Conte&uacute;do</td><td class="gold">Claude Sonnet</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Posts e stories da Clara</td></tr><tr><td class="name">Michael</td><td>Conte&uacute;do</td><td class="gold">Claude Sonnet</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Canais do Ed Souza</td></tr><tr><td class="name">Alex</td><td>Financeiro</td><td class="gold">Claude Haiku</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Receita, proje&ccedil;&otilde;es</td></tr><tr><td class="name">Iris</td><td>Vis&atilde;o</td><td class="gold">Gemini Flash</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Imagens e v&iacute;deos</td></tr><tr><td class="name">Phoenix</td><td>Migra&ccedil;&atilde;o</td><td class="gold">Claude Sonnet</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Brain &rarr; Mission Control</td></tr><tr><td class="name">Chloe</td><td>Sucesso</td><td class="gold">Claude Haiku</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">CS, Cademi</td></tr><tr><td class="name">Bia</td><td>Comercial</td><td class="gold">Claude Haiku</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">Apoio comercial</td></tr><tr><td class="name">Jur&iacute;dico</td><td>Contratos</td><td class="gold">Claude Haiku</td><td style="font-size:0.9em;color:rgba(255,255,255,0.4);">An&aacute;lise jur&iacute;dica</td></tr>
+      <tr><td class="nm">&Eacute;den</td><td>COO</td><td class="gd">Claude Opus</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Delega, audita, cobra KPIs</td></tr><tr><td class="nm">Sobral</td><td>Tr&aacute;fego</td><td class="gd">Claude Haiku</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Meta Ads 2x/dia</td></tr><tr><td class="nm">Lewis</td><td>Copywriter</td><td class="gd">Claude Sonnet</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Landing pages, emails, roteiros</td></tr><tr><td class="nm">Armani</td><td>Designer</td><td class="gd">Claude Sonnet</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Criativos, identidade visual</td></tr><tr><td class="nm">Jobs</td><td>Dev</td><td class="gd">Claude Sonnet</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">C&oacute;digo, automa&ccedil;&otilde;es, deploys</td></tr><tr><td class="nm">Newton</td><td>Dados</td><td class="gd">Claude Haiku</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Relat&oacute;rios, m&eacute;tricas</td></tr><tr><td class="nm">Britney</td><td>Conte&uacute;do Clara</td><td class="gd">Claude Sonnet</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Posts e stories da Clara</td></tr><tr><td class="nm">Michael</td><td>Conte&uacute;do Ed</td><td class="gd">Claude Sonnet</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Canais do Ed Souza</td></tr><tr><td class="nm">Alex</td><td>Financeiro</td><td class="gd">Claude Haiku</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Receita, proje&ccedil;&otilde;es</td></tr><tr><td class="nm">Iris</td><td>Vis&atilde;o</td><td class="gd">Gemini Flash</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Imagens e v&iacute;deos</td></tr><tr><td class="nm">Phoenix</td><td>Migra&ccedil;&atilde;o</td><td class="gd">Claude Sonnet</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Brain &rarr; Mission Control</td></tr><tr><td class="nm">Chloe</td><td>CS</td><td class="gd">Claude Haiku</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Sucesso do cliente</td></tr><tr><td class="nm">Bia</td><td>Comercial</td><td class="gd">Claude Haiku</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">Apoio comercial</td></tr><tr><td class="nm">Jur&iacute;dico</td><td>Contratos</td><td class="gd">Claude Haiku</td><td style="font-size:.88em;color:rgba(255,255,255,.38);">An&aacute;lise jur&iacute;dica</td></tr>
     </table>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">Fluxo de trabalho</div>
+  <div class="sl">
+    <span class="ey">Fluxo de trabalho</span>
     <div class="h2" style="font-family:'Playfair Display',serif;">&ldquo;Eu pe&ccedil;o. A IA organiza. O time executa.&rdquo;</div>
     <div class="rule"></div>
-    <div class="body">Exemplo real: an&aacute;lise de campanha pedida s 9h &rarr; relat&oacute;rio entregue em 8 minutos &rarr; decis&atilde;o tomada com dados reais.</div>
+    <div class="body">Exemplo real: an&aacute;lise de campanha pedida &agrave;s 9h &rarr; relat&oacute;rio entregue em 8 minutos &rarr; decis&atilde;o tomada com dados reais.</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div class="step"><div class="step-n">01</div><div class="step-t">Kellton</div><div class="step-d">Define a tarefa ou objetivo</div></div>
-    <div class="step"><div class="step-n">02</div><div class="step-t">&Eacute;den</div><div class="step-d">Recebe, planeja e orquestra</div></div>
-    <div class="step"><div class="step-n">03</div><div class="step-t">Especialista</div><div class="step-d">Executa com expertise e ferramentas</div></div>
-    <div class="step"><div class="step-n">04</div><div class="step-t">Revis&atilde;o</div><div class="step-d">Audita, refina e aprova</div></div>
-    <div class="step"><div class="step-n" style="color:#52B788;">&#10003;</div><div class="step-t" style="color:#52B788;">Entrega</div><div class="step-d">Pronto. Sem esperar.</div></div>
+  <div class="sr">
+    <div class="step"><div class="sn">01</div><div class="st">Kellton</div><div class="sd">Define a tarefa ou objetivo</div></div>
+    <div class="step"><div class="sn">02</div><div class="st">&Eacute;den</div><div class="sd">Recebe, planeja e orquestra</div></div>
+    <div class="step"><div class="sn">03</div><div class="st">Especialista</div><div class="sd">Executa com expertise e ferramentas</div></div>
+    <div class="step"><div class="sn">04</div><div class="st">Revis&atilde;o</div><div class="sd">Audita, refina e aprova</div></div>
+    <div class="step"><div class="sn" style="color:#52B788;">&#10003;</div><div class="st" style="color:#52B788;">Entrega</div><div class="sd">Pronto. Sem esperar.</div></div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">Aconteceu de verdade</div>
+  <div class="sl">
+    <span class="ey">Aconteceu de verdade</span>
     <div class="h2" style="font-family:'Playfair Display',serif;">&ldquo;Ontem &agrave; noite, enquanto eu dormia...&rdquo;</div>
     <div class="rule"></div>
     <div class="body">Isso acontece <strong style="color:#FFFFFF;font-weight:700;">TODOS OS DIAS.</strong><br>24/7. 365 dias por ano.</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div style="font-size:0.44em;letter-spacing:0.18em;text-transform:uppercase;color:#B8922A;font-weight:600;margin-bottom:20px;">Timeline &middot; &Uacute;ltimas 24h</div>
-    <div class="step"><div class="step-n" style="font-size:0.7em;min-width:52px;letter-spacing:0;">05:00</div><div class="step-t">Sobral analisou campanhas Meta Ads</div><div class="step-d">Identificou CPA elevado. Gerou relat&oacute;rio com recomenda&ccedil;&atilde;o de pausa.</div></div><div class="step"><div class="step-n" style="font-size:0.7em;min-width:52px;letter-spacing:0;">08:00</div><div class="step-t">&Eacute;den verificou sa&uacute;de dos sistemas</div><div class="step-d">Watchdog passou por todos os 14 agentes. Opera&ccedil;&atilde;o normal.</div></div><div class="step"><div class="step-n" style="font-size:0.7em;min-width:52px;letter-spacing:0;">09:00</div><div class="step-t">Jobs implementou 5 corre&ccedil;&otilde;es</div><div class="step-d">P&aacute;gina de vendas ajustada sem interven&ccedil;&atilde;o humana.</div></div><div class="step"><div class="step-n" style="font-size:0.7em;min-width:52px;letter-spacing:0;">10:00</div><div class="step-t">Armani criou esta apresenta&ccedil;&atilde;o</div><div class="step-d">28 slides gerados a partir do briefing.</div></div><div class="step"><div class="step-n" style="font-size:0.7em;min-width:52px;letter-spacing:0;">10:30</div><div class="step-t">Toda a opera&ccedil;&atilde;o funcionando</div><div class="step-d">Enquanto Kellton ainda acordava.</div></div>
+  <div class="sr">
+    <div style="font-size:.4em;letter-spacing:.18em;text-transform:uppercase;color:#B8922A;font-weight:600;margin-bottom:18px;">Timeline &middot; &Uacute;ltimas 24h</div>
+    <div class="step"><div class="sn" style="font-size:.6em;min-width:52px;letter-spacing:0;padding-top:4px;">05:00</div><div class="st">Sobral analisou campanhas Meta Ads</div><div class="sd">Identificou CPA elevado. Relat&oacute;rio com recomenda&ccedil;&atilde;o de pausa gerado.</div></div><div class="step"><div class="sn" style="font-size:.6em;min-width:52px;letter-spacing:0;padding-top:4px;">08:00</div><div class="st">&Eacute;den verificou sa&uacute;de dos sistemas</div><div class="sd">Watchdog passou por todos os 14 agentes. Opera&ccedil;&atilde;o normal.</div></div><div class="step"><div class="sn" style="font-size:.6em;min-width:52px;letter-spacing:0;padding-top:4px;">09:00</div><div class="st">Jobs implementou 5 corre&ccedil;&otilde;es</div><div class="sd">P&aacute;gina de vendas ajustada sem interven&ccedil;&atilde;o humana.</div></div><div class="step"><div class="sn" style="font-size:.6em;min-width:52px;letter-spacing:0;padding-top:4px;">10:00</div><div class="st">Armani criou esta apresenta&ccedil;&atilde;o</div><div class="sd">28 slides gerados a partir do briefing.</div></div><div class="step"><div class="sn" style="font-size:.6em;min-width:52px;letter-spacing:0;padding-top:4px;">10:30</div><div class="st">Toda a opera&ccedil;&atilde;o funcionando</div><div class="sd">Enquanto Kellton ainda acordava.</div></div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">Infraestrutura</div>
+  <div class="sl">
+    <span class="ey">Infraestrutura</span>
     <div class="h2">Arquitetura T&eacute;cnica</div>
     <div class="rule"></div>
-    <div class="big-num" style="font-size:3.5em;margin-bottom:4px;">150k</div>
+    <div class="bnum" style="font-size:3.2em;margin-bottom:4px;">150k</div>
     <div class="body">tokens de contexto<br>por sess&atilde;o &asymp; 300 p&aacute;ginas</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div class="tool-row"><div class="tool-cat">OpenClaw</div><div class="tool-items">Gateway central &middot; Discord / Telegram / WhatsApp / Signal &middot; 14 agentes &middot; 23 crons</div></div><div class="tool-row"><div class="tool-cat">Modelos IA</div><div class="tool-items">Claude Opus 4 &middot; Claude Sonnet &middot; Claude Haiku &middot; Gemini Flash</div></div><div class="tool-row"><div class="tool-cat">Backend</div><div class="tool-items">Supabase (PostgreSQL) &middot; 19 Edge Functions &middot; Row Level Security</div></div><div class="tool-row"><div class="tool-cat">Frontend</div><div class="tool-items">React 18 + TypeScript + Vite + Tailwind &middot; Deploy Lovable</div></div><div class="tool-row"><div class="tool-cat">Servidor</div><div class="tool-items">Contabo VPS &middot; Alemanha &middot; SSL/TLS &middot; 150k tokens/sess&atilde;o</div></div><div class="tool-row"><div class="tool-cat">Integra&ccedil;&otilde;es</div><div class="tool-items">Hotmart &middot; Kiwify &middot; Guru &middot; Asaas &middot; Meta Ads API &middot; Cademi</div></div>
-  </div>
+  <div class="sr"><div class="tr"><div class="tc">OpenClaw</div><div class="ti">Gateway central &middot; Discord / Telegram / WhatsApp / Signal &middot; 14 agentes &middot; 23 crons</div></div><div class="tr"><div class="tc">Modelos</div><div class="ti">Claude Opus 4 &middot; Claude Sonnet &middot; Claude Haiku &middot; Gemini Flash</div></div><div class="tr"><div class="tc">Backend</div><div class="ti">Supabase (PostgreSQL) &middot; 19 Edge Functions &middot; Row Level Security</div></div><div class="tr"><div class="tc">Frontend</div><div class="ti">React 18 + TypeScript + Vite + Tailwind &middot; Deploy Lovable</div></div><div class="tr"><div class="tc">Servidor</div><div class="ti">Contabo VPS &middot; Alemanha &middot; SSL/TLS &middot; 150k tokens/sess&atilde;o</div></div><div class="tr"><div class="tc">Integra&ccedil;&otilde;es</div><div class="ti">Hotmart &middot; Kiwify &middot; Guru &middot; Asaas &middot; Meta Ads API &middot; Cademi</div></div></div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">Automa&ccedil;&otilde;es</div>
-    <div class="big-num" style="font-size:6em;margin:8px 0 4px;">23</div>
-    <div style="font-size:0.75em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">rotinas rodando<br>sozinhas</div>
+  <div class="sl">
+    <span class="ey">Automa&ccedil;&otilde;es</span>
+    <div class="bnum" style="font-size:6em;margin:8px 0 4px;">23</div>
+    <div style="font-size:.7em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">rotinas rodando<br>sozinhas</div>
     <div class="rule"></div>
     <div class="body">Zero interven&ccedil;&atilde;o humana.<br>Todo dia. O ano inteiro.</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div style="font-size:0.44em;letter-spacing:0.18em;text-transform:uppercase;color:#B8922A;font-weight:600;margin-bottom:16px;">Mostra de 12 das 23</div>
-    <div class="auto-row"><div class="auto-cat">Tr&aacute;fego</div><div class="auto-desc">An&aacute;lise Meta Ads matinal (Sobral)</div><div class="auto-freq">06:00 di&aacute;rio</div></div><div class="auto-row"><div class="auto-cat">Tr&aacute;fego</div><div class="auto-desc">An&aacute;lise Meta Ads noturna + otimiza&ccedil;&atilde;o</div><div class="auto-freq">22:00 di&aacute;rio</div></div><div class="auto-row"><div class="auto-cat">Reports</div><div class="auto-desc">Weekly report para diretoria</div><div class="auto-freq">Sexta 18h</div></div><div class="auto-row"><div class="auto-cat">Reports</div><div class="auto-desc">Monthly summary financeiro</div><div class="auto-freq">Dia 1</div></div><div class="auto-row"><div class="auto-cat">Monit.</div><div class="auto-desc">Watchdog de sa&uacute;de dos sistemas</div><div class="auto-freq">A cada 3h</div></div><div class="auto-row"><div class="auto-cat">Monit.</div><div class="auto-desc">Check de agentes ativos</div><div class="auto-freq">08:00 di&aacute;rio</div></div><div class="auto-row"><div class="auto-cat">Seguran&ccedil;a</div><div class="auto-desc">Audit de seguran&ccedil;a do servidor</div><div class="auto-freq">Segunda 08:30</div></div><div class="auto-row"><div class="auto-cat">Seguran&ccedil;a</div><div class="auto-desc">Backup autom&aacute;tico de mem&oacute;ria</div><div class="auto-freq">02:00 di&aacute;rio</div></div><div class="auto-row"><div class="auto-cat">Mem&oacute;ria</div><div class="auto-desc">Consolida&ccedil;&atilde;o de aprendizados</div><div class="auto-freq">Dias 1 e 15</div></div><div class="auto-row"><div class="auto-cat">Conte&uacute;do</div><div class="auto-desc">Planejamento semanal de posts</div><div class="auto-freq">S&aacute;bado 08:00</div></div><div class="auto-row"><div class="auto-cat">Conte&uacute;do</div><div class="auto-desc">Briefing editorial Clara</div><div class="auto-freq">Segunda 07:00</div></div><div class="auto-row"><div class="auto-cat">Dados</div><div class="auto-desc">Dashboard de m&eacute;tricas atualizado</div><div class="auto-freq">A cada 6h</div></div>
+  <div class="sr">
+    <div style="font-size:.4em;letter-spacing:.18em;text-transform:uppercase;color:#B8922A;font-weight:600;margin-bottom:14px;">12 das 23 automa&ccedil;&otilde;es</div>
+    <div class="ar"><div class="ac">Tr&aacute;fego</div><div class="ad">An&aacute;lise Meta Ads matinal (Sobral)</div><div class="af">06:00 di&aacute;rio</div></div><div class="ar"><div class="ac">Tr&aacute;fego</div><div class="ad">An&aacute;lise Meta Ads noturna</div><div class="af">22:00 di&aacute;rio</div></div><div class="ar"><div class="ac">Reports</div><div class="ad">Weekly report para diretoria</div><div class="af">Sexta 18h</div></div><div class="ar"><div class="ac">Reports</div><div class="ad">Monthly summary financeiro</div><div class="af">Dia 1</div></div><div class="ar"><div class="ac">Monit.</div><div class="ad">Watchdog de sa&uacute;de dos sistemas</div><div class="af">A cada 3h</div></div><div class="ar"><div class="ac">Monit.</div><div class="ad">Check de agentes ativos</div><div class="af">08:00 di&aacute;rio</div></div><div class="ar"><div class="ac">Seguran&ccedil;a</div><div class="ad">Audit do servidor</div><div class="af">Segunda 08:30</div></div><div class="ar"><div class="ac">Seguran&ccedil;a</div><div class="ad">Backup de mem&oacute;ria</div><div class="af">02:00 di&aacute;rio</div></div><div class="ar"><div class="ac">Mem&oacute;ria</div><div class="ad">Consolida&ccedil;&atilde;o de aprendizados</div><div class="af">Dias 1 e 15</div></div><div class="ar"><div class="ac">Conte&uacute;do</div><div class="ad">Planejamento semanal</div><div class="af">S&aacute;bado 08:00</div></div><div class="ar"><div class="ac">Conte&uacute;do</div><div class="ad">Briefing editorial Clara</div><div class="af">Segunda 07:00</div></div><div class="ar"><div class="ac">Dados</div><div class="ad">Dashboard atualizado</div><div class="af">A cada 6h</div></div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="page" style="align-items:center;text-align:center;">
-  <div style="max-width:800px;">
-    <div class="eyebrow" style="text-align:center;">O poder da automa&ccedil;&atilde;o</div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:24px;margin:20px 0;">
-      <div>
-        <div class="big-num" style="font-size:4em;">23</div>
-        <div style="font-size:0.5em;color:rgba(255,255,255,0.3);letter-spacing:0.18em;text-transform:uppercase;margin-top:4px;">automa&ccedil;&otilde;es</div>
-      </div>
-      <div style="font-size:2em;color:rgba(255,255,255,0.2);font-weight:300;">&times;</div>
-      <div>
-        <div class="big-num" style="font-size:4em;">365</div>
-        <div style="font-size:0.5em;color:rgba(255,255,255,0.3);letter-spacing:0.18em;text-transform:uppercase;margin-top:4px;">dias/ano</div>
-      </div>
-      <div style="font-size:2em;color:rgba(255,255,255,0.2);font-weight:300;">=</div>
-      <div>
-        <div class="big-num" style="font-size:4em;color:#FFFFFF;">8.395</div>
-        <div style="font-size:0.5em;color:rgba(255,255,255,0.3);letter-spacing:0.18em;text-transform:uppercase;margin-top:4px;">execu&ccedil;&otilde;es/ano</div>
-      </div>
+  <div style="max-width:860px;">
+    <span class="ey" style="display:block;text-align:center;">O poder da automa&ccedil;&atilde;o</span>
+    <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin:18px 0;">
+      <div><div class="bnum" style="font-size:3.8em;">23</div><div style="font-size:.42em;color:rgba(255,255,255,.28);letter-spacing:.18em;text-transform:uppercase;margin-top:4px;">automa&ccedil;&otilde;es</div></div>
+      <div style="font-size:1.8em;color:rgba(255,255,255,.18);font-weight:300;">&times;</div>
+      <div><div class="bnum" style="font-size:3.8em;">365</div><div style="font-size:.42em;color:rgba(255,255,255,.28);letter-spacing:.18em;text-transform:uppercase;margin-top:4px;">dias/ano</div></div>
+      <div style="font-size:1.8em;color:rgba(255,255,255,.18);font-weight:300;">=</div>
+      <div><div class="bnum" style="font-size:3.8em;color:#FFFFFF;">8.395</div><div style="font-size:.42em;color:rgba(255,255,255,.28);letter-spacing:.18em;text-transform:uppercase;margin-top:4px;">execu&ccedil;&otilde;es/ano</div></div>
     </div>
-    <div class="rule" style="margin:24px auto;"></div>
-    <div style="font-family:'Playfair Display',serif;font-size:2em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">2.098 horas &middot; 262 dias de trabalho</div>
+    <div class="rule" style="margin:22px auto;"></div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.8em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">2.098 horas &middot; 262 dias de trabalho</div>
     <div class="body">&ldquo;= 1 funcion&aacute;rio full-time. E isso &eacute; s&oacute; o come&ccedil;o.&rdquo;</div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
-<div style="padding:48px 100px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;">
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;">
-    <div>
-      <div class="eyebrow">Economia Real &middot; Slide de Impacto</div>
-      <div class="h2">Quanto custaria esse time no mercado?</div>
-    </div>
+<section data-background-color="#0D1A12">
+<div style="padding:60px 120px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:20px;">
+    <div><span class="ey">Economia Real</span><div class="h2">Quanto custaria esse time no mercado?</div></div>
     <div style="text-align:right;">
-      <div style="font-size:0.42em;letter-spacing:0.14em;color:rgba(255,255,255,0.25);text-transform:uppercase;margin-bottom:4px;">Custo total CLT</div>
-      <div style="font-family:'Playfair Display',serif;font-size:2.2em;font-weight:700;color:#D4AA5A;">R$ 243.000<span style="font-size:0.45em;color:rgba(255,255,255,0.3);">/m&ecirc;s</span></div>
+      <div style="font-size:.38em;letter-spacing:.14em;color:rgba(255,255,255,.22);text-transform:uppercase;margin-bottom:4px;">Custo total CLT</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2em;font-weight:700;color:#D4AA5A;">R$ 243.000<span style="font-size:.42em;color:rgba(255,255,255,.28);">/m&ecirc;s</span></div>
     </div>
   </div>
-  <div style="display:flex;gap:24px;flex:1;">
-    <div style="flex:1.6;">
-      <table class="tbl" style="font-size:0.52em;">
-        <tr><th>Cargo</th><th>Agente IA</th><th>Sal&aacute;rio S&ecirc;nior</th><th>Custo c/ CLT</th></tr>
-        <tr><td style="font-size:0.88em;">COO / Diretor de Opera&ccedil;&otilde;es</td><td class="gold">&Eacute;den</td><td style="color:rgba(255,255,255,0.45);">R$ 20.000</td><td class="name">R$ 36.000</td></tr><tr><td style="font-size:0.88em;">Gestor de Tr&aacute;fego S&ecirc;nior</td><td class="gold">Sobral</td><td style="color:rgba(255,255,255,0.45);">R$ 10.000</td><td class="name">R$ 18.000</td></tr><tr><td style="font-size:0.88em;">Copywriter S&ecirc;nior</td><td class="gold">Lewis</td><td style="color:rgba(255,255,255,0.45);">R$ 6.000</td><td class="name">R$ 10.800</td></tr><tr><td style="font-size:0.88em;">Designer S&ecirc;nior</td><td class="gold">Armani</td><td style="color:rgba(255,255,255,0.45);">R$ 5.000</td><td class="name">R$ 9.000</td></tr><tr><td style="font-size:0.88em;">Desenvolvedor Full Stack S&ecirc;nior</td><td class="gold">Jobs</td><td style="color:rgba(255,255,255,0.45);">R$ 20.000</td><td class="name">R$ 36.000</td></tr><tr><td style="font-size:0.88em;">Analista de Dados S&ecirc;nior</td><td class="gold">Newton</td><td style="color:rgba(255,255,255,0.45);">R$ 15.000</td><td class="name">R$ 27.000</td></tr><tr><td style="font-size:0.88em;">Social Media Manager S&ecirc;nior</td><td class="gold">Britney</td><td style="color:rgba(255,255,255,0.45);">R$ 10.000</td><td class="name">R$ 18.000</td></tr><tr><td style="font-size:0.88em;">Social Media (Ed Souza)</td><td class="gold">Michael</td><td style="color:rgba(255,255,255,0.45);">R$ 10.000</td><td class="name">R$ 18.000</td></tr><tr><td style="font-size:0.88em;">Analista Financeiro S&ecirc;nior</td><td class="gold">Alex</td><td style="color:rgba(255,255,255,0.45);">R$ 5.000</td><td class="name">R$ 9.000</td></tr><tr><td style="font-size:0.88em;">Analista de V&iacute;deo/Vis&atilde;o</td><td class="gold">Iris</td><td style="color:rgba(255,255,255,0.45);">R$ 5.000</td><td class="name">R$ 9.000</td></tr><tr><td style="font-size:0.88em;">Analista de CS</td><td class="gold">Chloe</td><td style="color:rgba(255,255,255,0.45);">R$ 4.000</td><td class="name">R$ 7.200</td></tr><tr><td style="font-size:0.88em;">Analista Comercial</td><td class="gold">Bia</td><td style="color:rgba(255,255,255,0.45);">R$ 4.000</td><td class="name">R$ 7.200</td></tr><tr><td style="font-size:0.88em;">Analista Jur&iacute;dico</td><td class="gold">Jur&iacute;dico</td><td style="color:rgba(255,255,255,0.45);">R$ 6.000</td><td class="name">R$ 10.800</td></tr><tr><td style="font-size:0.88em;">Dev de Migra&ccedil;&atilde;o</td><td class="gold">Phoenix</td><td style="color:rgba(255,255,255,0.45);">R$ 15.000</td><td class="name">R$ 27.000</td></tr>
-        <tr class="hi-row"><td><strong>TOTAL &mdash; 14 agentes</strong></td><td></td><td style="color:rgba(255,255,255,0.3);">R$ 135.000</td><td style="color:#D4AA5A;font-size:1.05em;">R$ 243.000/m&ecirc;s</td></tr>
+  <div style="display:flex;gap:20px;flex:1;min-height:0;">
+    <div style="flex:1.6;overflow:hidden;">
+      <table class="tbl">
+        <tr><th>Cargo</th><th>Agente IA</th><th>Sal&aacute;rio</th><th>Custo CLT</th></tr>
+        <tr><td style="font-size:.86em;">COO / Dir. Opera&ccedil;&otilde;es</td><td class="gd">&Eacute;den</td><td style="color:rgba(255,255,255,.4);">R$ 20.000</td><td class="nm">R$ 36.000</td></tr><tr><td style="font-size:.86em;">Gest. Tr&aacute;fego S&ecirc;nior</td><td class="gd">Sobral</td><td style="color:rgba(255,255,255,.4);">R$ 10.000</td><td class="nm">R$ 18.000</td></tr><tr><td style="font-size:.86em;">Copywriter S&ecirc;nior</td><td class="gd">Lewis</td><td style="color:rgba(255,255,255,.4);">R$ 6.000</td><td class="nm">R$ 10.800</td></tr><tr><td style="font-size:.86em;">Designer S&ecirc;nior</td><td class="gd">Armani</td><td style="color:rgba(255,255,255,.4);">R$ 5.000</td><td class="nm">R$ 9.000</td></tr><tr><td style="font-size:.86em;">Dev Full Stack S&ecirc;nior</td><td class="gd">Jobs</td><td style="color:rgba(255,255,255,.4);">R$ 20.000</td><td class="nm">R$ 36.000</td></tr><tr><td style="font-size:.86em;">Analista Dados S&ecirc;nior</td><td class="gd">Newton</td><td style="color:rgba(255,255,255,.4);">R$ 15.000</td><td class="nm">R$ 27.000</td></tr><tr><td style="font-size:.86em;">Social Media S&ecirc;nior x2</td><td class="gd">Britney + Michael</td><td style="color:rgba(255,255,255,.4);">R$ 20.000</td><td class="nm">R$ 36.000</td></tr><tr><td style="font-size:.86em;">Analista Financeiro</td><td class="gd">Alex</td><td style="color:rgba(255,255,255,.4);">R$ 5.000</td><td class="nm">R$ 9.000</td></tr><tr><td style="font-size:.86em;">Analista V&iacute;deo</td><td class="gd">Iris</td><td style="color:rgba(255,255,255,.4);">R$ 5.000</td><td class="nm">R$ 9.000</td></tr><tr><td style="font-size:.86em;">CS + Comercial + Jur.</td><td class="gd">Chloe + Bia + Jur.</td><td style="color:rgba(255,255,255,.4);">R$ 14.000</td><td class="nm">R$ 25.200</td></tr><tr><td style="font-size:.86em;">Dev Migra&ccedil;&atilde;o</td><td class="gd">Phoenix</td><td style="color:rgba(255,255,255,.4);">R$ 15.000</td><td class="nm">R$ 27.000</td></tr>
+        <tr class="hi"><td><strong>TOTAL &mdash; 14 agentes</strong></td><td></td><td style="color:rgba(255,255,255,.28);">R$ 135.000</td><td style="color:#D4AA5A;font-size:1.04em;">R$ 243.000/m&ecirc;s</td></tr>
       </table>
-      <div style="font-size:0.42em;color:rgba(255,255,255,0.2);margin-top:8px;">*Dados Robert Half / Indeed 2026 &middot; encargos CLT +80% sobre sal&aacute;rio bruto</div>
+      <div style="font-size:.38em;color:rgba(255,255,255,.18);margin-top:8px;">*Robert Half / Indeed 2026 &middot; CLT +80% sobre sal&aacute;rio bruto</div>
     </div>
-    <div style="flex:.5;display:flex;flex-direction:column;justify-content:center;gap:16px;">
-      <div style="border-top:1px solid rgba(184,146,42,0.2);padding-top:16px;">
-        <div style="font-size:0.44em;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Time humano</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.5em;font-weight:700;color:#FFFFFF;">R$ 243.000</div>
+    <div style="flex:.45;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+      <div style="border-top:1px solid rgba(184,146,42,.2);padding-top:14px;">
+        <div style="font-size:.38em;color:rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px;">Time humano</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.4em;font-weight:700;color:#FFFFFF;">R$ 243.000</div>
       </div>
-      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;">
-        <div style="font-size:0.44em;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Estrutura IA*</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.5em;font-weight:700;color:rgba(255,255,255,0.4);">~R$ 5.000</div>
+      <div style="border-top:1px solid rgba(255,255,255,.05);padding-top:14px;">
+        <div style="font-size:.38em;color:rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px;">Estrutura IA</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.4em;font-weight:700;color:rgba(255,255,255,.35);">~R$ 5.000</div>
       </div>
-      <div style="border-top:1px solid rgba(184,146,42,0.3);padding-top:16px;">
-        <div style="font-size:0.44em;color:#B8922A;text-transform:uppercase;letter-spacing:0.12em;font-weight:700;margin-bottom:6px;">Economia</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.8em;font-weight:700;color:#D4AA5A;">R$ 238.000<span style="font-size:0.45em;opacity:.5;">/m&ecirc;s</span></div>
+      <div style="border-top:1px solid rgba(184,146,42,.3);padding-top:14px;">
+        <div style="font-size:.38em;color:#B8922A;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:5px;">Economia</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.65em;font-weight:700;color:#D4AA5A;">R$ 238.000<span style="font-size:.42em;opacity:.45;">/m&ecirc;s</span></div>
       </div>
     </div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="page" style="align-items:center;text-align:center;">
-  <div style="max-width:920px;width:100%;">
-    <div class="eyebrow" style="text-align:center;">Economia ao longo do tempo</div>
-    <div class="h2" style="text-align:center;margin-bottom:32px;">R$238k/m&ecirc;s se acumula.</div>
-    <!-- 3 colunas de números -->
-    <div style="display:flex;gap:1px;background:rgba(255,255,255,0.05);margin-bottom:32px;">
-      <div style="flex:1;background:#0D1A12;padding:40px 32px;text-align:left;">
-        <div style="font-size:0.44em;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;">1 M&ecirc;s</div>
-        <div style="font-family:'Playfair Display',serif;font-size:2.4em;font-weight:700;color:#FFFFFF;line-height:1;">R$ 238.000</div>
+  <div style="max-width:960px;width:100%;">
+    <span class="ey" style="display:block;text-align:center;">Economia ao longo do tempo</span>
+    <div class="h2" style="text-align:center;margin-bottom:28px;">R$238k/m&ecirc;s se acumula.</div>
+    <div style="display:flex;gap:2px;background:rgba(255,255,255,.04);margin-bottom:28px;">
+      <div style="flex:1;background:#0D1A12;padding:36px 28px;text-align:left;">
+        <div style="font-size:.38em;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:14px;">1 M&ecirc;s</div>
+        <div style="font-family:'Playfair Display',serif;font-size:2.1em;font-weight:700;color:#FFFFFF;line-height:1;">R$ 238.000</div>
       </div>
-      <div style="flex:1;background:#0D1A12;padding:40px 32px;text-align:left;">
-        <div style="font-size:0.44em;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;">6 Meses</div>
-        <div style="font-family:'Playfair Display',serif;font-size:2.4em;font-weight:700;color:#D4AA5A;line-height:1;">R$ 1.428.000</div>
+      <div style="flex:1;background:#0D1A12;padding:36px 28px;text-align:left;">
+        <div style="font-size:.38em;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:14px;">6 Meses</div>
+        <div style="font-family:'Playfair Display',serif;font-size:2.1em;font-weight:700;color:#D4AA5A;line-height:1;">R$ 1.428.000</div>
       </div>
-      <div style="flex:1;background:#0D1A12;padding:40px 32px;text-align:left;border-left:2px solid #B8922A;">
-        <div style="font-size:0.44em;letter-spacing:0.2em;text-transform:uppercase;color:#B8922A;margin-bottom:16px;font-weight:700;">1 Ano</div>
-        <div style="font-family:'Playfair Display',serif;font-size:2.4em;font-weight:700;color:#D4AA5A;line-height:1;">R$ 2.856.000</div>
+      <div style="flex:1;background:#0D1A12;padding:36px 28px;text-align:left;border-left:2px solid #B8922A;">
+        <div style="font-size:.38em;letter-spacing:.2em;text-transform:uppercase;color:#B8922A;margin-bottom:14px;font-weight:700;">1 Ano</div>
+        <div style="font-family:'Playfair Display',serif;font-size:2.1em;font-weight:700;color:#D4AA5A;line-height:1;">R$ 2.856.000</div>
       </div>
     </div>
-    <div class="rule" style="margin:0 auto 20px;"></div>
-    <div style="font-family:'Playfair Display',serif;font-size:1.3em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">&ldquo;Em 1 ano, a economia equivale ao investimento de 26 Elevations.&rdquo;</div>
-    <div style="font-size:0.48em;color:rgba(255,255,255,0.2);">R$ 2.856.000 &divide; R$ 107.000 &asymp; 26,7 &middot; Al&eacute;m disso: disponibilidade 24/7 &middot; zero f&eacute;rias &middot; zero turnover &middot; escala instant&acirc;nea</div>
+    <div class="rule" style="margin:0 auto 18px;"></div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.25em;font-weight:700;color:#FFFFFF;margin-bottom:8px;">&ldquo;Em 1 ano, a economia equivale ao investimento de 26 Elevations.&rdquo;</div>
+    <div style="font-size:.42em;color:rgba(255,255,255,.18);">R$ 2.856.000 &divide; R$ 107.000 &asymp; 26,7 &middot; 24/7 &middot; zero f&eacute;rias &middot; zero turnover</div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
-<div style="padding:48px 100px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;">
-  <div style="margin-bottom:28px;">
-    <div class="eyebrow">Comparativo</div>
-    <div class="h2">Humano vs. IA &mdash; a conta real</div>
+<section data-background-color="#0D1A12">
+<div style="padding:60px 120px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;">
+  <div style="margin-bottom:24px;"><span class="ey">Comparativo</span><div class="h2">Humano vs. IA &mdash; a conta real</div></div>
+  <div style="display:flex;gap:2px;background:rgba(255,255,255,.03);flex:1;">
+    <div style="flex:.32;background:#0D1A12;padding:26px 20px;"><div style="font-size:.38em;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:18px;">Aspecto</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(255,255,255,.38);">Custo mensal</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(255,255,255,.38);">Disponibilidade</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(255,255,255,.38);">F&eacute;rias</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(255,255,255,.38);">Turnover</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(255,255,255,.38);">Para escalar</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(255,255,255,.38);">Consist&ecirc;ncia</div></div>
+    <div style="flex:.3;background:#0D1A12;padding:26px 20px;"><div style="font-size:.38em;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(200,80,80,.5);margin-bottom:18px;">Time Humano</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(200,80,80,.65);">R$ 243.000</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(200,80,80,.65);">8h/dia, 5 dias</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(200,80,80,.65);">30 dias/ano cada</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(200,80,80,.65);">~20%/ano</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(200,80,80,.65);">Meses</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:rgba(200,80,80,.65);">Vari&aacute;vel</div></div>
+    <div style="flex:.38;background:#0D1A12;padding:26px 20px;border-left:2px solid #B8922A;"><div style="font-size:.38em;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#B8922A;margin-bottom:18px;">Time IA</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:#52B788;font-weight:600;">~R$ 5.000</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:#52B788;font-weight:600;">24/7/365</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:#52B788;font-weight:600;">Nunca</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:#52B788;font-weight:600;">0%</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:#52B788;font-weight:600;">Minutos</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.56em;color:#52B788;font-weight:600;">100%</div></div>
   </div>
-  <div style="display:flex;gap:1px;background:rgba(255,255,255,0.04);flex:1;">
-    <!-- Coluna 1: Aspecto -->
-    <div style="flex:.35;background:#0D1A12;padding:28px 20px;">
-      <div style="font-size:0.42em;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:20px;">Aspecto</div>
-      <div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(255,255,255,0.45);">Custo mensal</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(255,255,255,0.45);">Disponibilidade</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(255,255,255,0.45);">F&eacute;rias</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(255,255,255,0.45);">Turnover</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(255,255,255,0.45);">Para escalar</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(255,255,255,0.45);">Consist&ecirc;ncia</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(255,255,255,0.45);">Treinamento</div>
-    </div>
-    <!-- Coluna 2: Humano -->
-    <div style="flex:.3;background:#0D1A12;padding:28px 20px;">
-      <div style="font-size:0.42em;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:20px;">Time Humano</div>
-      <div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(200,80,80,0.7);">R$ 243.000</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(200,80,80,0.7);">8h/dia, 5 dias</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(200,80,80,0.7);">30 dias/ano cada</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(200,80,80,0.7);">~20%/ano</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(200,80,80,0.7);">Meses</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(200,80,80,0.7);">Vari&aacute;vel</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:rgba(200,80,80,0.7);">Semanas/meses</div>
-    </div>
-    <!-- Coluna 3: IA -->
-    <div style="flex:.35;background:#0D1A12;padding:28px 20px;border-left:2px solid #B8922A;">
-      <div style="font-size:0.42em;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#B8922A;margin-bottom:20px;">Time IA</div>
-      <div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:#52B788;font-weight:600;">~R$ 5.000</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:#52B788;font-weight:600;">24/7/365</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:#52B788;font-weight:600;">Nunca</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:#52B788;font-weight:600;">0%</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:#52B788;font-weight:600;">Minutos</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:#52B788;font-weight:600;">100%</div><div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.58em;color:#52B788;font-weight:600;">Instant&acirc;neo</div>
-    </div>
-  </div>
-  <div style="text-align:center;padding-top:20px;font-size:0.52em;font-style:italic;color:rgba(255,255,255,0.2);">&ldquo;N&atilde;o &eacute; sobre substituir pessoas. &Eacute; sobre AMPLIFICAR capacidade.&rdquo;</div>
+  <div style="text-align:center;padding-top:18px;font-size:.48em;font-style:italic;color:rgba(255,255,255,.18);">&ldquo;N&atilde;o &eacute; sobre substituir pessoas. &Eacute; sobre AMPLIFICAR capacidade.&rdquo;</div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">Isso &eacute; para voc&ecirc;s</div>
+  <div class="sl">
+    <span class="ey">Isso &eacute; para voc&ecirc;s</span>
     <div class="h2" style="font-family:'Playfair Display',serif;">Tudo que constru&iacute;mos,<br><span style="color:#D4AA5A;font-style:italic;">voc&ecirc; pode usar.</span></div>
     <div class="rule"></div>
     <div class="body">Como Elevation, voc&ecirc; tem acesso priorit&aacute;rio &agrave;s ferramentas que a Mentory usa internamente para operar em escala.</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div style="font-size:0.44em;letter-spacing:0.18em;text-transform:uppercase;color:#B8922A;font-weight:600;margin-bottom:20px;">Seu neg&oacute;cio pode ter</div>
-    <div class="fy-item"><div class="fy-icon">&#10024;</div><div><div class="fy-title">IA que cria sua marca (Miranda)</div><div class="fy-desc">29 ferramentas para construir posicionamento, produtos e copy em minutos.</div></div></div><div class="fy-item"><div class="fy-icon">&#129309;</div><div><div class="fy-title">IA que vende no WhatsApp (ClosyIA)</div><div class="fy-desc">SDR + Vendedor autom&aacute;tico treinado com SUA metodologia.</div></div></div><div class="fy-item"><div class="fy-icon">&#127899;</div><div><div class="fy-title">Dashboard inteligente (Mission Control)</div><div class="fy-desc">Vendas, tr&aacute;fego e criativos em tempo real com insights por IA.</div></div></div><div class="fy-item"><div class="fy-icon">&#129302;</div><div><div class="fy-title">Automa&ccedil;&otilde;es 24/7</div><div class="fy-desc">Seu pr&oacute;prio time de agentes operando enquanto voc&ecirc; dorme.</div></div></div>
+  <div class="sr">
+    <div style="font-size:.4em;letter-spacing:.18em;text-transform:uppercase;color:#B8922A;font-weight:600;margin-bottom:18px;">Seu neg&oacute;cio pode ter</div>
+    <div class="fy"><div><div class="fyt">Miranda AI</div><div class="fyd">29 ferramentas para construir posicionamento, produtos e copy em minutos.</div></div></div><div class="fy"><div><div class="fyt">ClosyIA</div><div class="fyd">SDR + Vendedor autom&aacute;tico treinado com SUA metodologia. 24/7.</div></div></div><div class="fy"><div><div class="fyt">Mission Control</div><div class="fyd">Vendas, tr&aacute;fego e criativos em tempo real com insights por IA.</div></div></div><div class="fy"><div><div class="fyt">Agentes 24/7</div><div class="fyd">Seu pr&oacute;prio time de IA operando enquanto voc&ecirc; dorme.</div></div></div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">Casos de uso</div>
+  <div class="sl">
+    <span class="ey">Casos de uso</span>
     <div class="h2" style="font-family:'Playfair Display',serif;">Imagina ter uma IA que...</div>
     <div class="rule"></div>
     <div class="body">Tudo isso j&aacute; &eacute; poss&iacute;vel. Hoje. Para quem est&aacute; no Elevation.</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div class="step"><div class="step-n" style="font-size:0.9em;color:#B8922A;min-width:28px;">&#10003;</div><div class="step-t">Lead &agrave;s 3h da manh&atilde;</div><div class="step-d">ClosyIA responde, qualifica e agenda na hora.</div></div><div class="step"><div class="step-n" style="font-size:0.9em;color:#B8922A;min-width:28px;">&#10003;</div><div class="step-t">10 varia&ccedil;&otilde;es de copy</div><div class="step-d">Lewis entrega em 2 minutos, pronto para testar.</div></div><div class="step"><div class="step-n" style="font-size:0.9em;color:#B8922A;min-width:28px;">&#10003;</div><div class="step-t">An&aacute;lise de criativos</div><div class="step-d">Iris analisa e ranqueia os melhores automaticamente.</div></div><div class="step"><div class="step-n" style="font-size:0.9em;color:#B8922A;min-width:28px;">&#10003;</div><div class="step-t">Relat&oacute;rio di&aacute;rio</div><div class="step-d">Newton monta e envia antes das 8h, todo dia.</div></div><div class="step"><div class="step-n" style="font-size:0.9em;color:#B8922A;min-width:28px;">&#10003;</div><div class="step-t">Criar um produto novo</div><div class="step-d">Miranda estrutura do zero: ICP, oferta, pitch.</div></div>
-  </div>
+  <div class="sr"><div class="step"><div class="sn" style="font-size:.8em;color:#B8922A;min-width:26px;">&#9670;</div><div class="st">Lead &agrave;s 3h da manh&atilde;</div><div class="sd">ClosyIA responde, qualifica e agenda na hora.</div></div><div class="step"><div class="sn" style="font-size:.8em;color:#B8922A;min-width:26px;">&#9670;</div><div class="st">10 varia&ccedil;&otilde;es de copy</div><div class="sd">Lewis entrega em 2 minutos, pronto para testar.</div></div><div class="step"><div class="sn" style="font-size:.8em;color:#B8922A;min-width:26px;">&#9670;</div><div class="st">An&aacute;lise de criativos</div><div class="sd">Iris analisa e ranqueia os melhores automaticamente.</div></div><div class="step"><div class="sn" style="font-size:.8em;color:#B8922A;min-width:26px;">&#9670;</div><div class="st">Relat&oacute;rio di&aacute;rio</div><div class="sd">Newton monta e envia antes das 8h, todo dia.</div></div><div class="step"><div class="sn" style="font-size:.8em;color:#B8922A;min-width:26px;">&#9670;</div><div class="st">Criar um produto novo</div><div class="sd">Miranda estrutura do zero: ICP, oferta, pitch.</div></div></div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">Roadmap</div>
+  <div class="sl">
+    <span class="ey">Roadmap</span>
     <div class="h2">O que est&aacute; por vir &mdash; 2026</div>
     <div class="rule"></div>
     <div class="body">Q1 j&aacute; entregue. O restante j&aacute; est&aacute; no forno.</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div class="rm-item"><div class="rm-q">Q1</div><div style="flex:1;"><div style="font-size:0.42em;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#52B788;margin-bottom:5px;">CONCLU&Iacute;DO</div><div class="rm-title">Miranda em Produ&ccedil;&atilde;o</div><div class="rm-items">Miranda (29 ferramentas) &middot; 14 agentes &middot; 23 automa&ccedil;&otilde;es</div></div></div><div class="rm-item"><div class="rm-q">Q2</div><div style="flex:1;"><div style="font-size:0.42em;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D4AA5A;margin-bottom:5px;">PR&Oacute;XIMO</div><div class="rm-title">ClosyIA beta Elevations</div><div class="rm-items">ClosyIA WhatsApp &middot; Mission Control &middot; Treinamento Miranda</div></div></div><div class="rm-item"><div class="rm-q">Q3</div><div style="flex:1;"><div style="font-size:0.42em;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:5px;">PLANEJADO</div><div class="rm-title">Escala para o Mercado</div><div class="rm-items">ClosyIA mercado &middot; Agentes por neg&oacute;cio &middot; Workshop</div></div></div><div class="rm-item"><div class="rm-q">Q4</div><div style="flex:1;"><div style="font-size:0.42em;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:5px;">PLANEJADO</div><div class="rm-title">Marketplace e Expans&atilde;o</div><div class="rm-items">API p&uacute;blica &middot; Marketplace &middot; White-label Elevations</div></div></div>
-  </div>
+  <div class="sr"><div class="rm"><div class="rq">Q1</div><div><div style="font-size:.38em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#52B788;margin-bottom:4px;">CONCLU&Iacute;DO</div><div class="rtt">Miranda em Produ&ccedil;&atilde;o</div><div class="ri">Miranda (29 ferramentas) &middot; 14 agentes &middot; 23 automa&ccedil;&otilde;es</div></div></div><div class="rm"><div class="rq">Q2</div><div><div style="font-size:.38em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4AA5A;margin-bottom:4px;">PR&Oacute;XIMO</div><div class="rtt">ClosyIA beta Elevations</div><div class="ri">ClosyIA WhatsApp &middot; Mission Control &middot; Treinamento Miranda</div></div></div><div class="rm"><div class="rq">Q3</div><div><div style="font-size:.38em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:4px;">PLANEJADO</div><div class="rtt">Escala para o Mercado</div><div class="ri">ClosyIA p&uacute;blico &middot; Agentes personalizados &middot; Workshop</div></div></div><div class="rm"><div class="rq">Q4</div><div><div style="font-size:.38em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:4px;">PLANEJADO</div><div class="rtt">Marketplace e Expans&atilde;o</div><div class="ri">API p&uacute;blica &middot; Marketplace &middot; White-label</div></div></div></div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="split">
-  <div class="split-l">
-    <div class="eyebrow">Para os Elevations</div>
+  <div class="sl">
+    <span class="ey">Para os Elevations</span>
     <div class="h2" style="font-family:'Playfair Display',serif;">Voc&ecirc; est&aacute; na linha de frente.</div>
     <div class="rule"></div>
-    <div class="body" style="margin-bottom:28px;">Como Elevation, voc&ecirc; ser&aacute; o primeiro a ter acesso ao que a Mentory est&aacute; construindo.</div>
-    <div style="font-size:0.72em;font-weight:700;color:#FFFFFF;">Quem quer testar primeiro?</div>
+    <div class="body" style="margin-bottom:24px;">Como Elevation, voc&ecirc; ser&aacute; o primeiro a ter acesso ao que a Mentory est&aacute; construindo.</div>
+    <div style="font-size:.68em;font-weight:700;color:#FFFFFF;">Quem quer testar primeiro?</div>
   </div>
-  <div class="split-r" style="border-left:1px solid rgba(255,255,255,0.05);">
-    <div class="ps-item"><div class="ps-n">1</div><div class="ps-body"><div class="ps-title">ClosyIA Beta &mdash; acesso exclusivo</div><div class="ps-desc">Antes do lan&ccedil;amento geral. Q2 2026. S&oacute; para quem est&aacute; aqui hoje.</div></div></div><div class="ps-item"><div class="ps-n">2</div><div class="ps-body"><div class="ps-title">Treinamento Miranda AI</div><div class="ps-desc">Workshop hands-on: como usar as 29 ferramentas no seu neg&oacute;cio.</div></div></div><div class="ps-item"><div class="ps-n">3</div><div class="ps-body"><div class="ps-title">Workshop de Automa&ccedil;&otilde;es</div><div class="ps-desc">Como montar suas pr&oacute;prias rotinas e agentes.</div></div></div><div class="ps-item"><div class="ps-n">4</div><div class="ps-body"><div class="ps-title">Consultoria Tech &middot; Kellton</div><div class="ps-desc">Sess&atilde;o individual para mapear automa&ccedil;&otilde;es no seu neg&oacute;cio.</div></div></div>
-  </div>
+  <div class="sr"><div class="step"><div class="sn">1</div><div><div class="st">ClosyIA Beta &mdash; acesso exclusivo</div><div class="sd">Antes do lan&ccedil;amento geral. Q2 2026. S&oacute; para quem est&aacute; aqui hoje.</div></div></div><div class="step"><div class="sn">2</div><div><div class="st">Treinamento Miranda AI</div><div class="sd">Workshop hands-on: como usar as 29 ferramentas no seu neg&oacute;cio.</div></div></div><div class="step"><div class="sn">3</div><div><div class="st">Workshop de Automa&ccedil;&otilde;es</div><div class="sd">Como montar suas pr&oacute;prias rotinas e agentes.</div></div></div><div class="step"><div class="sn">4</div><div><div class="st">Consultoria Tech</div><div class="sd">Sess&atilde;o individual com Kellton para mapear automa&ccedil;&otilde;es.</div></div></div></div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="page" style="align-items:center;text-align:center;">
-  <div style="max-width:780px;position:relative;">
-    <div class="eyebrow" style="text-align:center;">A vis&atilde;o</div>
-    <div style="font-family:'Playfair Display',serif;font-size:2.4em;font-weight:700;line-height:1.12;color:#FFFFFF;margin-bottom:24px;">&ldquo;N&atilde;o estamos construindo ferramentas.<br><span style="color:#D4AA5A;font-style:italic;">Estamos construindo o futuro<br>dos neg&oacute;cios premium.&rdquo;</span></div>
-    <div class="rule" style="margin:0 auto 24px;"></div>
-    <div class="body" style="margin-bottom:28px;max-width:600px;margin-left:auto;margin-right:auto;">Cada agente, cada automa&ccedil;&atilde;o, cada linha de c&oacute;digo foi escrita com um objetivo: dar a voc&ecirc;s as ferramentas que antes s&oacute; as maiores empresas do mundo tinham.</div>
-    <div style="font-family:'Playfair Display',serif;font-size:1.05em;color:#D4AA5A;font-style:italic;">&ldquo;Neg&oacute;cio caro n&atilde;o pode ter dono barato. Nem tecnologia.&rdquo; &mdash; Ed Souza</div>
+  <div style="max-width:800px;">
+    <span class="ey" style="display:block;text-align:center;">A vis&atilde;o</span>
+    <div style="font-family:'Playfair Display',serif;font-size:2.2em;font-weight:700;line-height:1.14;color:#FFFFFF;margin-bottom:22px;">&ldquo;N&atilde;o estamos construindo ferramentas.<br><span style="color:#D4AA5A;font-style:italic;">Estamos construindo o futuro<br>dos neg&oacute;cios premium.&rdquo;</span></div>
+    <div class="rule" style="margin:0 auto 22px;"></div>
+    <div class="body" style="margin-bottom:24px;max-width:580px;margin-left:auto;margin-right:auto;">Cada agente, cada automa&ccedil;&atilde;o, cada linha de c&oacute;digo foi escrita com um objetivo: dar a voc&ecirc;s as ferramentas que antes s&oacute; as maiores empresas do mundo tinham.</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1em;color:#D4AA5A;font-style:italic;">&ldquo;Neg&oacute;cio caro n&atilde;o pode ter dono barato. Nem tecnologia.&rdquo; &mdash; Ed Souza</div>
   </div>
 </div>
 </section>
-<section data-background-color="#0D1A12" style="height:100%;">
+<section data-background-color="#0D1A12">
 <div class="page" style="align-items:center;text-align:center;">
   <div style="max-width:720px;position:relative;">
-    <!-- Círculo sutil -->
-    <div style="position:absolute;width:480px;height:480px;border:1px solid rgba(184,146,42,0.06);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;"></div>
+    <div style="position:absolute;width:500px;height:500px;border:1px solid rgba(184,146,42,.05);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;"></div>
     <div style="position:relative;z-index:1;">
-      <div style="font-size:0.44em;letter-spacing:0.24em;color:rgba(255,255,255,0.2);text-transform:uppercase;margin-bottom:24px;">Elevation Day &middot; 28.03.2026</div>
-      <div style="font-family:'Playfair Display',serif;font-size:2.8em;font-weight:700;line-height:1.1;color:#FFFFFF;margin-bottom:20px;">&ldquo;O futuro pertence<br>a quem <span style="color:#D4AA5A;font-style:italic;">automatiza.&rdquo;</span></div>
-      <div class="rule" style="margin:0 auto 24px;"></div>
-      <div class="body" style="margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto;">O futuro n&atilde;o vai esperar. Mas quem est&aacute; no Elevation j&aacute; deu o primeiro passo.</div>
+      <div style="font-size:.38em;letter-spacing:.24em;color:rgba(255,255,255,.18);text-transform:uppercase;margin-bottom:20px;">Elevation Day &middot; 28.03.2026</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2.5em;font-weight:700;line-height:1.1;color:#FFFFFF;margin-bottom:18px;">&ldquo;O futuro pertence<br>a quem <span style="color:#D4AA5A;font-style:italic;">automatiza.&rdquo;</span></div>
+      <div class="rule" style="margin:0 auto 22px;"></div>
+      <div class="body" style="margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;">O futuro n&atilde;o vai esperar. Mas quem est&aacute; no Elevation j&aacute; deu o primeiro passo.</div>
       <div style="display:flex;gap:10px;justify-content:center;">
-        <div class="pill" style="font-size:0.5em;padding:10px 24px;border-color:#B8922A;">Mentory International&reg;</div>
-        <div class="pill" style="font-size:0.5em;padding:10px 24px;">Mentory Tech</div>
+        <div class="pill" style="font-size:.48em;padding:10px 22px;border-color:#B8922A;">Mentory International&reg;</div>
+        <div class="pill" style="font-size:.48em;padding:10px 22px;">Mentory Tech</div>
       </div>
-      <div style="font-size:0.44em;color:rgba(255,255,255,0.18);margin-top:24px;">Kellton Souza &middot; Head de OP &amp; TECH</div>
+      <div style="font-size:.38em;color:rgba(255,255,255,.16);margin-top:22px;">Kellton Souza &middot; Head de OP &amp; TECH</div>
     </div>
   </div>
 </div>
@@ -988,8 +705,8 @@ Reveal.initialize({
   transition: 'fade',
   transitionSpeed: 'slow',
   backgroundTransition: 'fade',
-  width: 1600,
-  height: 900,
+  width: 1920,
+  height: 1080,
   margin: 0,
   minScale: 0.1,
   maxScale: 2.0,
