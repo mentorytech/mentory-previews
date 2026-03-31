@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrossel Clara em Pipa — Mentory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0D0D0D; font-family: sans-serif; padding: 40px 20px; }
+  h1 { color: #B8922A; text-align: center; margin-bottom: 8px; font-size: 22px; letter-spacing: 2px; }
+  p { color: #888; text-align: center; margin-bottom: 40px; font-size: 13px; }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .slide {
+    width: 320px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+  }
+  .slide img {
+    width: 100%;
+    display: block;
+  }
+  .slide .label {
+    color: #B8922A;
+    font-size: 11px;
+    padding: 8px 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<h1>CARROSSEL — CLARA EM PIPA</h1>
+<p>Negócio que roda. Vida que acontece. | Aprovação: Ed Souza (Diretoria)</p>
+<div class="grid">
+  <div class="slide"><img src="slide_01.jpg"><div class="label">01 — Cover</div></div>
+  <div class="slide"><img src="slide_02.jpg"><div class="label">02 — Liberdade</div></div>
+  <div class="slide"><img src="slide_03.jpg"><div class="label">03 — Posicionamento</div></div>
+  <div class="slide"><img src="slide_04.jpg"><div class="label">04 — Autoridade</div></div>
+  <div class="slide"><img src="slide_05.jpg"><div class="label">05 — Virada de Crença</div></div>
+  <div class="slide"><img src="slide_06.jpg"><div class="label">06 — CTA</div></div>
+</div>
+</body>
+</html>
