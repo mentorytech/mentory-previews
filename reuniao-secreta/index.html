@@ -841,23 +841,38 @@ footer p {
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div style="background:linear-gradient(90deg,#B8860B 0%,#D4AF37 45%,#C9A227 75%,#B8860B 100%);padding:9px 20px;text-align:center;width:100%;z-index:100;position:relative;">
-  <!-- Desktop: linha única -->
-  <p class="topbar-desktop" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:#0A0A0A;letter-spacing:0.3px;margin:0;">
-    Ed Souza e Clara do Vale &mdash; mais de <strong style="font-size:14px;">R$ 30MM faturados</strong> ensinando o que você vai aprender nessa reunião
-  </p>
-  <!-- Mobile: 2 linhas compactas -->
-  <p class="topbar-mobile" style="display:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;color:#0A0A0A;letter-spacing:0.2px;margin:0;line-height:1.4;">
-    Ed Souza &amp; Clara do Vale<br><strong style="font-size:13px;">+ R$ 30MM faturados</strong>
-  </p>
-</div>
+<!-- TOP BAR — mobile first -->
 <style>
-@media(max-width:768px){
-  .topbar-desktop { display:none !important; }
-  .topbar-mobile  { display:block !important; }
+.topbar {
+  background: linear-gradient(90deg,#B8860B 0%,#D4AF37 45%,#C9A227 75%,#B8860B 100%);
+  padding: 8px 16px;
+  text-align: center;
+  width: 100%;
+  z-index: 100;
+  position: relative;
+}
+.topbar p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  color: #0A0A0A;
+  margin: 0;
+  line-height: 1.35;
+  /* Mobile: 2 linhas legíveis */
+  font-size: 12px;
+  letter-spacing: 0.2px;
+}
+.topbar strong { font-size: 13px; }
+/* Desktop: tudo numa linha */
+@media(min-width:769px) {
+  .topbar { padding: 9px 20px; }
+  .topbar p { font-size: 13px; white-space: nowrap; }
+  .topbar strong { font-size: 14px; }
+  .topbar br { display: none; }
 }
 </style>
+<div class="topbar">
+  <p>Ed Souza &amp; Clara do Vale<br><strong>+ R$ 30MM faturados</strong> — aprenda o método nessa reunião</p>
+</div>
 
 <!-- HERO -->
 <section id="hero" style="padding:0;min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:#080E0A;">
