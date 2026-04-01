@@ -720,66 +720,88 @@ footer p {
   .learn-item { flex: 0 0 100%; }
 }
 @media(max-width:768px){
-  /* Ocultar gradients laterais (desktop) no mobile */
-  .hero-desktop-grad { display: none !important; }
-  /* ── HERO MOBILE: foto visível no topo, conteúdo compacto embaixo ── */
+  /* ── HERO MOBILE: layout em bloco — foto normal acima, conteúdo abaixo ── */
+
+  /* 1. Seção vira layout de coluna normal (sai do flex absoluto) */
   #hero {
-    min-height: 100svh !important;
-    align-items: flex-end !important;
-    padding-top: 0 !important;
+    display: block !important;
+    min-height: unset !important;
+    padding: 0 !important;
+    overflow: visible !important;
   }
-  /* Foto cobre toda a tela — object-position topo para mostrar os rostos */
+
+  /* 2. Foto: bloco normal no topo, altura fixa mostrando rostos */
+  .hero-bg {
+    position: relative !important;
+    inset: unset !important;
+    width: 100% !important;
+    height: 55vw !important;      /* ~210px em 380px de tela — mostra rosto */
+    min-height: 200px !important;
+    max-height: 260px !important;
+    overflow: hidden !important;
+  }
   .hero-bg img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
     object-position: top center !important;
   }
-  /* Overlay: transparente no topo (foto visível), escuro de 55% em diante */
+
+  /* 3. Gradientes desktop: desligar */
+  .hero-desktop-grad { display: none !important; }
+
+  /* 4. Overlay mobile: fade só na base da foto (integra com fundo) */
   .hero-mobile-overlay {
     display: block !important;
-    background: linear-gradient(to bottom,
-      rgba(8,14,10,0.0)  0%,
-      rgba(8,14,10,0.0)  40%,
-      rgba(8,14,10,0.82) 60%,
-      rgba(8,14,10,0.97) 75%,
-      #080E0A            100%
-    ) !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    height: 60px !important;
+    background: linear-gradient(to bottom, transparent 0%, #080E0A 100%) !important;
   }
-  /* Conteúdo fica no fundo, sobre o escuro */
+
+  /* 5. Conteúdo: fluxo normal, sem z-index nem posicionamento absoluto */
   #hero .wrap {
-    padding-top: 50vh !important;
-    padding-bottom: 32px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    padding: 20px 18px 28px !important;
     width: 100% !important;
+    background: #080E0A !important;
   }
   #hero .wrap > div { max-width: 100% !important; }
-  /* Compactar badge */
-  .badge-pill { margin-bottom: 14px !important; }
-  .badge-pill__text { font-size: 10px; letter-spacing: 1.5px; }
-  /* Headline compacta */
+
+  /* 6. Compactar elementos para caber tudo na dobra */
+  .badge-pill { margin-bottom: 10px !important; }
+  .badge-pill__text { font-size: 10px !important; letter-spacing: 1.5px !important; }
+
   .hero__headline {
-    font-size: 28px !important;
+    font-size: 26px !important;
     line-height: 1.1 !important;
-    letter-spacing: -1px !important;
-    margin-bottom: 14px !important;
+    letter-spacing: -0.5px !important;
+    margin-bottom: 10px !important;
   }
-  /* Ocultar subtexto longo — economiza espaço precioso */
   .hero__sub { display: none !important; }
-  /* Meta row compacto — só data */
-  .hero__meta { margin-bottom: 18px !important; gap: 6px !important; }
+
+  .hero__meta { margin-bottom: 14px !important; gap: 5px !important; }
   .meta-row { font-size: 12px !important; }
-  .meta-row:last-child { display: none !important; } /* oculta linha Zoom */
-  /* Formulário compacto */
+  .meta-row:last-child { display: none !important; }
+
   #inscricao { max-width: 100% !important; }
-  #inscricao form { gap: 8px !important; }
+  #inscricao form { gap: 7px !important; }
   #inscricao input, #inscricao select {
-    padding: 11px 14px !important;
+    padding: 10px 13px !important;
     font-size: 14px !important;
   }
   #inscricao button {
-    padding: 15px 20px !important;
+    padding: 14px !important;
     font-size: 12px !important;
     letter-spacing: 1.5px !important;
   }
+  #inscricao p { margin-top: 6px !important; }
 }
 @media(max-width:600px){
   .wrap, .wrap--sm, .wrap--xs { padding: 0 16px; }
