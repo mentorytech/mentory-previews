@@ -924,24 +924,11 @@ footer p {
         </div>
       </div>
 
-      <!-- Inline form -->
+      <!-- CTA Button — abre popup -->
       <div id="inscricao" style="max-width:480px;">
-        <form style="display:flex;flex-direction:column;gap:10px;">
-          <input type="text" placeholder="Seu nome completo" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:#FFFFFF;outline:none;width:100%;" onfocus="this.style.borderColor='rgba(184,146,42,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-          <input type="email" placeholder="seu@email.com" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:#FFFFFF;outline:none;width:100%;" onfocus="this.style.borderColor='rgba(184,146,42,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-          <input type="tel" placeholder="(11) 99999-9999" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:#FFFFFF;outline:none;width:100%;" onfocus="this.style.borderColor='rgba(184,146,42,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-          <select style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.6);outline:none;width:100%;-webkit-appearance:none;appearance:none;cursor:pointer;" onfocus="this.style.borderColor='rgba(184,146,42,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-            <option value="" disabled selected style="background:#111;color:rgba(255,255,255,0.6);">Faturamento mensal atual</option>
-            <option value="ate-10k" style="background:#111;color:#FFF;">Até R$ 10.000/mês</option>
-            <option value="20k-40k" style="background:#111;color:#FFF;">R$ 20.000 a R$ 40.000/mês</option>
-            <option value="50k-80k" style="background:#111;color:#FFF;">R$ 50.000 a R$ 80.000/mês</option>
-            <option value="100k-300k" style="background:#111;color:#FFF;">R$ 100.000 a R$ 300.000/mês</option>
-            <option value="acima-300k" style="background:#111;color:#FFF;">Acima de R$ 300.000/mês</option>
-          </select>
-          <button type="submit" style="background:#2A7A3B;border:none;border-radius:4px;padding:16px 24px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;cursor:pointer;width:100%;transition:background 0.2s;" onmouseover="this.style.background='#34994A'" onmouseout="this.style.background='#2A7A3B'">
-            Garantir Minha Vaga &rarr;
-          </button>
-        </form>
+        <button onclick="document.getElementById('modal-inscricao').style.display='flex'" style="background:#2A7A3B;border:none;border-radius:4px;padding:18px 32px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;cursor:pointer;width:100%;transition:background 0.2s;" onmouseover="this.style.background='#34994A'" onmouseout="this.style.background='#2A7A3B'">
+          Garantir Minha Vaga &rarr;
+        </button>
         <p style="font-size:11px;color:rgba(255,255,255,0.25);text-align:center;margin-top:10px;letter-spacing:0.3px;">Vagas Limitadas &middot; Sem Replay</p>
       </div>
 
@@ -1468,6 +1455,67 @@ footer p {
     <p>© 2026 Todos os direitos reservados.</p>
   </div>
 </footer>
+
+
+<!-- ─── MODAL DE INSCRIÇÃO ─── -->
+<div id="modal-inscricao" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,0.85);backdrop-filter:blur(6px);">
+  <div style="background:#111810;border:1px solid rgba(212,175,55,0.25);border-radius:12px;max-width:480px;width:100%;padding:36px 32px;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.7);">
+
+    <!-- Fechar -->
+    <button onclick="document.getElementById('modal-inscricao').style.display='none'" aria-label="Fechar" style="position:absolute;top:14px;right:16px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.4);font-size:22px;line-height:1;padding:4px 8px;">&times;</button>
+
+    <!-- Título -->
+    <div style="text-align:center;margin-bottom:24px;">
+      <p style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-bottom:8px;">Reunião Secreta · 11 de Abril · 09h</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:#FFFFFF;line-height:1.25;margin:0;">Garanta sua vaga gratuita</h3>
+    </div>
+
+    <!-- Formulário -->
+    <form style="display:flex;flex-direction:column;gap:12px;" onsubmit="return false;">
+      <input type="text" placeholder="Seu nome completo" required
+        style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:#FFFFFF;outline:none;width:100%;transition:border-color 0.2s;"
+        onfocus="this.style.borderColor='rgba(212,175,55,0.6)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+
+      <input type="email" placeholder="seu@email.com" required
+        style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:#FFFFFF;outline:none;width:100%;transition:border-color 0.2s;"
+        onfocus="this.style.borderColor='rgba(212,175,55,0.6)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+
+      <input type="tel" placeholder="WhatsApp: (11) 99999-9999" required
+        style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:#FFFFFF;outline:none;width:100%;transition:border-color 0.2s;"
+        onfocus="this.style.borderColor='rgba(212,175,55,0.6)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+
+      <select required
+        style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);outline:none;width:100%;-webkit-appearance:none;appearance:none;cursor:pointer;transition:border-color 0.2s;"
+        onfocus="this.style.borderColor='rgba(212,175,55,0.6)';this.style.color='#FFF'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+        <option value="" disabled selected style="background:#111;color:rgba(255,255,255,0.5);">Faturamento mensal atual</option>
+        <option value="ate-10k" style="background:#111;color:#FFF;">Até R$ 10.000/mês</option>
+        <option value="20k-40k" style="background:#111;color:#FFF;">R$ 20.000 a R$ 40.000/mês</option>
+        <option value="50k-80k" style="background:#111;color:#FFF;">R$ 50.000 a R$ 80.000/mês</option>
+        <option value="100k-300k" style="background:#111;color:#FFF;">R$ 100.000 a R$ 300.000/mês</option>
+        <option value="acima-300k" style="background:#111;color:#FFF;">Acima de R$ 300.000/mês</option>
+      </select>
+
+      <button type="submit"
+        style="background:#2A7A3B;border:none;border-radius:6px;padding:16px 24px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;cursor:pointer;width:100%;margin-top:4px;transition:background 0.2s;"
+        onmouseover="this.style.background='#34994A'" onmouseout="this.style.background='#2A7A3B'">
+        Confirmar Minha Vaga &rarr;
+      </button>
+    </form>
+
+    <p style="font-size:11px;color:rgba(255,255,255,0.22);text-align:center;margin-top:12px;letter-spacing:0.3px;">Vagas Limitadas &middot; Sem Replay &middot; 100% Gratuito</p>
+  </div>
+</div>
+
+<script>
+  // Fechar modal clicando fora
+  document.getElementById('modal-inscricao').addEventListener('click', function(e){
+    if(e.target === this) this.style.display = 'none';
+  });
+  // Fechar com ESC
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') document.getElementById('modal-inscricao').style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
