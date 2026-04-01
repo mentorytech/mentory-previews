@@ -664,7 +664,9 @@
     }
 
     .depo-result {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       background: rgba(52,153,74,0.12);
       border: 1px solid rgba(52,153,74,0.3);
       color: #5dc97a;
@@ -674,6 +676,12 @@
       border-radius: 100px;
       letter-spacing: 0.04em;
       margin-bottom: 16px;
+    }
+    .result-dot {
+      width: 6px; height: 6px;
+      background: #5dc97a;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
     .depo-author {
@@ -784,75 +792,6 @@
     .btn-cta-wrap .btn-cta {
       max-width: 420px;
     }
-
-    /* ==========================================
-       FAQ SECTION
-    ========================================== */
-    #faq { background: var(--black-mid); }
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .faq-item {
-      background: var(--black-card);
-      border: 1px solid rgba(212,175,55,0.12);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 18px 20px;
-      text-align: left;
-      color: var(--cream-light);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      line-height: 1.4;
-    }
-
-    .faq-question:hover { color: var(--gold); }
-
-    .faq-icon {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(212,175,55,0.1);
-      border: 1px solid rgba(212,175,55,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: transform 0.3s, background 0.2s;
-      color: var(--gold);
-      font-size: 16px;
-      line-height: 1;
-    }
-
-    .faq-item.open .faq-icon {
-      transform: rotate(45deg);
-      background: rgba(212,175,55,0.2);
-    }
-
-    .faq-answer {
-      display: none;
-      padding: 0 20px 20px;
-      font-size: 14px;
-      color: var(--text-light);
-      line-height: 1.7;
-    }
-
-    .faq-item.open .faq-answer { display: block; }
 
     /* ==========================================
        FOOTER
@@ -1109,7 +1048,10 @@
       <div class="hero-content">
         <div class="hero-badge">Reunião Secreta · Ao Vivo · Gratuita</div>
 
-        <div class="hero-meta">📅 11 de Abril de 2026 · 09h às 12h (Brasília)</div>
+        <div class="hero-meta">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:6px;"><rect x="3" y="4" width="14" height="14" rx="1" stroke="#D4AF37" stroke-width="1.4"/><line x1="3" y1="8" x2="17" y2="8" stroke="#D4AF37" stroke-width="1.4"/><line x1="7" y1="2" x2="7" y2="6" stroke="#D4AF37" stroke-width="1.4"/><line x1="13" y1="2" x2="13" y2="6" stroke="#D4AF37" stroke-width="1.4"/></svg>
+          11 de Abril de 2026 &nbsp;·&nbsp; 09h às 12h (Brasília)
+        </div>
 
         <h1 class="hero-headline">
           Como Construir um <em>Negócio Boutique</em> que Fatura Alto, Cobra Caro e é 100% Automatizado com IA
@@ -1119,7 +1061,7 @@
           Garantir Minha Vaga →
         </button>
 
-        <p class="hero-note">🔒 Vagas Limitadas · Sem Replay · 100% Gratuito</p>
+        <p class="hero-note"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:5px;"><rect x="5" y="9" width="10" height="8" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M7 9V7a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Vagas Limitadas &nbsp;·&nbsp; Sem Replay &nbsp;·&nbsp; 100% Gratuito</p>
       </div>
     </section>
 
@@ -1325,7 +1267,7 @@
         <button class="btn-cta" onclick="openModal()" style="max-width:380px">
           Quero Minha Vaga Agora →
         </button>
-        <p class="hero-note">🔒 Evento gratuito · 11 de Abril de 2026 · 09h (Brasília)</p>
+        <p class="hero-note"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:5px;"><rect x="5" y="9" width="10" height="8" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M7 9V7a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Evento gratuito &nbsp;·&nbsp; 11 de Abril de 2026 &nbsp;·&nbsp; 09h (Brasília)</p>
       </div>
     </div>
 
@@ -1343,7 +1285,7 @@
 
           <div class="depo-card">
             <div class="depo-quote">"</div>
-            <div class="depo-result">✦ R$196k faturados</div>
+            <div class="depo-result"><span class="result-dot"></span>R$196k faturados</div>
             <p class="depo-text">A Mentory nos deu o método, o posicionamento e a confiança para cobrar o que nosso serviço vale. Em menos de 8 meses, a Bawal Academy atingiu R$196 mil em faturamento — partindo do zero do modelo boutique.</p>
             <div class="depo-author">
               <div class="depo-avatar">B</div>
@@ -1356,7 +1298,7 @@
 
           <div class="depo-card">
             <div class="depo-quote">"</div>
-            <div class="depo-result">✦ De 0 a R$80k/mês · ROAS 4,77</div>
+            <div class="depo-result"><span class="result-dot"></span>De 0 a R$80k/mês &nbsp;·&nbsp; ROAS 4,77</div>
             <p class="depo-text">Eu não acreditava que era possível escalar com margem alta e equipe pequena. O Ed e a Clara me mostraram exatamente o caminho. Hoje tenho um negócio boutique, com ROAS de 4,77 e mais liberdade do que nunca.</p>
             <div class="depo-author">
               <div class="depo-avatar">B</div>
@@ -1369,7 +1311,7 @@
 
           <div class="depo-card">
             <div class="depo-quote">"</div>
-            <div class="depo-result">✦ Negócio transformado</div>
+            <div class="depo-result"><span class="result-dot"></span>Negócio transformado</div>
             <p class="depo-text">Antes da Mentory, eu estava preso no operacional, sem conseguir crescer. Depois de aplicar o método, reestruturei minha oferta, dobrei meu ticket médio e finalmente saí do modo sobrevivência.</p>
             <div class="depo-author">
               <div class="depo-avatar">R</div>
@@ -1396,37 +1338,37 @@
         <div class="detalhes-grid">
 
           <div class="detalhe-item">
-            <div class="detalhe-icon">📅</div>
+            <div class="detalhe-icon"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="14" rx="1" stroke="#D4AF37" stroke-width="1.4"/><line x1="3" y1="8" x2="17" y2="8" stroke="#D4AF37" stroke-width="1.4"/><line x1="7" y1="2" x2="7" y2="6" stroke="#D4AF37" stroke-width="1.4"/><line x1="13" y1="2" x2="13" y2="6" stroke="#D4AF37" stroke-width="1.4"/></svg></div>
             <div class="detalhe-label">Data</div>
             <div class="detalhe-value">11 de Abril de 2026</div>
           </div>
 
           <div class="detalhe-item">
-            <div class="detalhe-icon">🕘</div>
+            <div class="detalhe-icon"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#D4AF37" stroke-width="1.4"/><line x1="10" y1="6" x2="10" y2="10" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/><line x1="10" y1="10" x2="13" y2="12" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/></svg></div>
             <div class="detalhe-label">Horário</div>
             <div class="detalhe-value">09h às 12h<br><small style="font-size:11px;color:#888">Horário de Brasília</small></div>
           </div>
 
           <div class="detalhe-item">
-            <div class="detalhe-icon">💻</div>
+            <div class="detalhe-icon"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="11" rx="1" stroke="#D4AF37" stroke-width="1.4"/><line x1="6" y1="17" x2="14" y2="17" stroke="#D4AF37" stroke-width="1.4"/><line x1="10" y1="14" x2="10" y2="17" stroke="#D4AF37" stroke-width="1.4"/></svg></div>
             <div class="detalhe-label">Plataforma</div>
             <div class="detalhe-value">Zoom (link enviado por e-mail)</div>
           </div>
 
           <div class="detalhe-item">
-            <div class="detalhe-icon">⏱️</div>
+            <div class="detalhe-icon"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="11" r="6" stroke="#D4AF37" stroke-width="1.4"/><line x1="10" y1="8" x2="10" y2="11" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="2" x2="12" y2="2" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/><line x1="10" y1="2" x2="10" y2="5" stroke="#D4AF37" stroke-width="1.4"/></svg></div>
             <div class="detalhe-label">Duração</div>
             <div class="detalhe-value">3 horas de imersão</div>
           </div>
 
           <div class="detalhe-item">
-            <div class="detalhe-icon">🔴</div>
+            <div class="detalhe-icon"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#D4AF37" stroke-width="1.4"/><line x1="7" y1="7" x2="13" y2="13" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/><line x1="13" y1="7" x2="7" y2="13" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/></svg></div>
             <div class="detalhe-label">Replay</div>
             <div class="detalhe-value" style="color: #e05;">Não disponível</div>
           </div>
 
           <div class="detalhe-item">
-            <div class="detalhe-icon">🎁</div>
+            <div class="detalhe-icon"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><rect x="3" y="8" width="14" height="9" rx="1" stroke="#D4AF37" stroke-width="1.4"/><rect x="2" y="5" width="16" height="3" rx="0.5" stroke="#D4AF37" stroke-width="1.4"/><line x1="10" y1="5" x2="10" y2="17" stroke="#D4AF37" stroke-width="1.4"/><path d="M10 5C10 5 7 5 7 3C7 2 8 1.5 9 2C10 2.5 10 5 10 5Z" stroke="#D4AF37" stroke-width="1.2"/><path d="M10 5C10 5 13 5 13 3C13 2 12 1.5 11 2C10 2.5 10 5 10 5Z" stroke="#D4AF37" stroke-width="1.2"/></svg></div>
             <div class="detalhe-label">Investimento</div>
             <div class="detalhe-value gold">100% Gratuito</div>
           </div>
@@ -1450,64 +1392,12 @@
         <button class="btn-cta" onclick="openModal()" style="max-width:400px; font-size:18px; padding:20px 40px;">
           Quero Transformar Meu Negócio →
         </button>
-        <p class="hero-note">📅 11 Abr 2026 · 09h · Gratuito · Sem Replay</p>
+        <p class="hero-note">
+          <svg width="12" height="12" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:4px;"><rect x="3" y="4" width="14" height="14" rx="1" stroke="currentColor" stroke-width="1.4"/><line x1="3" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="1.4"/><line x1="7" y1="2" x2="7" y2="6" stroke="currentColor" stroke-width="1.4"/><line x1="13" y1="2" x2="13" y2="6" stroke="currentColor" stroke-width="1.4"/></svg>
+          11 Abr 2026 &nbsp;·&nbsp; 09h &nbsp;·&nbsp; Gratuito &nbsp;·&nbsp; Sem Replay
+        </p>
       </div>
     </div>
-
-    <!-- ==========================================
-         FAQ
-    ========================================== -->
-    <section id="faq" class="section-wrapper" style="background: var(--black-mid);">
-      <div class="section-inner">
-        <p class="section-tag">Dúvidas frequentes</p>
-        <h2 class="section-title">FAQ</h2>
-        <div class="gold-divider"></div>
-
-        <div class="faq-list">
-
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-              <span>O evento é realmente gratuito?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              Sim, 100% gratuito. Não há nenhum custo para participar. Basta se inscrever, reservar o horário na sua agenda e aparecer ao vivo. O único investimento é o seu tempo — e ele vai valer muito.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-              <span>Vai ter replay disponível?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              Não. A Reunião Secreta acontece ao vivo e não será gravada para distribuição. Esse é um dos motivos pelo qual as vagas são limitadas — quem aparece, transforma. Bloqueie o dia na agenda.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-              <span>Para quem é essa reunião?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              Para empreendedores, consultores, prestadores de serviço e empresários que já têm um negócio funcionando, mas sentem que poderiam cobrar mais, operar menos e crescer com mais inteligência — especialmente usando IA.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-              <span>Preciso ter experiência com IA para participar?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              Não. A reunião foi desenhada para quem está começando a entender o papel da IA nos negócios. Você vai sair com clareza sobre o que priorizar — sem jargão técnico, apenas estratégia aplicável.
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
 
     <!-- ==========================================
          FOOTER
@@ -1529,7 +1419,7 @@
 
       <p class="modal-tag">Reservar Vaga · Gratuito</p>
       <h2 class="modal-title" id="modalTitle">Garanta sua vaga na Reunião Secreta</h2>
-      <p class="modal-sub">📅 11 de Abril de 2026 · 09h às 12h · Zoom · Sem Replay</p>
+      <p class="modal-sub">11 de Abril de 2026 &nbsp;·&nbsp; 09h às 12h &nbsp;·&nbsp; Zoom &nbsp;·&nbsp; Sem Replay</p>
 
       <form class="modal-form" onsubmit="handleSubmit(event)" novalidate>
 
@@ -1565,7 +1455,7 @@
           Confirmar Minha Vaga →
         </button>
 
-        <p class="modal-privacy">🔒 Seus dados estão seguros. Sem spam, prometemos.</p>
+        <p class="modal-privacy"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:5px;"><rect x="5" y="9" width="10" height="8" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M7 9V7a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Seus dados estão seguros. Sem spam.</p>
       </form>
     </div>
   </div>
@@ -1695,7 +1585,7 @@
       }
 
       const btn = form.querySelector('.btn-cta');
-      btn.textContent = '✓ Vaga Confirmada!';
+      btn.textContent = 'Vaga Confirmada!';
       btn.style.background = '#1a7a2e';
       btn.disabled = true;
 
@@ -1703,17 +1593,6 @@
     }
 
     // ============================================================
-    // FAQ ACCORDION
-    // ============================================================
-    function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(function (el) { el.classList.remove('open'); });
-      document.querySelectorAll('.faq-question').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
-      if (!isOpen) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
     }
   </script>
 
