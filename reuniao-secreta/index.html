@@ -811,6 +811,9 @@ footer p {
   .hero__sub { display: none !important; }
   .badge-pill { display: none !important; }
 
+  /* Mostrar data/hora compacta no mobile */
+  .hero__meta--mobile { display: flex !important; }
+
   #inscricao { max-width: 100% !important; }
   #inscricao form { gap: 7px !important; }
   #inscricao input, #inscricao select {
@@ -832,6 +835,12 @@ footer p {
 </head>
 <body>
 
+<!-- TOP BAR -->
+<div style="background:linear-gradient(90deg,#B8860B 0%,#D4AF37 40%,#C9A227 70%,#B8860B 100%);padding:10px 20px;text-align:center;width:100%;z-index:100;position:relative;">
+  <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;color:#0A0A0A;letter-spacing:0.5px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+    Ed Souza e Clara do Vale &mdash; mais de <strong>R$ 30MM faturados</strong> ensinando o que você vai aprender aqui
+  </p>
+</div>
 
 <!-- HERO -->
 <section id="hero" style="padding:0;min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:#080E0A;">
@@ -857,6 +866,14 @@ footer p {
       <!-- Foto mobile — aparece acima da headline apenas no mobile -->
       <div class="hero-mobile-photo">
         <img src="https://premiumweekend.com.br/wp-content/uploads/2024/08/heropc01mobile-scaled.webp" alt="Ed e Clara" />
+      </div>
+
+      <!-- Data/hora visível no mobile (primeira dobra) -->
+      <div class="hero__meta--mobile" style="display:none;margin-bottom:10px;gap:6px;flex-direction:column;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="14" rx="1" stroke="#D4AA5A" stroke-width="1.4"/><line x1="3" y1="8" x2="17" y2="8" stroke="#D4AA5A" stroke-width="1.4"/><line x1="7" y1="2" x2="7" y2="6" stroke="#D4AA5A" stroke-width="1.4"/><line x1="13" y1="2" x2="13" y2="6" stroke="#D4AA5A" stroke-width="1.4"/></svg>
+          <span style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:#D4AA5A;letter-spacing:0.3px;">11 de Abril de 2026 &nbsp;·&nbsp; 09h às 12h (Brasília)</span>
+        </div>
       </div>
 
       <!-- Eyebrow badge -->
@@ -911,8 +928,8 @@ footer p {
       <div id="inscricao" style="max-width:480px;">
         <form style="display:flex;flex-direction:column;gap:10px;">
           <input type="text" placeholder="Seu nome completo" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:#FFFFFF;outline:none;width:100%;" onfocus="this.style.borderColor='rgba(184,146,42,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-          <input type="tel" placeholder="(11) 99999-9999" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:#FFFFFF;outline:none;width:100%;" onfocus="this.style.borderColor='rgba(184,146,42,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
           <input type="email" placeholder="seu@email.com" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:#FFFFFF;outline:none;width:100%;" onfocus="this.style.borderColor='rgba(184,146,42,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+          <input type="tel" placeholder="(11) 99999-9999" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:#FFFFFF;outline:none;width:100%;" onfocus="this.style.borderColor='rgba(184,146,42,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
           <select style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.6);outline:none;width:100%;-webkit-appearance:none;appearance:none;cursor:pointer;" onfocus="this.style.borderColor='rgba(184,146,42,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
             <option value="" disabled selected style="background:#111;color:rgba(255,255,255,0.6);">Faturamento mensal atual</option>
             <option value="ate-10k" style="background:#111;color:#FFF;">Até R$ 10.000/mês</option>
