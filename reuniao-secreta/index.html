@@ -773,42 +773,41 @@ footer p {
     padding: 20px 18px 28px !important;
     width: 100% !important;
     background: #080E0A !important;
+    background: transparent !important;
   }
   #hero .wrap > div { max-width: 100% !important; }
 
   /* 6. Compactar elementos para caber tudo na dobra */
-  .badge-pill { margin-bottom: 10px !important; }
-  .badge-pill__text { font-size: 10px !important; letter-spacing: 1.5px !important; }
 
   .hero-mobile-photo {
     display: block !important;
     width: 100% !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 12px !important;
+    /* Remove o fundo azul integrando a imagem ao fundo verde */
+    mix-blend-mode: multiply !important;
+    filter: brightness(1.1) contrast(1.05) !important;
   }
   .hero-mobile-photo img {
     width: 100% !important;
     height: auto !important;
-    border-radius: 12px !important;
+    max-height: 220px !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    border-radius: 10px !important;
     display: block !important;
   }
 
   .hero__headline {
-    font-size: 26px !important;
-    line-height: 1.1 !important;
+    font-size: 22px !important;
+    line-height: 1.15 !important;
     letter-spacing: -0.5px !important;
-    margin-bottom: 10px !important;
-  }
-  .hero__sub {
-    display: block !important;
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 14px !important;
-    max-width: 100% !important;
+    margin-bottom: 16px !important;
   }
 
-  .hero__meta { margin-bottom: 14px !important; gap: 5px !important; }
-  .meta-row { font-size: 12px !important; }
-  .meta-row:last-child { display: none !important; }
+  /* Esconder meta e sub no mobile para priorizar headline + form + botão */
+  .hero__meta { display: none !important; }
+  .hero__sub { display: none !important; }
+  .badge-pill { display: none !important; }
 
   #inscricao { max-width: 100% !important; }
   #inscricao form { gap: 7px !important; }
