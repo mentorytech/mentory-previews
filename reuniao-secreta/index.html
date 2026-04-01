@@ -136,8 +136,14 @@ body {
   background: #2D7A3A;
   border-color: #3A9448;
   border-radius: 50px;
+  animation: pulse-cta 2.4s ease-in-out infinite;
 }
-.btn-pill--gold:hover { background: #34994A; border-color: #40b359; }
+.btn-pill--gold:hover { background: #34994A; border-color: #40b359; animation: none; transform: scale(1.02); }
+@keyframes pulse-cta {
+  0%   { box-shadow: 0 0 0 0 rgba(52,153,74,0.55); }
+  60%  { box-shadow: 0 0 0 12px rgba(52,153,74,0); }
+  100% { box-shadow: 0 0 0 0 rgba(52,153,74,0); }
+}
 .btn-pill--lg {
   font-size: 15px;
   padding: 16px 36px;
@@ -836,11 +842,22 @@ footer p {
 <body>
 
 <!-- TOP BAR -->
-<div style="background:linear-gradient(90deg,#B8860B 0%,#D4AF37 40%,#C9A227 70%,#B8860B 100%);padding:10px 20px;text-align:center;width:100%;z-index:100;position:relative;">
-  <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;color:#0A0A0A;letter-spacing:0.5px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-    Ed Souza e Clara do Vale &mdash; mais de <strong>R$ 30MM faturados</strong> ensinando o que você vai aprender aqui
+<div style="background:linear-gradient(90deg,#B8860B 0%,#D4AF37 45%,#C9A227 75%,#B8860B 100%);padding:9px 20px;text-align:center;width:100%;z-index:100;position:relative;">
+  <!-- Desktop: linha única -->
+  <p class="topbar-desktop" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:#0A0A0A;letter-spacing:0.3px;margin:0;">
+    Ed Souza e Clara do Vale &mdash; mais de <strong style="font-size:14px;">R$ 30MM faturados</strong> ensinando o que você vai aprender nessa reunião
+  </p>
+  <!-- Mobile: 2 linhas compactas -->
+  <p class="topbar-mobile" style="display:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;color:#0A0A0A;letter-spacing:0.2px;margin:0;line-height:1.4;">
+    Ed Souza &amp; Clara do Vale<br><strong style="font-size:13px;">+ R$ 30MM faturados</strong>
   </p>
 </div>
+<style>
+@media(max-width:768px){
+  .topbar-desktop { display:none !important; }
+  .topbar-mobile  { display:block !important; }
+}
+</style>
 
 <!-- HERO -->
 <section id="hero" style="padding:0;min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:#080E0A;">
@@ -926,7 +943,7 @@ footer p {
 
       <!-- CTA Button — abre popup -->
       <div id="inscricao" style="max-width:480px;">
-        <button onclick="document.getElementById('modal-inscricao').style.display='flex'" style="background:#2A7A3B;border:none;border-radius:4px;padding:18px 32px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;cursor:pointer;width:100%;transition:background 0.2s;" onmouseover="this.style.background='#34994A'" onmouseout="this.style.background='#2A7A3B'">
+        <button onclick="abrirModal()" class="btn-pill--gold" style="background:#2A7A3B;border:1px solid #3A9448;border-radius:50px;padding:18px 32px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;cursor:pointer;width:100%;transition:background 0.2s,transform 0.2s;" onmouseover="this.style.background='#34994A'" onmouseout="this.style.background='#2A7A3B'">
           Garantir Minha Vaga &rarr;
         </button>
         <p style="font-size:11px;color:rgba(255,255,255,0.25);text-align:center;margin-top:10px;letter-spacing:0.3px;">Vagas Limitadas &middot; Sem Replay</p>
@@ -1041,7 +1058,7 @@ footer p {
       <div class="learn-item"><div class="learn-num">06</div><div><div class="learn-title">Saída do Operacional Sem Colapso</div><div class="learn-text">O mapa da transição real — e os erros que você pode evitar de quem já fez essa mudança.</div></div></div>
     </div>
     <div style="text-align:center;margin-top:56px;">
-      <a href="#inscricao" class="btn-pill btn-pill--gold btn-pill--lg">
+      <a href="#" onclick="abrirModal();return false;" class="btn-pill btn-pill--gold btn-pill--lg">
         Quero Aprender Isso — Garantir Minha Vaga Gratuita <span class="arrow">→</span>
       </a>
       <p style="font-size:10px;color:rgba(255,255,255,.18);margin-top:12px;letter-spacing:2px;text-transform:uppercase;">Vagas Limitadas · Sem Replay</p>
@@ -1425,7 +1442,7 @@ footer p {
       <div class="evento-row"><div class="evento-label">Investimento</div><div class="evento-value"><span class="free-badge">100% Gratuito</span></div></div>
     </div>
     <div style="text-align:center;margin-top:40px;">
-      <a href="#inscricao" class="btn-pill btn-pill--gold btn-pill--lg">Garantir Minha Vaga Gratuita <span class="arrow">→</span></a>
+      <a href="#" onclick="abrirModal();return false;" class="btn-pill btn-pill--gold btn-pill--lg">Garantir Minha Vaga Gratuita <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -1441,7 +1458,7 @@ footer p {
     <p class="cta-final__sub">
       Ou quer olhar para o seu negócio e ver um sistema que funciona sem você — que cobra o que você merece e te devolveu <em style="font-style:italic;font-family:'Playfair Display',serif;color:#D4AA5A;">liberdade, margem e controle.</em>
     </p>
-    <a href="#inscricao" class="btn-pill btn-pill--gold btn-pill--lg">
+    <a href="#" onclick="abrirModal();return false;" class="btn-pill btn-pill--gold btn-pill--lg">
       Sim — Garantir Minha Vaga Agora <span class="arrow">→</span>
     </a>
     <p style="font-size:10px;color:rgba(255,255,255,.15);margin-top:16px;letter-spacing:2px;text-transform:uppercase;">Vagas Limitadas · Inscrição Gratuita</p>
@@ -1462,7 +1479,7 @@ footer p {
   <div style="background:#111810;border:1px solid rgba(212,175,55,0.25);border-radius:12px;max-width:480px;width:100%;padding:36px 32px;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.7);">
 
     <!-- Fechar -->
-    <button onclick="document.getElementById('modal-inscricao').style.display='none'" aria-label="Fechar" style="position:absolute;top:14px;right:16px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.4);font-size:22px;line-height:1;padding:4px 8px;">&times;</button>
+    <button onclick="fecharModal()" aria-label="Fechar" style="position:absolute;top:14px;right:16px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.4);font-size:22px;line-height:1;padding:4px 8px;">&times;</button>
 
     <!-- Título -->
     <div style="text-align:center;margin-bottom:24px;">
@@ -1507,13 +1524,21 @@ footer p {
 </div>
 
 <script>
+  function abrirModal() {
+    document.getElementById('modal-inscricao').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function fecharModal() {
+    document.getElementById('modal-inscricao').style.display = 'none';
+    document.body.style.overflow = '';
+  }
   // Fechar modal clicando fora
   document.getElementById('modal-inscricao').addEventListener('click', function(e){
-    if(e.target === this) this.style.display = 'none';
+    if(e.target === this) fecharModal();
   });
   // Fechar com ESC
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') document.getElementById('modal-inscricao').style.display = 'none';
+    if(e.key === 'Escape') fecharModal();
   });
 </script>
 
