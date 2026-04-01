@@ -838,7 +838,316 @@ footer p {
   section { padding: 48px 0; }
 }
 </style>
-</head>
+<!-- Server-Side Tracking Hub Pixel -->
+<script>
+(function() {
+
+<!-- Server-Side Tracking Hub Pixel -->
+<script>
+(function() {
+  var TRACK_URL = "https://zwkyymicfhgfkqvzzbrx.supabase.co/functions/v1/track";
+  var USER_ID = "e3822711-9059-493e-8c72-b03273de7f4e";
+
+  // === UTM Capture ===
+  function getUtms() {
+    var p = new URLSearchParams(window.location.search);
+    return {
+      utm_campaign: p.get("utm_campaign") || "",
+      utm_source: p.get("utm_source") || "",
+      utm_medium: p.get("utm_medium") || "",
+      utm_content: p.get("utm_content") || "",
+      utm_term: p.get("utm_term") || ""
+    };
+  }
+
+  // === Test Event Code (for Meta CAPI test events) ===
+  var testEventCode = new URLSearchParams(window.location.search).get("test_event_code") || "";
+
+  // === Capture Meta cookies (fbp, fbc) for attribution ===
+  function getCookie(name) {
+    var m = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+    return m ? decodeURIComponent(m[1]) : "";
+  }
+  function setCookie(name, value, days) {
+    var d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = name + "=" + value + ";expires=" + d.toUTCString() + ";path=/;SameSite=Lax";
+  }
+
+  // === FBP: try cookie → localStorage → generate synthetic ===
+  var fbp = getCookie("_fbp");
+  if (!fbp) {
+    try { fbp = localStorage.getItem("_fbp_synthetic") || ""; } catch(e) {}
+  }
+  if (!fbp) {
+    // Generate synthetic _fbp in Meta's format: fb.1.{timestamp}.{random10digits}
+    var rand = "";
+    for (var r = 0; r < 10; r++) rand += Math.floor(Math.random() * 10);
+    fbp = "fb.1." + Date.now() + "." + rand;
+    // Persist as first-party cookie AND localStorage for resilience
+    setCookie("_fbp", fbp, 390);
+    try { localStorage.setItem("_fbp_synthetic", fbp); } catch(e) {}
+  }
+
+  var fbc = getCookie("_fbc");
+  // If no fbc cookie but fbclid in URL, build it
+  if (!fbc) {
+    var fbclid = new URLSearchParams(window.location.search).get("fbclid");
+    if (fbclid) {
+      fbc = "fb.1." + Date.now() + "." + fbclid;
+      setCookie("_fbc", fbc, 90);
+      try { localStorage.setItem("_fbc_synthetic", fbc); } catch(e) {}
+    } else {
+      try { fbc = localStorage.getItem("_fbc_synthetic") || ""; } catch(e) {}
+    }
+  }
+
+  // === Server-Side Track ===
+  var utms = getUtms();
+  var trackPayload = {
+    user_id: USER_ID,
+    url: window.location.href,
+    utm_campaign: utms.utm_campaign,
+    utm_source: utms.utm_source,
+    utm_medium: utms.utm_medium,
+    utm_content: utms.utm_content,
+    utm_term: utms.utm_term,
+    fbp: fbp,
+    fbc: fbc
+  };
+  if (testEventCode) trackPayload.test_event_code = testEventCode;
+
+  fetch(TRACK_URL, {
+    method: "POST",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(trackPayload)
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (!data.session_id) return;
+    var sid = data.session_id;
+    window.__tracker_session_id = sid;
+    try { sessionStorage.setItem('tracker_session_id', sid); } catch(e) {}
+
+    // === Advanced Matching: capture email/phone from forms ===
+    var capturedEm = "";
+    var capturedPh = "";
+    function scanForms() {
+      var inputs = document.querySelectorAll("input[type=email], input[name*=email], input[name*=mail], input[type=tel], input[name*=phone], input[name*=celular], input[name*=telefone], input[name*=whatsapp]");
+      for (var i = 0; i < inputs.length; i++) {
+        (function(inp) {
+          if (inp.__tracker_am) return;
+          inp.__tracker_am = true;
+          inp.addEventListener("change", function() {
+            var v = inp.value.trim();
+            if (v.indexOf("@") > -1) capturedEm = v.toLowerCase();
+            else if (v.replace(/\D/g, "").length >= 10) capturedPh = v.replace(/\D/g, "");
+          });
+        })(inputs[i]);
+      }
+    }
+    scanForms();
+    if (window.MutationObserver) {
+      new MutationObserver(function() { scanForms(); }).observe(document.body, { childList: true, subtree: true });
+    }
+
+    // === Checkout Detection Patterns ===
+    var checkoutPatterns = [
+      "pay.hotmart.com", "hotmart.com/checkout",
+      "kiwify.com",
+      "guru", "digitalmanager"
+    ];
+
+    function isCheckoutLink(href) {
+      for (var p = 0; p < checkoutPatterns.length; p++) {
+        if (href.indexOf(checkoutPatterns[p]) > -1) return true;
+      }
+      return false;
+    }
+
+    // === Shared IC fire function ===
+    function fireIC(destUrl) {
+      if (window.__tracker_ic_fired) return;
+      window.__tracker_ic_fired = true;
+      var icPayload = {
+        user_id: USER_ID,
+        url: window.location.href,
+        event_name: "InitiateCheckout",
+        session_id: sid,
+        utm_campaign: utms.utm_campaign,
+        utm_source: utms.utm_source,
+        utm_medium: utms.utm_medium,
+        utm_content: utms.utm_content,
+        utm_term: utms.utm_term,
+        fbp: fbp,
+        fbc: fbc
+      };
+      if (capturedEm) icPayload.em = capturedEm;
+      if (capturedPh) icPayload.ph = capturedPh;
+      if (testEventCode) icPayload.test_event_code = testEventCode;
+      var sent = false;
+      if (navigator.sendBeacon) {
+        sent = navigator.sendBeacon(TRACK_URL, JSON.stringify(icPayload));
+      }
+      if (!sent) {
+        fetch(TRACK_URL, {
+          method: "POST",
+          credentials: "include",
+          keepalive: true,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(icPayload)
+        }).catch(function() {});
+      }
+    }
+
+    // === Inject sid into checkout URL (NEVER touch xcod — reserved for VTURB) ===
+    function injectSession(href) {
+      if (href.indexOf("sid=" + sid) > -1) return href; // already has our sid
+      if (href.indexOf("pay.hotmart.com") > -1 || href.indexOf("hotmart.com/checkout") > -1) {
+        // Always use src param with sid — never xcod (VTURB owns xcod)
+        if (/[?&]src=/.test(href)) {
+          return href.replace(/([?&]src=)([^&]*)/, "$1$2|sid=" + sid);
+        }
+        return href + (href.indexOf("?") > -1 ? "&" : "?") + "src=sid=" + sid;
+      } else if (href.indexOf("kiwify.com") > -1 || href.indexOf("guru") > -1 || href.indexOf("digitalmanager") > -1) {
+        return href + (href.indexOf("?") > -1 ? "&" : "?") + "src=" + sid;
+      }
+      return href;
+    }
+
+    // === Periodically inject sid into checkout links (coexists with VTURB setInterval) ===
+    function ensureSidOnLinks() {
+      var links = document.querySelectorAll("a[href]");
+      for (var i = 0; i < links.length; i++) {
+        var href = links[i].href;
+        if (href && isCheckoutLink(href) && href.indexOf("sid=" + sid) === -1) {
+          links[i].href = injectSession(href);
+        }
+      }
+    }
+    setInterval(ensureSidOnLinks, 1500);
+
+    // === Process <a> tags: fire IC on click WITHOUT blocking VTURB ===
+    function processLinks(root) {
+      var links = (root || document).querySelectorAll("a[href]");
+      for (var i = 0; i < links.length; i++) {
+        if (links[i].__tracker_processed) continue;
+        links[i].__tracker_processed = true;
+        var href = links[i].href;
+        if (isCheckoutLink(href)) {
+          (function(link) {
+            link.addEventListener("click", function() {
+              // Last-chance injection into href before navigation
+              link.href = injectSession(link.href);
+              // Fire IC event — don't preventDefault, let VTURB handle redirect
+              fireIC(link.href);
+            });
+          })(links[i]);
+        }
+      }
+    }
+    processLinks(document);
+
+    // === MutationObserver: catch dynamically added links ===
+    if (window.MutationObserver) {
+      new MutationObserver(function(mutations) {
+        for (var m = 0; m < mutations.length; m++) {
+          if (mutations[m].addedNodes.length) processLinks();
+        }
+      }).observe(document.body, { childList: true, subtree: true });
+    }
+
+    // === Global click handler: catch buttons/divs with data-checkout-url ===
+    document.addEventListener("click", function(e) {
+      var el = e.target;
+      for (var depth = 0; depth < 6 && el && el !== document; depth++) {
+        var dataUrl = el.getAttribute && (el.getAttribute("data-checkout-url") || el.getAttribute("data-href"));
+        if (dataUrl && isCheckoutLink(dataUrl)) {
+          fireIC(dataUrl);
+          // Inject sid into the data attribute so the redirect includes it
+          var injected = injectSession(dataUrl);
+          if (el.setAttribute) {
+            el.setAttribute("data-checkout-url", injected);
+            el.setAttribute("data-href", injected);
+          }
+          return; // don't preventDefault — let the page handle navigation
+        }
+        // Also check if it's an <a> with checkout href (catch links processLinks may have missed)
+        if (el.tagName === "A" && el.href && isCheckoutLink(el.href)) {
+          el.href = injectSession(el.href);
+          fireIC(el.href);
+          return;
+        }
+        el = el.parentElement;
+      }
+    }, true);
+
+    // === Intercept window.location changes to checkout URLs ===
+    var origAssign = window.location.assign.bind(window.location);
+    var origReplace = window.location.replace.bind(window.location);
+    window.location.assign = function(url) {
+      if (isCheckoutLink(url)) {
+        url = injectSession(url);
+        fireIC(url);
+      }
+      origAssign(url);
+    };
+    window.location.replace = function(url) {
+      if (isCheckoutLink(url)) {
+        url = injectSession(url);
+        fireIC(url);
+      }
+      origReplace(url);
+    };
+
+    // === Intercept window.open to checkout URLs ===
+    var origOpen = window.open;
+    window.open = function(url) {
+      if (url && isCheckoutLink(url)) {
+        url = injectSession(url);
+        fireIC(url);
+        var args = Array.prototype.slice.call(arguments);
+        args[0] = url;
+        return origOpen.apply(window, args);
+      }
+      return origOpen.apply(window, arguments);
+    };
+
+    // === Auto-detect: if CURRENT page is a checkout, fire IC automatically ===
+    if (isCheckoutLink(window.location.href)) {
+      var autoIcPayload = {
+        user_id: USER_ID,
+        url: window.location.href,
+        event_name: "InitiateCheckout",
+        session_id: sid,
+        utm_campaign: utms.utm_campaign,
+        utm_source: utms.utm_source,
+        utm_medium: utms.utm_medium,
+        utm_content: utms.utm_content,
+        utm_term: utms.utm_term,
+        fbp: fbp,
+        fbc: fbc
+      };
+      if (testEventCode) autoIcPayload.test_event_code = testEventCode;
+      fetch(TRACK_URL, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(autoIcPayload)
+      }).catch(function() {});
+    }
+  })
+  .catch(function(e) { console.warn("[Tracker]", e); });
+
+  // === Microsoft Clarity ===
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window,document,"clarity","script","adixjzmi67");
+})();
+</script>
 <body>
 
 <!-- TOP BAR — mobile first -->
