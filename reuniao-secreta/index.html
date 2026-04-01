@@ -1837,9 +1837,10 @@ footer p {
         <option value="acima-300k" style="background:#111;color:#FFF;">Acima de R$ 300.000/mês</option>
       </select>
 
-      <button type="submit"
+      <button type="button" id="btnSubmitV1"
         style="background:#2A7A3B;border:none;border-radius:6px;padding:16px 24px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;cursor:pointer;width:100%;margin-top:4px;transition:background 0.2s;"
-        onmouseover="this.style.background='#34994A'" onmouseout="this.style.background='#2A7A3B'">
+        onmouseover="this.style.background='#34994A'" onmouseout="this.style.background='#2A7A3B'"
+        onclick="submitFormV1(this)">
         Confirmar Minha Vaga &rarr;
       </button>
     </form>
@@ -1875,6 +1876,23 @@ footer p {
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape') fecharModal();
   });
+
+  function submitFormV1(btn) {
+    var form = btn.closest('form');
+    var fields = form.querySelectorAll('input[required], select[required]');
+    for (var i = 0; i < fields.length; i++) {
+      if (!fields[i].value.trim()) {
+        fields[i].focus();
+        return;
+      }
+    }
+    btn.textContent = 'Vaga Confirmada!';
+    btn.style.background = '#1a7a2e';
+    btn.disabled = true;
+    setTimeout(function() {
+      window.location.href = 'https://sndflw.com/i/reuniao0426';
+    }, 1500);
+  }
 </script>
 
 </body>
