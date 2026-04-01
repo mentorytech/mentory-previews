@@ -201,6 +201,8 @@ body {
   opacity: .8;
 }
 
+.hero-mobile-photo { display: none; }
+
 .hero__headline {
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(40px, 4.5vw, 62px);
@@ -778,6 +780,18 @@ footer p {
   .badge-pill { margin-bottom: 10px !important; }
   .badge-pill__text { font-size: 10px !important; letter-spacing: 1.5px !important; }
 
+  .hero-mobile-photo {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+  .hero-mobile-photo img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 12px !important;
+    display: block !important;
+  }
+
   .hero__headline {
     font-size: 26px !important;
     line-height: 1.1 !important;
@@ -838,6 +852,11 @@ footer p {
   <!-- Content: left column only -->
   <div class="wrap" style="position:relative;z-index:2;padding-top:80px;padding-bottom:80px;width:100%;">
     <div style="max-width:560px;">
+
+      <!-- Foto mobile — aparece acima da headline apenas no mobile -->
+      <div class="hero-mobile-photo">
+        <img src="https://premiumweekend.com.br/wp-content/uploads/2024/08/heropc01mobile-scaled.webp" alt="Ed e Clara" />
+      </div>
 
       <!-- Eyebrow badge -->
       <div class="badge-pill" style="margin-bottom:28px;">
