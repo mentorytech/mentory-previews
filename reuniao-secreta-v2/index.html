@@ -1803,7 +1803,7 @@
             <span class="cp-code">+55</span>
             <span class="cp-arrow">▾</span>
           </button>
-          <input type="tel" id="field-whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required autocomplete="tel" maxlength="15" />
+          <input type="tel" id="field-whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required autocomplete="tel" maxlength="15" oninput="mascaraWpp(this)" />
           <div class="cp-dropdown" id="cp-dd-v2">
             <input type="text" class="cp-search" id="cp-inp-v2" placeholder="Buscar país...">
             <ul class="cp-list" id="cp-list-v2"></ul>
@@ -1965,6 +1965,18 @@
       body.append('fields[data_atual][id]', 'data_atual'); body.append('fields[data_atual][type]', 'hidden'); body.append('fields[data_atual][title]', 'data-atual'); body.append('fields[data_atual][value]', dataAtual); body.append('fields[data_atual][raw_value]', dataAtual); body.append('fields[data_atual][required]', '0');
       fetch('https://n8n.mentoryacademy.com.br/webhook/captura-reuniao', { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: body.toString() }).catch(function(e) { console.warn('[Webhook]', e); });
     }
+    function mascaraWpp(input) {
+      var cpDial = document.getElementById('cp-btn-v2') ? document.getElementById('cp-btn-v2').dataset.dial : '+55';
+      if (cpDial !== '+55') return;
+      var v = input.value.replace(/\D/g, '').slice(0, 11);
+      var r = '';
+      if (v.length === 0) { input.value = ''; return; }
+      r += '(' + v.slice(0, 2);
+      if (v.length > 2) r += ') ' + v.slice(2, 7);
+      if (v.length > 7) r += '-' + v.slice(7, 11);
+      input.value = r;
+    }
+
     function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
@@ -2213,6 +2225,18 @@
             btn.querySelector('.cp-code').textContent = el.dataset.dial;
             dd.classList.remove('open');
             _cpOpen = null;
+            var telId = id === 'v1' ? 'campo-whatsapp' : 'field-whatsapp';
+            var telInput = document.getElementById(telId);
+            if (telInput) {
+              telInput.value = '';
+              if (el.dataset.dial === '+55') {
+                telInput.placeholder = '(11) 99999-9999';
+                telInput.setAttribute('maxlength', '15');
+              } else {
+                telInput.placeholder = 'Número (sem código)';
+                telInput.setAttribute('maxlength', '20');
+              }
+            }
           });
         })(items[j]);
       }
