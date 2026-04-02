@@ -10,9 +10,14 @@
   <link rel="preload" as="image" href="assets/img/img2.webp" media="(min-width: 769px)" />
 
   <!-- Google Fonts -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//www.clarity.ms">
+  <link rel="dns-prefetch" href="//zwkyymicfhgfkqvzzbrx.supabase.co">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&display=swap"></noscript>
 
   <style>
     /* ==========================================
@@ -1353,6 +1358,7 @@
 })();
 </script>
 <body>
+  <main>
 
   <!-- ==========================================
        TOP BAR
@@ -1404,8 +1410,7 @@
         src="https://premiumweekend.com.br/wp-content/uploads/2024/08/heropc01mobile-scaled.webp"
         alt="Ed Souza e Clara do Vale"
         class="hero-img-mobile"
-        fetchpriority="high"
-      />
+        fetchpriority="high" width="800" height="600" loading="lazy">
 
       <div class="hero-content">
         <div class="hero-badge">Reunião Secreta · Ao Vivo · Gratuita</div>
@@ -1591,8 +1596,7 @@
               src="assets/img/img3.webp"
               alt="Ed Souza — Mentor Mentory International"
               class="mentor-img"
-              loading="lazy"
-            />
+              loading="lazy" width="800" height="600" loading="lazy">
             <div class="mentor-info">
               <h3 class="mentor-name">Ed Souza</h3>
               <p class="mentor-role">CEO · Mentory International®</p>
@@ -1605,8 +1609,7 @@
               src="assets/img/img4.webp"
               alt="Clara do Vale — Mentora Mentory International"
               class="mentor-img"
-              loading="lazy"
-            />
+              loading="lazy" width="800" height="600" loading="lazy">
             <div class="mentor-info">
               <h3 class="mentor-name">Clara do Vale</h3>
               <p class="mentor-role">Diretora · Mentory International®</p>
@@ -2270,5 +2273,6 @@
 
   </script>
 
+  </main>
 </body>
 </html>

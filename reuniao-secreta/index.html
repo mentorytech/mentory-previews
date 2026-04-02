@@ -6,9 +6,14 @@
 <title>Reunião Secreta — Ed Souza · Mentory International®</title>
 <!-- Preload LCP (hero background) -->
 <link rel="preload" as="image" href="assets/img/img2.webp" fetchpriority="high">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//www.clarity.ms">
+  <link rel="dns-prefetch" href="//zwkyymicfhgfkqvzzbrx.supabase.co">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap"></noscript>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -1149,6 +1154,7 @@ footer p {
 })();
 </script>
 <body>
+  <main>
 
 <!-- TOP BAR — mobile first -->
 <style>
@@ -1190,7 +1196,7 @@ footer p {
   <div style="position:absolute;inset:0;z-index:0;">
     <picture>
       <source media="(max-width:768px)" srcset="assets/img/img1.webp">
-      <img src="assets/img/img2.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;">
+      <img src="assets/img/img2.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;" width="800" height="600" loading="lazy">
     </picture>
     <!-- Gradient: solid on left (content), fades right (photo visible) — desktop only -->
     <div class="hero-desktop-grad" style="position:absolute;inset:0;background:linear-gradient(to right, #080E0A 0%, #080E0A 40%, rgba(8,14,10,0.85) 55%, rgba(8,14,10,0.4) 70%, rgba(8,14,10,0.15) 85%, rgba(8,14,10,0.1) 100%);"></div>
@@ -1206,7 +1212,7 @@ footer p {
 
       <!-- Foto mobile — aparece acima da headline apenas no mobile -->
       <div class="hero-mobile-photo">
-        <img src="https://premiumweekend.com.br/wp-content/uploads/2024/08/heropc01mobile-scaled.webp" alt="Ed e Clara" />
+        <img src="https://premiumweekend.com.br/wp-content/uploads/2024/08/heropc01mobile-scaled.webp" alt="Ed e Clara" width="800" height="600" loading="lazy">
       </div>
 
       <!-- Data/hora visível no mobile (primeira dobra) -->
@@ -1400,7 +1406,7 @@ footer p {
     <div class="speakers-grid">
       <div class="speaker">
         <div class="speaker__photo">
-          <img src="assets/img/img3.webp" alt="Ed Souza" loading="lazy" decoding="async">
+          <img src="assets/img/img3.webp" alt="Ed Souza" loading="lazy" decoding="async" width="800" height="600" loading="lazy">
         </div>
         <div class="speaker__body">
           <span class="speaker__tag">Fundador · Mentory International®</span>
@@ -1411,7 +1417,7 @@ footer p {
       </div>
       <div class="speaker">
         <div class="speaker__photo">
-          <img src="assets/img/img4.webp" alt="Clara do Vale" loading="lazy" decoding="async" style="object-position:center 10%;">
+          <img src="assets/img/img4.webp" alt="Clara do Vale" loading="lazy" decoding="async" style="object-position:center 10%;" width="800" height="600" loading="lazy">
         </div>
         <div class="speaker__body">
           <span class="speaker__tag">Co-Fundadora · Mentory International®</span>
@@ -2300,5 +2306,6 @@ footer p {
   cpInit('v1');
 </script>
 
+  </main>
 </body>
 </html>
