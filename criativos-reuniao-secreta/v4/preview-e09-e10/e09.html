@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1080">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@1,300;1,500&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,7 +13,7 @@
     height: 1080px;
     overflow: hidden;
     font-family: 'DM Sans', sans-serif;
-    background: #0f0f0f;
+    background: #0C0C0C;
   }
 
   .container {
@@ -21,37 +21,36 @@
     height: 1080px;
     position: relative;
     overflow: hidden;
-    background: #0f0f0f;
+    background: #0C0C0C;
   }
 
-  /* Background texture — subtle grid */
+  /* Subtle texture */
   .bg-texture {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(184,146,42,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(184,146,42,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(rgba(184,146,42,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,146,42,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
     z-index: 0;
   }
 
-  /* Large decorative word */
+  /* Ghost watermark */
   .bg-word {
     position: absolute;
-    bottom: -30px;
-    right: -20px;
+    bottom: -50px;
+    right: -40px;
     font-family: 'Playfair Display', serif;
-    font-size: 260px;
+    font-size: 300px;
     font-weight: 900;
     font-style: italic;
-    color: rgba(184,146,42,0.04);
-    letter-spacing: -8px;
+    color: rgba(184,146,42,0.028);
     line-height: 1;
     z-index: 0;
-    user-select: none;
+    pointer-events: none;
   }
 
-  /* Content layer */
+  /* Content */
   .content {
     position: relative;
     z-index: 2;
@@ -59,185 +58,184 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 64px 80px 56px;
+    padding: 60px 72px 56px 68px;
   }
 
-  /* Top — label + event name */
-  .top-row {
+  /* Top bar */
+  .top-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 44px;
   }
 
-  .top-label {
+  .label-group {
     display: flex;
     align-items: center;
     gap: 12px;
   }
 
-  .label-line {
-    width: 28px;
-    height: 1.5px;
+  .label-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
     background: #B8922A;
   }
 
   .label-text {
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: 3.5px;
+    letter-spacing: 4px;
     color: #B8922A;
     text-transform: uppercase;
   }
 
-  .event-tag {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 9px;
-    font-weight: 500;
+  .date-tag {
+    font-size: 10px;
+    font-weight: 400;
     letter-spacing: 3px;
-    color: rgba(184,146,42,0.5);
+    color: rgba(184,146,42,0.38);
     text-transform: uppercase;
   }
 
-  /* BIG question headline */
+  /* Headline */
   .headline-block {
     margin-bottom: 48px;
   }
 
-  .headline-pre {
+  .pre-line {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-size: 21px;
     font-style: italic;
     font-weight: 300;
-    color: #9B8F85;
+    color: #6B5E50;
     margin-bottom: 8px;
   }
 
   .headline {
     font-family: 'Playfair Display', serif;
-    font-size: 62px;
+    font-size: 66px;
     font-weight: 900;
-    color: #F9F4EE;
+    color: #F5EDD8;
     line-height: 1.05;
   }
 
-  .headline em {
+  /* Gold italic inline highlight — Playfair italic gold */
+  .h-gold {
     font-style: italic;
     color: #D4AA5A;
   }
 
-  /* Three columns layout */
-  .columns {
+  /* Three criteria panels */
+  .criteria-wrap {
     display: flex;
-    gap: 28px;
+    gap: 1px;
     flex: 1;
     margin-bottom: 40px;
   }
 
-  .col-card {
+  .criteria-panel {
     flex: 1;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(184,146,42,0.2);
+    background: rgba(255,255,255,0.028);
     border-top: 2px solid #B8922A;
     padding: 28px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .panel-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-style: italic;
+    font-weight: 500;
+    color: #B8922A;
+    line-height: 1;
+    opacity: 0.7;
+  }
+
+  .panel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #F5EDD8;
+    line-height: 1.3;
+    flex: 1;
+  }
+
+  .panel-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #4A4038;
+    line-height: 1.65;
+    letter-spacing: 0.15px;
+  }
+
+  /* Bottom */
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(184,146,42,0.1);
+    padding-top: 28px;
+  }
+
+  .cta-section {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
-  .col-icon {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 40px;
-    font-weight: 600;
-    color: #B8922A;
-    line-height: 1;
-  }
-
-  .col-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: #F9F4EE;
-    line-height: 1.25;
-  }
-
-  .col-desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 300;
-    color: #6B5E50;
-    line-height: 1.6;
-    margin-top: 2px;
-  }
-
-  /* Bottom row */
-  .bottom-row {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    border-top: 1px solid rgba(184,146,42,0.15);
-    padding-top: 28px;
-  }
-
-  .cta-left {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .cta-caption {
+  .cta-label {
     font-family: 'Cormorant Garamond', serif;
     font-size: 17px;
     font-style: italic;
-    font-weight: 300;
-    color: #9B8F85;
+    color: #6B5E50;
   }
 
-  .cta-button {
+  .cta-btn {
     display: inline-block;
     background: #2E7D32;
     color: #fff;
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 13px 32px;
-    border-radius: 2px;
+    padding: 15px 36px;
+    border-radius: 1px;
   }
 
-  .right-info {
+  .right-block {
     text-align: right;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
   }
 
   .event-name {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
     font-weight: 700;
-    color: #F9F4EE;
+    color: #F5EDD8;
     letter-spacing: 2px;
   }
 
   .event-date {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 400;
     color: #B8922A;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
   }
 
   .logo {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 9px;
-    font-weight: 400;
+    font-size: 8px;
+    font-weight: 300;
     letter-spacing: 3px;
-    color: rgba(184,146,42,0.4);
+    color: rgba(184,146,42,0.28);
     text-transform: uppercase;
-    margin-top: 4px;
+    margin-top: 5px;
   }
 </style>
 </head>
@@ -247,43 +245,43 @@
   <div class="bg-word">ELITE</div>
 
   <div class="content">
-    <div class="top-row">
-      <div class="top-label">
-        <div class="label-line"></div>
+    <div class="top-bar">
+      <div class="label-group">
+        <div class="label-dot"></div>
         <div class="label-text">Perfil do Participante</div>
       </div>
-      <div class="event-tag">Reunião Secreta · 26 Abr</div>
+      <div class="date-tag">Reunião Secreta · 26 Abr</div>
     </div>
 
     <div class="headline-block">
-      <div class="headline-pre">Antes de garantir sua vaga —</div>
-      <div class="headline">Este evento<br>foi feito <em>para<br>você?</em></div>
+      <div class="pre-line">Antes de garantir sua vaga —</div>
+      <div class="headline">Este evento foi feito<br>para <span class="h-gold">você?</span></div>
     </div>
 
-    <div class="columns">
-      <div class="col-card">
-        <div class="col-icon">I</div>
-        <div class="col-title">Vende mentoria, consultoria ou serviço premium</div>
-        <div class="col-desc">Ou quer migrar para esse modelo com autoridade real</div>
+    <div class="criteria-wrap">
+      <div class="criteria-panel">
+        <div class="panel-num">I</div>
+        <div class="panel-title">Vende mentoria, consultoria ou serviço premium</div>
+        <div class="panel-desc">Ou quer migrar para esse modelo com posição e autoridade real de mercado</div>
       </div>
-      <div class="col-card">
-        <div class="col-icon">II</div>
-        <div class="col-title">Cobra — ou quer cobrar — R$2.000+ por cliente</div>
-        <div class="col-desc">Sem depender de volume, sem fazer desconto pra fechar</div>
+      <div class="criteria-panel">
+        <div class="panel-num">II</div>
+        <div class="panel-title">Cobra — ou quer cobrar — R$2.000 ou mais por cliente</div>
+        <div class="panel-desc">Sem depender de volume. Sem desconto pra fechar. Sem implorar por like</div>
       </div>
-      <div class="col-card">
-        <div class="col-icon">III</div>
-        <div class="col-title">Quer que o Instagram atraia clientes prontos pra comprar</div>
-        <div class="col-desc">Não leads frios. Clientes que já chegam qualificados e decididos</div>
+      <div class="criteria-panel">
+        <div class="panel-num">III</div>
+        <div class="panel-title">Quer que o Instagram atraia clientes prontos pra comprar</div>
+        <div class="panel-desc">Não leads frios. Clientes que já chegam qualificados e decididos pra fechar</div>
       </div>
     </div>
 
-    <div class="bottom-row">
-      <div class="cta-left">
-        <div class="cta-caption">Se marcou os três — é o seu evento</div>
-        <div class="cta-button">Garantir minha vaga</div>
+    <div class="bottom">
+      <div class="cta-section">
+        <div class="cta-label">Marcou os três? É o seu evento.</div>
+        <div class="cta-btn">Garantir minha vaga</div>
       </div>
-      <div class="right-info">
+      <div class="right-block">
         <div class="event-name">REUNIÃO SECRETA</div>
         <div class="event-date">26 de Abril · Online · Gratuito</div>
         <div class="logo">Mentory International®</div>
