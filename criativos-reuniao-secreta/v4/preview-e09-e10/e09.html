@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background: #0f0f0f;
+  }
+
+  .container {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    background: #0f0f0f;
+  }
+
+  /* Background texture — subtle grid */
+  .bg-texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(184,146,42,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,146,42,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+  }
+
+  /* Large decorative word */
+  .bg-word {
+    position: absolute;
+    bottom: -30px;
+    right: -20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 260px;
+    font-weight: 900;
+    font-style: italic;
+    color: rgba(184,146,42,0.04);
+    letter-spacing: -8px;
+    line-height: 1;
+    z-index: 0;
+    user-select: none;
+  }
+
+  /* Content layer */
+  .content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 64px 80px 56px;
+  }
+
+  /* Top — label + event name */
+  .top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 44px;
+  }
+
+  .top-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .label-line {
+    width: 28px;
+    height: 1.5px;
+    background: #B8922A;
+  }
+
+  .label-text {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3.5px;
+    color: #B8922A;
+    text-transform: uppercase;
+  }
+
+  .event-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: rgba(184,146,42,0.5);
+    text-transform: uppercase;
+  }
+
+  /* BIG question headline */
+  .headline-block {
+    margin-bottom: 48px;
+  }
+
+  .headline-pre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    color: #9B8F85;
+    margin-bottom: 8px;
+  }
+
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 62px;
+    font-weight: 900;
+    color: #F9F4EE;
+    line-height: 1.05;
+  }
+
+  .headline em {
+    font-style: italic;
+    color: #D4AA5A;
+  }
+
+  /* Three columns layout */
+  .columns {
+    display: flex;
+    gap: 28px;
+    flex: 1;
+    margin-bottom: 40px;
+  }
+
+  .col-card {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,146,42,0.2);
+    border-top: 2px solid #B8922A;
+    padding: 28px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .col-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #B8922A;
+    line-height: 1;
+  }
+
+  .col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #F9F4EE;
+    line-height: 1.25;
+  }
+
+  .col-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #6B5E50;
+    line-height: 1.6;
+    margin-top: 2px;
+  }
+
+  /* Bottom row */
+  .bottom-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-top: 1px solid rgba(184,146,42,0.15);
+    padding-top: 28px;
+  }
+
+  .cta-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cta-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 300;
+    color: #9B8F85;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #2E7D32;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 13px 32px;
+    border-radius: 2px;
+  }
+
+  .right-info {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .event-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #F9F4EE;
+    letter-spacing: 2px;
+  }
+
+  .event-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #B8922A;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: rgba(184,146,42,0.4);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="bg-texture"></div>
+  <div class="bg-word">ELITE</div>
+
+  <div class="content">
+    <div class="top-row">
+      <div class="top-label">
+        <div class="label-line"></div>
+        <div class="label-text">Perfil do Participante</div>
+      </div>
+      <div class="event-tag">Reunião Secreta · 26 Abr</div>
+    </div>
+
+    <div class="headline-block">
+      <div class="headline-pre">Antes de garantir sua vaga —</div>
+      <div class="headline">Este evento<br>foi feito <em>para<br>você?</em></div>
+    </div>
+
+    <div class="columns">
+      <div class="col-card">
+        <div class="col-icon">I</div>
+        <div class="col-title">Vende mentoria, consultoria ou serviço premium</div>
+        <div class="col-desc">Ou quer migrar para esse modelo com autoridade real</div>
+      </div>
+      <div class="col-card">
+        <div class="col-icon">II</div>
+        <div class="col-title">Cobra — ou quer cobrar — R$2.000+ por cliente</div>
+        <div class="col-desc">Sem depender de volume, sem fazer desconto pra fechar</div>
+      </div>
+      <div class="col-card">
+        <div class="col-icon">III</div>
+        <div class="col-title">Quer que o Instagram atraia clientes prontos pra comprar</div>
+        <div class="col-desc">Não leads frios. Clientes que já chegam qualificados e decididos</div>
+      </div>
+    </div>
+
+    <div class="bottom-row">
+      <div class="cta-left">
+        <div class="cta-caption">Se marcou os três — é o seu evento</div>
+        <div class="cta-button">Garantir minha vaga</div>
+      </div>
+      <div class="right-info">
+        <div class="event-name">REUNIÃO SECRETA</div>
+        <div class="event-date">26 de Abril · Online · Gratuito</div>
+        <div class="logo">Mentory International®</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
