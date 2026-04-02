@@ -1945,7 +1945,7 @@ footer p {
 
 
   // === Envio para n8n webhook ===
-  function sendToWebhook(nome, email, telefone, faturamento, utm_page_id) {
+  function sendToWebhook(nome, email, telefone, faturamento, s1_id) {
     var p = new URLSearchParams(window.location.search);
     var now = new Date();
     var pad = function(n) { return n < 10 ? '0' + n : n; };
@@ -1987,12 +1987,12 @@ footer p {
       body.append('fields[' + key + '][required]', '0');
     }
 
-    body.append('fields[utm_page][id]', 'utm_page');
-    body.append('fields[utm_page][type]', 'hidden');
-    body.append('fields[utm_page][title]', 'utm_page');
-    body.append('fields[utm_page][value]', utm_page_id);
-    body.append('fields[utm_page][raw_value]', utm_page_id);
-    body.append('fields[utm_page][required]', '0');
+    body.append('fields[s1][id]', 's1');
+    body.append('fields[s1][type]', 'hidden');
+    body.append('fields[s1][title]', 's1');
+    body.append('fields[s1][value]', s1_id);
+    body.append('fields[s1][raw_value]', s1_id);
+    body.append('fields[s1][required]', '0');
 
     body.append('fields[faturamento][id]', 'faturamento');
     body.append('fields[faturamento][type]', 'select');
