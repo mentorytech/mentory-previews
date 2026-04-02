@@ -988,7 +988,60 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.3); border-radius: 3px; }
-  </style>
+  
+    /* ===== Country Phone Picker ===== */
+    .phone-row { position: relative; display: flex; }
+    .cp-btn {
+      flex-shrink: 0; display: flex; align-items: center; gap: 5px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12); border-right: none;
+      border-radius: 6px 0 0 6px;
+      padding: 0 10px; cursor: pointer; color: #fff; font-size: 13px;
+      white-space: nowrap; transition: border-color 0.2s; min-width: 76px;
+      user-select: none;
+    }
+    .cp-btn:hover { border-color: rgba(212,175,55,0.4); }
+    .cp-btn .cp-flag { font-size: 17px; line-height: 1; }
+    .cp-btn .cp-code { font-weight: 600; font-size: 13px; }
+    .cp-btn .cp-arrow { font-size: 9px; color: rgba(255,255,255,0.45); }
+    .phone-row input[type=tel] {
+      border-radius: 0 6px 6px 0 !important;
+      border-left: none !important;
+      flex: 1 1 auto;
+    }
+    .cp-dropdown {
+      display: none; position: absolute;
+      top: calc(100% + 4px); left: 0;
+      width: 270px; max-height: 260px;
+      background: #181818;
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 8px; z-index: 9999;
+      overflow: hidden; flex-direction: column;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+    }
+    .cp-dropdown.open { display: flex; }
+    .cp-search {
+      padding: 10px 12px; background: rgba(255,255,255,0.05);
+      border: none; border-bottom: 1px solid rgba(255,255,255,0.07);
+      color: #fff; font-size: 13px; outline: none; width: 100%; box-sizing: border-box;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .cp-search::placeholder { color: rgba(255,255,255,0.3); }
+    .cp-list { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
+    .cp-list::-webkit-scrollbar { width: 4px; }
+    .cp-list::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.3); border-radius: 2px; }
+    .cp-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 12px; cursor: pointer; font-size: 13px; color: #eee;
+      transition: background 0.12s;
+    }
+    .cp-item:hover { background: rgba(212,175,55,0.1); }
+    .cp-item.active { background: rgba(212,175,55,0.18); }
+    .cp-item-flag { font-size: 15px; flex-shrink: 0; }
+    .cp-item-name { flex: 1; font-family: 'DM Sans', sans-serif; }
+    .cp-item-dial { color: rgba(255,255,255,0.4); font-size: 11px; }
+
+    </style>
 <!-- Server-Side Tracking Hub Pixel -->
 <script>
 (function() {
@@ -1744,7 +1797,18 @@
 
         <div class="form-group">
           <label for="field-whatsapp">WhatsApp</label>
+          <div class="phone-row">
+          <button type="button" class="cp-btn" id="cp-btn-v2" data-dial="+55" aria-label="Selecionar país">
+            <span class="cp-flag">🇧🇷</span>
+            <span class="cp-code">+55</span>
+            <span class="cp-arrow">▾</span>
+          </button>
           <input type="tel" id="field-whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required autocomplete="tel" maxlength="15" />
+          <div class="cp-dropdown" id="cp-dd-v2">
+            <input type="text" class="cp-search" id="cp-inp-v2" placeholder="Buscar país...">
+            <ul class="cp-list" id="cp-list-v2"></ul>
+          </div>
+        </div>
         </div>
 
         <div class="form-group">
@@ -1906,7 +1970,9 @@
       const form = e.target;
       const name  = form.querySelector('#field-name').value.trim();
       const email = form.querySelector('#field-email').value.trim();
-      const wpp   = form.querySelector('#field-whatsapp').value.trim();
+      const wppRaw = form.querySelector('#field-whatsapp').value.trim();
+      const cpDial = document.getElementById('cp-btn-v2') ? document.getElementById('cp-btn-v2').dataset.dial : '+55';
+      const wpp = cpDial + wppRaw;
       const fat   = form.querySelector('#field-faturamento').value;
 
       if (!name || !email || !wpp || !fat) {
@@ -1928,6 +1994,257 @@
 
     // ============================================================
     }
+  
+  var CP_COUNTRIES = [
+    {f:"🇧🇷",n:"Brasil",d:"+55"},
+    {f:"🇵🇹",n:"Portugal",d:"+351"},
+    {f:"🇺🇸",n:"EUA",d:"+1"},
+    {f:"🇦🇫",n:"Afeganistão",d:"+93"},
+    {f:"🇿🇦",n:"África do Sul",d:"+27"},
+    {f:"🇦🇱",n:"Albânia",d:"+355"},
+    {f:"🇩🇪",n:"Alemanha",d:"+49"},
+    {f:"🇦🇩",n:"Andorra",d:"+376"},
+    {f:"🇦🇴",n:"Angola",d:"+244"},
+    {f:"🇦🇬",n:"Antígua e Barbuda",d:"+1268"},
+    {f:"🇸🇦",n:"Arábia Saudita",d:"+966"},
+    {f:"🇩🇿",n:"Argélia",d:"+213"},
+    {f:"🇦🇷",n:"Argentina",d:"+54"},
+    {f:"🇦🇲",n:"Armênia",d:"+374"},
+    {f:"🇦🇺",n:"Austrália",d:"+61"},
+    {f:"🇦🇹",n:"Áustria",d:"+43"},
+    {f:"🇦🇿",n:"Azerbaijão",d:"+994"},
+    {f:"🇧🇸",n:"Bahamas",d:"+1242"},
+    {f:"🇧🇩",n:"Bangladesh",d:"+880"},
+    {f:"🇧🇧",n:"Barbados",d:"+1246"},
+    {f:"🇧🇭",n:"Barein",d:"+973"},
+    {f:"🇧🇪",n:"Bélgica",d:"+32"},
+    {f:"🇧🇿",n:"Belize",d:"+501"},
+    {f:"🇧🇯",n:"Benin",d:"+229"},
+    {f:"🇧🇴",n:"Bolívia",d:"+591"},
+    {f:"🇧🇦",n:"Bósnia e Herzegovina",d:"+387"},
+    {f:"🇧🇼",n:"Botsuana",d:"+267"},
+    {f:"🇧🇳",n:"Brunei",d:"+673"},
+    {f:"🇧🇬",n:"Bulgária",d:"+359"},
+    {f:"🇧🇫",n:"Burkina Faso",d:"+226"},
+    {f:"🇧🇮",n:"Burundi",d:"+257"},
+    {f:"🇧🇹",n:"Butão",d:"+975"},
+    {f:"🇨🇻",n:"Cabo Verde",d:"+238"},
+    {f:"🇨🇲",n:"Camarões",d:"+237"},
+    {f:"🇰🇭",n:"Camboja",d:"+855"},
+    {f:"🇨🇦",n:"Canadá",d:"+1"},
+    {f:"🇶🇦",n:"Catar",d:"+974"},
+    {f:"🇰🇿",n:"Cazaquistão",d:"+7"},
+    {f:"🇹🇩",n:"Chade",d:"+235"},
+    {f:"🇨🇱",n:"Chile",d:"+56"},
+    {f:"🇨🇳",n:"China",d:"+86"},
+    {f:"🇨🇾",n:"Chipre",d:"+357"},
+    {f:"🇨🇴",n:"Colômbia",d:"+57"},
+    {f:"🇰🇲",n:"Comores",d:"+269"},
+    {f:"🇨🇬",n:"Congo",d:"+242"},
+    {f:"🇰🇷",n:"Coreia do Sul",d:"+82"},
+    {f:"🇰🇵",n:"Coreia do Norte",d:"+850"},
+    {f:"🇨🇮",n:"Costa do Marfim",d:"+225"},
+    {f:"🇨🇷",n:"Costa Rica",d:"+506"},
+    {f:"🇭🇷",n:"Croácia",d:"+385"},
+    {f:"🇨🇺",n:"Cuba",d:"+53"},
+    {f:"🇩🇰",n:"Dinamarca",d:"+45"},
+    {f:"🇩🇯",n:"Djibuti",d:"+253"},
+    {f:"🇩🇲",n:"Dominica",d:"+1767"},
+    {f:"🇪🇬",n:"Egito",d:"+20"},
+    {f:"🇸🇻",n:"El Salvador",d:"+503"},
+    {f:"🇦🇪",n:"Emirados Árabes",d:"+971"},
+    {f:"🇪🇨",n:"Equador",d:"+593"},
+    {f:"🇪🇷",n:"Eritreia",d:"+291"},
+    {f:"🇸🇰",n:"Eslováquia",d:"+421"},
+    {f:"🇸🇮",n:"Eslovênia",d:"+386"},
+    {f:"🇪🇸",n:"Espanha",d:"+34"},
+    {f:"🇸🇿",n:"Essuatíni",d:"+268"},
+    {f:"🇪🇹",n:"Etiópia",d:"+251"},
+    {f:"🇫🇯",n:"Fiji",d:"+679"},
+    {f:"🇵🇭",n:"Filipinas",d:"+63"},
+    {f:"🇫🇮",n:"Finlândia",d:"+358"},
+    {f:"🇫🇷",n:"França",d:"+33"},
+    {f:"🇬🇦",n:"Gabão",d:"+241"},
+    {f:"🇬🇲",n:"Gâmbia",d:"+220"},
+    {f:"🇬🇭",n:"Gana",d:"+233"},
+    {f:"🇬🇪",n:"Geórgia",d:"+995"},
+    {f:"🇬🇷",n:"Grécia",d:"+30"},
+    {f:"🇬🇩",n:"Granada",d:"+1473"},
+    {f:"🇬🇹",n:"Guatemala",d:"+502"},
+    {f:"🇬🇳",n:"Guiné",d:"+224"},
+    {f:"🇬🇼",n:"Guiné-Bissau",d:"+245"},
+    {f:"🇬🇶",n:"Guiné Equatorial",d:"+240"},
+    {f:"🇬🇾",n:"Guiana",d:"+592"},
+    {f:"🇭🇹",n:"Haiti",d:"+509"},
+    {f:"🇭🇳",n:"Honduras",d:"+504"},
+    {f:"🇭🇺",n:"Hungria",d:"+36"},
+    {f:"🇾🇪",n:"Iêmen",d:"+967"},
+    {f:"🇮🇳",n:"Índia",d:"+91"},
+    {f:"🇮🇩",n:"Indonésia",d:"+62"},
+    {f:"🇮🇷",n:"Irã",d:"+98"},
+    {f:"🇮🇶",n:"Iraque",d:"+964"},
+    {f:"🇮🇪",n:"Irlanda",d:"+353"},
+    {f:"🇮🇸",n:"Islândia",d:"+354"},
+    {f:"🇮🇱",n:"Israel",d:"+972"},
+    {f:"🇮🇹",n:"Itália",d:"+39"},
+    {f:"🇯🇲",n:"Jamaica",d:"+1876"},
+    {f:"🇯🇵",n:"Japão",d:"+81"},
+    {f:"🇯🇴",n:"Jordânia",d:"+962"},
+    {f:"🇰🇼",n:"Kuwait",d:"+965"},
+    {f:"🇱🇦",n:"Laos",d:"+856"},
+    {f:"🇱🇸",n:"Lesoto",d:"+266"},
+    {f:"🇱🇻",n:"Letônia",d:"+371"},
+    {f:"🇱🇧",n:"Líbano",d:"+961"},
+    {f:"🇱🇷",n:"Libéria",d:"+231"},
+    {f:"🇱🇾",n:"Líbia",d:"+218"},
+    {f:"🇱🇮",n:"Liechtenstein",d:"+423"},
+    {f:"🇱🇹",n:"Lituânia",d:"+370"},
+    {f:"🇱🇺",n:"Luxemburgo",d:"+352"},
+    {f:"🇲🇰",n:"Macedônia do Norte",d:"+389"},
+    {f:"🇲🇬",n:"Madagascar",d:"+261"},
+    {f:"🇲🇾",n:"Malásia",d:"+60"},
+    {f:"🇲🇼",n:"Malawi",d:"+265"},
+    {f:"🇲🇻",n:"Maldivas",d:"+960"},
+    {f:"🇲🇱",n:"Mali",d:"+223"},
+    {f:"🇲🇹",n:"Malta",d:"+356"},
+    {f:"🇲🇦",n:"Marrocos",d:"+212"},
+    {f:"🇲🇺",n:"Maurício",d:"+230"},
+    {f:"🇲🇷",n:"Mauritânia",d:"+222"},
+    {f:"🇲🇽",n:"México",d:"+52"},
+    {f:"🇲🇿",n:"Moçambique",d:"+258"},
+    {f:"🇲🇩",n:"Moldávia",d:"+373"},
+    {f:"🇲🇨",n:"Mônaco",d:"+377"},
+    {f:"🇲🇳",n:"Mongólia",d:"+976"},
+    {f:"🇲🇪",n:"Montenegro",d:"+382"},
+    {f:"🇲🇲",n:"Mianmar",d:"+95"},
+    {f:"🇳🇦",n:"Namíbia",d:"+264"},
+    {f:"🇳🇷",n:"Nauru",d:"+674"},
+    {f:"🇳🇵",n:"Nepal",d:"+977"},
+    {f:"🇳🇮",n:"Nicarágua",d:"+505"},
+    {f:"🇳🇪",n:"Niger",d:"+227"},
+    {f:"🇳🇬",n:"Nigéria",d:"+234"},
+    {f:"🇳🇴",n:"Noruega",d:"+47"},
+    {f:"🇳🇿",n:"Nova Zelândia",d:"+64"},
+    {f:"🇴🇲",n:"Omã",d:"+968"},
+    {f:"🇳🇱",n:"Países Baixos",d:"+31"},
+    {f:"🇵🇼",n:"Palau",d:"+680"},
+    {f:"🇵🇦",n:"Panamá",d:"+507"},
+    {f:"🇵🇬",n:"Papua Nova Guiné",d:"+675"},
+    {f:"🇵🇰",n:"Paquistão",d:"+92"},
+    {f:"🇵🇾",n:"Paraguai",d:"+595"},
+    {f:"🇵🇪",n:"Peru",d:"+51"},
+    {f:"🇵🇱",n:"Polônia",d:"+48"},
+    {f:"🇵🇷",n:"Porto Rico",d:"+1787"},
+    {f:"🇷🇼",n:"Ruanda",d:"+250"},
+    {f:"🇷🇴",n:"Romênia",d:"+40"},
+    {f:"🇷🇺",n:"Rússia",d:"+7"},
+    {f:"🇸🇲",n:"San Marino",d:"+378"},
+    {f:"🇸🇹",n:"São Tomé e Príncipe",d:"+239"},
+    {f:"🇱🇨",n:"Santa Lúcia",d:"+1758"},
+    {f:"🇻🇨",n:"São Vicente",d:"+1784"},
+    {f:"🇸🇳",n:"Senegal",d:"+221"},
+    {f:"🇸🇱",n:"Serra Leoa",d:"+232"},
+    {f:"🇷🇸",n:"Sérvia",d:"+381"},
+    {f:"🇸🇨",n:"Seychelles",d:"+248"},
+    {f:"🇸🇬",n:"Singapura",d:"+65"},
+    {f:"🇸🇾",n:"Síria",d:"+963"},
+    {f:"🇸🇴",n:"Somália",d:"+252"},
+    {f:"🇱🇰",n:"Sri Lanka",d:"+94"},
+    {f:"🇸🇩",n:"Sudão",d:"+249"},
+    {f:"🇸🇸",n:"Sudão do Sul",d:"+211"},
+    {f:"🇸🇪",n:"Suécia",d:"+46"},
+    {f:"🇨🇭",n:"Suíça",d:"+41"},
+    {f:"🇸🇷",n:"Suriname",d:"+597"},
+    {f:"🇹🇭",n:"Tailândia",d:"+66"},
+    {f:"🇹🇼",n:"Taiwan",d:"+886"},
+    {f:"🇹🇿",n:"Tanzânia",d:"+255"},
+    {f:"🇹🇯",n:"Tadjiquistão",d:"+992"},
+    {f:"🇹🇱",n:"Timor-Leste",d:"+670"},
+    {f:"🇹🇬",n:"Togo",d:"+228"},
+    {f:"🇹🇴",n:"Tonga",d:"+676"},
+    {f:"🇹🇹",n:"Trinidad e Tobago",d:"+1868"},
+    {f:"🇹🇳",n:"Tunísia",d:"+216"},
+    {f:"🇹🇲",n:"Turcomenistão",d:"+993"},
+    {f:"🇹🇷",n:"Turquia",d:"+90"},
+    {f:"🇺🇬",n:"Uganda",d:"+256"},
+    {f:"🇺🇦",n:"Ucrânia",d:"+380"},
+    {f:"🇺🇾",n:"Uruguai",d:"+598"},
+    {f:"🇺🇿",n:"Uzbequistão",d:"+998"},
+    {f:"🇻🇺",n:"Vanuatu",d:"+678"},
+    {f:"🇻🇦",n:"Vaticano",d:"+379"},
+    {f:"🇻🇪",n:"Venezuela",d:"+58"},
+    {f:"🇻🇳",n:"Vietnã",d:"+84"},
+    {f:"🇿🇲",n:"Zâmbia",d:"+260"},
+    {f:"🇿🇼",n:"Zimbábue",d:"+263"}
+  ];
+
+  // Country Picker
+  var _cpOpen = null;
+  function cpInit(id) {
+    var btn = document.getElementById('cp-btn-' + id);
+    var dd  = document.getElementById('cp-dd-'  + id);
+    var inp = document.getElementById('cp-inp-' + id);
+    var list= document.getElementById('cp-list-' + id);
+    if (!btn || !list) return;
+
+    function renderList(filter) {
+      var html = '';
+      var f = (filter || '').toLowerCase();
+      var shown = 0;
+      for (var i = 0; i < CP_COUNTRIES.length; i++) {
+        var c = CP_COUNTRIES[i];
+        if (f && c.n.toLowerCase().indexOf(f) === -1 && c.d.indexOf(f) === -1) continue;
+        var active = btn.dataset.dial === c.d ? ' active' : '';
+        html += '<li class="cp-item' + active + '" data-flag="' + c.f + '" data-name="' + c.n + '" data-dial="' + c.d + '">' +
+          '<span class="cp-item-flag">' + c.f + '</span>' +
+          '<span class="cp-item-name">' + c.n + '</span>' +
+          '<span class="cp-item-dial">' + c.d + '</span></li>';
+        shown++;
+        if (shown > 200) break;
+      }
+      list.innerHTML = html || '<li class="cp-item" style="color:rgba(255,255,255,.3)">Nenhum resultado</li>';
+      // click handler
+      var items = list.querySelectorAll('.cp-item[data-dial]');
+      for (var j = 0; j < items.length; j++) {
+        (function(el) {
+          el.addEventListener('click', function() {
+            btn.dataset.dial = el.dataset.dial;
+            btn.querySelector('.cp-flag').textContent = el.dataset.flag;
+            btn.querySelector('.cp-code').textContent = el.dataset.dial;
+            dd.classList.remove('open');
+            _cpOpen = null;
+          });
+        })(items[j]);
+      }
+    }
+
+    renderList('');
+
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (_cpOpen && _cpOpen !== id) {
+        document.getElementById('cp-dd-' + _cpOpen).classList.remove('open');
+      }
+      dd.classList.toggle('open');
+      _cpOpen = dd.classList.contains('open') ? id : null;
+      if (dd.classList.contains('open')) { inp.value = ''; renderList(''); inp.focus(); }
+    });
+
+    inp.addEventListener('input', function() { renderList(inp.value); });
+    inp.addEventListener('click', function(e) { e.stopPropagation(); });
+    dd.addEventListener('click', function(e) { e.stopPropagation(); });
+  }
+
+  document.addEventListener('click', function() {
+    if (_cpOpen) {
+      document.getElementById('cp-dd-' + _cpOpen).classList.remove('open');
+      _cpOpen = null;
+    }
+  });
+
+    
+  cpInit('v2');
+
   </script>
 
 </body>
