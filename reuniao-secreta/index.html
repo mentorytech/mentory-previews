@@ -2014,6 +2014,43 @@ footer p {
     body.append('fields[data_atual][raw_value]', dataAtual);
     body.append('fields[data_atual][required]', '0');
 
+
+    // === Fire Lead event (Meta Pixel + CAPI) ===
+    (function() {
+      // 1. Browser pixel
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: s1_id,
+          currency: 'BRL'
+        });
+      }
+      // 2. Server-side CAPI via Supabase
+      var leadPayload = {
+        user_id: USER_ID,
+        url: window.location.href,
+        event_name: 'Lead',
+        session_id: window.__tracker_session_id || (function(){ try { return sessionStorage.getItem('tracker_session_id') || ''; } catch(e) { return ''; } })(),
+        utm_campaign: (new URLSearchParams(window.location.search)).get('utm_campaign') || '',
+        utm_source:   (new URLSearchParams(window.location.search)).get('utm_source') || '',
+        utm_medium:   (new URLSearchParams(window.location.search)).get('utm_medium') || '',
+        utm_content:  (new URLSearchParams(window.location.search)).get('utm_content') || '',
+        utm_term:     (new URLSearchParams(window.location.search)).get('utm_term') || '',
+        fbp: (function() { var m = document.cookie.match(/(?:^|; )_fbp=([^;]*)/); return m ? decodeURIComponent(m[1]) : ''; })(),
+        fbc: (function() { var m = document.cookie.match(/(?:^|; )_fbc=([^;]*)/); return m ? decodeURIComponent(m[1]) : ''; })()
+      };
+      if (email) leadPayload.em = email.toLowerCase();
+      if (telefone) leadPayload.ph = telefone.replace(/\D/g, '');
+      var testEc = (new URLSearchParams(window.location.search)).get('test_event_code') || '';
+      if (testEc) leadPayload.test_event_code = testEc;
+      fetch(TRACK_URL, {
+        method: 'POST',
+        credentials: 'include',
+        keepalive: true,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadPayload)
+      }).catch(function() {});
+    })();
+
     fetch('https://n8n.mentoryacademy.com.br/webhook/captura-reuniao', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
