@@ -2036,6 +2036,39 @@ footer p {
     var wpp = cpDial + wppRaw;
     var fat = document.getElementById('v1-faturamento').value;
     sendToWebhook(nome, email, wpp, fat, 'reuniao-v1');
+
+    // === CAPI Lead Event ===
+    (function() {
+      function getCk(n) { var m = document.cookie.match(new RegExp("(?:^|; )"+n+"=([^;]*)")); return m ? decodeURIComponent(m[1]) : ""; }
+      var p = new URLSearchParams(window.location.search);
+      var leadPayload = {
+        user_id: "e3822711-9059-493e-8c72-b03273de7f4e",
+        event_name: "Lead",
+        url: window.location.href,
+        session_id: window.__tracker_session_id || "",
+        em: nome ? email.toLowerCase() : email,
+        ph: wpp.replace(/\D/g, ""),
+        fbp: getCk("_fbp"),
+        fbc: getCk("_fbc"),
+        utm_campaign: p.get("utm_campaign") || "",
+        utm_source: p.get("utm_source") || "",
+        utm_medium: p.get("utm_medium") || "",
+        utm_content: p.get("utm_content") || "",
+        utm_term: p.get("utm_term") || ""
+      };
+      var tc = p.get("test_event_code");
+      if (tc) leadPayload.test_event_code = tc;
+      var TRACK = "https://zwkyymicfhgfkqvzzbrx.supabase.co/functions/v1/track";
+      var sent = false;
+      if (navigator.sendBeacon) {
+        sent = navigator.sendBeacon(TRACK, JSON.stringify(leadPayload));
+      }
+      if (!sent) {
+        fetch(TRACK, { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(leadPayload), keepalive: true }).catch(function(){});
+      }
+    })();
+    // === /CAPI Lead Event ===
+
     btn.textContent = 'Vaga Confirmada!';
     btn.style.background = '#1a7a2e';
     btn.disabled = true;
