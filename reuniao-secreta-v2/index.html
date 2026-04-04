@@ -1201,8 +1201,8 @@
         fbp: fbp,
         fbc: fbc
       };
-      if (capturedEm) icPayload.em = capturedEm;
-      if (capturedPh) icPayload.ph = capturedPh;
+      if (capturedEm) sha256Hex(capturedEm).then(function(h){ icPayload.em = h; });
+      if (capturedPh) sha256Hex(capturedPh).then(function(h){ icPayload.ph = h; });
       if (testEventCode) icPayload.test_event_code = testEventCode;
       var sent = false;
       if (navigator.sendBeacon) {
@@ -1366,6 +1366,19 @@
   })(window,document,"clarity","script","adixjzmi67");
 })();
 </script>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2287457011481211');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2287457011481211&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
 <body>
   <main>
 
@@ -1960,6 +1973,16 @@
     // ============================================================
 
     // === Envio para n8n webhook ===
+
+      // === SHA-256 helper (Web Crypto API) ===
+      async function sha256Hex(str) {
+      if (!str) return '';
+      var msgBuffer = new TextEncoder().encode(str.trim().toLowerCase());
+      var hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      var hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+
     function sendToWebhook(nome, email, telefone, faturamento, s1_id) {
       var p = new URLSearchParams(window.location.search);
       var now = new Date();
@@ -1979,7 +2002,7 @@
       body.append('fields[data_atual][id]', 'data_atual'); body.append('fields[data_atual][type]', 'hidden'); body.append('fields[data_atual][title]', 'data-atual'); body.append('fields[data_atual][value]', dataAtual); body.append('fields[data_atual][raw_value]', dataAtual); body.append('fields[data_atual][required]', '0');
   
     // === Fire Lead event (Meta Pixel + CAPI) ===
-    (function() {
+    (async function() {
       // 1. Browser pixel
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', {
@@ -1987,7 +2010,7 @@
           currency: 'BRL'
         });
       }
-      // 2. Server-side CAPI via Supabase
+      // 2. Server-side CAPI via Supabase (em + ph com SHA-256)
       var leadPayload = {
         user_id: USER_ID,
         url: window.location.href,
@@ -2001,8 +2024,8 @@
         fbp: (function() { var m = document.cookie.match(/(?:^|; )_fbp=([^;]*)/); return m ? decodeURIComponent(m[1]) : ''; })(),
         fbc: (function() { var m = document.cookie.match(/(?:^|; )_fbc=([^;]*)/); return m ? decodeURIComponent(m[1]) : ''; })()
       };
-      if (email) leadPayload.em = email.toLowerCase();
-      if (telefone) leadPayload.ph = telefone.replace(/\D/g, '');
+      if (email) leadPayload.em = await sha256Hex(email);
+      if (telefone) leadPayload.ph = await sha256Hex(telefone.replace(/\D/g, ''));
       var testEc = (new URLSearchParams(window.location.search)).get('test_event_code') || '';
       if (testEc) leadPayload.test_event_code = testEc;
       fetch(TRACK_URL, {
@@ -2044,38 +2067,6 @@
       }
 
       sendToWebhook(name, email, wpp, fat, 'reuniao-v2');
-
-      // === CAPI Lead Event ===
-      (function() {
-        function getCk(n) { var m = document.cookie.match(new RegExp("(?:^|; )"+n+"=([^;]*)")); return m ? decodeURIComponent(m[1]) : ""; }
-        var p = new URLSearchParams(window.location.search);
-        var leadPayload = {
-          user_id: "e3822711-9059-493e-8c72-b03273de7f4e",
-          event_name: "Lead",
-          url: window.location.href,
-          session_id: window.__tracker_session_id || "",
-          em: email ? email.toLowerCase() : "",
-          ph: wpp.replace(/\D/g, ""),
-          fbp: getCk("_fbp"),
-          fbc: getCk("_fbc"),
-          utm_campaign: p.get("utm_campaign") || "",
-          utm_source: p.get("utm_source") || "",
-          utm_medium: p.get("utm_medium") || "",
-          utm_content: p.get("utm_content") || "",
-          utm_term: p.get("utm_term") || ""
-        };
-        var tc = p.get("test_event_code");
-        if (tc) leadPayload.test_event_code = tc;
-        var TRACK = "https://zwkyymicfhgfkqvzzbrx.supabase.co/functions/v1/track";
-        var sent = false;
-        if (navigator.sendBeacon) {
-          sent = navigator.sendBeacon(TRACK, JSON.stringify(leadPayload));
-        }
-        if (!sent) {
-          fetch(TRACK, { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(leadPayload), keepalive: true }).catch(function(){});
-        }
-      })();
-      // === /CAPI Lead Event ===
 
       const btn = form.querySelector('.btn-cta');
       btn.textContent = 'Vaga Confirmada!';
