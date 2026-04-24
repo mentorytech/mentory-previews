@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organograma da Holding — Mentory International</title>
+  <style>
+    :root {
+      --bg: #060606;
+      --bg-soft: #101010;
+      --card: rgba(16,16,16,0.92);
+      --gold: #d4af37;
+      --gold-soft: #f2deb0;
+      --cream: #f7f1e5;
+      --line: rgba(212, 175, 55, 0.42);
+      --text: #f8f4ea;
+      --muted: #c7bea8;
+      --shadow: 0 24px 70px rgba(0,0,0,0.42);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --font-sans: "Inter", "DM Sans", system-ui, sans-serif;
+      --font-display: "Playfair Display", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); }
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(212,175,55,0.12), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(212,175,55,0.08), transparent 30%),
+        linear-gradient(180deg, #090909 0%, #060606 100%);
+    }
+
+    .page {
+      width: min(1480px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding: 42px 0 56px;
+    }
+
+    .hero {
+      position: relative;
+      border: 1px solid rgba(212,175,55,0.26);
+      border-radius: 32px;
+      padding: 40px 42px;
+      background: linear-gradient(180deg, rgba(17,17,17,0.96), rgba(8,8,8,0.96));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.22), transparent 28%, transparent 72%, rgba(212,175,55,0.16));
+      pointer-events: none;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(212,175,55,0.24);
+      border-radius: 999px;
+      color: var(--gold-soft);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: rgba(212,175,55,0.06);
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4vw, 4.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+    }
+
+    .subtitle {
+      max-width: 880px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.65;
+    }
+
+    .founders {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .founder-pill {
+      padding: 13px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(212,175,55,0.22);
+      background: rgba(255,255,255,0.02);
+      color: var(--cream);
+      font-weight: 600;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .diagram-wrap {
+      position: relative;
+      margin-top: 30px;
+      padding-top: 54px;
+    }
+
+    .diagram-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 2px;
+      height: 54px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(212,175,55,0.75), rgba(212,175,55,0.24));
+    }
+
+    .holding-card {
+      position: relative;
+      max-width: 560px;
+      margin: 0 auto 54px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(25,25,25,0.96), rgba(9,9,9,0.96));
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 28px 30px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .holding-card::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -54px;
+      width: 2px;
+      height: 54px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(212,175,55,0.68), rgba(212,175,55,0.24));
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      color: var(--gold-soft);
+      margin-bottom: 12px;
+    }
+
+    .holding-title {
+      margin: 0;
+      font-size: clamp(1.8rem, 2.4vw, 2.7rem);
+      color: var(--cream);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+
+    .holding-desc {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+
+    .arms-shell {
+      position: relative;
+      padding-top: 42px;
+    }
+
+    .arms-shell::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: linear-gradient(90deg,
+        rgba(212,175,55,0.06),
+        rgba(212,175,55,0.72) 12%,
+        rgba(212,175,55,0.72) 88%,
+        rgba(212,175,55,0.06));
+    }
+
+    .arms {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .arm {
+      position: relative;
+      min-height: 440px;
+      padding: 24px 22px 22px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(18,18,18,0.98), rgba(10,10,10,0.98));
+      border: 1px solid rgba(212,175,55,0.18);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .arm::before {
+      content: "";
+      position: absolute;
+      top: -42px;
+      left: 50%;
+      width: 2px;
+      height: 42px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(212,175,55,0.75), rgba(212,175,55,0.2));
+    }
+
+    .arm::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(212,175,55,0.11), transparent 36%);
+      pointer-events: none;
+    }
+
+    .arm-tag {
+      display: inline-block;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.15);
+      color: var(--gold-soft);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .arm h3 {
+      margin: 0;
+      font-size: 1.46rem;
+      line-height: 1.15;
+      color: var(--cream);
+      letter-spacing: -0.03em;
+    }
+
+    .arm p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    .arm ul {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 11px;
+    }
+
+    .arm li {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      color: var(--cream);
+      line-height: 1.45;
+      font-size: 0.92rem;
+    }
+
+    .arm strong {
+      color: var(--gold-soft);
+      font-weight: 700;
+    }
+
+    .footnote {
+      margin-top: 26px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(212,175,55,0.05);
+      border: 1px solid rgba(212,175,55,0.12);
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1240px) {
+      .arms { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .arms-shell::before { left: 22%; right: 22%; }
+      .arm { min-height: auto; }
+    }
+
+    @media (max-width: 720px) {
+      .page { width: min(calc(100vw - 24px), 100%); padding: 18px 0 28px; }
+      .hero { padding: 24px 18px; border-radius: 24px; }
+      .holding-card { padding: 22px 18px; margin-bottom: 34px; }
+      .holding-card::after { bottom: -34px; height: 34px; }
+      .arms-shell { padding-top: 28px; }
+      .arm::before { top: -28px; height: 28px; }
+      .arms-shell::before { left: 50%; right: auto; width: 2px; height: 28px; transform: translateX(-50%); background: linear-gradient(180deg, rgba(212,175,55,0.75), rgba(212,175,55,0.2)); }
+      .arms { grid-template-columns: 1fr; gap: 18px; }
+      .diagram-line { height: 34px; }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="kicker">Mentory International® • Organograma Estratégico</div>
+      <h1>Holding, braços de negócio e arquitetura de valor</h1>
+      <p class="subtitle">
+        Visão executiva da estrutura da Mentory International®: marca central, fundadores, braços de negócio,
+        esteira de produtos e frente institucional/tecnológica.
+      </p>
+
+      <div class="founders">
+        <div class="founder-pill">Ed Souza — Sistemas de Negócio Premium, escala, lucro e previsibilidade</div>
+        <div class="founder-pill">Clara do Vale — Marca Pessoal, desejo, posicionamento e alto ticket</div>
+      </div>
+
+      <div class="diagram-wrap">
+        <div class="diagram-line" aria-hidden="true"></div>
+
+        <article class="holding-card" aria-label="Holding Mentory International">
+          <div class="eyebrow">Holding</div>
+          <h2 class="holding-title">Mentory International®</h2>
+          <p class="holding-desc">
+            Marca-mãe que concentra posicionamento premium, esteira educacional, aceleração empresarial,
+            infraestrutura tecnológica e expansão institucional.
+          </p>
+        </article>
+
+        <section class="arms-shell" aria-label="Braços da holding">
+          <div class="arms">
+            <article class="arm">
+              <div class="arm-tag">Braço 01</div>
+              <h3>Clara do Vale<br>Educação & Marca Pessoal</h3>
+              <p>Frente de aquisição, desejo, posicionamento e transformação da mulher empreendedora.</p>
+              <ul>
+                <li><strong>DSMP</strong> — produto de entrada</li>
+                <li><strong>MI</strong> — Marca Irresistível</li>
+                <li><strong>MI XP</strong> — expansão premium</li>
+                <li><strong>ICP:</strong> mulheres empreendedoras buscando prestígio, desejo e elevação de ticket</li>
+              </ul>
+            </article>
+
+            <article class="arm">
+              <div class="arm-tag">Braço 02</div>
+              <h3>Ed Souza<br>Escala & Negócios Premium</h3>
+              <p>Frente de aceleração para empresários que precisam escalar com estrutura, margem e previsibilidade.</p>
+              <ul>
+                <li><strong>Premium Weekend</strong> — imersão presencial estratégica</li>
+                <li><strong>Elevation</strong> — aceleração premium de R$107k</li>
+                <li><strong>ICP:</strong> empresários e experts que querem sair do crescimento caótico</li>
+                <li><strong>Pilares:</strong> branding, marketing, produto, vendas e operações de IA</li>
+              </ul>
+            </article>
+
+            <article class="arm">
+              <div class="arm-tag">Braço 03</div>
+              <h3>Mentory Tech<br>Infraestrutura & IA</h3>
+              <p>Camada tecnológica que transforma operação, inteligência e execução em sistema replicável.</p>
+              <ul>
+                <li><strong>MentoryOS</strong> — sistema operacional da operação</li>
+                <li><strong>MIranda</strong> — IA proprietária</li>
+                <li><strong>Lovable, n8n, Typebot</strong> — produto, automação e funis</li>
+                <li><strong>Função:</strong> sustentar escala, dados, automações e agentes</li>
+              </ul>
+            </article>
+
+            <article class="arm">
+              <div class="arm-tag">Braço 04</div>
+              <h3>Mentory Foundation<br>Institucional & Legado</h3>
+              <p>Frente institucional da holding, separada da máquina comercial, conectada a impacto e expansão de marca.</p>
+              <ul>
+                <li><strong>Fundação</strong> — presença institucional</li>
+                <li><strong>Capital simbólico</strong> — reputação, legado e autoridade</li>
+                <li><strong>Relação com a holding:</strong> amplia percepção de marca e profundidade do ecossistema</li>
+                <li><strong>Função:</strong> extensão estratégica, não oferta principal</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <div class="footnote">
+        Leitura executiva: a holding se organiza em torno de uma <strong>marca-mãe</strong>, dois <strong>braços comerciais centrais</strong>
+        (Clara e Ed), uma <strong>camada tecnológica proprietária</strong> que sustenta a máquina e uma <strong>frente institucional</strong>
+        que reforça capital de marca e legado.
+      </div>
+    </section>
+  </main>
+</body>
+</html>
