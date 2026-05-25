@@ -1,391 +1,296 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clara Do Vale — Marca Pessoal & Alto Ticket</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Clara Do Vale — Marca pessoal e alto ticket para mulheres que querem se tornar caras, disputadas e magnéticas." />
+  <title>Clara Do Vale — Strategic Personal Branding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="site-noise"></div>
 
-    <!-- NAV -->
-    <nav class="nav">
-        <div class="container nav-inner">
-            <a href="#" class="nav-logo">Clara Do Vale</a>
-            <div class="nav-links">
-                <a href="#about">Sobre</a>
-                <a href="#services">Serviços</a>
-                <a href="#cases">Cases</a>
-                <a href="#insights">Conteúdo</a>
-                <a href="#testimonials">Resultados</a>
-            </div>
-            <a href="#contact" class="nav-cta">Agendar Chamada <span class="arrow">→</span></a>
-            <button class="mobile-toggle" id="mobileToggle">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
+  <header class="nav" data-nav>
+    <div class="shell nav__inner">
+      <a href="#" class="brand" aria-label="Clara Do Vale">Clara Do Vale</a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="#authority">Autoridade</a>
+        <a href="#about">Sobre</a>
+        <a href="#services">Serviços</a>
+        <a href="#method">Método</a>
+        <a href="#insights">Insights</a>
+      </nav>
+      <a class="nav__cta" href="#contact">Começar <span>→</span></a>
+    </div>
+  </header>
 
+  <main>
     <!-- HERO -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-badge">Marca Pessoal & Alto Ticket</div>
-            <h1 class="hero-title">
-                <span class="hero-line">Strategic</span>
-                <span class="hero-line hero-italic">Personal Branding</span>
-            </h1>
-            <p class="hero-subtitle">Ajudando mulheres a se tornarem as pessoas mais influentes e bem pagas de seus mercados.</p>
-            <a href="#contact" class="hero-cta">Começar Agora <span class="arrow">→</span></a>
+    <section class="hero" id="top">
+      <div class="shell hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow">Strategic Personal Branding</span>
+          <h1>
+            Helping Women Become<br>
+            <em>The Most Desired</em><br>
+            Names In Their Industry
+          </h1>
+          <p>Marca pessoal, posicionamento e alto ticket para mulheres que não querem só aparecer — querem ser disputadas, lembradas e muito bem pagas.</p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary">Agendar chamada <span>→</span></a>
+            <a href="#services" class="btn btn--ghost">Ver programas</a>
+          </div>
         </div>
-        <div class="hero-scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
+
+        <div class="hero__visual" aria-label="Clara Do Vale">
+          <div class="hero__portrait hero__portrait--main">
+            <img src="assets/images/clara-7135.webp" alt="Clara Do Vale em ensaio editorial" />
+          </div>
+          <div class="hero__portrait hero__portrait--small">
+            <img src="assets/images/clara-7158.webp" alt="Clara Do Vale" />
+          </div>
+          <div class="metric metric--top">
+            <strong>65+</strong>
+            <span>países impactados</span>
+          </div>
+          <div class="metric metric--bottom">
+            <strong>R$30M+</strong>
+            <span>em vendas geradas</span>
+          </div>
         </div>
+      </div>
+      <div class="hero__ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>Magnetismo</span><b>✦</b><span>Energia</span><b>✦</b><span>Inteligência</span><b>✦</b><span>Poder</span><b>✦</b>
+          <span>Magnetismo</span><b>✦</b><span>Energia</span><b>✦</b><span>Inteligência</span><b>✦</b><span>Poder</span><b>✦</b>
+        </div>
+      </div>
     </section>
 
-    <!-- MARQUEE — STATS / CLIENTS -->
-    <section class="marquee-section">
-        <div class="marquee-track">
-            <div class="marquee-content">
-                <div class="marquee-item"><span class="mi-number">65+</span><span class="mi-label">Países</span></div>
-                <div class="marquee-dot">✦</div>
-                <div class="marquee-item"><span class="mi-number">10.000+</span><span class="mi-label">Alunas</span></div>
-                <div class="marquee-dot">✦</div>
-                <div class="marquee-item"><span class="mi-number">R$30M+</span><span class="mi-label">Em vendas geradas</span></div>
-                <div class="marquee-dot">✦</div>
-                <div class="marquee-item"><span class="mi-number">17 anos</span><span class="mi-label">No mercado</span></div>
-                <div class="marquee-dot">✦</div>
-                <div class="marquee-item"><span class="mi-number">500+</span><span class="mi-label">Vídeos publicados</span></div>
-                <div class="marquee-dot">✦</div>
-                <div class="marquee-item"><span class="mi-number">65+</span><span class="mi-label">Países</span></div>
-                <div class="marquee-dot">✦</div>
-                <div class="marquee-item"><span class="mi-number">10.000+</span><span class="mi-label">Alunas</span></div>
-                <div class="marquee-dot">✦</div>
-                <div class="marquee-item"><span class="mi-number">R$30M+</span><span class="mi-label">Em vendas geradas</span></div>
-                <div class="marquee-dot">✦</div>
-                <div class="marquee-item"><span class="mi-number">17 anos</span><span class="mi-label">No mercado</span></div>
-                <div class="marquee-dot">✦</div>
-                <div class="marquee-item"><span class="mi-number">500+</span><span class="mi-label">Vídeos publicados</span></div>
-                <div class="marquee-dot">✦</div>
-            </div>
+    <!-- AUTHORITY / CLIENT GRID -->
+    <section class="authority" id="authority">
+      <div class="shell">
+        <div class="split-heading">
+          <div>
+            <span class="section-num">01</span>
+            <span class="section-label">Uma década moldando influência</span>
+          </div>
+          <h2>Construindo marcas pessoais com grandes histórias, ideias fortes e negócios premium.</h2>
         </div>
+
+        <div class="authority__marquee">
+          <div class="authority__track">
+            <article class="authority-card"><img src="assets/images/clara-7133.webp" alt=""><div><h3>Clara Do Vale</h3><p>+65 países</p></div></article>
+            <article class="authority-card"><img src="assets/images/clara-7159.webp" alt=""><div><h3>Marca Irresistível</h3><p>10K+ alunas</p></div></article>
+            <article class="authority-card"><img src="assets/images/clara-7164.webp" alt=""><div><h3>Alto Ticket</h3><p>R$30M+ vendas</p></div></article>
+            <article class="authority-card"><img src="assets/images/clara-7158.webp" alt=""><div><h3>Mentoria</h3><p>17 anos</p></div></article>
+            <article class="authority-card"><img src="assets/images/clara-7135.webp" alt=""><div><h3>Influência</h3><p>500+ vídeos</p></div></article>
+            <article class="authority-card"><img src="assets/images/clara-7133.webp" alt=""><div><h3>Clara Do Vale</h3><p>+65 países</p></div></article>
+            <article class="authority-card"><img src="assets/images/clara-7159.webp" alt=""><div><h3>Marca Irresistível</h3><p>10K+ alunas</p></div></article>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="about">
-        <div class="container about-inner">
-            <div class="about-left">
-                <span class="section-num">01</span>
-                <span class="section-label">Sobre</span>
-                <h2 class="section-heading">Uma década moldando a influência de mulheres poderosas</h2>
-            </div>
-            <div class="about-right">
-                <p class="about-lead">Clara Do Vale é empresária, mentora e especialista em marca pessoal e vendas de alto ticket. Atua há 17 anos no mercado de educação online, com presença em mais de 65 países.</p>
-                <p>Nutricionista de formação, já ajudou milhares de mulheres a construírem marcas magnéticas, cobrarem caro pelo seu trabalho e alcançarem independência financeira com prestígio.</p>
-                <p>O trabalho da Clara apoiou alunas em crescimentos significativos — de mentorias individuais a programas que geraram milhões em vendas, bestsellers e posições de liderança em seus mercados.</p>
-                <blockquote>"Não estou aqui para lhe agradar. Estou aqui para lhe provocar."</blockquote>
-                <div class="about-stats-row">
-                    <div class="as-item">
-                        <strong>65+</strong>
-                        <span>Países</span>
-                    </div>
-                    <div class="as-divider"></div>
-                    <div class="as-item">
-                        <strong>R$30M+</strong>
-                        <span>Em vendas</span>
-                    </div>
-                    <div class="as-divider"></div>
-                    <div class="as-item">
-                        <strong>10K+</strong>
-                        <span>Alunas</span>
-                    </div>
-                </div>
-            </div>
+    <section class="about" id="about">
+      <div class="shell about__grid">
+        <div class="about__media">
+          <img src="assets/images/clara-7133.webp" alt="Clara Do Vale" />
         </div>
+        <div class="about__copy">
+          <span class="section-num">02</span>
+          <span class="section-label">Sobre Clara</span>
+          <h2>Marca pessoal para mulheres que não nasceram para parecer comuns.</h2>
+          <p class="lead">Clara Do Vale é empresária, mentora e especialista em marca pessoal e vendas de alto ticket. Atua há 17 anos no mercado de educação online, com presença em mais de 65 países.</p>
+          <p>Seu trabalho combina estratégia, estética, provocação e posicionamento para transformar especialistas em marcas desejadas — daquelas que não precisam correr atrás, porque passam a ser procuradas.</p>
+          <blockquote>“Eu não espero o evento. Eu sou o evento.”</blockquote>
+        </div>
+      </div>
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="services-header">
-                <span class="section-num">02</span>
-                <span class="section-label">Serviços</span>
-                <h2 class="section-heading">Programas. Estratégia. Transformação.</h2>
-            </div>
-            <div class="services-list">
-                <!-- Service 01 -->
-                <div class="service-row">
-                    <div class="service-row-content">
-                        <div class="service-row-left">
-                            <span class="service-row-num">01</span>
-                            <h3>Programas de Marca Pessoal</h3>
-                            <p>Sprints de 12 semanas para construir, crescer ou escalar sua marca pessoal — do invisível ao irresistível.</p>
-                        </div>
-                        <div class="service-row-right">
-                            <a href="#" class="link-arrow">Ver mais <span>→</span></a>
-                        </div>
-                    </div>
-                    <div class="service-sub-cards">
-                        <div class="sub-card">
-                            <span class="sub-card-tag">Starter</span>
-                            <h4>DSMP</h4>
-                            <span class="sub-card-price">R$ 397</span>
-                            <p>Desejo, Sedução, Marca e Posicionamento. O primeiro passo para sair do invisível.</p>
-                        </div>
-                        <div class="sub-card">
-                            <span class="sub-card-tag">Growth</span>
-                            <h4>Marca Irresistível</h4>
-                            <span class="sub-card-price">R$ 5.000</span>
-                            <p>Posicionamento, comunicação e estratégia para cobrar o valor que você merece.</p>
-                        </div>
-                        <div class="sub-card featured">
-                            <span class="sub-card-tag">Scale</span>
-                            <h4>MI XP</h4>
-                            <span class="sub-card-price">R$ 7K — R$ 15K</span>
-                            <p>Imersão premium em branding, marketing e vendas de alto ticket.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Service 02 -->
-                <div class="service-row">
-                    <div class="service-row-content">
-                        <div class="service-row-left">
-                            <span class="service-row-num">02</span>
-                            <h3>Estratégia de Marca Pessoal</h3>
-                            <p>Projeto de 4 semanas para construir a fundação da sua marca pessoal com clareza e posicionamento.</p>
-                        </div>
-                        <div class="service-row-right">
-                            <a href="#" class="link-arrow">Ver mais <span>→</span></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Service 03 -->
-                <div class="service-row">
-                    <div class="service-row-content">
-                        <div class="service-row-left">
-                            <span class="service-row-num">03</span>
-                            <h3>Treinamento de Marca Pessoal</h3>
-                            <p>Levamos o aprendizado de trabalhar com algumas das maiores empreendedoras do país diretamente para sua equipe.</p>
-                        </div>
-                        <div class="service-row-right">
-                            <a href="#" class="link-arrow">Ver mais <span>→</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="services" id="services">
+      <div class="shell">
+        <div class="split-heading split-heading--stacked">
+          <div>
+            <span class="section-num">03</span>
+            <span class="section-label">Serviços</span>
+          </div>
+          <h2>Programmes. Strategy. Training.</h2>
         </div>
+
+        <div class="service-list">
+          <article class="service-item service-item--expanded">
+            <div class="service-item__head">
+              <span>01</span>
+              <div>
+                <h3>Personal Brand Programmes</h3>
+                <p>Sprints para construir, crescer ou escalar uma marca pessoal magnética.</p>
+              </div>
+              <a href="#contact">Saiba mais →</a>
+            </div>
+            <div class="program-grid">
+              <div class="program-card">
+                <span>Founder Starter</span>
+                <h4>DSMP</h4>
+                <p>Desejo, Sedução, Marca e Posicionamento — o primeiro passo para sair do invisível.</p>
+                <strong>R$397</strong>
+              </div>
+              <div class="program-card program-card--featured">
+                <span>Founder Growth</span>
+                <h4>Marca Irresistível</h4>
+                <p>Para quem já tem marca e precisa torná-la desejada, cara e impossível de ignorar.</p>
+                <strong>~R$5.000</strong>
+              </div>
+              <div class="program-card">
+                <span>Founder Scale</span>
+                <h4>MI XP</h4>
+                <p>A experiência premium para escalar posicionamento, branding e vendas de alto ticket.</p>
+                <strong>R$7K–R$15K</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-item">
+            <div class="service-item__head">
+              <span>02</span>
+              <div>
+                <h3>Personal Brand Strategy</h3>
+                <p>Projeto de fundação estratégica para posicionar sua marca com clareza, desejo e autoridade.</p>
+              </div>
+              <a href="#contact">Saiba mais →</a>
+            </div>
+          </article>
+
+          <article class="service-item">
+            <div class="service-item__head">
+              <span>03</span>
+              <div>
+                <h3>Personal Brand Training</h3>
+                <p>Treinamento para equipes e experts aplicarem os princípios de marca pessoal premium.</p>
+              </div>
+              <a href="#contact">Saiba mais →</a>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- PROCESS -->
-    <section class="process">
-        <div class="container">
-            <div class="process-header">
-                <span class="section-num">03</span>
-                <span class="section-label">O Método</span>
-                <h2 class="section-heading">De invisível a irresistível em 4 etapas</h2>
-            </div>
-            <div class="process-grid">
-                <div class="process-card">
-                    <div class="process-card-num">01</div>
-                    <h3>Desejo</h3>
-                    <p>Despertar o magnetismo. Entender que você já tem tudo para ser cara — falta estratégia, não talento.</p>
-                </div>
-                <div class="process-card">
-                    <div class="process-card-num">02</div>
-                    <h3>Sedução</h3>
-                    <p>Construir uma marca que atrai sem perseguir. Comunicação que seduz e posiciona como a única opção.</p>
-                </div>
-                <div class="process-card">
-                    <div class="process-card-num">03</div>
-                    <h3>Marca</h3>
-                    <p>Empacotar seu conhecimento em algo que parece R$100.000. Visual, presença, autoridade.</p>
-                </div>
-                <div class="process-card">
-                    <div class="process-card-num">04</div>
-                    <h3>Posicionamento</h3>
-                    <p>Cobrar caro com naturalidade. Agenda disputada, clientes premium e liberdade financeira real.</p>
-                </div>
-            </div>
+    <!-- METHOD -->
+    <section class="method" id="method">
+      <div class="shell">
+        <div class="split-heading">
+          <div>
+            <span class="section-num">04</span>
+            <span class="section-label">O Método</span>
+          </div>
+          <h2>De invisível a irresistível em quatro movimentos.</h2>
         </div>
+        <div class="method-grid">
+          <article><span>01</span><h3>Desejo</h3><p>Transformar presença em magnetismo e tornar sua marca impossível de ignorar.</p></article>
+          <article><span>02</span><h3>Sedução</h3><p>Comunicação que atrai sem perseguir e posiciona você como escolha óbvia.</p></article>
+          <article><span>03</span><h3>Marca</h3><p>Arquitetura visual, verbal e estratégica para parecer cara antes mesmo da oferta.</p></article>
+          <article><span>04</span><h3>Posicionamento</h3><p>Agenda disputada, clientes premium e vendas com autoridade, não esforço.</p></article>
+        </div>
+      </div>
     </section>
 
-    <!-- CASES / VIDEO -->
-    <section id="cases" class="cases">
-        <div class="container">
-            <div class="cases-header">
-                <span class="section-num">04</span>
-                <span class="section-label">Na Prática</span>
-                <h2 class="section-heading">Veja como funciona por trás da marca</h2>
-            </div>
-            <div class="cases-grid">
-                <div class="case-card case-large">
-                    <img src="assets/images/clara-7164.PNG" alt="Clara Do Vale">
-                    <div class="case-overlay">
-                        <div class="case-play">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="case-card">
-                    <img src="assets/images/clara-7159.PNG" alt="Clara Do Vale">
-                    <div class="case-overlay">
-                        <span class="case-tag">Marca Pessoal</span>
-                    </div>
-                </div>
-                <div class="case-card">
-                    <img src="assets/images/clara-7158.PNG" alt="Clara Do Vale">
-                    <div class="case-overlay">
-                        <span class="case-tag">Alto Ticket</span>
-                    </div>
-                </div>
-            </div>
+    <!-- FEATURE / VIDEO -->
+    <section class="feature" id="cases">
+      <div class="shell feature__grid">
+        <div class="feature__copy">
+          <span class="section-num">05</span>
+          <span class="section-label">Na prática</span>
+          <h2>Conteúdo que vira influência. Influência que vira dinheiro.</h2>
+          <p>Clara compartilha bastidores, estratégias e provocações reais para mulheres que querem escalar com inteligência — sem parecer mais uma na multidão.</p>
+          <ul>
+            <li>Estratégia de marca pessoal</li>
+            <li>Venda de alto ticket</li>
+            <li>Comunicação magnética</li>
+          </ul>
         </div>
+        <div class="video-card">
+          <img src="assets/images/clara-7164.webp" alt="Clara Do Vale em ação" />
+          <button aria-label="Assistir vídeo"><span>▶</span></button>
+        </div>
+      </div>
     </section>
 
     <!-- INSIGHTS -->
-    <section id="insights" class="insights">
-        <div class="container">
-            <div class="insights-header">
-                <span class="section-num">05</span>
-                <span class="section-label">Insights</span>
-                <h2 class="section-heading">Conteúdo que transforma sua forma de vender</h2>
-            </div>
-            <div class="insights-grid">
-                <div class="insight-card">
-                    <div class="insight-img">
-                        <img src="assets/images/clara-7159.PNG" alt="">
-                    </div>
-                    <div class="insight-body">
-                        <span class="insight-tag">Marca Pessoal</span>
-                        <h3>Por que ser cara é o melhor negócio do mundo</h3>
-                        <p>O segredo das mulheres que cobram alto não é sorte — é posicionamento estratégico.</p>
-                        <a href="#" class="link-arrow">Ler artigo <span>→</span></a>
-                    </div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-img">
-                        <img src="assets/images/clara-7158.PNG" alt="">
-                    </div>
-                    <div class="insight-body">
-                        <span class="insight-tag">Alto Ticket</span>
-                        <h3>Como vender sem parecer que está vendendo</h3>
-                        <p>A arte da venda magnética: quando sua marca atrai, o cliente já chega querendo comprar.</p>
-                        <a href="#" class="link-arrow">Ler artigo <span>→</span></a>
-                    </div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-img">
-                        <img src="assets/images/clara-7135.PNG" alt="">
-                    </div>
-                    <div class="insight-body">
-                        <span class="insight-tag">Posicionamento</span>
-                        <h3>De nutricionista a mentora internacional em 65 países</h3>
-                        <p>A jornada de Clara: como uma mulher construiu um império sem perder a essência.</p>
-                        <a href="#" class="link-arrow">Ler artigo <span>→</span></a>
-                    </div>
-                </div>
-            </div>
+    <section class="insights" id="insights">
+      <div class="shell">
+        <div class="split-heading split-heading--stacked">
+          <div>
+            <span class="section-num">06</span>
+            <span class="section-label">Insights</span>
+          </div>
+          <h2>Pensamento estratégico para mulheres que constroem com energia e escalam com inteligência.</h2>
         </div>
+        <div class="insights-grid">
+          <article class="insight-card">
+            <img src="assets/images/clara-7159.webp" alt="" />
+            <div><span>Marca Pessoal</span><h3>Por que ser cara é o melhor negócio do mundo</h3><p>O segredo das mulheres que cobram alto não é sorte — é posicionamento estratégico.</p><a href="#">Ler mais →</a></div>
+          </article>
+          <article class="insight-card">
+            <img src="assets/images/clara-7158.webp" alt="" />
+            <div><span>Alto Ticket</span><h3>Como vender sem parecer que está vendendo</h3><p>Quando sua marca atrai, o cliente já chega querendo comprar de você.</p><a href="#">Ler mais →</a></div>
+          </article>
+          <article class="insight-card">
+            <img src="assets/images/clara-7135.webp" alt="" />
+            <div><span>Posicionamento</span><h3>De nutricionista a mentora internacional</h3><p>A jornada de Clara em 65 países: autoridade, desejo e marca pessoal.</p><a href="#">Ler mais →</a></div>
+          </article>
+        </div>
+      </div>
     </section>
 
     <!-- TESTIMONIALS -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <div class="testimonials-header">
-                <span class="section-num">06</span>
-                <span class="section-label">Resultados Reais</span>
-                <h2 class="section-heading">O que dizem as mulheres que transformaram suas marcas</h2>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="tc-quote">"</div>
-                    <p>Em 3 meses, tripliquei meu ticket médio. A Clara não ensina técnica — ela transforma a forma como você se enxerga.</p>
-                    <div class="tc-author">
-                        <strong>Ana Paula R.</strong>
-                        <span>Mentora de Negócios</span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="tc-quote">"</div>
-                    <p>Eu cobrava R$500 por consulta. Hoje vendo mentoring a R$15K. A mudança não foi no mercado — foi na minha marca.</p>
-                    <div class="tc-author">
-                        <strong>Marina L.</strong>
-                        <span>Consultora Estratégica</span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="tc-quote">"</div>
-                    <p>Pela primeira vez me senti dona do meu valor. A Clara provoca, incomoda e te coloca no lugar que você merece.</p>
-                    <div class="tc-author">
-                        <strong>Juliana S.</strong>
-                        <span>Coach de Carreira</span>
-                    </div>
-                </div>
-            </div>
+    <section class="testimonials" id="testimonials">
+      <div class="shell">
+        <div class="split-heading">
+          <div>
+            <span class="section-num">07</span>
+            <span class="section-label">Resultados</span>
+          </div>
+          <h2>Mulheres que deixaram de ser opção e passaram a ser o padrão.</h2>
         </div>
+        <div class="testimonial-grid">
+          <article><p>“Em 3 meses, tripliquei meu ticket médio. A Clara não ensina técnica — ela transforma a forma como você se enxerga.”</p><strong>Ana Paula R.</strong><span>Mentora de Negócios</span></article>
+          <article><p>“Eu cobrava R$500 por consulta. Hoje vendo mentoring a R$15K. A mudança não foi no mercado — foi na minha marca.”</p><strong>Marina L.</strong><span>Consultora Estratégica</span></article>
+          <article><p>“Pela primeira vez me senti dona do meu valor. A Clara provoca, incomoda e te coloca no lugar que você merece.”</p><strong>Juliana S.</strong><span>Coach de Carreira</span></article>
+        </div>
+      </div>
     </section>
 
-    <!-- CTA / CONTACT -->
-    <section id="contact" class="contact">
-        <div class="container contact-inner">
-            <div class="contact-left">
-                <span class="section-num">07</span>
-                <h2 class="contact-heading">Pronta para ser cara, disputada e magnética?</h2>
-                <p>Agende uma chamada estratégica com a equipe da Clara e descubra como transformar sua marca pessoal em uma máquina de atrair clientes de alto ticket.</p>
-                <a href="#" class="contact-cta">Agendar Chamada <span class="arrow">→</span></a>
-                <span class="contact-note">Sem compromisso · 30 min · 100% estratégico</span>
-            </div>
-            <div class="contact-right">
-                <img src="assets/images/clara-7164.PNG" alt="Clara Do Vale">
-            </div>
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="shell contact__grid">
+        <div>
+          <span class="section-num">08</span>
+          <span class="section-label">Contato</span>
+          <h2>Comece Agora</h2>
+          <p>Se você quer ser cara, disputada e magnética, comece pela conversa certa.</p>
         </div>
+        <form class="contact-form">
+          <label><span>Nome</span><input type="text" placeholder="Seu nome" /></label>
+          <label><span>Email</span><input type="email" placeholder="seuemail@email.com" /></label>
+          <label><span>Serviço</span><select><option>Selecione um serviço</option><option>DSMP</option><option>Marca Irresistível</option><option>MI XP</option><option>Estratégia de Marca Pessoal</option></select></label>
+          <button type="button">Enviar <span>→</span></button>
+        </form>
+      </div>
     </section>
+  </main>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container footer-inner">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="#" class="nav-logo">Clara Do Vale</a>
-                    <p>Magnetismo. Energia. Inteligência. Poder.</p>
-                </div>
-                <div class="footer-cols">
-                    <div class="footer-col">
-                        <h4>Navegação</h4>
-                        <a href="#about">Sobre</a>
-                        <a href="#services">Serviços</a>
-                        <a href="#cases">Cases</a>
-                        <a href="#insights">Conteúdo</a>
-                        <a href="#testimonials">Resultados</a>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Programas</h4>
-                        <a href="#">DSMP</a>
-                        <a href="#">Marca Irresistível</a>
-                        <a href="#">MI XP</a>
-                        <a href="#">Premium Weekend</a>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Redes</h4>
-                        <a href="https://instagram.com/bemclara" target="_blank">Instagram</a>
-                        <a href="#">YouTube</a>
-                        <a href="#">TikTok</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 Clara Do Vale. Todos os direitos reservados.</p>
-                <div class="footer-bottom-links">
-                    <a href="#">Privacidade</a>
-                    <a href="#">Termos</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+  <footer class="footer">
+    <div class="shell footer__grid">
+      <div><a class="brand" href="#top">Clara Do Vale</a><p>Magnetismo. Energia. Inteligência. Poder.</p></div>
+      <div class="footer__links"><a href="#about">Sobre</a><a href="#services">Serviços</a><a href="#method">Método</a><a href="#insights">Insights</a><a href="https://instagram.com/bemclara" target="_blank">Instagram</a></div>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

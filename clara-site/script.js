@@ -1,17 +1,14 @@
-// Mobile menu
-const toggle = document.getElementById('mobileToggle');
-const nav = document.querySelector('.nav-links');
-if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-        nav.classList.toggle('show');
-        toggle.classList.toggle('active');
-    });
-}
+// Subtle nav state and smooth anchors
+const nav = document.querySelector('[data-nav]');
+window.addEventListener('scroll', () => {
+  nav?.classList.toggle('is-scrolled', window.scrollY > 24);
+});
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        const t = document.querySelector(a.getAttribute('href'));
-        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });
