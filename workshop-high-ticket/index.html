@@ -34,8 +34,15 @@
     .guarantee-text p{font-size:14px;color:#303832;line-height:1.65}
 
   
-.hero-mosaic{border-radius:12px;overflow:hidden}
-@media(max-width:640px){.hero-mosaic{grid-template-columns:1fr!important;grid-template-rows:auto!important;aspect-ratio:auto!important}.hero-mosaic img{grid-row:auto!important;height:200px}}
+
+
+
+.hero-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:80px 20px 60px}
+.hero-text-col{display:flex;flex-direction:column;gap:14px}
+.hero-mosaic-col{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:8px;border-radius:12px;overflow:hidden;aspect-ratio:4/5}
+.hero-mosaic-col img{width:100%;height:100%;object-fit:cover}
+.hero-mosaic-col img:first-child{grid-row:1/3}
+@media(max-width:768px){{.hero-inner{{grid-template-columns:1fr!important;padding:40px 20px 40px;gap:24px}}.hero-mosaic-col{{aspect-ratio:16/9;max-height:260px}}}}
 </style>
   <script>
   (function(){
@@ -75,43 +82,30 @@
       
     </nav>
 
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>DIA 20/06 DAS 09:00 ÀS 17:30 NO ZOOM</span>
+    <section class="hero" aria-labelledby="hero-title">
+  <div class="hero-inner">
+    <div class="hero-text-col">
+      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>
       <h1 id="hero-title">Em 1 dia, vou te mostrar como estruturo negócios que <span class="mark">cobram alto</span> sem aumentar custo, sem crescer a operação e sem se tornar refém do próprio negócio.</h1>
       <p class="subhead">O modelo de negócio boutique que permite ao empresário cobrar pelo valor real que entrega, atender clientes que reconhecem esse valor e ter um negócio que cresce sem crescer o esforço junto.</p>
       <p class="hero-copy">Para empresários que faturam bem, mas operam abaixo do que poderiam.</p>
-      <div class="hero-actions">
-        <a class="btn" href="#oferta">GARANTIR MEU INGRESSO NO LOTE 1 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <span class="microcopy">Online e Ao Vivo no Zoom · 1º Lote a R$ 97 liberado</span>
-      </div>
-
-      <div class="hero-mosaic" style="display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:8px;max-width:720px;margin:32px auto 0;border-radius:12px;overflow:hidden;aspect-ratio:16/9">
-        <img src="assets/img/ed-palestra-1.jpg?v=1780347828" alt="Ed Souza palestrando" style="grid-row:1/3;width:100%;height:100%;object-fit:cover" loading="eager">
-        <img src="assets/img/ed-trabalho-2.jpg?v=1780347828" alt="Ed Souza trabalhando" style="width:100%;height:100%;object-fit:cover" loading="eager">
-        <img src="assets/img/ed-palestra-3.jpg?v=1780347828" alt="Ed Souza em evento" style="width:100%;height:100%;object-fit:cover" loading="eager">
-      </div>
-
+      <span class="microcopy">Online e Ao Vivo no Zoom · 1º Lote a R$ 97 liberado</span>
       <div class="checks" aria-label="O que você vai construir">
         <span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Cobrar pelo valor real</span>
         <span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Operar sem depender de você</span>
         <span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Crescer sem crescer custo</span>
       </div>
-    </section>
+      
+    </div>
+    <div class="hero-mosaic-col">
+      <img src="assets/img/ed-palestra-1.jpg" alt="Ed Souza palestrando">
+      <img src="assets/img/ed-trabalho-2.jpg" alt="Ed Souza trabalhando">
+      <img src="assets/img/ed-palestra-3.jpg" alt="Ed Souza em evento">
+    </div>
+  </div>
+</section>
 
-    
-
-    <section class="section wrap" id="problema" aria-labelledby="problema-title"><div class="section-head"><span class="label">Diagnóstico</span><h2 id="problema-title">Antes de falar sobre o workshop, deixa eu te fazer algumas perguntas.</h2></div><div class="diagnostic-copy"><p>Você fatura bem, mas toda vez que tenta crescer, o custo cresce junto e a margem fica igual?</p><p>Você já pensou em cobrar mais, mas ficou com medo de perder cliente e acabou cobrando o mesmo de sempre?</p><p>Você contratou mais gente para crescer e o lucro não cresceu na mesma proporção?</p><p>Você sabe que entrega um resultado que vale muito mais do que cobra, mas ainda precisa justificar o preço em toda conversa de venda?</p><p>Você tentou tirar uma semana de férias e ficou no celular o tempo todo porque o negócio não roda sem você?</p><p>Você tem clientes que pagam bem e clientes que consomem o dobro de energia pelo mesmo valor?</p><p style="margin-top:24px;font-weight:700;color:#090907">Se você respondeu sim para pelo menos três, você não tem um problema de produto. Você tem um problema de modelo.</p></div></section>
-
-    <section class="section wrap comparison" id="comparativo" aria-labelledby="comparativo-title"><div class="section-head"><span class="label">Onde você está vs. onde pode estar</span><h2 id="comparativo-title">O modelo atual vs.<em>O modelo boutique</em></h2></div><div class="comparison-grid"><div class="comparison-panel comparison-panel--current"><p class="comparison-label">O que você vive hoje</p><ul class="comparison-list"><li><span class="comparison-icon" aria-hidden="true">×</span><span>Toda vez que tenta crescer, o custo cresce junto</span></li><li><span class="comparison-icon" aria-hidden="true">×</span><span>Cobra abaixo do que entrega e precisa justificar preço em toda venda</span></li><li><span class="comparison-icon" aria-hidden="true">×</span><span>Clientes que consomem o dobro de energia pelo mesmo valor</span></li><li><span class="comparison-icon" aria-hidden="true">×</span><span>Tirou férias e ficou no celular porque o negócio não roda sem você</span></li><li><span class="comparison-icon" aria-hidden="true">×</span><span>Cada novo cliente traz mais complexidade operacional</span></li><li><span class="comparison-icon" aria-hidden="true">×</span><span>O negócio cresce. A dependência de você cresce junto</span></li></ul></div><div class="comparison-panel comparison-panel--desired"><p class="comparison-label">O que você vai construir</p><ul class="comparison-list"><li><span class="comparison-icon" aria-hidden="true">✓</span><span>Cobrar pelo valor real do resultado que entrega</span></li><li><span class="comparison-icon" aria-hidden="true">✓</span><span>Preço baseado no custo do problema — não no tempo gasto</span></li><li><span class="comparison-icon" aria-hidden="true">✓</span><span> Crescer sem crescer custo operacional</span></li><li><span class="comparison-icon" aria-hidden="true">✓</span><span>Negócio que opera sem você no centro de cada entrega</span></li><li><span class="comparison-icon" aria-hidden="true">✓</span><span>Funil que qualifica e converte sem sua presença</span></li><li><span class="comparison-icon" aria-hidden="true">✓</span><span>Venda consultiva que fecha sem ceder ao desconto</span></li></ul></div></div></section>
-
-    
-    <section class="section wrap" id="transicao" aria-labelledby="transicao-title"><div class="section-head"><span class="label">Do outro lado</span><h2 id="transicao-title" style="max-width:800px;margin:0 auto">Eu passei por isso.</h2></div><div class="diagnostic-copy"><p>Faturava bem. Tinha clientes. E cada ano que passava, o negócio exigia mais de mim, não menos.</p><p>Até entender que o problema não era o quanto eu trabalhava. Era o modelo que eu estava operando.</p><p>Quando mudei o modelo, o negócio passou a cobrar mais, a operar com menos custo e a funcionar sem depender da minha presença em cada detalhe.</p><p style="margin-top:20px;font-weight:700;color:#090907">É esse modelo que eu vou mostrar e construir com você neste workshop.</p></div></section>
-
-<section class="section wrap" id="conteudo" aria-labelledby="conteudo-title"><div class="dark"><span class="label">O que você vai construir, bloco a bloco</span><h2 id="conteudo-title">5 blocos de construção ao vivo.</h2><p class="lead">Não é um curso com módulos pra assistir quando tiver tempo. É um dia ao vivo, construindo junto. Você sai com o rascunho pronto.</p><div class="agenda"><div class="agenda-item"><strong>Bloco 01</strong><div><h3>Diagnóstico — onde o seu modelo está te limitando</h3><p>Antes de construir qualquer coisa, você vai mapear o gargalo real. Qual dos três eixos está te prendendo mais: o custo que não para de crescer, a operação que depende demais de você, ou o modelo que não consegue cobrar o que o resultado vale.</p></div></div><div class="agenda-item"><strong>Bloco 02</strong><div><h3>Posicionamento — cobrar alto sem precisar convencer</h3><p>Você vai definir o nicho de especialidade e a promessa específica que faz o cliente certo chegar até você já pronto para pagar. Quando o posicionamento está certo, você não precisa justificar preço em cada conversa.</p></div></div><div class="agenda-item"><strong>Bloco 03</strong><div><h3>A Operar sem depender de você</h3><p>A diferença entre cobrar por hora e cobrar pelo valor do resultado que você entrega. Você vai estruturar a oferta como promessa de transformação específica. Esse é o único modelo que permite cobrar alto sem aumentar o custo.</p></div></div><div class="agenda-item"><strong>Bloco 04</strong><div><h3>O funil — operar sem depender de indicação ou presença</h3><p>Como o cliente certo chega até você com ou sem você presente. Funil de conteúdo e qualificação que faz o aquecimento antes da venda, para que ela seja confirmação, não convencimento.</p></div></div><div class="agenda-item"><strong>Bloco 05</strong><div><h3>A venda consultiva — fechar sem ceder ao desconto</h3><p>A estrutura da conversa de venda para negócio de alto valor. Como conduzir, quando avançar e como responder objeção de preço sem baixar o valor. Com roteiro para usar na semana seguinte.</p></div></div></div></div></section>
-
-    <section class="mentors-section" id="mentor" aria-labelledby="mentor-title"><div class="mentors-inner"><div class="mentors-head"><span class="mentors-kicker">Quem conduz</span><h2 class="mentors-title" id="mentor-title">Ed Souza<em>Co-fundador · Mentory International®</em></h2></div><div class="mentor-grid" style="max-width:560px;margin:0 auto"><article class="mentor-card mentor-card--ed" style="max-width:560px;margin:0 auto"><img class="mentor-photo" style="margin:0 auto" src="assets/img/ed-souza.webp" alt="Retrato de Ed Souza" loading="lazy" width="720" height="860"><div class="mentor-copy" style="text-align:center"><span class="mentor-role">Co-fundador • Mentory International®</span><h3>Ed Souza</h3><div class="mentor-position">Co-fundador, Mentory International</div><p>Nos últimos 15 anos, ajudei mais de 100 empresas a sair do modelo que exige mais esforço a cada crescimento e migrar para um modelo que cobra mais, opera com menos custo e funciona sem o dono no centro de tudo. Trabalho com empresários que deixaram de cobrar por hora ou por serviço e passaram a cobrar pelo impacto real que geram. Que saíram do faturamento variável e construíram receita previsível. Que pararam de crescer custo para crescer lucro. O modelo que vou mostrar neste workshop não é teoria. É o que uso e o que aplico com quem trabalha comigo.</p></div></article></div></div></section>
-
-    <section class="metrics" aria-label="Prova de autoridade"><div class="wrap"><div class="metrics-label">A estrutura por trás do modelo</div><div class="metrics-grid"><div class="metric"><strong>R$30M+</strong><span>em faturamento gerado nos últimos 3 anos</span></div><div class="metric"><strong class="text-metric">+71 países</strong><span>clientes Mentory no mundo</span></div><div class="metric"><strong class="text-metric">até 10x</strong><span>mais com produtos e serviços de alto ticket</span></div></div></div></section>
+<section class="metrics" aria-label="Prova de autoridade"><div class="wrap"><div class="metrics-label">A estrutura por trás do modelo</div><div class="metrics-grid"><div class="metric"><strong>R$30M+</strong><span>em faturamento gerado nos últimos 3 anos</span></div><div class="metric"><strong class="text-metric">+71 países</strong><span>clientes Mentory no mundo</span></div><div class="metric"><strong class="text-metric">até 10x</strong><span>mais com produtos e serviços de alto ticket</span></div></div></div></section>
 
     <section id="depoimentos" class="testimonials-section" aria-labelledby="depoimentos-title">
       <div class="testimonials-head">
