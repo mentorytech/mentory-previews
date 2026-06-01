@@ -33,7 +33,10 @@
     .guarantee-text h3{font-size:16px;font-weight:900;color:#2E6F40;margin-bottom:6px}
     .guarantee-text p{font-size:14px;color:#303832;line-height:1.65}
 
-  </style>
+  
+.hero-mosaic{border-radius:12px;overflow:hidden}
+@media(max-width:640px){.hero-mosaic{grid-template-columns:1fr!important;grid-template-rows:auto!important;aspect-ratio:auto!important}.hero-mosaic img{grid-row:auto!important;height:200px}}
+</style>
   <script>
   (function(){
     var TRACK_URL="https://zwkyymicfhgfkqvzzbrx.supabase.co/functions/v1/track";
