@@ -1,195 +1,145 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard de Instagram | @bemclara</title>
-<style>
-  :root{
-    --bg:#070c07;--panel:#0e160e;--panel2:#101c10;--cream:#fdfbf7;--muted:#8fa389;
-    --green:#4cde4c;--green-deep:#2fa83a;--line:rgba(76,222,76,.16);--gold:#f5c518;
-  }
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Instagram | @bemclara</title><style>
+  :root{--bg:#070c07;--panel:#0e160e;--panel2:#101c10;--cream:#fdfbf7;--muted:#8fa389;
+    --green:#4cde4c;--green-deep:#2fa83a;--line:rgba(76,222,76,.16);--gold:#f5c518}
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:radial-gradient(130% 90% at 85% -10%,#0e2410 0%,var(--bg) 55%);color:var(--cream);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;
-    min-height:100vh;padding:40px 22px 60px}
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;padding:40px 22px 60px}
   .wrap{max-width:1080px;margin:0 auto}
-  .top{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between;margin-bottom:26px}
+  a{color:inherit;text-decoration:none}
+  .top{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between;margin-bottom:24px}
   .who{display:flex;align-items:center;gap:18px}
-  .avatar{width:74px;height:74px;border-radius:50%;flex:0 0 auto;
-    background:conic-gradient(from 140deg,var(--green),var(--green-deep),var(--green));
-    display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,.45)}
-  .avatar div{width:64px;height:64px;border-radius:50%;background:#0c140c;display:flex;align-items:center;justify-content:center;
-    font-weight:700;font-size:1.5rem;color:var(--green)}
+  .avatar{width:78px;height:78px;border-radius:50%;flex:0 0 auto;padding:3px;
+    background:conic-gradient(from 140deg,var(--green),var(--green-deep),var(--green))}
+  .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid var(--bg)}
   .who h1{font-size:1.7rem;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
   .who .name{color:var(--muted);font-size:.95rem;margin-top:2px}
+  .who .bio{color:var(--muted);font-size:.82rem;margin-top:6px;max-width:46ch;line-height:1.4}
   .vbadge{font-size:.72rem;color:#06140f;background:var(--green);border-radius:999px;padding:.18rem .6rem;font-weight:700}
   .stamp{text-align:right;font-size:.78rem;color:var(--muted);line-height:1.5}
   .stamp b{color:var(--green);display:block;letter-spacing:.16em;text-transform:uppercase;font-size:.7rem}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:18px}
   .kpi{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 18px;position:relative;overflow:hidden}
   .kpi:before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green-deep),var(--green))}
-  .kpi b{display:block;font-size:2rem;font-weight:700;letter-spacing:-.02em}
-  .kpi span{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-  .kpi small{display:block;color:var(--green);font-size:.78rem;margin-top:6px}
+  .kpi b{display:block;font-size:1.9rem;font-weight:700;letter-spacing:-.02em}
+  .kpi span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em}
+  .kpi small{display:block;color:var(--green);font-size:.76rem;margin-top:6px}
   .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
   .col4{grid-column:span 4}.col6{grid-column:span 6}.col8{grid-column:span 8}.col12{grid-column:span 12}
   .card h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--green);font-weight:700;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
-  .card h3 .est{font-size:.6rem;letter-spacing:.08em;color:var(--gold);border:1px solid rgba(245,197,24,.4);border-radius:999px;padding:.12rem .5rem}
+  .card h3 .real{font-size:.6rem;letter-spacing:.06em;color:var(--green);border:1px solid var(--line);border-radius:999px;padding:.12rem .5rem}
   .gauge{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}
-  .ring{width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--green) 0 90%,#16261a 90% 100%);display:flex;align-items:center;justify-content:center}
-  .ring div{width:114px;height:114px;border-radius:50%;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .ring b{font-size:2.6rem;font-weight:700;color:var(--green);line-height:1}
-  .ring span{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-  .gauge p{color:var(--muted);font-size:.85rem;text-align:center;margin-top:14px;line-height:1.4}
+  .ring{width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .ring div{width:108px;height:108px;border-radius:50%;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring b{font-size:2.1rem;font-weight:700;color:var(--green);line-height:1}
+  .ring span{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+  .gauge p{color:var(--muted);font-size:.82rem;text-align:center;margin-top:12px;line-height:1.4}
   .bar{margin:13px 0}
   .bar .lbl{display:flex;justify-content:space-between;font-size:.86rem;margin-bottom:6px}
   .bar .lbl span:first-child{color:var(--cream)}.bar .lbl span:last-child{color:var(--green);font-weight:700}
-  .track{height:10px;background:#16261a;border-radius:6px;overflow:hidden}
+  .track{height:11px;background:#16261a;border-radius:6px;overflow:hidden}
   .fill{height:100%;background:linear-gradient(90deg,var(--green-deep),var(--green));border-radius:6px}
-  .tier-track{position:relative;height:46px;border-radius:12px;background:linear-gradient(90deg,#0f1f10,#163a1a);border:1px solid var(--line)}
-  .tier-marks{display:flex;justify-content:space-between;font-size:.68rem;color:var(--muted);margin-top:8px}
-  .tier-pin{position:absolute;top:-10px;transform:translateX(-50%);text-align:center}
-  .tier-pin .dot{width:16px;height:16px;border-radius:50%;background:var(--green);border:3px solid var(--bg);margin:0 auto;box-shadow:0 0 0 2px var(--green)}
-  .tier-pin .lab{font-size:.72rem;color:var(--green);font-weight:700;white-space:nowrap;margin-top:4px}
-  .tier-seg{position:absolute;top:0;bottom:0;border-right:1px dashed rgba(76,222,76,.25)}
-  .scen{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
-  .scen .s{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
-  .scen .s b{display:block;font-size:1.5rem;color:var(--green);font-weight:700}
-  .scen .s span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-  .scen .s small{display:block;font-size:.72rem;color:var(--cream);margin-top:4px}
-  table{width:100%;border-collapse:collapse;margin-top:4px}
-  th,td{text-align:left;padding:10px 8px;font-size:.86rem;border-bottom:1px solid rgba(255,255,255,.06)}
-  th{color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
-  td b{color:var(--cream)}td span{color:var(--muted)}
-  .mini-track{height:8px;background:#16261a;border-radius:5px;overflow:hidden;min-width:70px}
-  .mini-fill{height:100%;background:linear-gradient(90deg,var(--green-deep),var(--green));border-radius:5px}
-  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-  .pillc{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:.85rem}
-  .pillc b{color:var(--green)}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .duo .b{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+  .duo .b b{display:block;font-size:1.5rem;color:var(--green);font-weight:700}
+  .duo .b span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .duo .b small{display:block;font-size:.72rem;color:var(--cream);margin-top:4px}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:11px 8px;font-size:.86rem;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:middle}
+  th{color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+  td .cap{color:var(--cream);display:block;max-width:34ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  td .meta{color:var(--muted);font-size:.74rem}
+  td.num{color:var(--green);font-weight:700;text-align:right;white-space:nowrap}
+  .tt{display:inline-block;font-size:.66rem;padding:.1rem .5rem;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  .tt.reel{color:var(--green);border-color:rgba(76,222,76,.4)}
+  .lkbar{height:7px;background:#16261a;border-radius:5px;overflow:hidden;margin-top:6px}
+  .lkbar i{display:block;height:100%;background:linear-gradient(90deg,var(--green-deep),var(--green))}
   .insight{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.05)}
   .insight:last-child{border-bottom:0}
   .insight .ic{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--green);color:var(--green);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
   .insight p{color:var(--muted);font-size:.92rem;line-height:1.45}.insight p b{color:var(--cream)}
-  .locked{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,rgba(76,222,76,.08),transparent);border:1px dashed var(--line);border-radius:14px;padding:16px 18px}
-  .locked .key{font-size:1.4rem}.locked p{font-size:.9rem;color:var(--muted)}.locked p b{color:var(--cream)}
   .foot{margin-top:26px;font-size:.76rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--line);padding-top:16px}
   code{background:rgba(76,222,76,.12);color:var(--green);padding:.1em .4em;border-radius:5px;font-size:.85em}
-  @media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}.col4,.col6,.col8{grid-column:span 12}.scen{grid-template-columns:1fr}}
-</style>
-</head>
-<body>
-<div class="wrap">
+  @media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}.col4,.col6,.col8{grid-column:span 12}}
+</style></head><body><div class="wrap">
 
   <div class="top">
     <div class="who">
-      <div class="avatar"><div>CV</div></div>
+      <div class="avatar"><img src="data:image/jpeg;base64,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" alt="@bemclara"></div>
       <div>
         <h1>@bemclara <span class="vbadge">&#10003; verificada</span></h1>
-        <div class="name">Clara Do Vale &middot; perfil público</div>
+        <div class="name">Clara Do Vale &middot; perfil business</div>
+        <div class="bio">🐆 Seja magnética, fale com impacto &amp; cobre caro. — Marca Pessoal &amp; Alto Ticket para Mulheres Líder Global Marca Irresistível® +72 países 📍 Esp</div>
       </div>
     </div>
-    <div class="stamp"><b>Dashboard de Instagram</b>Gerado pelo Claude &middot; jun 2026<br>Fonte: RapidAPI</div>
+    <div class="stamp"><b>Dashboard de Instagram</b>Dados reais &middot; jun 2026<br>Instagram web_profile_info</div>
   </div>
 
   <div class="kpis">
     <div class="kpi"><span>Seguidores</span><b>359.336</b><small>tier macro</small></div>
     <div class="kpi"><span>Publicações</span><b>2.865</b><small>acervo robusto</small></div>
     <div class="kpi"><span>Seguindo</span><b>124</b><small>curadoria fechada</small></div>
-    <div class="kpi"><span>Razão seg/seguindo</span><b>2.898:1</b><small>marca de autoridade</small></div>
+    <div class="kpi"><span>Engajamento médio</span><b>0.52%</b><small>últimos 12 posts</small></div>
   </div>
 
   <div class="grid">
+    <div class="card col8">
+      <h3>Melhores posts recentes <span class="real">dados reais</span></h3>
+      <table>
+        <tr><th>Conteúdo</th><th style="text-align:right">Curtidas</th><th style="text-align:right">Coment.</th><th>Views</th></tr>
+        <tr><td><a href="https://www.instagram.com/p/DY-7GWNs2PY/" target="_blank"><span class="cap">Hábitos milionários antes da dança dos padrinhos haha   #emp</span></a> <span class="meta"><span class="tt reel">Reel</span> &middot; 31/05</span><div class="lkbar"><i style="width:100%"></i></div></td><td class="num">11.733</td><td class="num">286</td><td><span class="meta">87.341 views</span></td></tr><tr><td><a href="https://www.instagram.com/p/DZD1UoJEeRs/" target="_blank"><span class="cap">E então, captou?</span></a> <span class="meta"><span class="tt">Post</span> &middot; 01/06</span><div class="lkbar"><i style="width:36%"></i></div></td><td class="num">4.204</td><td class="num">343</td><td><span class="meta">&middot;</span></td></tr><tr><td><a href="https://www.instagram.com/p/DYxZhA1kfN4/" target="_blank"><span class="cap">E se usássemos este post como espaço para compartilhar o que</span></a> <span class="meta"><span class="tt">Post</span> &middot; 25/05</span><div class="lkbar"><i style="width:9%"></i></div></td><td class="num">1.047</td><td class="num">32</td><td><span class="meta">&middot;</span></td></tr><tr><td><a href="https://www.instagram.com/p/DZBAfr8BfeM/" target="_blank"><span class="cap">Me siga, para mais lapadas milionárias. 🐆🔥🧚🏻💸✨</span></a> <span class="meta"><span class="tt reel">Reel</span> &middot; 31/05</span><div class="lkbar"><i style="width:8%"></i></div></td><td class="num">942</td><td class="num">44</td><td><span class="meta">6.504 views</span></td></tr><tr><td><a href="https://www.instagram.com/p/DY-wL5RkXry/" target="_blank"><span class="cap">Um dia celebrado em 1000 hertz 🤍</span></a> <span class="meta"><span class="tt">Post</span> &middot; 30/05</span><div class="lkbar"><i style="width:8%"></i></div></td><td class="num">933</td><td class="num">30</td><td><span class="meta">&middot;</span></td></tr><tr><td><a href="https://www.instagram.com/p/DYfHEK1MzBH/" target="_blank"><span class="cap">Suas ações falam mais alto.</span></a> <span class="meta"><span class="tt reel">Reel</span> &middot; 18/05</span><div class="lkbar"><i style="width:5%"></i></div></td><td class="num">570</td><td class="num">17</td><td><span class="meta">2.875 views</span></td></tr>
+      </table>
+      <p style="color:var(--muted);font-size:.78rem;margin-top:10px">Top 6 entre os 12 posts mais recentes (18/05 a 02/06). Clique para abrir no Instagram.</p>
+    </div>
 
     <div class="card col4">
-      <h3>Índice de autoridade</h3>
+      <h3>Taxa de engajamento</h3>
       <div class="gauge">
-        <div class="ring"><div><b>90</b><span>de 100</span></div></div>
-        <p>Combina tamanho da base, verificação e razão seguidores/seguindo.</p>
+        <div class="ring" style="background:conic-gradient(var(--green) 0 26%,#16261a 26% 100%)"><div><b>0.52%</b><span>por post</span></div></div>
+        <p>Benchmark do tier macro fica perto de 1,0%. Há espaço para subir, e os Reels são a alavanca.</p>
       </div>
-    </div>
-
-    <div class="card col8">
-      <h3>Posicionamento por tamanho de conta</h3>
-      <div class="tier-track">
-        <span class="tier-seg" style="left:20%"></span><span class="tier-seg" style="left:40%"></span>
-        <span class="tier-seg" style="left:60%"></span><span class="tier-seg" style="left:80%"></span>
-        <div class="tier-pin" style="left:72%"><div class="dot"></div><div class="lab">@bemclara &middot; 359k</div></div>
-      </div>
-      <div class="tier-marks">
-        <span>Nano<br>&lt;10k</span><span>Micro<br>10k a 100k</span><span>Médio<br>100k a 500k</span><span>Macro<br>500k a 1M</span><span>Mega<br>&gt;1M</span>
-      </div>
-      <p style="color:var(--muted);font-size:.88rem;margin-top:24px;line-height:1.5">Topo do tier médio, perto do macro. Nessa faixa, o crescimento vem de alcance (capturar quem ainda não segue), não de mais frequência para quem já acompanha.</p>
-    </div>
-
-    <div class="card col12">
-      <h3>Projeção de engajamento por post <span class="est">estimativa por benchmark</span></h3>
-      <p style="color:var(--muted);font-size:.88rem;margin-bottom:14px;line-height:1.5">Contas macro no nicho de negócios e lifestyle costumam operar com taxa de engajamento entre 1,0% e 2,5%. Aplicando essas faixas sobre os 359.336 seguidores, a interação esperada por post fica em:</p>
-      <div class="scen">
-        <div class="s"><span>Conservador (1,0%)</span><b>~3.600</b><small>interações por post</small></div>
-        <div class="s"><span>Médio (1,5%)</span><b>~5.400</b><small>interações por post</small></div>
-        <div class="s"><span>Forte (2,5%)</span><b>~9.000</b><small>interações por post</small></div>
-      </div>
-      <p style="color:var(--muted);font-size:.78rem;margin-top:12px">Projeção baseada em benchmark de mercado, não medição direta. Os números reais por post saem com o endpoint de mídias (ver "Próximo nível de dados").</p>
     </div>
 
     <div class="card col6">
-      <h3>Sinais qualitativos do perfil</h3>
-      <div class="bar"><div class="lbl"><span>Autoridade</span><span>90</span></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
-      <div class="bar"><div class="lbl"><span>Consistência de produção</span><span>82</span></div><div class="track"><div class="fill" style="width:82%"></div></div></div>
-      <div class="bar"><div class="lbl"><span>Curadoria / foco</span><span>96</span></div><div class="track"><div class="fill" style="width:96%"></div></div></div>
-      <div class="bar"><div class="lbl"><span>Maturidade da conta</span><span>88</span></div><div class="track"><div class="fill" style="width:88%"></div></div></div>
+      <h3>Reels x Posts <span class="real">dados reais</span></h3>
+      <div class="bar"><div class="lbl"><span>Reel &middot; média de curtidas</span><span>2.383</span></div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+      <div class="bar"><div class="lbl"><span>Post &middot; média de curtidas</span><span>1.194</span></div><div class="track"><div class="fill" style="width:50%"></div></div></div>
+      <div class="duo" style="margin-top:16px">
+        <div class="b"><span>Reel</span><b>17.576</b><small>views em média</small></div>
+        <div class="b"><span>Top post</span><b>11.733</b><small>curtidas (recorde)</small></div>
+      </div>
     </div>
 
     <div class="card col6">
-      <h3>Mix de conteúdo recomendado <span class="est">recomendação</span></h3>
-      <div class="bar"><div class="lbl"><span>Autoridade e método</span><span>40%</span></div><div class="track"><div class="fill" style="width:40%"></div></div></div>
-      <div class="bar"><div class="lbl"><span>Prova social e resultados</span><span>30%</span></div><div class="track"><div class="fill" style="width:30%"></div></div></div>
-      <div class="bar"><div class="lbl"><span>Oferta e chamada</span><span>20%</span></div><div class="track"><div class="fill" style="width:20%"></div></div></div>
-      <div class="bar"><div class="lbl"><span>Bastidores e conexão</span><span>10%</span></div><div class="track"><div class="fill" style="width:10%"></div></div></div>
-    </div>
-
-    <div class="card col12">
-      <h3>Matriz de formatos: o que tende a puxar o topo <span class="est">estratégia</span></h3>
-      <table>
-        <tr><th>Formato</th><th>Por que performa neste perfil</th><th>Potencial de alcance</th></tr>
-        <tr><td><b>Reels de bastidores</b></td><td><span>Humaniza a marca de autoridade, alto compartilhamento</span></td><td><div class="mini-track"><div class="mini-fill" style="width:95%"></div></div></td></tr>
-        <tr><td><b>Carrossel de método</b></td><td><span>Ensina o passo a passo, gera salvamentos e retorno</span></td><td><div class="mini-track"><div class="mini-fill" style="width:82%"></div></div></td></tr>
-        <tr><td><b>Reels de resultado/prova</b></td><td><span>Depoimento e transformação, sustenta autoridade</span></td><td><div class="mini-track"><div class="mini-fill" style="width:78%"></div></div></td></tr>
-        <tr><td><b>Post de oferta com CTA</b></td><td><span>Converte a audiência aquecida para a esteira</span></td><td><div class="mini-track"><div class="mini-fill" style="width:55%"></div></div></td></tr>
-      </table>
-      <p style="color:var(--muted);font-size:.78rem;margin-top:10px">Priorização estratégica para o perfil. O ranking dos posts reais (curtidas, comentários, salvamentos) é preenchido com o endpoint de mídias.</p>
+      <h3>Médias e amplitude <span class="real">dados reais</span></h3>
+      <div class="duo">
+        <div class="b"><span>Curtidas</span><b>1.789</b><small>média por post</small></div>
+        <div class="b"><span>Comentários</span><b>73</b><small>média por post</small></div>
+        <div class="b"><span>Cadência</span><b>0.8</b><small>posts por dia</small></div>
+        <div class="b"><span>Mix</span><b>6/6</b><small>reels / estáticos</small></div>
+      </div>
+      <p style="color:var(--muted);font-size:.78rem;margin-top:12px">Amplitude de curtidas no período: -1 a 11.733. O post mais comentado teve 343 comentários.</p>
     </div>
 
     <div class="card col6">
       <h3>Leitura do perfil</h3>
-      <div class="insight"><span class="ic">A</span><p><b>Autoridade consolidada.</b> 359 mil seguidores e selo verificado. O perfil opera como referência, pode assumir tom de marca.</p></div>
-      <div class="insight"><span class="ic">B</span><p><b>Posicionamento premium implícito.</b> Seguir só 124 contas com base tão grande reforça status. Use como prova social.</p></div>
-      <div class="insight"><span class="ic">C</span><p><b>Acervo de 2.865 posts.</b> Muito conteúdo já validado para reaproveitar e reaquecer.</p></div>
+      <div class="insight"><span class="ic">A</span><p><b>Reels rendem o dobro.</b> Média de 2.383 curtidas contra 1.194 dos estáticos, e ainda geram views. O topo de alcance está no Reel.</p></div>
+      <div class="insight"><span class="ic">B</span><p><b>Engajamento abaixo do potencial.</b> 0.52% para uma base de 359 mil. O recorde de 11.733 curtidas mostra o teto possível quando o conteúdo acerta.</p></div>
+      <div class="insight"><span class="ic">C</span><p><b>Pergunta puxa comentário.</b> O post mais comentado (343) foi uma chamada direta para responder.</p></div>
     </div>
 
     <div class="card col6">
       <h3>Recomendações</h3>
-      <div class="insight"><span class="ic">1</span><p><b>Priorize Reels para alcance.</b> O ganho está em capturar quem ainda não segue.</p></div>
-      <div class="insight"><span class="ic">2</span><p><b>Transforme o acervo em ativo.</b> Refaça os melhores posts em novos formatos.</p></div>
-      <div class="insight"><span class="ic">3</span><p><b>Conecte conteúdo à esteira.</b> Cada peça com um passo claro de conversão.</p></div>
-      <div class="insight"><span class="ic">4</span><p><b>Padronize a cadência.</b> Frequência fixa de Reels e carrosséis no mês.</p></div>
+      <div class="insight"><span class="ic">1</span><p><b>Dobre em Reels com hook forte.</b> O Reel recordista provou o padrão: gancho de curiosidade nos 3 primeiros segundos.</p></div>
+      <div class="insight"><span class="ic">2</span><p><b>Inclua CTA de comentário.</b> Perguntas diretas multiplicam engajamento e alcance.</p></div>
+      <div class="insight"><span class="ic">3</span><p><b>Replique os campeões.</b> Refaça os formatos do top 6 em novas variações.</p></div>
+      <div class="insight"><span class="ic">4</span><p><b>Mantenha a cadência.</b> 0.8 posts por dia já sustenta presença; padronize por formato.</p></div>
     </div>
-
-    <div class="card col12">
-      <h3>Próximo nível de dados</h3>
-      <div class="locked">
-        <span class="key">&#128274;</span>
-        <p><b>Curtidas, comentários e salvamentos por post, melhores horários e ranking real dos campeões.</b> Esses indicadores exigem o endpoint de mídias da API (plano pago, a partir de poucos dólares por mês). Com ele, este dashboard ganha taxa de engajamento medida, curva de crescimento e os 10 melhores posts reais.</p>
-      </div>
-    </div>
-
   </div>
 
   <div class="foot">
-    Dados de perfil reais via RapidAPI, Instagram Scraper Stable API, endpoint <code>ig_get_fb_profile_hover.php</code>, junho de 2026. São reais: seguidores, seguindo, total de posts e verificação. São interpretação ou projeção (rotulados nos cartões): índice de autoridade, sinais qualitativos, projeção de engajamento por benchmark, mix e matriz de formatos. Documento gerado como exemplo para a palestra do Premium Weekend.
+    Dados reais coletados do endpoint público <code>web_profile_info</code> do Instagram, em junho de 2026. Inclui seguidores, seguindo, total de posts, e curtidas, comentários e views dos 12 posts mais recentes (18/05 a 02/06). A taxa de engajamento é calculada sobre esses posts. Documento gerado pelo Claude como exemplo para a palestra do Premium Weekend.
   </div>
-</div>
-</body>
-</html>
+</div></body></html>
