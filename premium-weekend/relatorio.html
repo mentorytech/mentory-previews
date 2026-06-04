@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Instagram | @bemclara</title>
+<style>
+  :root{
+    --bg:#070c07;--panel:#0e160e;--panel2:#101c10;--cream:#fdfbf7;--muted:#8fa389;
+    --green:#4cde4c;--green-deep:#2fa83a;--line:rgba(76,222,76,.16);--gold:#f5c518;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:radial-gradient(130% 90% at 85% -10%,#0e2410 0%,var(--bg) 55%);color:var(--cream);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;
+    min-height:100vh;padding:40px 22px 60px}
+  .wrap{max-width:1080px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between;margin-bottom:26px}
+  .who{display:flex;align-items:center;gap:18px}
+  .avatar{width:74px;height:74px;border-radius:50%;flex:0 0 auto;
+    background:conic-gradient(from 140deg,var(--green),var(--green-deep),var(--green));
+    display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+  .avatar div{width:64px;height:64px;border-radius:50%;background:#0c140c;display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:1.5rem;color:var(--green)}
+  .who h1{font-size:1.7rem;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  .who .name{color:var(--muted);font-size:.95rem;margin-top:2px}
+  .vbadge{font-size:.72rem;color:#06140f;background:var(--green);border-radius:999px;padding:.18rem .6rem;font-weight:700}
+  .stamp{text-align:right;font-size:.78rem;color:var(--muted);line-height:1.5}
+  .stamp b{color:var(--green);display:block;letter-spacing:.16em;text-transform:uppercase;font-size:.7rem}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:18px}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 18px;position:relative;overflow:hidden}
+  .kpi:before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green-deep),var(--green))}
+  .kpi b{display:block;font-size:2rem;font-weight:700;letter-spacing:-.02em}
+  .kpi span{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .kpi small{display:block;color:var(--green);font-size:.78rem;margin-top:6px}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .col4{grid-column:span 4}.col6{grid-column:span 6}.col8{grid-column:span 8}.col12{grid-column:span 12}
+  .card h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--green);font-weight:700;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
+  .card h3 .est{font-size:.6rem;letter-spacing:.08em;color:var(--gold);border:1px solid rgba(245,197,24,.4);border-radius:999px;padding:.12rem .5rem}
+  .gauge{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}
+  .ring{width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--green) 0 90%,#16261a 90% 100%);display:flex;align-items:center;justify-content:center}
+  .ring div{width:114px;height:114px;border-radius:50%;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring b{font-size:2.6rem;font-weight:700;color:var(--green);line-height:1}
+  .ring span{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .gauge p{color:var(--muted);font-size:.85rem;text-align:center;margin-top:14px;line-height:1.4}
+  .bar{margin:13px 0}
+  .bar .lbl{display:flex;justify-content:space-between;font-size:.86rem;margin-bottom:6px}
+  .bar .lbl span:first-child{color:var(--cream)}.bar .lbl span:last-child{color:var(--green);font-weight:700}
+  .track{height:10px;background:#16261a;border-radius:6px;overflow:hidden}
+  .fill{height:100%;background:linear-gradient(90deg,var(--green-deep),var(--green));border-radius:6px}
+  .tier-track{position:relative;height:46px;border-radius:12px;background:linear-gradient(90deg,#0f1f10,#163a1a);border:1px solid var(--line)}
+  .tier-marks{display:flex;justify-content:space-between;font-size:.68rem;color:var(--muted);margin-top:8px}
+  .tier-pin{position:absolute;top:-10px;transform:translateX(-50%);text-align:center}
+  .tier-pin .dot{width:16px;height:16px;border-radius:50%;background:var(--green);border:3px solid var(--bg);margin:0 auto;box-shadow:0 0 0 2px var(--green)}
+  .tier-pin .lab{font-size:.72rem;color:var(--green);font-weight:700;white-space:nowrap;margin-top:4px}
+  .tier-seg{position:absolute;top:0;bottom:0;border-right:1px dashed rgba(76,222,76,.25)}
+  .scen{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+  .scen .s{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+  .scen .s b{display:block;font-size:1.5rem;color:var(--green);font-weight:700}
+  .scen .s span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .scen .s small{display:block;font-size:.72rem;color:var(--cream);margin-top:4px}
+  table{width:100%;border-collapse:collapse;margin-top:4px}
+  th,td{text-align:left;padding:10px 8px;font-size:.86rem;border-bottom:1px solid rgba(255,255,255,.06)}
+  th{color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+  td b{color:var(--cream)}td span{color:var(--muted)}
+  .mini-track{height:8px;background:#16261a;border-radius:5px;overflow:hidden;min-width:70px}
+  .mini-fill{height:100%;background:linear-gradient(90deg,var(--green-deep),var(--green));border-radius:5px}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .pillc{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:.85rem}
+  .pillc b{color:var(--green)}
+  .insight{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+  .insight:last-child{border-bottom:0}
+  .insight .ic{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--green);color:var(--green);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+  .insight p{color:var(--muted);font-size:.92rem;line-height:1.45}.insight p b{color:var(--cream)}
+  .locked{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,rgba(76,222,76,.08),transparent);border:1px dashed var(--line);border-radius:14px;padding:16px 18px}
+  .locked .key{font-size:1.4rem}.locked p{font-size:.9rem;color:var(--muted)}.locked p b{color:var(--cream)}
+  .foot{margin-top:26px;font-size:.76rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--line);padding-top:16px}
+  code{background:rgba(76,222,76,.12);color:var(--green);padding:.1em .4em;border-radius:5px;font-size:.85em}
+  @media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}.col4,.col6,.col8{grid-column:span 12}.scen{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="who">
+      <div class="avatar"><div>CV</div></div>
+      <div>
+        <h1>@bemclara <span class="vbadge">&#10003; verificada</span></h1>
+        <div class="name">Clara Do Vale &middot; perfil público</div>
+      </div>
+    </div>
+    <div class="stamp"><b>Dashboard de Instagram</b>Gerado pelo Claude &middot; jun 2026<br>Fonte: RapidAPI</div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><span>Seguidores</span><b>359.336</b><small>tier macro</small></div>
+    <div class="kpi"><span>Publicações</span><b>2.865</b><small>acervo robusto</small></div>
+    <div class="kpi"><span>Seguindo</span><b>124</b><small>curadoria fechada</small></div>
+    <div class="kpi"><span>Razão seg/seguindo</span><b>2.898:1</b><small>marca de autoridade</small></div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card col4">
+      <h3>Índice de autoridade</h3>
+      <div class="gauge">
+        <div class="ring"><div><b>90</b><span>de 100</span></div></div>
+        <p>Combina tamanho da base, verificação e razão seguidores/seguindo.</p>
+      </div>
+    </div>
+
+    <div class="card col8">
+      <h3>Posicionamento por tamanho de conta</h3>
+      <div class="tier-track">
+        <span class="tier-seg" style="left:20%"></span><span class="tier-seg" style="left:40%"></span>
+        <span class="tier-seg" style="left:60%"></span><span class="tier-seg" style="left:80%"></span>
+        <div class="tier-pin" style="left:72%"><div class="dot"></div><div class="lab">@bemclara &middot; 359k</div></div>
+      </div>
+      <div class="tier-marks">
+        <span>Nano<br>&lt;10k</span><span>Micro<br>10k a 100k</span><span>Médio<br>100k a 500k</span><span>Macro<br>500k a 1M</span><span>Mega<br>&gt;1M</span>
+      </div>
+      <p style="color:var(--muted);font-size:.88rem;margin-top:24px;line-height:1.5">Topo do tier médio, perto do macro. Nessa faixa, o crescimento vem de alcance (capturar quem ainda não segue), não de mais frequência para quem já acompanha.</p>
+    </div>
+
+    <div class="card col12">
+      <h3>Projeção de engajamento por post <span class="est">estimativa por benchmark</span></h3>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:14px;line-height:1.5">Contas macro no nicho de negócios e lifestyle costumam operar com taxa de engajamento entre 1,0% e 2,5%. Aplicando essas faixas sobre os 359.336 seguidores, a interação esperada por post fica em:</p>
+      <div class="scen">
+        <div class="s"><span>Conservador (1,0%)</span><b>~3.600</b><small>interações por post</small></div>
+        <div class="s"><span>Médio (1,5%)</span><b>~5.400</b><small>interações por post</small></div>
+        <div class="s"><span>Forte (2,5%)</span><b>~9.000</b><small>interações por post</small></div>
+      </div>
+      <p style="color:var(--muted);font-size:.78rem;margin-top:12px">Projeção baseada em benchmark de mercado, não medição direta. Os números reais por post saem com o endpoint de mídias (ver "Próximo nível de dados").</p>
+    </div>
+
+    <div class="card col6">
+      <h3>Sinais qualitativos do perfil</h3>
+      <div class="bar"><div class="lbl"><span>Autoridade</span><span>90</span></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
+      <div class="bar"><div class="lbl"><span>Consistência de produção</span><span>82</span></div><div class="track"><div class="fill" style="width:82%"></div></div></div>
+      <div class="bar"><div class="lbl"><span>Curadoria / foco</span><span>96</span></div><div class="track"><div class="fill" style="width:96%"></div></div></div>
+      <div class="bar"><div class="lbl"><span>Maturidade da conta</span><span>88</span></div><div class="track"><div class="fill" style="width:88%"></div></div></div>
+    </div>
+
+    <div class="card col6">
+      <h3>Mix de conteúdo recomendado <span class="est">recomendação</span></h3>
+      <div class="bar"><div class="lbl"><span>Autoridade e método</span><span>40%</span></div><div class="track"><div class="fill" style="width:40%"></div></div></div>
+      <div class="bar"><div class="lbl"><span>Prova social e resultados</span><span>30%</span></div><div class="track"><div class="fill" style="width:30%"></div></div></div>
+      <div class="bar"><div class="lbl"><span>Oferta e chamada</span><span>20%</span></div><div class="track"><div class="fill" style="width:20%"></div></div></div>
+      <div class="bar"><div class="lbl"><span>Bastidores e conexão</span><span>10%</span></div><div class="track"><div class="fill" style="width:10%"></div></div></div>
+    </div>
+
+    <div class="card col12">
+      <h3>Matriz de formatos: o que tende a puxar o topo <span class="est">estratégia</span></h3>
+      <table>
+        <tr><th>Formato</th><th>Por que performa neste perfil</th><th>Potencial de alcance</th></tr>
+        <tr><td><b>Reels de bastidores</b></td><td><span>Humaniza a marca de autoridade, alto compartilhamento</span></td><td><div class="mini-track"><div class="mini-fill" style="width:95%"></div></div></td></tr>
+        <tr><td><b>Carrossel de método</b></td><td><span>Ensina o passo a passo, gera salvamentos e retorno</span></td><td><div class="mini-track"><div class="mini-fill" style="width:82%"></div></div></td></tr>
+        <tr><td><b>Reels de resultado/prova</b></td><td><span>Depoimento e transformação, sustenta autoridade</span></td><td><div class="mini-track"><div class="mini-fill" style="width:78%"></div></div></td></tr>
+        <tr><td><b>Post de oferta com CTA</b></td><td><span>Converte a audiência aquecida para a esteira</span></td><td><div class="mini-track"><div class="mini-fill" style="width:55%"></div></div></td></tr>
+      </table>
+      <p style="color:var(--muted);font-size:.78rem;margin-top:10px">Priorização estratégica para o perfil. O ranking dos posts reais (curtidas, comentários, salvamentos) é preenchido com o endpoint de mídias.</p>
+    </div>
+
+    <div class="card col6">
+      <h3>Leitura do perfil</h3>
+      <div class="insight"><span class="ic">A</span><p><b>Autoridade consolidada.</b> 359 mil seguidores e selo verificado. O perfil opera como referência, pode assumir tom de marca.</p></div>
+      <div class="insight"><span class="ic">B</span><p><b>Posicionamento premium implícito.</b> Seguir só 124 contas com base tão grande reforça status. Use como prova social.</p></div>
+      <div class="insight"><span class="ic">C</span><p><b>Acervo de 2.865 posts.</b> Muito conteúdo já validado para reaproveitar e reaquecer.</p></div>
+    </div>
+
+    <div class="card col6">
+      <h3>Recomendações</h3>
+      <div class="insight"><span class="ic">1</span><p><b>Priorize Reels para alcance.</b> O ganho está em capturar quem ainda não segue.</p></div>
+      <div class="insight"><span class="ic">2</span><p><b>Transforme o acervo em ativo.</b> Refaça os melhores posts em novos formatos.</p></div>
+      <div class="insight"><span class="ic">3</span><p><b>Conecte conteúdo à esteira.</b> Cada peça com um passo claro de conversão.</p></div>
+      <div class="insight"><span class="ic">4</span><p><b>Padronize a cadência.</b> Frequência fixa de Reels e carrosséis no mês.</p></div>
+    </div>
+
+    <div class="card col12">
+      <h3>Próximo nível de dados</h3>
+      <div class="locked">
+        <span class="key">&#128274;</span>
+        <p><b>Curtidas, comentários e salvamentos por post, melhores horários e ranking real dos campeões.</b> Esses indicadores exigem o endpoint de mídias da API (plano pago, a partir de poucos dólares por mês). Com ele, este dashboard ganha taxa de engajamento medida, curva de crescimento e os 10 melhores posts reais.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    Dados de perfil reais via RapidAPI, Instagram Scraper Stable API, endpoint <code>ig_get_fb_profile_hover.php</code>, junho de 2026. São reais: seguidores, seguindo, total de posts e verificação. São interpretação ou projeção (rotulados nos cartões): índice de autoridade, sinais qualitativos, projeção de engajamento por benchmark, mix e matriz de formatos. Documento gerado como exemplo para a palestra do Premium Weekend.
+  </div>
+</div>
+</body>
+</html>
