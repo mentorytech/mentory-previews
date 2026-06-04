@@ -428,11 +428,18 @@
     <div class="kicker"><span class="bar"></span>Tangibilizar</div>
     <div class="split">
       <div class="split-text">
-        <h2>Um relatório de<br>Instagram em minutos.</h2>
-        <div class="steps" style="margin-top:1.2rem">
-          <div class="step"><div class="n">1</div><div><p>Conta gratuita na <b>RapidAPI</b> e <b>Subscribe</b> no plugin.</p><small>rapidapi.com . instagram-scraper-stable-api</small></div></div>
-          <div class="step"><div class="n">2</div><div><p>Copie a sua <b>API key</b> e cole no Claude.</p></div></div>
-          <div class="step"><div class="n">3</div><div><p>"Leia o perfil @x e gere um relatório."</p></div></div>
+        <h2>Relatório de<br>Instagram, grátis.</h2>
+        <p class="lead">Cole este prompt no Claude Code e troque pelo seu @perfil. Ele busca os dados públicos e monta o dashboard. Sem API paga, sem programar.</p>
+        <div class="mock" style="margin-top:1.1rem">
+          <div class="mock-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="mock-url">prompt para o Claude Code</span></div>
+          <div class="mock-body" style="font-family:'SF Mono',Menlo,monospace;font-size:.76rem;color:var(--muted);line-height:1.55">
+            Gere um relatório visual do Instagram <span style="color:var(--gold)">@seu_perfil</span>.<br><br>
+            Busque os dados públicos em<br>
+            <span style="color:var(--gold)">instagram.com/api/v1/users/web_profile_info</span><br>
+            (com header x-ig-app-id e user-agent de navegador).<br><br>
+            Calcule engajamento, Reels x posts e os<br>melhores posts. Monte um relatorio.html premium<br>e abra no navegador.<br><br>
+            <span style="color:var(--gold)">Use só dados reais. Não invente nada.</span>
+          </div>
         </div>
       </div>
       <div>
@@ -440,27 +447,24 @@
           <div class="mock-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="mock-url">relatório &middot; @bemclara</span></div>
           <div class="mock-body">
             <div style="display:flex;gap:14px;align-items:center;margin-bottom:14px">
-              <div style="flex:0 0 auto;width:78px;height:78px;border-radius:50%;background:conic-gradient(var(--gold) 0 90%,#16261a 90% 100%);display:flex;align-items:center;justify-content:center">
+              <div style="flex:0 0 auto;width:78px;height:78px;border-radius:50%;background:conic-gradient(var(--gold) 0 26%,#16261a 26% 100%);display:flex;align-items:center;justify-content:center">
                 <div style="width:58px;height:58px;border-radius:50%;background:#0d160d;display:flex;flex-direction:column;align-items:center;justify-content:center">
-                  <b style="color:var(--gold);font-size:1.25rem;line-height:1">90</b><span style="font-size:.52rem;color:var(--muted);letter-spacing:.06em">AUTORIDADE</span>
+                  <b style="color:var(--gold);font-size:1.05rem;line-height:1">0,52%</b><span style="font-size:.5rem;color:var(--muted);letter-spacing:.06em">ENGAJ.</span>
                 </div>
               </div>
               <div style="flex:1">
                 <div class="stat" style="text-align:left;background:none;border:0;padding:0"><b style="font-size:1.7rem">359.336</b><span>seguidores</span></div>
               </div>
             </div>
-            <div class="statgrid" style="grid-template-columns:repeat(2,1fr)">
-              <div class="stat"><b>2.865</b><span>posts</span></div>
-              <div class="stat"><b>124</b><span>seguindo</span></div>
+            <div style="margin-top:.2rem">
+              <div class="rrow"><span class="rlbl">Reel</span><span class="rbar" style="width:100%"></span><span style="font-size:.7rem;color:var(--gold);margin-left:8px">2.383</span></div>
+              <div class="rrow"><span class="rlbl">Post</span><span class="rbar" style="width:50%"></span><span style="font-size:.7rem;color:var(--gold);margin-left:8px">1.194</span></div>
             </div>
-            <div style="margin-top:1rem">
-              <div class="rrow"><span class="rlbl">consistência</span><span class="rbar" style="width:82%"></span></div>
-              <div class="rrow"><span class="rlbl">curadoria</span><span class="rbar" style="width:96%"></span></div>
-            </div>
-            <span class="filechip" style="margin-top:.9rem">relatorio-instagram.pdf</span>
+            <div style="margin-top:.7rem;font-size:.74rem;color:var(--muted)">Top: Reel <b style="color:var(--cream)">11.733</b> curtidas, 87k views</div>
+            <span class="filechip" style="margin-top:.7rem">relatorio-instagram.html</span>
           </div>
         </div>
-        <p style="font-size:.74rem;color:var(--muted);margin-top:.6rem">Dados reais via RapidAPI. Sem app na Meta, sem programar.</p>
+        <p style="font-size:.74rem;color:var(--muted);margin-top:.6rem">Dados públicos reais do Instagram. Sem API paga.</p>
       </div>
     </div>
   </section>
