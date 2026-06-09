@@ -202,5 +202,108 @@
 
   </main>
   <footer class="footer wrap"><strong>Mentory International®</strong><br>Conteúdo educacional para empresários. Resultados variam conforme contexto, execução e maturidade da operação.</footer>
+
+  <script>
+    (function(){
+      function initTestimonialsCarousel(){
+        var track=document.getElementById('testimonialsCarousel');
+        if(!track || track.dataset.carouselReady==='true') return;
+        var slides=Array.prototype.slice.call(track.querySelectorAll('.testimonial-slide'));
+        if(slides.length<2) return;
+        track.dataset.carouselReady='true';
+
+        var dotsWrap=document.getElementById('testimonialsDots');
+        var prev=document.getElementById('testimonialsPrev');
+        var next=document.getElementById('testimonialsNext');
+        var prefersReduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var autoTimer=null;
+        var resumeTimer=null;
+        var currentIndex=0;
+
+        function getGap(){
+          var styles=getComputedStyle(track);
+          return parseFloat(styles.columnGap || styles.gap || '0') || 0;
+        }
+        function getStep(){
+          var slide=slides[0];
+          return slide ? slide.getBoundingClientRect().width + getGap() : track.clientWidth;
+        }
+        function getMax(){ return Math.max(0, track.scrollWidth - track.clientWidth); }
+        function clampIndex(index){ return Math.max(0, Math.min(slides.length-1, index)); }
+        function indexFromScroll(){
+          var step=getStep();
+          if(!step) return 0;
+          return clampIndex(Math.round(track.scrollLeft / step));
+        }
+        function updateDots(){
+          currentIndex=indexFromScroll();
+          if(!dotsWrap) return;
+          Array.prototype.forEach.call(dotsWrap.children,function(dot,i){
+            dot.classList.toggle('active', i===currentIndex);
+            dot.setAttribute('aria-current', i===currentIndex ? 'true' : 'false');
+          });
+        }
+        function scrollToIndex(index, smooth){
+          index=clampIndex(index);
+          var max=getMax();
+          var left=Math.min(index*getStep(), max);
+          track.scrollTo({left:left, behavior:smooth===false ? 'auto' : 'smooth'});
+          currentIndex=index;
+          updateDots();
+        }
+        function goNext(){
+          var max=getMax();
+          var nearEnd=track.scrollLeft >= max - 4;
+          if(nearEnd){ scrollToIndex(0, true); return; }
+          scrollToIndex(indexFromScroll()+1, true);
+        }
+        function goPrev(){
+          if(track.scrollLeft <= 4){ scrollToIndex(slides.length-1, true); return; }
+          scrollToIndex(indexFromScroll()-1, true);
+        }
+        function stopAuto(){
+          if(autoTimer) window.clearInterval(autoTimer);
+          autoTimer=null;
+        }
+        function startAuto(){
+          if(prefersReduced || autoTimer) return;
+          autoTimer=window.setInterval(goNext, 3400);
+        }
+        function pauseThenResume(){
+          stopAuto();
+          if(resumeTimer) window.clearTimeout(resumeTimer);
+          resumeTimer=window.setTimeout(startAuto, 5200);
+        }
+
+        if(dotsWrap){
+          dotsWrap.innerHTML='';
+          slides.forEach(function(_,i){
+            var dot=document.createElement('button');
+            dot.type='button';
+            dot.className='testimonial-dot';
+            dot.setAttribute('aria-label','Ir para depoimento '+(i+1));
+            dot.addEventListener('click',function(){ scrollToIndex(i,true); pauseThenResume(); });
+            dotsWrap.appendChild(dot);
+          });
+        }
+        if(prev) prev.addEventListener('click',function(){ goPrev(); pauseThenResume(); });
+        if(next) next.addEventListener('click',function(){ goNext(); pauseThenResume(); });
+
+        track.addEventListener('scroll',function(){ window.requestAnimationFrame(updateDots); }, {passive:true});
+        track.addEventListener('pointerenter',stopAuto);
+        track.addEventListener('pointerleave',startAuto);
+        track.addEventListener('focusin',stopAuto);
+        track.addEventListener('focusout',startAuto);
+        track.addEventListener('touchstart',pauseThenResume,{passive:true});
+        window.addEventListener('resize',function(){ scrollToIndex(indexFromScroll(), false); });
+
+        updateDots();
+        startAuto();
+      }
+      if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initTestimonialsCarousel);
+      else initTestimonialsCarousel();
+    })();
+  </script>
+
 </body>
 </html>
