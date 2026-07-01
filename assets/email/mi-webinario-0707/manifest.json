@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "chamada-1",
+    "block_id": "390c2f84-dc71-80f2-a1c9-e1f54bf721ca",
+    "path": "assets/email/mi-webinario-0707/chamada-1.png",
+    "bytes": 129566,
+    "content_type": "image/png",
+    "public_url": "https://mentorytech.github.io/mentory-previews/assets/email/mi-webinario-0707/chamada-1.png"
+  },
+  {
+    "slug": "chamada-2",
+    "block_id": "390c2f84-dc71-801e-9628-f13cd20b2a96",
+    "path": "assets/email/mi-webinario-0707/chamada-2.png",
+    "bytes": 640411,
+    "content_type": "image/png",
+    "public_url": "https://mentorytech.github.io/mentory-previews/assets/email/mi-webinario-0707/chamada-2.png"
+  },
+  {
+    "slug": "chamada-3",
+    "block_id": "390c2f84-dc71-8055-aa3c-ea28cce7f1ac",
+    "path": "assets/email/mi-webinario-0707/chamada-3.png",
+    "bytes": 176929,
+    "content_type": "image/png",
+    "public_url": "https://mentorytech.github.io/mentory-previews/assets/email/mi-webinario-0707/chamada-3.png"
+  },
+  {
+    "slug": "chamada-4",
+    "block_id": "390c2f84-dc71-800e-8b2b-ce231b5c7b3c",
+    "path": "assets/email/mi-webinario-0707/chamada-4.png",
+    "bytes": 69899,
+    "content_type": "image/png",
+    "public_url": "https://mentorytech.github.io/mentory-previews/assets/email/mi-webinario-0707/chamada-4.png"
+  },
+  {
+    "slug": "chamada-5",
+    "block_id": "390c2f84-dc71-808c-b218-ea001df615c3",
+    "path": "assets/email/mi-webinario-0707/chamada-5.jpg",
+    "bytes": 13346,
+    "content_type": "image/jpeg",
+    "public_url": "https://mentorytech.github.io/mentory-previews/assets/email/mi-webinario-0707/chamada-5.jpg"
+  },
+  {
+    "slug": "amanha",
+    "block_id": "390c2f84-dc71-8034-821c-ce1c0c9b245d",
+    "path": "assets/email/mi-webinario-0707/amanha.jpg",
+    "bytes": 20878,
+    "content_type": "image/jpeg",
+    "public_url": "https://mentorytech.github.io/mentory-previews/assets/email/mi-webinario-0707/amanha.jpg"
+  }
+]
