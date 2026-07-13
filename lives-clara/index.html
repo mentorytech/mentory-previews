@@ -204,6 +204,33 @@
 
     .btn:hover { transform: translateY(-2px); box-shadow: 0 24px 54px rgba(47, 122, 45, .36); }
     .btn:disabled { opacity: .72; cursor: wait; transform: none; filter: saturate(.8); }
+    .cta-note {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 11px 13px;
+      border: 1px solid rgba(194, 147, 24, .22);
+      border-radius: 14px;
+      background: rgba(255, 250, 240, .62);
+      color: #655a4c;
+      font-size: 12px;
+      font-weight: 750;
+      line-height: 1.42;
+      text-align: left;
+    }
+
+    .cta-note::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 15px;
+      height: 15px;
+      margin-top: 1px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: inset 0 0 0 4px rgba(255, 250, 240, .88);
+    }
+
     .form-status {
       grid-column: 1 / -1;
       display: none;
@@ -478,6 +505,7 @@
           <button class="btn" type="submit">Garantir minha vaga no aulão
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
+          <p class="cta-note">Cadastre-se agora para receber os avisos das aulas, que acontecem toda quinta-feira, às 12h.</p>
           <p class="form-status" id="form-status">Inscrição registrada. Você será direcionada para o próximo passo.</p>
         </form>
       </div>
