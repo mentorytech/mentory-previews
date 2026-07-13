@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Aulão de Posicionamento e Vendas | Clara do Vale</title>
+  <meta name="description" content="Aulão ao vivo com Clara do Vale para mulheres que querem atrair clientes de alto valor com posicionamento, narrativa e comunicação magnética." />
+  <meta property="og:title" content="Aulão de Posicionamento e Vendas | Clara do Vale" />
+  <meta property="og:description" content="Quarta-feira, 22 de julho, às 12:12, ao vivo com Clara do Vale." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="lives-clara/assets/img/clara-red.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f5efe2;
+      --cream-2: #fffaf0;
+      --ink: #0d0b07;
+      --muted: #746b5b;
+      --gold: #c29318;
+      --gold-2: #d4af37;
+      --green: #2f7a2d;
+      --green-2: #256522;
+      --line: rgba(13, 11, 7, .11);
+      --dark: #0b0905;
+      --dark-2: #120f08;
+      --shadow: 0 28px 70px rgba(45, 32, 12, .12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--cream); }
+    body {
+      min-width: 320px;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { border: 0; cursor: pointer; }
+    .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+    .wrap { width: min(calc(100% - 40px), 1200px); margin-inline: auto; }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 16px 0 58px;
+      background:
+        radial-gradient(circle at 50% 8%, rgba(212, 175, 55, .16), transparent 28%),
+        linear-gradient(180deg, #f6efe4 0%, #fffaf0 74%, #f0e6d3 100%);
+    }
+
+    .hero-inner {
+      width: min(calc(100% - 32px), 860px);
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .mosaic {
+      width: min(100%, 570px);
+      height: clamp(122px, 19vw, 214px);
+      margin: 0 auto 20px;
+      display: grid;
+      grid-template-columns: 1fr 1.06fr 1fr;
+      gap: 6px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 18px 48px rgba(46, 33, 14, .12);
+      background: #e6dac7;
+    }
+
+    .mosaic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mosaic img:first-child { object-position: center 24%; }
+    .mosaic img:nth-child(2) { object-position: center 44%; }
+    .mosaic img:nth-child(3) { object-position: center 24%; }
+
+    h1 {
+      max-width: 770px;
+      margin: 0 auto;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(38px, 5.45vw, 73px);
+      line-height: .9;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin: 18px auto 0;
+      color: #6d6458;
+      font-size: clamp(14px, 1.45vw, 17px);
+      line-height: 1.48;
+      font-weight: 700;
+    }
+
+    .event-meta {
+      margin: 12px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .event-meta .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #c71919;
+      box-shadow: 0 0 16px rgba(199, 25, 25, .7);
+      display: inline-block;
+    }
+
+    .lead-form {
+      width: min(100%, 620px);
+      margin: 18px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .lead-form .phone-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 9px;
+    }
+
+    .field {
+      position: relative;
+    }
+
+    .field label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+
+    input, select {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid rgba(194, 147, 24, .24);
+      background: rgba(255, 250, 240, .86);
+      color: var(--ink);
+      padding: 0 15px;
+      outline: 0;
+      border-radius: 0;
+      font-size: 13px;
+      font-weight: 700;
+      transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    input::placeholder { color: #a09583; opacity: 1; }
+    input:focus, select:focus {
+      border-color: var(--gold);
+      background: #fffaf0;
+      box-shadow: 0 0 0 4px rgba(194, 147, 24, .14);
+    }
+
+    select.flag {
+      appearance: none;
+      text-align: center;
+      padding: 0;
+      font-size: 17px;
+    }
+
+    .btn {
+      grid-column: 1 / -1;
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--green), var(--green-2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      box-shadow: 0 18px 40px rgba(47, 122, 45, .30);
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 24px 54px rgba(47, 122, 45, .36); }
+    .btn:disabled { opacity: .72; cursor: wait; transform: none; filter: saturate(.8); }
+    .cta-note {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 11px 13px;
+      border: 1px solid rgba(194, 147, 24, .22);
+      border-radius: 14px;
+      background: rgba(255, 250, 240, .62);
+      color: #655a4c;
+      font-size: 12px;
+      font-weight: 750;
+      line-height: 1.42;
+      text-align: left;
+    }
+
+    .cta-note::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 15px;
+      height: 15px;
+      margin-top: 1px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: inset 0 0 0 4px rgba(255, 250, 240, .88);
+    }
+
+    .form-status {
+      grid-column: 1 / -1;
+      display: none;
+      color: #285f2a;
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+    }
+    .form-status.show { display: block; }
+
+    .section {
+      padding: 90px 0;
+      background: #f1e7d3;
+    }
+
+    .section-head {
+      max-width: 820px;
+      margin-bottom: 34px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(43px, 6.4vw, 78px);
+      line-height: .92;
+      letter-spacing: -0.045em;
+    }
+
+    .section-head p {
+      max-width: 720px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.62;
+      font-weight: 650;
+    }
+
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .learn-card {
+      min-height: 178px;
+      padding: 23px 18px;
+      border: 1px solid rgba(194, 147, 24, .14);
+      border-radius: 18px;
+      background: rgba(255, 250, 240, .82);
+      box-shadow: 0 18px 50px rgba(46, 33, 14, .06);
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #b78008);
+      color: #fff9eb;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28);
+    }
+
+    .icon svg { width: 18px; height: 18px; }
+
+    .learn-card p {
+      margin-top: 28px;
+      color: #4e473b;
+      font-size: 14px;
+      line-height: 1.42;
+      font-weight: 800;
+    }
+
+    .diagnostic {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: .88fr 1.12fr;
+      gap: 36px;
+      align-items: center;
+      padding: 30px;
+      border: 1px solid rgba(194, 147, 24, .13);
+      border-radius: 24px;
+      background: rgba(255, 250, 240, .74);
+      box-shadow: var(--shadow);
+    }
+
+    .diagnostic h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(31px, 4.4vw, 52px);
+      line-height: .95;
+      letter-spacing: -0.04em;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .pain {
+      min-height: 86px;
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 17px;
+      border: 1px solid rgba(194, 147, 24, .16);
+      border-radius: 14px;
+      background: rgba(255, 250, 240, .72);
+      color: #5f5547;
+      font-size: 13px;
+      line-height: 1.42;
+      font-weight: 750;
+    }
+
+    .pain::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      margin-top: 3px;
+      border: 1px solid var(--gold-2);
+      border-radius: 50%;
+    }
+
+    .dark-zone {
+      position: relative;
+      padding: 84px 0;
+      background: #090805;
+      color: #fff8e9;
+      overflow: hidden;
+    }
+
+    .about {
+      width: min(calc(100% - 44px), 1080px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(260px, 390px) minmax(0, 1fr);
+      gap: 90px;
+      align-items: center;
+    }
+
+    .about-photo {
+      overflow: hidden;
+      background: #9d3b11;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .about-copy h2 {
+      color: #fff8e9;
+      font-size: clamp(48px, 6vw, 78px);
+    }
+
+    .about-copy p {
+      margin-top: 24px;
+      max-width: 640px;
+      color: rgba(255, 248, 233, .70);
+      font-size: 17px;
+      line-height: 1.68;
+      font-weight: 650;
+    }
+
+    .about-copy .btn {
+      width: auto;
+      min-width: 260px;
+      margin-top: 34px;
+      padding-inline: 28px;
+    }
+
+    .footer {
+      padding: 34px 0 42px;
+      background: #050503;
+      color: rgba(255, 248, 233, .48);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .footer .wrap { width: min(calc(100% - 40px), 1080px); }
+
+    @media (max-width: 980px) {
+      .learn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .learn-card:last-child { grid-column: 1 / -1; }
+      .diagnostic, .about { grid-template-columns: 1fr; gap: 30px; }
+      .about-photo { max-width: 420px; }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(calc(100% - 28px), 1200px); }
+      .hero {
+        min-height: auto;
+        padding: 10px 0 48px;
+        place-items: start center;
+      }
+      .hero-inner { width: min(calc(100% - 22px), 560px); }
+      .mosaic { height: 106px; margin-bottom: 15px; border-radius: 8px; gap: 5px; }
+      h1 { font-size: clamp(34px, 10.2vw, 45px); line-height: .91; }
+      .hero-copy { margin-top: 13px; font-size: 13px; line-height: 1.45; }
+      .event-meta { gap: 7px; font-size: 9px; letter-spacing: .08em; }
+      .lead-form { grid-template-columns: 1fr; gap: 8px; margin-top: 13px; }
+      .lead-form .phone-row { grid-template-columns: 64px 1fr; gap: 8px; }
+      input, select { min-height: 42px; font-size: 12px; }
+      .btn { min-height: 48px; font-size: 10px; letter-spacing: .09em; padding-inline: 14px; }
+      .section { padding: 68px 0; }
+      .section-head { margin-bottom: 26px; }
+      .section-head p { font-size: 15px; line-height: 1.58; }
+      h2 { font-size: clamp(38px, 12vw, 54px); }
+      .learn-grid { grid-template-columns: 1fr; gap: 14px; }
+      .learn-card { min-height: 126px; padding: 20px 18px; }
+      .learn-card p { margin-top: 22px; font-size: 13px; }
+      .diagnostic { margin-top: 26px; padding: 24px 18px; border-radius: 20px; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .pain { min-height: auto; padding: 14px; font-size: 12px; }
+      .dark-zone { padding: 62px 0; }
+      .about { width: min(calc(100% - 28px), 1080px); gap: 28px; }
+      .about-photo { max-width: 100%; }
+      .about-photo img { height: auto; max-height: 560px; object-fit: cover; }
+      .about-copy p { font-size: 14px; line-height: 1.65; }
+      .about-copy .btn { width: 100%; min-width: 0; margin-top: 26px; }
+      .footer { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="mosaic" aria-hidden="true">
+          <img src="lives-clara/assets/img/clara-portrait.webp" alt="" width="800" height="800" fetchpriority="high" />
+          <img src="lives-clara/assets/img/community-clara.webp" alt="" width="1600" height="1067" fetchpriority="high" />
+          <img src="lives-clara/assets/img/clara-red.png" alt="" width="768" height="960" fetchpriority="high" />
+        </div>
+        <h1 id="hero-title">Aulão de Posicionamento e Vendas para atrair clientes de alto valor todos os dias.</h1>
+        <p class="hero-copy">Para empreendedoras e profissionais liberais que querem deixar de ser comparadas e construir uma presença mais cara, magnética e impossível de ser ignorada.</p>
+        <div class="event-meta"><span class="live-dot" aria-hidden="true"></span><span>Quarta-feira, 22 de julho, às 12:12</span><span>|</span><span>Ao vivo</span></div>
+        <form class="lead-form" id="lead-form" aria-label="Inscrição para o aulão">
+          <div class="field">
+            <label for="name">Seu nome</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Seu nome" required />
+          </div>
+          <div class="field">
+            <label for="email">Seu melhor e-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="Seu melhor e-mail" required />
+          </div>
+          <div class="phone-row">
+            <div class="field">
+              <label for="ddi">País</label>
+              <select class="flag" id="ddi" name="ddi" aria-label="País e DDI">
+                <option value="+55" selected>BR</option>
+                <option value="+1">US</option>
+                <option value="+351">PT</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="telefone">WhatsApp</label>
+              <input id="telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(DDD + WhatsApp)" required />
+            </div>
+          </div>
+          <button class="btn" type="submit">Garantir minha vaga no aulão
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="cta-note">Cadastre-se agora para receber os avisos das aulas, que acontecem toda quarta-feira, às 12:12.</p>
+          <p class="form-status" id="form-status">Inscrição registrada. Você será direcionada para o próximo passo.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="learn-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="label">No aulão</span>
+          <h2 id="learn-title">O que você irá aprender</h2>
+          <p>Os ajustes de posicionamento, narrativa e comunicação para sua marca deixar de disputar atenção pelo menor investimento e começar a sustentar alto valor.</p>
+        </div>
+
+        <div class="learn-grid" aria-label="Conteúdos do aulão">
+          <article class="learn-card">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M9 5h10v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <p>Comunicar valor no seu posicionamento para atrair clientes que pagam mais caro.</p>
+          </article>
+          <article class="learn-card">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m12 3 2.7 5.5 6 .9-4.4 4.2 1.1 6-5.4-2.9-5.4 2.9 1.1-6-4.4-4.2 6-.9L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+            <p>Como aplicar técnicas para fazer seu cliente comprar de você no digital.</p>
+          </article>
+          <article class="learn-card">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 4h10a2 2 0 0 1 2 2v14l-4-2-3 2-3-2-4 2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <p>Construir uma narrativa que faz a cliente certa querer comprar de você mais rápido.</p>
+          </article>
+          <article class="learn-card">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22c5 0 9-4 9-9V6l-9-4-9 4v7c0 5 4 9 9 9Z" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <p>Se posicionar com autoridade máxima no seu mercado.</p>
+          </article>
+          <article class="learn-card">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 3c6 0 9 4 9 9s-3 9-9 9-9-4-9-9 3-9 9-9Z" stroke="currentColor" stroke-width="2"/></svg></span>
+            <p>Ter uma comunicação magnética para atrair, conectar e converter.</p>
+          </article>
+        </div>
+
+        <div class="diagnostic">
+          <div>
+            <span class="label">É para você se</span>
+            <h3>Você sente que a sua entrega já é forte, mas a sua marca ainda não comunica isso.</h3>
+          </div>
+          <div class="pain-grid">
+            <div class="pain">Trabalha 8h ou 10h por dia e ainda sente que recebe pouco pelo nível da sua entrega.</div>
+            <div class="pain">Está cansada de cobrar menos e ceder no investimento para fechar clientes.</div>
+            <div class="pain">Atrai clientes que chegam apenas pela condição, não pelo valor.</div>
+            <div class="pain">Tem um serviço bom, mas ainda não consegue chegar nas suas metas financeiras.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-zone" aria-labelledby="about-title">
+      <div class="about" aria-labelledby="about-title">
+        <figure class="about-photo">
+          <img src="lives-clara/assets/img/clara-red.png" alt="Clara do Vale" width="768" height="960" loading="lazy" />
+        </figure>
+        <div class="about-copy">
+          <span class="label">Quem conduz</span>
+          <h2 id="about-title">Clara do Vale</h2>
+          <p>Clara guia mulheres a se tornarem empresárias de alto valor com uma marca pessoal magnética. Com 17 anos de experiência, possui MBA em Negócios pela PUC/RS, alunas em mais de 71 países e construiu a maior comunidade de Marca Pessoal e Vendas de Alto Ticket para mulheres da América Latina.</p>
+          <a class="btn" href="#top">Quero participar do aulão
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Mentory International® · Conteúdo educacional para construção de marca premium.</div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('lead-form');
+      var status = document.getElementById('form-status');
+      var endpoint = 'https://n8n.mentoryacademy.com.br/webhook/webinario-mi';
+      var redirectUrl = 'https://zapease.com.br/g/masterclass-clara';
+      var attributionKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid', 'sck'];
+
+      function params() { return new URLSearchParams(window.location.search); }
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+      function now() {
+        var d = new Date();
+        return pad(d.getDate()) + '/' + pad(d.getMonth() + 1) + '/' + d.getFullYear() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+      }
+
+      function persistAttribution() {
+        try {
+          var p = params();
+          var data = {};
+          var has = false;
+          attributionKeys.forEach(function (key) {
+            var value = p.get(key);
+            if (value) { data[key] = value; has = true; }
+          });
+          if (has) {
+            localStorage.setItem('__lives_clara_utms', JSON.stringify(data));
+            localStorage.setItem('__lives_clara_utms_ts', String(Date.now()));
+            return;
+          }
+          var saved = localStorage.getItem('__lives_clara_utms');
+          var ts = Number(localStorage.getItem('__lives_clara_utms_ts') || 0);
+          if (saved && ts && Date.now() - ts < 7 * 24 * 60 * 60 * 1000) {
+            var restored = JSON.parse(saved);
+            var url = new URL(window.location.href);
+            Object.keys(restored).forEach(function (key) {
+              if (restored[key] && !url.searchParams.has(key)) url.searchParams.set(key, restored[key]);
+            });
+            window.history.replaceState({}, '', url.toString());
+          }
+        } catch (e) {}
+      }
+
+      function appendField(body, key, type, title, value, required) {
+        body.append('fields[' + key + '][id]', key);
+        body.append('fields[' + key + '][type]', type);
+        body.append('fields[' + key + '][title]', title);
+        body.append('fields[' + key + '][value]', value || '');
+        body.append('fields[' + key + '][raw_value]', value || '');
+        body.append('fields[' + key + '][required]', required ? '1' : '0');
+      }
+
+      function buildBody() {
+        var p = params();
+        var body = new URLSearchParams();
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var ddi = document.getElementById('ddi').value || '+55';
+        var phone = ddi + document.getElementById('telefone').value.replace(/\D/g, '');
+
+        appendField(body, 'name', 'text', 'Nome', name, true);
+        appendField(body, 'email', 'email', 'E-mail', email, true);
+        appendField(body, 'telefone', 'tel', 'Whatsapp', phone, true);
+        appendField(body, 's1', 'hidden', 's1', 'aulao-posicionamento-vendas-clara', false);
+        appendField(body, 'data_atual', 'hidden', 'data-atual', now(), false);
+        ['utm_campaign', 'utm_source', 'utm_medium', 'utm_content', 'utm_term'].forEach(function (key) {
+          appendField(body, key, 'hidden', key, p.get(key) || (key === 'utm_campaign' ? 'AULAO_CLARA_LIVES' : ''), false);
+        });
+        appendField(body, 'ab_test', 'hidden', 'ab_test', p.get('ab_test') || '', false);
+        appendField(body, 'ab_variant', 'hidden', 'ab_variant', p.get('ab_variant') || '', false);
+        return body;
+      }
+
+      persistAttribution();
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        var button = form.querySelector('button[type="submit"]');
+        button.disabled = true;
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body: buildBody(),
+          keepalive: true
+        }).catch(function () {}).finally(function () {
+          status.classList.add('show');
+          setTimeout(function () { window.location.assign(redirectUrl); }, 700);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
