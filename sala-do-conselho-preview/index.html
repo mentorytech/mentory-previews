@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A0A0A">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Sala do Conselho com Ed Souza | Mentory International®</title>
+  <meta name="description" content="Toda terça-feira, às 12h: uma reunião secreta para empresários que querem criar um sistema de geração de receita com clientes premium.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sala do Conselho com Ed Souza">
+  <meta property="og:description" content="Acompanhe ao vivo a análise da estrutura de receita de um empresário e enxergue o que precisa mudar para atrair clientes premium.">
+  <meta property="og:image" content="assets/img/ed-palestra-1.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230A0A0A'/%3E%3Cpath d='M9 9h14v3H13v3h8v3h-8v5H9z' fill='%23D4AF37'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EventSeries",
+    "name": "Sala do Conselho com Ed Souza",
+    "description": "Reunião recorrente para empresários que querem criar um sistema de geração de receita com clientes premium.",
+    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+    "eventSchedule": {
+      "@type": "Schedule",
+      "repeatFrequency": "P1W",
+      "byDay": "https://schema.org/Tuesday",
+      "startTime": "12:00:00",
+      "scheduleTimezone": "America/Sao_Paulo"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "Mentory International®",
+      "url": "https://mentoryinternational.com"
+    },
+    "performer": {
+      "@type": "Person",
+      "name": "Ed Souza"
+    }
+  }
+  </script>
+  <style>
+    @font-face {
+      font-family: "Bebas Neue";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("assets/fonts/bebas-neue-latin.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+      src: url("assets/fonts/dm-sans-latin.woff2") format("woff2");
+    }
+    :root {
+      --gold: #C9A227;
+      --gold-light: #D4AF37;
+      --gold-dark: #B8860B;
+      --black: #0A0A0A;
+      --black-2: #1A1A1A;
+      --black-3: #2D2D2D;
+      --cream: #F5F5DC;
+      --cream-2: #FFFEF0;
+      --cream-3: #FAF9F6;
+      --ink-muted: #5D574A;
+      --line-dark: rgba(201,162,39,.22);
+      --line-light: rgba(245,245,220,.14);
+      --shadow: 0 30px 80px rgba(10,10,10,.18);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 30px;
+      --font-display: "Bebas Neue", Impact, sans-serif;
+      --font-body: "DM Sans", Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--black); }
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      background: var(--cream-3);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { border: 0; cursor: pointer; }
+    :focus-visible { outline: 3px solid var(--gold-light); outline-offset: 4px; }
+    ::selection { background: var(--gold); color: var(--black); }
+
+    .container { width: min(calc(100% - 32px), 1180px); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    .display {
+      font-family: var(--font-display);
+      font-weight: 400;
+      letter-spacing: -.018em;
+      line-height: .94;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+    .gold { color: var(--gold-light); }
+    .section-title { font-size: clamp(42px, 7vw, 76px); }
+    .section-copy { color: var(--ink-muted); font-size: clamp(16px, 2vw, 18px); line-height: 1.75; }
+    .section-copy--spaced { margin-top: 22px; }
+    .intro-section .eyebrow,
+    .authority .eyebrow,
+    .faq-section .eyebrow { color: var(--black-3); }
+    .intro-section .eyebrow::before,
+    .authority .eyebrow::before,
+    .faq-section .eyebrow::before { background: var(--gold-dark); }
+
+    .top-strip {
+      position: relative;
+      z-index: 20;
+      border-bottom: 1px solid var(--line-light);
+      background: var(--black);
+      color: var(--cream-2);
+    }
+    .top-strip__inner {
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 9px 0;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      flex: none;
+      border-radius: 50%;
+      background: var(--gold-light);
+      box-shadow: 0 0 18px rgba(212,175,55,.8);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(201,162,39,.11), transparent 28%),
+        radial-gradient(circle at 86% 12%, rgba(212,175,55,.08), transparent 24%),
+        var(--black);
+      color: var(--cream-2);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .3;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+    }
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      color: var(--cream-2);
+      font-family: var(--font-display);
+      font-size: 23px;
+      letter-spacing: .075em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .brand small {
+      display: block;
+      margin-top: 5px;
+      color: rgba(245,245,220,.52);
+      font-family: var(--font-body);
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: .22em;
+    }
+    .nav-link {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(212,175,55,.38);
+      border-radius: 999px;
+      padding: 10px 20px;
+      color: var(--cream-2);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .nav-link:hover { background: var(--gold-light); color: var(--black); transform: translateY(-1px); }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(400px, .86fr);
+      gap: clamp(48px, 6vw, 86px);
+      align-items: center;
+      padding: 68px 0 100px;
+    }
+    .hero h1 { max-width: 780px; margin-top: 22px; font-size: clamp(54px, 7.3vw, 94px); }
+    .hero h1 .serif {
+      display: block;
+      margin-top: 8px;
+      color: var(--gold-light);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: .53em;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: 1.04;
+      text-transform: none;
+    }
+    .hero-lead {
+      max-width: 670px;
+      margin-top: 26px;
+      color: rgba(255,254,240,.72);
+      font-size: clamp(16px, 1.55vw, 19px);
+      line-height: 1.65;
+    }
+    .hero-lead strong { color: var(--cream-2); font-weight: 700; }
+    .hero-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 30px;
+      list-style: none;
+    }
+    .hero-points li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: rgba(255,254,240,.82);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .hero-points svg { margin-top: 2px; color: var(--gold-light); }
+
+    .capture-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,.28);
+      border-radius: var(--radius-lg);
+      background: var(--cream-2);
+      color: var(--black);
+      box-shadow: 0 38px 100px rgba(0,0,0,.45);
+    }
+    .mosaic {
+      height: 188px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr .85fr;
+      grid-template-rows: minmax(0, 1fr);
+      gap: 4px;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .mosaic img { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: cover; filter: saturate(.78) contrast(1.05); }
+    .capture-body { padding: 30px; }
+    .capture-kicker {
+      color: var(--gold-dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .capture-body h2 {
+      margin-top: 8px;
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 400;
+      letter-spacing: -.01em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .capture-intro { margin-top: 10px; color: var(--ink-muted); font-size: 13px; line-height: 1.55; }
+    .form { display: grid; gap: 13px; margin-top: 22px; }
+    .field { display: grid; gap: 6px; }
+    .field label { color: var(--black-3); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .field input {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid rgba(10,10,10,.16);
+      border-radius: var(--radius-sm);
+      background: var(--cream-3);
+      padding: 13px 14px;
+      color: var(--black);
+      font-size: 15px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .field input::placeholder { color: #8E8778; }
+    .field input:focus { border-color: var(--gold-dark); background: #fff; box-shadow: 0 0 0 4px rgba(201,162,39,.13); }
+    .field input[aria-invalid="true"] { border-color: #8A2F24; }
+    .submit-btn, .primary-btn {
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .045em;
+      line-height: 1.2;
+      text-align: center;
+      text-transform: uppercase;
+      box-shadow: 0 18px 40px rgba(184,134,11,.2), inset 0 1px rgba(255,255,255,.45);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .submit-btn { width: 100%; margin-top: 4px; padding: 14px 18px; }
+    .submit-btn:hover, .primary-btn:hover { transform: translateY(-2px); filter: brightness(1.04); box-shadow: 0 22px 48px rgba(184,134,11,.3); }
+    .submit-btn:disabled { cursor: wait; opacity: .68; transform: none; }
+    .privacy { color: #776F60; font-size: 11px; line-height: 1.45; text-align: center; }
+    .form-message { display: none; border-radius: var(--radius-sm); padding: 12px 14px; font-size: 13px; font-weight: 700; line-height: 1.45; }
+    .form-message.error { display: block; border: 1px solid rgba(138,47,36,.2); background: #FFF3EF; color: #76291F; }
+    .form-message.success { display: block; border: 1px solid rgba(184,134,11,.24); background: rgba(212,175,55,.13); color: #5B4300; }
+    .capture-card.is-success .form, .capture-card.is-success .capture-intro { display: none; }
+    .success-panel { display: none; padding: 18px 0 6px; }
+    .capture-card.is-success .success-panel { display: block; }
+    .success-panel svg { width: 48px; color: var(--gold-dark); }
+    .success-panel h3 { margin-top: 16px; font-family: var(--font-display); font-size: 38px; font-weight: 400; line-height: 1; text-transform: uppercase; }
+    .success-panel p { margin-top: 10px; color: var(--ink-muted); font-size: 14px; }
+
+    .intro-section { padding: 104px 0; background: var(--cream-3); }
+    .intro-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(50px, 8vw, 110px); align-items: start; }
+    .intro-sticky { position: sticky; top: 36px; }
+    .intro-sticky .section-title { margin-top: 18px; }
+    .council-list { border-top: 1px solid rgba(10,10,10,.2); }
+    .council-item {
+      display: grid;
+      grid-template-columns: 68px 1fr;
+      gap: 26px;
+      padding: 30px 0;
+      border-bottom: 1px solid rgba(10,10,10,.2);
+    }
+    .council-number { color: var(--gold-dark); font-family: var(--font-display); font-size: 42px; line-height: 1; }
+    .council-item h3 { font-size: clamp(20px, 2.4vw, 27px); letter-spacing: -.035em; line-height: 1.18; }
+    .council-item p { margin-top: 9px; color: var(--ink-muted); font-size: 15px; line-height: 1.68; }
+
+    .experience {
+      position: relative;
+      overflow: hidden;
+      padding: 108px 0;
+      background: var(--black);
+      color: var(--cream-2);
+    }
+    .experience::before {
+      content: "CONSELHO";
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(245,245,220,.025);
+      font-family: var(--font-display);
+      font-size: min(24vw, 320px);
+      line-height: .9;
+      white-space: nowrap;
+    }
+    .experience-head { position: relative; max-width: 900px; }
+    .experience-head .section-title { margin-top: 18px; max-width: 820px; }
+    .experience-head p { max-width: 690px; margin-top: 22px; color: rgba(255,254,240,.65); font-size: 17px; }
+    .process {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 62px;
+      border: 1px solid var(--line-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--line-light);
+    }
+    .process article { min-height: 290px; padding: 32px; background: var(--black); }
+    .process .num { color: var(--gold-light); font-family: var(--font-display); font-size: 54px; line-height: 1; }
+    .process h3 { margin-top: 48px; font-size: 21px; letter-spacing: -.035em; line-height: 1.2; }
+    .process p { margin-top: 12px; color: rgba(255,254,240,.58); font-size: 14px; line-height: 1.66; }
+
+    .authority { padding: 108px 0; background: var(--cream-2); }
+    .authority-grid { display: grid; grid-template-columns: minmax(320px,.82fr) 1.18fr; gap: clamp(48px, 8vw, 110px); align-items: center; }
+    .portrait { position: relative; overflow: visible; border-radius: var(--radius-md); background: var(--black) url("assets/img/ed-souza.webp") center / cover no-repeat; }
+    .portrait::before { content: ""; position: absolute; inset: 26px -18px -18px 26px; z-index: 0; border: 1px solid var(--gold); border-radius: var(--radius-md); }
+    .portrait img { position: relative; z-index: 1; width: 100%; aspect-ratio: 4/5; border-radius: var(--radius-md); object-fit: cover; filter: saturate(.8) contrast(1.04); box-shadow: var(--shadow); }
+    .authority-copy .section-title { margin-top: 16px; }
+    .role { margin-top: 10px; color: var(--black-3); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .authority-copy > p { margin-top: 22px; color: var(--ink-muted); font-size: 16px; }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(10,10,10,.17);
+    }
+    .metric strong { display: block; color: var(--gold-dark); font-family: var(--font-display); font-size: clamp(34px,4vw,48px); font-weight: 400; line-height: 1; }
+    .metric span { display: block; margin-top: 7px; color: var(--ink-muted); font-size: 11px; line-height: 1.4; }
+
+    .proof { padding: 108px 0; background: var(--black-2); color: var(--cream-2); }
+    .proof-head { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+    .proof-head .section-title { margin-top: 16px; }
+    .proof-head p { color: rgba(255,254,240,.62); font-size: 16px; }
+    .case-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 52px; }
+    .case {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(212,175,55,.24);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      background: rgba(10,10,10,.42);
+    }
+    .case blockquote { color: var(--cream-2); font-size: 18px; font-weight: 700; letter-spacing: -.025em; line-height: 1.42; }
+    .case footer { margin-top: 28px; }
+    .case footer strong { color: var(--gold-light); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
+    .case footer span { display: block; margin-top: 4px; color: rgba(255,254,240,.47); font-size: 12px; }
+
+    .faq-section { padding: 108px 0; background: var(--cream-3); }
+    .faq-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(54px, 8vw, 110px); }
+    .faq-title .section-title { margin-top: 16px; }
+    .faq { border-top: 1px solid rgba(10,10,10,.22); }
+    details { border-bottom: 1px solid rgba(10,10,10,.22); }
+    summary {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      cursor: pointer;
+      list-style: none;
+      color: var(--black);
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; flex: none; color: var(--gold-dark); font-family: var(--font-display); font-size: 30px; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    details p { max-width: 700px; padding: 0 48px 24px 0; color: var(--ink-muted); font-size: 14px; line-height: 1.7; }
+
+    .final-cta {
+      position: relative;
+      overflow: hidden;
+      padding: 106px 0;
+      background: var(--black);
+      color: var(--cream-2);
+      text-align: center;
+    }
+    .final-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0, rgba(212,175,55,.17), transparent 42%); pointer-events: none; }
+    .final-cta .container { position: relative; }
+    .final-cta .eyebrow::before { display: none; }
+    .final-cta h2 { max-width: 920px; margin: 18px auto 0; font-size: clamp(50px, 8vw, 92px); }
+    .final-cta p { max-width: 620px; margin: 22px auto 0; color: rgba(255,254,240,.66); font-size: 17px; }
+    .primary-btn { margin-top: 30px; padding: 16px 28px; }
+    .final-note { display: block; margin-top: 13px; color: rgba(255,254,240,.46); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+
+    .footer { border-top: 1px solid var(--line-light); padding: 50px 0; background: var(--black); color: rgba(255,254,240,.64); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 30px; align-items: flex-end; }
+    .footer .brand { color: var(--cream-2); }
+    .footer p { max-width: 520px; font-size: 11px; line-height: 1.6; }
+    .footer-copy { margin-top: 12px; }
+    .footer-links { display: flex; gap: 20px; font-size: 11px; }
+    .footer a:hover { color: var(--gold-light); }
+
+    @keyframes pulse { 0%,100% { opacity: .45; transform: scale(.86); } 50% { opacity: 1; transform: scale(1); } }
+
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; padding-top: 48px; }
+      .hero-copy { text-align: center; }
+      .hero .eyebrow { justify-content: center; }
+      .hero-lead { margin-inline: auto; }
+      .hero-points { width: min(100%,620px); margin-inline: auto; text-align: left; }
+      .capture-card { width: min(100%,600px); margin-inline: auto; }
+      .intro-grid, .authority-grid, .faq-grid { grid-template-columns: 1fr; }
+      .intro-sticky { position: static; }
+      .authority-grid { width: min(100%,720px); margin-inline: auto; }
+      .portrait { width: min(78vw,450px); }
+      .proof-head { grid-template-columns: 1fr; gap: 20px; }
+      .process, .case-list { grid-template-columns: 1fr; }
+      .process article { min-height: 0; }
+      .process h3 { margin-top: 26px; }
+      .case { min-height: 210px; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 28px),1180px); }
+      .top-strip__inner { font-size: 9px; letter-spacing: .11em; }
+      .nav { min-height: 66px; }
+      .brand { font-size: 20px; }
+      .nav-link { min-height: 42px; padding-inline: 13px; font-size: 9px; }
+      .hero-grid { gap: 34px; padding: 38px 0 66px; }
+      .hero h1 { margin-top: 16px; font-size: clamp(46px,15vw,66px); }
+      .hero h1 .serif { font-size: .49em; }
+      .hero-lead { margin-top: 20px; font-size: 15px; }
+      .hero-points { margin-top: 24px; }
+      .mosaic { height: 142px; }
+      .capture-card { border-radius: 22px; }
+      .capture-body { padding: 24px 18px 22px; }
+      .capture-body h2 { font-size: 34px; }
+      .submit-btn { min-height: 56px; }
+      .intro-section, .experience, .authority, .proof, .faq-section, .final-cta { padding: 76px 0; }
+      .section-title { font-size: clamp(42px,14vw,61px); }
+      .council-item { grid-template-columns: 48px 1fr; gap: 16px; padding: 24px 0; }
+      .council-number { font-size: 34px; }
+      .process { margin-top: 38px; }
+      .process article { padding: 26px 22px; }
+      .portrait { width: calc(100% - 18px); }
+      .portrait::before { inset: 18px -12px -12px 18px; }
+      .metrics { grid-template-columns: 1fr; gap: 18px; }
+      .metric { display: grid; grid-template-columns: 105px 1fr; gap: 18px; align-items: center; }
+      .metric span { margin-top: 0; }
+      .case-list { margin-top: 38px; }
+      .case { min-height: 190px; padding: 23px; }
+      summary { min-height: 70px; font-size: 15px; }
+      details p { padding-right: 20px; }
+      .final-cta h2 { font-size: clamp(48px,16vw,68px); }
+      .primary-btn { width: 100%; min-height: 56px; padding-inline: 18px; }
+      .footer-inner { display: grid; align-items: start; }
+      .footer-links { flex-wrap: wrap; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">
+    <div class="container top-strip__inner">
+      <span class="live-dot" aria-hidden="true"></span>
+      Toda terça-feira, às 12h · ao vivo
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <nav class="container nav" aria-label="Navegação principal">
+      <a class="brand" href="#top" aria-label="Sala do Conselho — início">
+        Sala do Conselho
+        <small>Mentory International®</small>
+      </a>
+      <a class="nav-link" href="#inscricao">Reservar meu lugar</a>
+    </nav>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Reunião secreta para empresários</span>
+        <h1 class="display">
+          Entre na<br>Sala do Conselho
+          <span class="serif">e construa receita com clientes premium.</span>
+        </h1>
+        <p class="hero-lead">
+          Toda terça-feira, às 12h, <strong>Ed Souza analisa ao vivo a estrutura de receita de um participante</strong> — para mostrar onde o negócio perde margem, previsibilidade e poder de atração.
+        </p>
+        <ul class="hero-points" aria-label="O que você encontrará na Sala do Conselho">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Análise aplicada a uma estrutura de receita real.</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Clareza sobre oferta, aquisição e venda para clientes premium.</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Um encontro direto, sem teoria desconectada da operação.</span>
+          </li>
+        </ul>
+      </div>
+
+      <aside class="capture-card" id="inscricao" aria-labelledby="capture-title">
+        <div class="mosaic" aria-hidden="true">
+          <img src="assets/img/ed-palestra-1.jpg" alt="" width="600" height="900" fetchpriority="high">
+          <img src="assets/img/ed-trabalho-2.jpg" alt="" width="300" height="450" fetchpriority="high">
+          <img src="assets/img/ed-palestra-3.jpg" alt="" width="300" height="450" fetchpriority="high">
+        </div>
+        <div class="capture-body">
+          <span class="capture-kicker">Acesso reservado</span>
+          <h2 id="capture-title">Solicite sua entrada</h2>
+          <p class="capture-intro">Preencha seus dados para receber as instruções da próxima Sala do Conselho.</p>
+
+          <form class="form" id="lead-form" novalidate>
+            <div class="field">
+              <label for="name">Nome completo</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Como devemos chamar você?" required>
+            </div>
+            <div class="field">
+              <label for="email">Melhor e-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="voce@empresa.com" required>
+            </div>
+            <div class="field">
+              <label for="phone">WhatsApp com DDD</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" maxlength="20" required>
+            </div>
+            <div class="form-message" id="form-message" role="alert" aria-live="polite"></div>
+            <button class="submit-btn" id="submit-btn" type="submit">
+              Quero entrar na Sala do Conselho
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p class="privacy">Seus dados são tratados com confidencialidade pela Mentory International®.</p>
+          </form>
+
+          <div class="success-panel" id="success-panel" role="status" aria-live="polite" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="m8 12 2.6 2.6L16.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Solicitação recebida.</h3>
+            <p>As instruções da próxima Sala do Conselho serão enviadas pelos contatos informados.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro-section" aria-labelledby="why-title">
+      <div class="container intro-grid">
+        <div class="intro-sticky">
+          <span class="eyebrow">Por que esta sala existe</span>
+          <h2 class="display section-title" id="why-title">Faturamento não é sistema.</h2>
+          <p class="section-copy section-copy--spaced">Um negócio pode vender e ainda depender de indicação, esforço do dono, volume ou conversas que começam do zero.</p>
+        </div>
+        <div class="council-list">
+          <article class="council-item">
+            <span class="council-number">01</span>
+            <div>
+              <h3>Cliente premium não chega por acaso.</h3>
+              <p>Ele é atraído quando posicionamento, oferta e comunicação deixam claro por que escolher sua empresa — antes da conversa comercial.</p>
+            </div>
+          </article>
+          <article class="council-item">
+            <span class="council-number">02</span>
+            <div>
+              <h3>Receita previsível exige arquitetura.</h3>
+              <p>Não basta vender mais uma vez. É preciso enxergar como aquisição, produto, venda e entrega trabalham juntos para sustentar margem e recorrência.</p>
+            </div>
+          </article>
+          <article class="council-item">
+            <span class="council-number">03</span>
+            <div>
+              <h3>Uma estrutura real ensina mais que teoria genérica.</h3>
+              <p>Ao acompanhar um negócio sendo analisado ao vivo, você enxerga padrões, gargalos e decisões que também podem estar limitando a sua receita.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="experience-head">
+          <span class="eyebrow">O que acontece dentro da sala</span>
+          <h2 class="display section-title" id="experience-title">Um empresário. Uma estrutura real. Decisões sem maquiagem.</h2>
+          <p>A análise parte da operação apresentada pelo participante e avança sobre os pontos que sustentam — ou travam — a geração de receita com clientes premium.</p>
+        </div>
+        <div class="process">
+          <article>
+            <span class="num">01</span>
+            <h3>A estrutura é colocada na mesa.</h3>
+            <p>O participante apresenta como o negócio atrai, vende e entrega hoje.</p>
+          </article>
+          <article>
+            <span class="num">02</span>
+            <h3>Os gargalos ficam visíveis.</h3>
+            <p>Ed identifica os pontos que reduzem valor percebido, margem e previsibilidade.</p>
+          </article>
+          <article>
+            <span class="num">03</span>
+            <h3>O conselho vira direção.</h3>
+            <p>Você acompanha o raciocínio por trás dos ajustes e traduz os aprendizados para o seu negócio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="authority" aria-labelledby="ed-title">
+      <div class="container authority-grid">
+        <div class="portrait">
+          <img src="assets/img/ed-souza.webp" alt="Ed Souza, cofundador da Mentory International" width="800" height="839" loading="eager" decoding="sync">
+        </div>
+        <div class="authority-copy">
+          <span class="eyebrow">Quem conduz o conselho</span>
+          <h2 class="display section-title" id="ed-title">Ed Souza</h2>
+          <div class="role">Cofundador · Mentory International®</div>
+          <p>Há mais de uma década, Ed trabalha com empresários que querem sair do crescimento baseado em esforço e construir negócios que cobram mais, operam com inteligência e geram receita com maior previsibilidade.</p>
+          <p>A Sala do Conselho nasce dessa experiência aplicada: olhar para a estrutura, separar sintoma de causa e mostrar qual decisão muda o jogo.</p>
+          <div class="metrics" role="group" aria-label="Provas de autoridade">
+            <div class="metric">
+              <strong>R$30M+</strong>
+              <span>em faturamento gerado nos últimos 3 anos</span>
+            </div>
+            <div class="metric">
+              <strong>+71</strong>
+              <span>países com presença de empresários Mentory</span>
+            </div>
+            <div class="metric">
+              <strong>+10K</strong>
+              <span>negócios impactados ao longo da jornada</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" aria-labelledby="proof-title">
+      <div class="container">
+        <div class="proof-head">
+          <div>
+            <span class="eyebrow">Estruturas que mudaram de nível</span>
+            <h2 class="display section-title" id="proof-title">Quando a arquitetura muda, a receita responde.</h2>
+          </div>
+          <p>Cases de negócios que aplicaram princípios de posicionamento, oferta e venda High Ticket dentro do ecossistema Mentory.</p>
+        </div>
+        <div class="case-list">
+          <article class="case">
+            <blockquote>“R$ 196 mil faturados e R$ 200 mil em assinaturas anuais.”</blockquote>
+            <footer><strong>Case Mentory</strong><span>Infoprodutos</span></footer>
+          </article>
+          <article class="case">
+            <blockquote>“Mais de R$ 2 milhões em faturamento com consultas High Ticket.”</blockquote>
+            <footer><strong>Case Mentory</strong><span>Estética</span></footer>
+          </article>
+          <article class="case">
+            <blockquote>“Meta de R$ 150 mil superada: R$ 200 mil em 20 dias.”</blockquote>
+            <footer><strong>Case Mentory</strong><span>Concursos públicos</span></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <div class="faq-title">
+          <span class="eyebrow">Antes de solicitar entrada</span>
+          <h2 class="display section-title" id="faq-title">Perguntas diretas.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Quando acontece a Sala do Conselho?</summary>
+            <p>Toda terça-feira, às 12h. Cadastre-se com um e-mail e WhatsApp válidos para receber as instruções da próxima sala.</p>
+          </details>
+          <details>
+            <summary>Para quem é esta reunião?</summary>
+            <p>Para empresários, especialistas e donos de operação que querem estruturar uma geração de receita mais consistente, baseada em clientes premium — não apenas em volume ou esforço pessoal.</p>
+          </details>
+          <details>
+            <summary>Todos os participantes serão analisados?</summary>
+            <p>A cada encontro, Ed analisa ao vivo a estrutura de receita de um participante. Mesmo fora da análise central, você acompanha o diagnóstico e pode reconhecer os mesmos padrões dentro do seu negócio.</p>
+          </details>
+          <details>
+            <summary>O encontro é gravado?</summary>
+            <p>A Sala do Conselho foi criada como uma experiência ao vivo. As condições de acesso e disponibilidade de conteúdo são informadas na confirmação da próxima edição.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="final-title">
+      <div class="container">
+        <span class="eyebrow">Toda terça-feira · 12h</span>
+        <h2 class="display" id="final-title">Sua receita revela o sistema que existe — ou a falta dele.</h2>
+        <p>Entre na Sala do Conselho e acompanhe uma análise real sobre o que separa um negócio ocupado de um negócio preparado para clientes premium.</p>
+        <a class="primary-btn" href="#inscricao">
+          Solicitar minha entrada
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <span class="final-note">Cadastro confidencial · instruções enviadas pelos contatos informados</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="brand">Mentory International®</div>
+        <p class="footer-copy">© 2026 Mentory International®. Todos os direitos reservados.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://mentoryinternational.com/politica-de-privacidade" rel="noopener">Política de Privacidade</a>
+        <a href="https://mentoryinternational.com/termos-de-uso" rel="noopener">Termos de Uso</a>
+        <a href="https://www.instagram.com/edsouza____/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var TRACK_URL = "https://zwkyymicfhgfkqvzzbrx.supabase.co/functions/v1/track";
+      var INBOUND_LEAD_URL = "https://haocyvgdsdmvoagwsssu.supabase.co/functions/v1/inbound-lead?token=44f9bc252463f3c3e3145896f74c989f55f81b98505af5fd";
+      var USER_ID = "e3822711-9059-493e-8c72-b03273de7f4e";
+      var PIXEL_ID = "1005236046297710";
+      var CAMPAIGN = "SALA_CONSELHO";
+      var S1 = "sala-do-conselho";
+      var ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid", "msclkid", "sck"];
+      var IS_PREVIEW = location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "mentorytech.github.io";
+
+      function uuid() {
+        try { if (crypto && crypto.randomUUID) return crypto.randomUUID(); } catch (e) {}
+        return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, function (c) {
+          return (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16);
+        });
+      }
+
+      function sessionId() {
+        try {
+          var value = sessionStorage.getItem("sala_conselho_session_id");
+          if (value) return value;
+          value = uuid();
+          sessionStorage.setItem("sala_conselho_session_id", value);
+          return value;
+        } catch (e) { return uuid(); }
+      }
+
+      function getCookie(name) {
+        var match = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+        return match ? decodeURIComponent(match[1]) : "";
+      }
+
+      function setCookie(name, value, days) {
+        var expires = new Date(Date.now() + days * 864e5).toUTCString();
+        document.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + expires + ";path=/;SameSite=Lax";
+      }
+
+      function ensureMetaCookies() {
+        var params = new URLSearchParams(location.search);
+        if (!getCookie("_fbp")) setCookie("_fbp", "fb.1." + Date.now() + "." + Math.floor(Math.random() * 1e10), 390);
+        if (!getCookie("_fbc") && params.get("fbclid")) setCookie("_fbc", "fb.1." + Date.now() + "." + params.get("fbclid"), 90);
+      }
+
+      function persistAttribution() {
+        var params = new URLSearchParams(location.search);
+        var values = {};
+        var found = false;
+        ATTRIBUTION_KEYS.forEach(function (key) {
+          var value = params.get(key);
+          if (value) { values[key] = value; found = true; }
+        });
+        try {
+          if (found) {
+            localStorage.setItem("sala_conselho_attribution", JSON.stringify(values));
+            localStorage.setItem("sala_conselho_attribution_ts", String(Date.now()));
+          }
+        } catch (e) {}
+      }
+
+      function attribution() {
+        var params = new URLSearchParams(location.search);
+        var saved = {};
+        try {
+          var age = Date.now() - Number(localStorage.getItem("sala_conselho_attribution_ts") || 0);
+          if (age < 7 * 864e5) saved = JSON.parse(localStorage.getItem("sala_conselho_attribution") || "{}");
+        } catch (e) {}
+        var result = {};
+        ATTRIBUTION_KEYS.forEach(function (key) { result[key] = params.get(key) || saved[key] || ""; });
+        result.utm_campaign = result.utm_campaign || CAMPAIGN;
+        return result;
+      }
+
+      var sid = sessionId();
+      ensureMetaCookies();
+      persistAttribution();
+
+      function loadMetaPixel() {
+        if (window.fbq) return;
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", PIXEL_ID);
+        fbq("track", "PageView", {}, { eventID: "pageview_" + sid });
+      }
+      function scheduleMetaPixel() {
+        var events = ["pointerdown", "keydown", "scroll"];
+        function start() {
+          events.forEach(function (eventName) { window.removeEventListener(eventName, start); });
+          loadMetaPixel();
+        }
+        events.forEach(function (eventName) { window.addEventListener(eventName, start, { once: true, passive: true }); });
+        setTimeout(start, 12000);
+      }
+      if (!IS_PREVIEW) {
+        if (document.readyState === "complete") scheduleMetaPixel();
+        else window.addEventListener("load", scheduleMetaPixel, { once: true });
+      }
+
+      function track(eventName, extra) {
+        var eventId = (extra && extra.event_id) || eventName.toLowerCase() + "_" + sid + "_" + Date.now();
+        var payload = Object.assign({
+          user_id: USER_ID,
+          pixel_id: PIXEL_ID,
+          funnel: "Sala do Conselho",
+          s1: S1,
+          url: location.href,
+          event_name: eventName,
+          event_id: eventId,
+          session_id: sid,
+          fbp: getCookie("_fbp"),
+          fbc: getCookie("_fbc")
+        }, attribution(), extra || {});
+        try { fbq("track", eventName, {}, { eventID: eventId }); } catch (e) {}
+        if (IS_PREVIEW) return Promise.resolve({ preview: true });
+        return fetch(TRACK_URL, {
+          method: "POST",
+          credentials: "include",
+          keepalive: true,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }).catch(function (error) { console.warn("[Sala do Conselho Tracking]", error); });
+      }
+
+      track("PageView");
+
+      var form = document.getElementById("lead-form");
+      var card = document.getElementById("inscricao");
+      var message = document.getElementById("form-message");
+      var button = document.getElementById("submit-btn");
+      var phone = document.getElementById("phone");
+
+      phone.addEventListener("input", function () {
+        var digits = phone.value.replace(/\D/g, "").slice(0, 13);
+        if (digits.length <= 2) phone.value = digits;
+        else if (digits.length <= 7) phone.value = "(" + digits.slice(0,2) + ") " + digits.slice(2);
+        else if (digits.length <= 11) phone.value = "(" + digits.slice(0,2) + ") " + digits.slice(2,7) + "-" + digits.slice(7);
+        else phone.value = "+" + digits.slice(0,2) + " " + digits.slice(2);
+      });
+
+      function setMessage(text, type) {
+        message.textContent = text || "";
+        message.className = "form-message" + (type ? " " + type : "");
+      }
+
+      function validate() {
+        var name = form.name.value.trim();
+        var email = form.email.value.trim();
+        var phoneDigits = form.phone.value.replace(/\D/g, "");
+        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        [form.name, form.email, form.phone].forEach(function (field) { field.removeAttribute("aria-invalid"); });
+        if (name.length < 3) { form.name.setAttribute("aria-invalid", "true"); form.name.focus(); return "Informe seu nome completo."; }
+        if (!emailOk) { form.email.setAttribute("aria-invalid", "true"); form.email.focus(); return "Informe um e-mail válido."; }
+        if (phoneDigits.length < 10) { form.phone.setAttribute("aria-invalid", "true"); form.phone.focus(); return "Informe um WhatsApp válido com DDD."; }
+        return "";
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        setMessage("", "");
+        var validationError = validate();
+        if (validationError) { setMessage(validationError, "error"); return; }
+
+        button.disabled = true;
+        button.textContent = "Enviando sua solicitação...";
+
+        var eventId = "lead_" + sid + "_" + Date.now();
+        var data = Object.assign({
+          name: form.name.value.trim(),
+          email: form.email.value.trim().toLowerCase(),
+          phone: form.phone.value.replace(/\D/g, ""),
+          phone_raw: form.phone.value.trim(),
+          source: S1,
+          lead_source: "capture_page",
+          campaign: CAMPAIGN,
+          s1: S1,
+          page_url: location.href,
+          session_id: sid,
+          event_id: eventId,
+          created_at: new Date().toISOString(),
+          fbp: getCookie("_fbp"),
+          fbc: getCookie("_fbc")
+        }, attribution());
+
+        var isPreview = IS_PREVIEW;
+        var request = isPreview
+          ? new Promise(function (resolve) { setTimeout(resolve, 600); })
+          : fetch(INBOUND_LEAD_URL, {
+              method: "POST",
+              mode: "cors",
+              keepalive: true,
+              headers: { "Content-Type": "application/json", "Accept": "application/json" },
+              body: JSON.stringify(data)
+            }).then(function (response) {
+              if (!response.ok) throw new Error("HTTP " + response.status);
+              return response;
+            });
+
+        request.then(function () {
+          return track("Lead", { event_id: eventId });
+        }).then(function () {
+          card.classList.add("is-success");
+          document.getElementById("success-panel").focus({ preventScroll: true });
+        }).catch(function (error) {
+          console.warn("[Sala do Conselho Lead]", error);
+          setMessage("Não foi possível concluir agora. Revise os dados e tente novamente.", "error");
+          button.disabled = false;
+          button.innerHTML = "Quero entrar na Sala do Conselho <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 12h14m0 0-5-5m5 5-5 5\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>";
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
