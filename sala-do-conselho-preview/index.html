@@ -273,15 +273,15 @@
       box-shadow: 0 38px 100px rgba(0,0,0,.45);
     }
     .mosaic {
-      height: 188px;
+      height: 220px;
       display: grid;
-      grid-template-columns: 1.15fr .85fr .85fr;
+      grid-template-columns: 1fr;
       grid-template-rows: minmax(0, 1fr);
       gap: 4px;
       overflow: hidden;
       background: var(--black);
     }
-    .mosaic img { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: cover; filter: saturate(.78) contrast(1.05); }
+    .mosaic img { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: cover; object-position: center 58%; filter: saturate(.78) contrast(1.05); }
     .capture-body { padding: 30px; }
     .capture-kicker {
       color: var(--gold-dark);
@@ -521,7 +521,7 @@
       .hero h1 .serif { font-size: .49em; }
       .hero-lead { margin-top: 20px; font-size: 15px; }
       .hero-points { margin-top: 24px; }
-      .mosaic { height: 142px; }
+      .mosaic { height: 160px; }
       .capture-card { border-radius: 22px; }
       .capture-body { padding: 24px 18px 22px; }
       .capture-body h2 { font-size: 34px; }
@@ -599,8 +599,6 @@
       <aside class="capture-card" id="inscricao" aria-labelledby="capture-title">
         <div class="mosaic" aria-hidden="true">
           <img src="assets/img/ed-palestra-1.jpg" alt="" width="600" height="900" fetchpriority="high">
-          <img src="assets/img/ed-trabalho-2.jpg" alt="" width="300" height="450" fetchpriority="high">
-          <img src="assets/img/ed-palestra-3.jpg" alt="" width="300" height="450" fetchpriority="high">
         </div>
         <div class="capture-body">
           <span class="capture-kicker">Acesso reservado</span>
