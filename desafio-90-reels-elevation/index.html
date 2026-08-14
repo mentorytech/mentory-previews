@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Desafio 90 Reels — Elevation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #050505;
+      --black-soft: #11110f;
+      --gold: #B8922A;
+      --gold-light: #D4A843;
+      --cream: #F5F1E8;
+      --white: #FFFFFF;
+      --muted: rgba(245, 241, 232, .66);
+      --line: rgba(184, 146, 42, .30);
+      --ease: cubic-bezier(.2,.75,.25,1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+    body { font-family: "DM Sans", Arial, sans-serif; color: var(--cream); }
+    button { font: inherit; }
+
+    .viewport {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #000;
+    }
+
+    .deck {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      transform-origin: center center;
+      background: var(--black);
+      box-shadow: 0 30px 100px rgba(0,0,0,.75);
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-rows: 92px 1fr 74px;
+      padding: 0 104px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(42px);
+      transition: opacity .45s var(--ease), transform .55s var(--ease), visibility .45s;
+      background:
+        radial-gradient(circle at 83% 16%, rgba(184,146,42,.11), transparent 25%),
+        linear-gradient(115deg, #050505 0%, #090907 60%, #050505 100%);
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+    }
+
+    .slide.active { opacity: 1; visibility: visible; transform: translateX(0); z-index: 2; }
+    .slide.exit-left { transform: translateX(-42px); }
+
+    .masthead, .footer, .content { position: relative; z-index: 1; }
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: 21px;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .brand span { color: var(--gold-light); }
+    .eyebrow {
+      font-family: "Syne", sans-serif;
+      color: var(--gold-light);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: rgba(245,241,232,.48);
+      border-top: 1px solid rgba(245,241,232,.09);
+      font-size: 15px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .footer strong { color: var(--gold-light); font-weight: 600; }
+    .content { min-height: 0; }
+
+    h1, h2, h3, p { margin: 0; }
+    h1, h2 {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .012em;
+      line-height: .91;
+    }
+
+    h1 { font-size: 184px; max-width: 1320px; }
+    h2 { font-size: 118px; }
+    h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 28px;
+      line-height: 1.15;
+      font-weight: 650;
+    }
+
+    .gold { color: var(--gold-light); }
+    .muted { color: var(--muted); }
+
+    .display-number {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      color: var(--gold-light);
+      font-size: 300px;
+      line-height: .72;
+      letter-spacing: -.02em;
+    }
+
+    .rule {
+      width: 144px;
+      height: 4px;
+      background: var(--gold);
+      margin: 30px 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 22px;
+      color: var(--gold-light);
+      font-family: "Syne", sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    /* Slide 1 */
+    .cover .content {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      align-items: center;
+      gap: 84px;
+    }
+
+    .cover-kicker {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 38px;
+    }
+
+    .cover-kicker::before { content: ""; width: 72px; height: 2px; background: var(--gold); }
+    .cover h1 .outline {
+      color: transparent;
+      -webkit-text-stroke: 2px var(--cream);
+      opacity: .86;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 46px;
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: 22px;
+    }
+
+    .cover-meta strong { display: block; color: var(--cream); font-family: "Syne"; font-size: 28px; }
+    .prize {
+      position: relative;
+      padding: 54px 0 54px 60px;
+      border-left: 1px solid var(--line);
+    }
+    .prize::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 50px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      box-shadow: 0 0 32px rgba(212,168,67,.55);
+    }
+    .prize p { margin-top: 18px; max-width: 370px; color: var(--muted); font-size: 23px; line-height: 1.45; }
+
+    /* Slide 2 */
+    .rules .content { display: grid; grid-template-columns: .68fr 1.32fr; gap: 100px; align-items: center; }
+    .rules-intro p { margin-top: 30px; max-width: 460px; color: var(--muted); font-size: 23px; line-height: 1.5; }
+    .rule-list { border-top: 1px solid var(--line); }
+    .rule-row {
+      display: grid;
+      grid-template-columns: 88px 1fr auto;
+      gap: 28px;
+      align-items: center;
+      min-height: 150px;
+      border-bottom: 1px solid rgba(245,241,232,.11);
+    }
+    .rule-index { color: var(--gold-light); font-family: "Bebas Neue"; font-size: 52px; }
+    .rule-row p { margin-top: 9px; color: var(--muted); font-size: 19px; }
+    .rule-status { color: var(--cream); font-family: "Syne"; font-size: 15px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .rule-status.no { color: var(--gold-light); }
+
+    /* Slide 3 */
+    .funnel .content { display: grid; grid-template-rows: auto 1fr; padding-top: 64px; }
+    .title-line { display: flex; justify-content: space-between; align-items: end; gap: 60px; }
+    .title-line p { max-width: 560px; padding-bottom: 10px; color: var(--muted); font-size: 23px; line-height: 1.45; }
+    .funnel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr .5fr;
+      gap: 28px;
+      align-items: end;
+      padding: 60px 0 50px;
+    }
+    .funnel-block {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 520px;
+      padding: 48px;
+      border: 1px solid rgba(245,241,232,.12);
+      background: rgba(255,255,255,.025);
+    }
+    .funnel-block:nth-child(2) { min-height: 450px; }
+    .funnel-block:nth-child(3) { min-height: 350px; border-color: var(--line); background: rgba(184,146,42,.075); }
+    .funnel-block .qty { font-family: "Bebas Neue"; font-size: 132px; line-height: .8; color: var(--cream); }
+    .funnel-block:nth-child(3) .qty { color: var(--gold-light); }
+    .funnel-block .percent { position: absolute; top: 30px; right: 34px; color: var(--gold-light); font-family: "Syne"; font-size: 22px; font-weight: 700; }
+    .funnel-block p { margin-top: 14px; color: var(--muted); font-size: 19px; line-height: 1.42; }
+
+    /* Slide 4 */
+    .discord .content { display: grid; grid-template-columns: .72fr 1.28fr; gap: 98px; align-items: center; }
+    .discord-copy p { margin-top: 28px; color: var(--muted); font-size: 22px; line-height: 1.5; max-width: 490px; }
+    .channel-name { margin-top: 36px; color: var(--gold-light); font-family: "Syne"; font-size: 23px; font-weight: 700; }
+    .checkin {
+      position: relative;
+      padding: 46px 52px;
+      border: 1px solid var(--line);
+      background: #0D0D0B;
+    }
+    .checkin::after { content: "CHECK-IN DIÁRIO"; position: absolute; top: 28px; right: 34px; color: rgba(212,168,67,.45); font-family: "Syne"; font-size: 13px; letter-spacing: .18em; }
+    .checkin-head { padding-bottom: 26px; border-bottom: 1px solid rgba(245,241,232,.12); font-family: "Syne"; font-size: 25px; font-weight: 700; }
+    .checkin-item { display: grid; grid-template-columns: 56px 104px 1fr; align-items: center; min-height: 94px; border-bottom: 1px solid rgba(245,241,232,.09); font-size: 20px; }
+    .checkin-item .n { color: var(--gold-light); font-family: "Bebas Neue"; font-size: 42px; }
+    .checkin-item .label { color: var(--cream); font-family: "Syne"; font-size: 14px; font-weight: 700; letter-spacing: .1em; }
+    .checkin-foot { padding-top: 25px; color: var(--muted); font-size: 18px; line-height: 1.4; }
+
+    /* Slide 5 */
+    .score .content { display: grid; grid-template-columns: .8fr 1.2fr; gap: 92px; align-items: center; }
+    .score-lead p { margin-top: 30px; max-width: 510px; color: var(--muted); font-size: 22px; line-height: 1.5; }
+    .winner { margin-top: 42px; padding-top: 28px; border-top: 1px solid var(--line); color: var(--cream); font-family: "Syne"; font-size: 22px; line-height: 1.4; }
+    .winner strong { color: var(--gold-light); }
+    .score-list { border-top: 1px solid var(--line); }
+    .score-row { display: grid; grid-template-columns: 92px 1fr 110px; align-items: center; min-height: 116px; border-bottom: 1px solid rgba(245,241,232,.11); }
+    .score-row .index { color: rgba(245,241,232,.32); font-family: "Bebas Neue"; font-size: 42px; }
+    .score-row h3 { font-size: 24px; }
+    .score-row p { margin-top: 7px; color: var(--muted); font-size: 17px; }
+    .points { color: var(--gold-light); text-align: right; font-family: "Bebas Neue"; font-size: 52px; }
+
+    .controls {
+      position: fixed;
+      z-index: 20;
+      left: 50%;
+      bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transform: translateX(-50%);
+      padding: 6px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      background: rgba(0,0,0,.74);
+      backdrop-filter: blur(14px);
+      opacity: .3;
+      transition: opacity .2s ease;
+    }
+    .controls:hover, .controls:focus-within { opacity: 1; }
+    .control-btn {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-size: 22px;
+    }
+    .control-btn:hover { background: rgba(255,255,255,.12); }
+    .control-btn:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+    .nav-dots { display: flex; gap: 8px; padding: 0 8px; }
+    .dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.28); cursor: pointer; }
+    .dot.active { width: 24px; border-radius: 999px; background: var(--gold-light); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide { transition: none; }
+    }
+
+    @media print {
+      @page { size: 16in 9in; margin: 0; }
+      html, body { overflow: visible; background: white; }
+      .viewport { position: static; display: block; background: white; }
+      .deck { position: static; width: 1920px !important; height: auto !important; transform: none !important; box-shadow: none; overflow: visible; }
+      .slide { position: relative; width: 1920px; height: 1080px; opacity: 1 !important; visibility: visible !important; transform: none !important; break-after: page; page-break-after: always; }
+      .controls { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="viewport" aria-label="Apresentação Desafio 90 Reels">
+    <div class="deck" id="deck">
+      <section class="slide cover active" aria-labelledby="slide1-title">
+        <header class="masthead"><div class="brand">Mentory <span>International®</span></div><div class="eyebrow">Elevation</div></header>
+        <div class="content">
+          <div>
+            <div class="cover-kicker eyebrow">Desafio de conteúdo</div>
+            <h1 id="slide1-title"><span class="gold">90 Reels.</span><br><span class="outline">30 dias.</span></h1>
+            <div class="cover-meta">
+              <div><strong>3 por dia</strong>Instagram e/ou TikTok</div>
+              <div><strong>17.08 — 15.09</strong>Consistência com estratégia</div>
+            </div>
+          </div>
+          <aside class="prize">
+            <span class="tag">Prêmio</span>
+            <div class="rule"></div>
+            <h3>Jantar premium<br>com acompanhante</h3>
+            <p>Uma celebração à consistência, à evolução e à construção de autoridade.</p>
+          </aside>
+        </div>
+        <footer class="footer"><span>Desafio 90 Reels</span><span><strong>01</strong> / 05</span></footer>
+      </section>
+
+      <section class="slide rules" aria-labelledby="slide2-title">
+        <header class="masthead"><div class="brand">Mentory <span>International®</span></div><div class="eyebrow">As regras</div></header>
+        <div class="content">
+          <div class="rules-intro">
+            <span class="tag">O inegociável</span>
+            <div class="rule"></div>
+            <h2 id="slide2-title">Publicar.<br><span class="gold">Não apenas produzir.</span></h2>
+            <p>O desafio existe para transformar consistência em presença, autoridade e oportunidade comercial.</p>
+          </div>
+          <div class="rule-list">
+            <div class="rule-row">
+              <div class="rule-index">01</div>
+              <div><h3>3 Reels publicados por dia</h3><p>Total mínimo de 90 Reels durante os 30 dias.</p></div>
+              <div class="rule-status">Obrigatório</div>
+            </div>
+            <div class="rule-row">
+              <div class="rule-index">02</div>
+              <div><h3>Instagram e/ou TikTok</h3><p>O mesmo Reel replicado nas duas plataformas conta como uma única peça.</p></div>
+              <div class="rule-status">Canais válidos</div>
+            </div>
+            <div class="rule-row">
+              <div class="rule-index">03</div>
+              <div><h3>Stories não entram na contagem</h3><p>Reposts, cópias e materiais não publicados também não pontuam.</p></div>
+              <div class="rule-status no">Não conta</div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer"><span>Critérios de validade</span><span><strong>02</strong> / 05</span></footer>
+      </section>
+
+      <section class="slide funnel" aria-labelledby="slide3-title">
+        <header class="masthead"><div class="brand">Mentory <span>International®</span></div><div class="eyebrow">Estratégia editorial</div></header>
+        <div class="content">
+          <div class="title-line">
+            <h2 id="slide3-title">Volume com<br><span class="gold">intenção.</span></h2>
+            <p>Cada Reel deve ser identificado no Discord. A distribuição segue o funil recomendado por Clara: 40% topo, 40% meio e 20% fundo.</p>
+          </div>
+          <div class="funnel-grid">
+            <article class="funnel-block"><span class="percent">40%</span><div class="qty">36</div><h3>Topo</h3><p>Atração, opinião, identificação e alcance.</p></article>
+            <article class="funnel-block"><span class="percent">40%</span><div class="qty">36</div><h3>Meio</h3><p>Educação, método, autoridade e objeções.</p></article>
+            <article class="funnel-block"><span class="percent">20%</span><div class="qty">18</div><h3>Fundo</h3><p>Cases, oferta, convite e CTA.</p></article>
+          </div>
+        </div>
+        <footer class="footer"><span>36 topo + 36 meio + 18 fundo</span><span><strong>03</strong> / 05</span></footer>
+      </section>
+
+      <section class="slide discord" aria-labelledby="slide4-title">
+        <header class="masthead"><div class="brand">Mentory <span>International®</span></div><div class="eyebrow">Prestação de contas</div></header>
+        <div class="content">
+          <div class="discord-copy">
+            <span class="tag">Canal exclusivo</span>
+            <div class="rule"></div>
+            <h2 id="slide4-title">A consistência<br>fica <span class="gold">visível.</span></h2>
+            <p>Um check-in por dia, até 23h59 no horário de Brasília. Tolerância operacional até 10h do dia seguinte.</p>
+            <div class="channel-name"># desafio-90-reels-elevation</div>
+          </div>
+          <div class="checkin" aria-label="Modelo de check-in diário">
+            <div class="checkin-head">DIA 01 — NOME DO PARTICIPANTE</div>
+            <div class="checkin-item"><span class="n">1</span><span class="label">TOPO</span><span>Link do Reel publicado</span></div>
+            <div class="checkin-item"><span class="n">2</span><span class="label">MEIO</span><span>Link do Reel publicado</span></div>
+            <div class="checkin-item"><span class="n">3</span><span class="label">FUNDO</span><span>Link do Reel publicado</span></div>
+            <div class="checkin-foot"><strong>Aprendizado do dia:</strong> uma frase sobre o que funcionou, o que mudou ou o que será aprimorado.</div>
+          </div>
+        </div>
+        <footer class="footer"><span>Discord como ambiente de compromisso e comunidade</span><span><strong>04</strong> / 05</span></footer>
+      </section>
+
+      <section class="slide score" aria-labelledby="slide5-title">
+        <header class="masthead"><div class="brand">Mentory <span>International®</span></div><div class="eyebrow">Critério de vitória</div></header>
+        <div class="content">
+          <div class="score-lead">
+            <span class="tag">100 pontos</span>
+            <div class="rule"></div>
+            <h2 id="slide5-title">Não vence quem<br>posta mais.<br><span class="gold">Vence quem evolui.</span></h2>
+            <p>A quantidade abre a disputa. Consistência, qualidade e evolução definem o resultado.</p>
+            <div class="winner"><strong>Elegibilidade:</strong> mínimo de 27 dias completos. Os 5 melhores resultados avançam para avaliação final.</div>
+          </div>
+          <div class="score-list">
+            <div class="score-row"><span class="index">01</span><div><h3>Consistência diária</h3><p>Cumprimento dos três Reels no dia.</p></div><span class="points">40</span></div>
+            <div class="score-row"><span class="index">02</span><div><h3>Quantidade válida</h3><p>Até 90 Reels; volume excedente não gera vantagem.</p></div><span class="points">20</span></div>
+            <div class="score-row"><span class="index">03</span><div><h3>Qualidade estratégica</h3><p>Clareza, ICP, posicionamento e força da mensagem.</p></div><span class="points">20</span></div>
+            <div class="score-row"><span class="index">04</span><div><h3>Evolução de performance</h3><p>Comparação com a própria média anterior.</p></div><span class="points">10</span></div>
+            <div class="score-row"><span class="index">05</span><div><h3>Participação no Discord</h3><p>Check-ins, contribuições e incentivo à comunidade.</p></div><span class="points">10</span></div>
+          </div>
+        </div>
+        <footer class="footer"><span>Consistência • estratégia • comunidade</span><span><strong>05</strong> / 05</span></footer>
+      </section>
+    </div>
+  </main>
+
+  <nav class="controls" aria-label="Controles da apresentação">
+    <button class="control-btn" id="prev" aria-label="Slide anterior">←</button>
+    <div class="nav-dots" id="dots" aria-label="Navegação por slides"></div>
+    <button class="control-btn" id="next" aria-label="Próximo slide">→</button>
+    <button class="control-btn" id="fullscreen" aria-label="Tela cheia">⛶</button>
+  </nav>
+
+  <script>
+    const deck = document.getElementById('deck');
+    const slides = [...document.querySelectorAll('.slide')];
+    const dots = document.getElementById('dots');
+    let current = Math.max(0, Math.min(slides.length - 1, Number(localStorage.getItem('elevation-slide')) || 0));
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot';
+      dot.setAttribute('aria-label', `Ir para o slide ${index + 1}`);
+      dot.addEventListener('click', () => show(index));
+      dots.appendChild(dot);
+    });
+
+    function fitDeck() {
+      const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    }
+
+    function show(index) {
+      const nextIndex = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('exit-left', i < nextIndex);
+        slide.classList.toggle('active', i === nextIndex);
+      });
+      [...dots.children].forEach((dot, i) => dot.classList.toggle('active', i === nextIndex));
+      current = nextIndex;
+      localStorage.setItem('elevation-slide', current);
+    }
+
+    document.getElementById('prev').addEventListener('click', () => show(current - 1));
+    document.getElementById('next').addEventListener('click', () => show(current + 1));
+    document.getElementById('fullscreen').addEventListener('click', () => {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    });
+
+    window.addEventListener('resize', fitDeck);
+    document.addEventListener('keydown', (event) => {
+      if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); show(current + 1); }
+      if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); show(current - 1); }
+      if (event.key === 'Home') show(0);
+      if (event.key === 'End') show(slides.length - 1);
+      if (event.key.toLowerCase() === 'f') document.getElementById('fullscreen').click();
+    });
+
+    fitDeck();
+    show(current);
+  </script>
+</body>
+</html>
