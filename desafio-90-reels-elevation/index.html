@@ -259,34 +259,39 @@
     .funnel-block .percent { position: absolute; top: 30px; right: 34px; color: var(--gold-light); font-family: "Syne"; font-size: 22px; font-weight: 700; }
     .funnel-block p { margin-top: 14px; color: var(--muted); font-size: 19px; line-height: 1.42; }
 
-    /* Slide 4 */
-    .discord .content { display: grid; grid-template-columns: .72fr 1.28fr; gap: 98px; align-items: center; }
-    .discord-copy p { margin-top: 28px; color: var(--muted); font-size: 22px; line-height: 1.5; max-width: 490px; }
-    .channel-name { margin-top: 36px; color: var(--gold-light); font-family: "Syne"; font-size: 23px; font-weight: 700; }
-    .checkin {
-      position: relative;
-      padding: 46px 52px;
-      border: 1px solid var(--line);
-      background: #0D0D0B;
-    }
-    .checkin::after { content: "CHECK-IN DIÁRIO"; position: absolute; top: 28px; right: 34px; color: rgba(212,168,67,.45); font-family: "Syne"; font-size: 13px; letter-spacing: .18em; }
-    .checkin-head { padding-bottom: 26px; border-bottom: 1px solid rgba(245,241,232,.12); font-family: "Syne"; font-size: 25px; font-weight: 700; }
-    .checkin-item { display: grid; grid-template-columns: 56px 104px 1fr; align-items: center; min-height: 94px; border-bottom: 1px solid rgba(245,241,232,.09); font-size: 20px; }
-    .checkin-item .n { color: var(--gold-light); font-family: "Bebas Neue"; font-size: 42px; }
-    .checkin-item .label { color: var(--cream); font-family: "Syne"; font-size: 14px; font-weight: 700; letter-spacing: .1em; }
-    .checkin-foot { padding-top: 25px; color: var(--muted); font-size: 18px; line-height: 1.4; }
+    /* Slide 4 — formatos YAP */
+    .yap .content { display: grid; grid-template-columns: .63fr 1.37fr; gap: 92px; align-items: center; }
+    .yap-intro p { margin-top: 28px; max-width: 470px; color: var(--muted); font-size: 22px; line-height: 1.5; }
+    .yap-list { border-top: 1px solid var(--line); }
+    .yap-row { display: grid; grid-template-columns: 76px 360px 1fr; gap: 24px; align-items: center; min-height: 126px; border-bottom: 1px solid rgba(245,241,232,.11); }
+    .yap-index { color: var(--gold-light); font-family: "Bebas Neue"; font-size: 48px; }
+    .yap-row h3 { font-size: 23px; }
+    .yap-row p { color: var(--muted); font-size: 17px; line-height: 1.4; }
+    .yap-row strong { color: var(--cream); font-weight: 600; }
 
-    /* Slide 5 */
-    .score .content { display: grid; grid-template-columns: .8fr 1.2fr; gap: 92px; align-items: center; }
-    .score-lead p { margin-top: 30px; max-width: 510px; color: var(--muted); font-size: 22px; line-height: 1.5; }
-    .winner { margin-top: 42px; padding-top: 28px; border-top: 1px solid var(--line); color: var(--cream); font-family: "Syne"; font-size: 22px; line-height: 1.4; }
-    .winner strong { color: var(--gold-light); }
-    .score-list { border-top: 1px solid var(--line); }
-    .score-row { display: grid; grid-template-columns: 92px 1fr 110px; align-items: center; min-height: 116px; border-bottom: 1px solid rgba(245,241,232,.11); }
-    .score-row .index { color: rgba(245,241,232,.32); font-family: "Bebas Neue"; font-size: 42px; }
-    .score-row h3 { font-size: 24px; }
-    .score-row p { margin-top: 7px; color: var(--muted); font-size: 17px; }
-    .points { color: var(--gold-light); text-align: right; font-family: "Bebas Neue"; font-size: 52px; }
+    /* Slide 5 — operação + pontuação */
+    .operation .content { display: grid; grid-template-rows: auto 1fr; padding-top: 46px; }
+    .operation-head { display: flex; align-items: end; justify-content: space-between; gap: 60px; }
+    .operation-head h2 { font-size: 96px; }
+    .operation-prize { max-width: 470px; padding: 0 0 10px 36px; border-left: 1px solid var(--line); }
+    .operation-prize strong { display: block; color: var(--gold-light); font-family: "Syne"; font-size: 22px; }
+    .operation-prize span { display: block; margin-top: 8px; color: var(--muted); font-size: 18px; line-height: 1.4; }
+    .operation-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 30px; padding: 42px 0 38px; }
+    .ops-panel { padding: 34px 40px; border: 1px solid rgba(245,241,232,.13); background: rgba(255,255,255,.022); }
+    .ops-panel.gold-panel { border-color: var(--line); background: rgba(184,146,42,.06); }
+    .panel-kicker { color: var(--gold-light); font-family: "Syne"; font-size: 14px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    .panel-title { margin-top: 10px; font-family: "Syne"; font-size: 24px; font-weight: 700; }
+    .channel-name { margin-top: 18px; color: var(--gold-light); font-family: "Syne"; font-size: 18px; font-weight: 700; }
+    .mini-checkin { margin-top: 22px; border-top: 1px solid rgba(245,241,232,.12); }
+    .mini-checkin-row { display: grid; grid-template-columns: 42px 82px 1fr; align-items: center; min-height: 56px; border-bottom: 1px solid rgba(245,241,232,.08); font-size: 16px; }
+    .mini-checkin-row .n { color: var(--gold-light); font-family: "Bebas Neue"; font-size: 30px; }
+    .mini-checkin-row .label { font-family: "Syne"; font-size: 12px; font-weight: 700; letter-spacing: .09em; }
+    .ops-note { margin-top: 19px; color: var(--muted); font-size: 15px; line-height: 1.45; }
+    .score-compact { margin-top: 20px; border-top: 1px solid rgba(245,241,232,.13); }
+    .score-compact-row { display: grid; grid-template-columns: 1fr 58px; align-items: center; min-height: 54px; border-bottom: 1px solid rgba(245,241,232,.08); font-size: 16px; }
+    .score-compact-row span:last-child { color: var(--gold-light); text-align: right; font-family: "Bebas Neue"; font-size: 30px; }
+    .eligibility { margin-top: 18px; color: var(--muted); font-size: 15px; line-height: 1.45; }
+    .eligibility strong { color: var(--cream); }
 
     .controls {
       position: fixed;
@@ -406,43 +411,57 @@
         <footer class="footer"><span>36 topo + 36 meio + 18 fundo</span><span><strong>03</strong> / 05</span></footer>
       </section>
 
-      <section class="slide discord" aria-labelledby="slide4-title">
-        <header class="masthead"><div class="brand">Mentory <span>International®</span></div><div class="eyebrow">Prestação de contas</div></header>
+      <section class="slide yap" aria-labelledby="slide4-title">
+        <header class="masthead"><div class="brand">Mentory <span>International®</span></div><div class="eyebrow">Referências YAP</div></header>
         <div class="content">
-          <div class="discord-copy">
-            <span class="tag">Canal exclusivo</span>
+          <div class="yap-intro">
+            <span class="tag">Formatos em alta</span>
             <div class="rule"></div>
-            <h2 id="slide4-title">A consistência<br>fica <span class="gold">visível.</span></h2>
-            <p>Um check-in por dia, até 23h59 no horário de Brasília. Tolerância operacional até 10h do dia seguinte.</p>
-            <div class="channel-name"># desafio-90-reels-elevation</div>
+            <h2 id="slide4-title">Fale mais.<br><span class="gold">Conecte melhor.</span></h2>
+            <p>YAP é fala direta com intenção. Escolha o formato que combina com a mensagem — sem perder verdade, ritmo e posicionamento.</p>
           </div>
-          <div class="checkin" aria-label="Modelo de check-in diário">
-            <div class="checkin-head">DIA 01 — NOME DO PARTICIPANTE</div>
-            <div class="checkin-item"><span class="n">1</span><span class="label">TOPO</span><span>Link do Reel publicado</span></div>
-            <div class="checkin-item"><span class="n">2</span><span class="label">MEIO</span><span>Link do Reel publicado</span></div>
-            <div class="checkin-item"><span class="n">3</span><span class="label">FUNDO</span><span>Link do Reel publicado</span></div>
-            <div class="checkin-foot"><strong>Aprendizado do dia:</strong> uma frase sobre o que funcionou, o que mudou ou o que será aprimorado.</div>
+          <div class="yap-list">
+            <div class="yap-row"><span class="yap-index">01</span><h3>Yap clássico</h3><p><strong>Raw talking head.</strong> Celular, cenário real e fala crua para a câmera.</p></div>
+            <div class="yap-row"><span class="yap-index">02</span><h3>Talking Head Edit</h3><p>Fala direta com produção superior: ambiente real, melhor luz, som e edição.</p></div>
+            <div class="yap-row"><span class="yap-index">03</span><h3>“This and Yap”</h3><p>Cena estética — skyline, praia ou pôr do sol — combinada com reflexão em áudio ou texto.</p></div>
+            <div class="yap-row"><span class="yap-index">04</span><h3>Yap serializado</h3><p>Episódios, quadros ou personagens recorrentes que geram familiaridade e retorno.</p></div>
+            <div class="yap-row"><span class="yap-index">05</span><h3>Lead with the claim</h3><p>Abra pela afirmação mais forte, interessante ou controversa já no primeiro segundo.</p></div>
           </div>
         </div>
-        <footer class="footer"><span>Discord como ambiente de compromisso e comunidade</span><span><strong>04</strong> / 05</span></footer>
+        <footer class="footer"><span>Verdade na fala. Estratégia na estrutura.</span><span><strong>04</strong> / 05</span></footer>
       </section>
 
-      <section class="slide score" aria-labelledby="slide5-title">
-        <header class="masthead"><div class="brand">Mentory <span>International®</span></div><div class="eyebrow">Critério de vitória</div></header>
+      <section class="slide operation" aria-labelledby="slide5-title">
+        <header class="masthead"><div class="brand">Mentory <span>International®</span></div><div class="eyebrow">Operação e vitória</div></header>
         <div class="content">
-          <div class="score-lead">
-            <span class="tag">100 pontos</span>
-            <div class="rule"></div>
-            <h2 id="slide5-title">Não vence quem<br>posta mais.<br><span class="gold">Vence quem evolui.</span></h2>
-            <p>A quantidade abre a disputa. Consistência, qualidade e evolução definem o resultado.</p>
-            <div class="winner"><strong>Elegibilidade:</strong> mínimo de 27 dias completos. Os 5 melhores resultados avançam para avaliação final.</div>
+          <div class="operation-head">
+            <h2 id="slide5-title">Postou. Comprovou.<br><span class="gold">Evoluiu.</span></h2>
+            <div class="operation-prize"><strong>Jantar premium com acompanhante</strong><span>O prêmio reconhece consistência, qualidade estratégica e evolução — não volume sem intenção.</span></div>
           </div>
-          <div class="score-list">
-            <div class="score-row"><span class="index">01</span><div><h3>Consistência diária</h3><p>Cumprimento dos três Reels no dia.</p></div><span class="points">40</span></div>
-            <div class="score-row"><span class="index">02</span><div><h3>Quantidade válida</h3><p>Até 90 Reels; volume excedente não gera vantagem.</p></div><span class="points">20</span></div>
-            <div class="score-row"><span class="index">03</span><div><h3>Qualidade estratégica</h3><p>Clareza, ICP, posicionamento e força da mensagem.</p></div><span class="points">20</span></div>
-            <div class="score-row"><span class="index">04</span><div><h3>Evolução de performance</h3><p>Comparação com a própria média anterior.</p></div><span class="points">10</span></div>
-            <div class="score-row"><span class="index">05</span><div><h3>Participação no Discord</h3><p>Check-ins, contribuições e incentivo à comunidade.</p></div><span class="points">10</span></div>
+          <div class="operation-grid">
+            <section class="ops-panel" aria-label="Prestação de contas no Discord">
+              <div class="panel-kicker">Prestação de contas</div>
+              <div class="panel-title">Um check-in diário no Discord</div>
+              <div class="channel-name"># desafio-90-reels-elevation</div>
+              <div class="mini-checkin">
+                <div class="mini-checkin-row"><span class="n">1</span><span class="label">TOPO</span><span>Link do Reel publicado</span></div>
+                <div class="mini-checkin-row"><span class="n">2</span><span class="label">MEIO</span><span>Link do Reel publicado</span></div>
+                <div class="mini-checkin-row"><span class="n">3</span><span class="label">FUNDO</span><span>Link do Reel publicado</span></div>
+              </div>
+              <p class="ops-note">Envio até 23h59, horário de Brasília. Tolerância operacional até 10h do dia seguinte. Inclua um aprendizado do dia.</p>
+            </section>
+            <section class="ops-panel gold-panel" aria-label="Pontuação do desafio">
+              <div class="panel-kicker">Critério de vitória</div>
+              <div class="panel-title">100 pontos possíveis</div>
+              <div class="score-compact">
+                <div class="score-compact-row"><span>Consistência diária</span><span>40</span></div>
+                <div class="score-compact-row"><span>Quantidade válida — até 90 Reels</span><span>20</span></div>
+                <div class="score-compact-row"><span>Qualidade estratégica</span><span>20</span></div>
+                <div class="score-compact-row"><span>Evolução de performance</span><span>10</span></div>
+                <div class="score-compact-row"><span>Participação no Discord</span><span>10</span></div>
+              </div>
+              <p class="eligibility"><strong>Elegibilidade:</strong> mínimo de 27 dias completos. Os cinco melhores resultados avançam para avaliação final.</p>
+            </section>
           </div>
         </div>
         <footer class="footer"><span>Consistência • estratégia • comunidade</span><span><strong>05</strong> / 05</span></footer>
