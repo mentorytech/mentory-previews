@@ -122,6 +122,15 @@
     .proof-thumb:hover,.proof-thumb:focus-visible{transform:translateY(-4px);border-color:var(--gold);outline:none}
     .proof-thumb img{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
     .proof-thumb span{position:absolute;right:14px;bottom:14px;padding:8px 12px;background:rgba(43,8,11,.92);color:var(--cream);font-size:15px;font-weight:700;letter-spacing:.08em}
+    .proof-carousel-shell{position:relative;height:610px;margin-top:24px;overflow:hidden}
+    .proof-carousel-track{display:flex;gap:20px;height:100%;will-change:transform;transform:translate3d(0,0,0)}
+    .proof-carousel-card{flex:0 0 calc((100% - 60px)/4);height:100%;padding:0;border:0;background:#fff;cursor:zoom-in;overflow:hidden;box-shadow:0 12px 28px rgba(20,11,5,.07)}
+    .proof-carousel-card img{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
+    .proof-carousel-card:focus-visible{outline:4px solid var(--gold);outline-offset:-4px}
+    .proof-carousel-dots{display:flex;justify-content:center;align-items:center;gap:9px;margin-top:18px}
+    .proof-carousel-dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:rgba(43,8,11,.18);cursor:pointer;transition:.2s}
+    .proof-carousel-dots button.active{background:var(--wine);transform:scale(1.35)}
+    .proof-carousel-dots button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
     .proof-lightbox{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;padding:34px;background:rgba(4,5,4,.94);backdrop-filter:blur(12px)}
     .proof-lightbox.open{display:flex}
     .proof-lightbox img{display:block;max-width:min(92vw,1500px);max-height:88vh;object-fit:contain;background:#fff;box-shadow:0 28px 90px rgba(0,0,0,.52)}
@@ -142,6 +151,16 @@
     .bonus-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px;position:relative;z-index:1}
     .bonus-list span{padding:12px 14px;border:1px solid rgba(229,202,145,.25);font-size:17px;line-height:1.2;color:var(--cream)}
     .bonus-list span:last-child{grid-column:span 2}
+    .bonus-checklist{list-style:none;display:grid;gap:13px;margin:28px 0 0;padding:0;position:relative;z-index:1}
+    .bonus-label{margin-top:26px;font-size:15px;font-weight:800;letter-spacing:.16em;color:var(--gold-soft);position:relative;z-index:1}
+    .bonus-label + .bonus-checklist{margin-top:14px}
+    .bonus-checklist li{font-size:22px;line-height:1.25;color:var(--cream);padding-bottom:11px;border-bottom:1px solid rgba(229,202,145,.17)}
+    .bonus-checklist li::before{content:"✓";display:inline-block;margin-right:14px;color:var(--gold-soft);font-weight:800}
+    .mi-finale-slide{background:radial-gradient(circle at 82% 22%,rgba(199,167,90,.16),transparent 28%),linear-gradient(145deg,#f5f1e8,#ddd2c2)}
+    .mi-finale{position:relative;display:flex;flex:1;flex-direction:column;justify-content:center;align-items:flex-start;max-width:1540px;padding:40px 0 72px;overflow:hidden}
+    .mi-finale::after{content:"MI";position:absolute;right:10px;bottom:-115px;font-family:Fangira,Georgia,serif;font-size:470px;line-height:1;color:rgba(43,8,11,.035);z-index:-1}
+    .mi-finale h2{font-size:104px;line-height:.96;margin-top:36px;max-width:1500px;text-wrap:balance}
+    .mi-finale p{font-family:Fangira,Georgia,serif;font-size:40px;line-height:1.18;color:#5d554c;margin-top:42px}
     .wild-moment{display:grid;grid-template-columns:.92fr 1.08fr;gap:72px;align-items:center;flex:1;margin-top:25px}
     .wild-quote{font-family:Fangira,Georgia,serif;font-size:78px;line-height:1.02;text-wrap:balance;color:var(--cream)}
     .wild-signals{display:grid;gap:18px}
@@ -158,6 +177,12 @@
     .asset{padding:29px 32px;border:1px solid rgba(229,202,145,.18);background:rgba(255,255,255,.025);display:grid;grid-template-columns:72px 1fr;gap:23px;align-items:start}
     .asset .number{font-size:54px}.asset h3{font-size:24px;line-height:1.15;color:var(--cream)}
     .asset p{font-size:20px;line-height:1.38;color:rgba(243,240,232,.6);margin-top:9px}
+    .wild-deliverables{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:24px;flex:1}
+    .wild-delivery{grid-column:span 3;padding:21px 22px 19px;border:1px solid rgba(229,202,145,.2);background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));min-height:248px}
+    .wild-delivery:nth-child(n+5){grid-column:span 4}
+    .wild-delivery .check{font-size:22px;line-height:1;color:var(--gold-soft);margin-bottom:17px}
+    .wild-delivery h3{font-size:18px;line-height:1.18;letter-spacing:.08em;color:var(--cream)}
+    .wild-delivery p{font-size:17.5px;line-height:1.4;color:rgba(243,240,232,.68);margin-top:12px}
     .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:66px;position:relative}
     .timeline::before{content:"";position:absolute;left:6%;right:6%;top:31px;height:1px;background:rgba(229,202,145,.32)}
     .phase{position:relative;padding:0 26px;z-index:1}.phase::before{content:"";display:block;width:18px;height:18px;border-radius:50%;background:var(--wild);border:2px solid var(--gold-soft);margin:22px 0 34px}
@@ -212,7 +237,7 @@
 
       <section class="slide wild hero hero-wild" id="wild-01" data-chapter="wild" aria-label="WILD 1 de 8 — Capa">
         <div class="hero-image"></div><div class="veil"></div>
-        <div class="frame"><div class="topline"><span class="chapter">WILD CLUB™</span><span class="eyebrow">Business Advisory · 90 dias</span></div><span class="tag">Para ocupar o topo da relevância</span><h1 class="display">Impossível<br><span class="gold">de ignorar.</span></h1><p class="sub">Uma experiência de Business Advisory para empresárias que desejam ampliar influência, fortalecer conexões estratégicas e decidir em outro nível.</p><div class="hero-mark">Sob a condução de Clara do Vale</div></div><div class="page-id">WILD · 01 / 08</div>
+        <div class="frame"><div class="topline"><span class="chapter">WILD CLUB™</span><span class="eyebrow">Business Advisory · 6 meses</span></div><span class="tag">Para ocupar o topo da relevância</span><h1 class="display">Impossível<br><span class="gold">de ignorar.</span></h1><p class="sub">Estrutura para acelerar 10 anos de negócio em 6 meses com método, grupo de mulheres e aconselhamento de Clara.</p><div class="hero-mark">Sob a condução de Clara do Vale</div></div><div class="page-id">WILD · 01 / 08</div>
       </section>
 
       <section class="slide wild" id="wild-02" data-chapter="wild" aria-label="WILD 2 de 8 — Momento da empresária">
@@ -228,26 +253,26 @@
       </section>
 
       <section class="slide wild" id="wild-04" data-chapter="wild" aria-label="WILD 4 de 8 — Entregas">
-        <div class="frame"><div class="topline"><span class="chapter">O que você recebe</span><span class="eyebrow">90 dias de proximidade estratégica</span></div><div class="rule"></div><h2 class="display lg" style="margin-top:38px">Você não acessa apenas acompanhamento.<br><span class="gold">Acessa um ecossistema.</span></h2>
-          <div class="asset-layout"><div class="asset"><div class="number">01</div><div><h3>ENCONTRO INDIVIDUAL COM CLARA</h3><p>2 horas para diagnóstico, plano de ação, calendário e ênfase em posicionamento + portfólio.</p></div></div><div class="asset"><div class="number">02</div><div><h3>GRUPO EXCLUSIVO NO WHATSAPP</h3><p>Clara e empresárias selecionadas em um ambiente de contato e troca estratégica.</p></div></div><div class="asset"><div class="number">03</div><div><h3>PAINEL INDIVIDUAL NO NOTION</h3><p>Acompanhamento estratégico da jornada e dos movimentos de cada empresária.</p></div></div><div class="asset"><div class="number">04</div><div><h3>3 ENCONTROS ONLINE EM GRUPO</h3><p>Aprofundamento, conexão e direcionamento ao longo do ciclo.</p></div></div><div class="asset" style="grid-column:span 2"><div class="number">05</div><div><h3>ACOMPANHAMENTO CONTÍNUO DO TIME</h3><p>Suporte próximo, direcionamento e acompanhamento da execução com especialista.</p></div></div></div>
+        <div class="frame"><div class="topline"><span class="chapter">O que você recebe</span><span class="eyebrow">6 meses de proximidade estratégica</span></div><div class="rule"></div><h2 class="display md" style="margin-top:22px">Um ecossistema completo para <span class="gold">acelerar decisões e execução.</span></h2>
+          <div class="wild-deliverables"><article class="wild-delivery"><div class="check">✓</div><h3>WILD INDIVIDUAL SESSION</h3><p>Uma sessão individual de diagnóstico com Clara: auditoria de negócio, gargalo central e direção estratégica.</p></article><article class="wild-delivery"><div class="check">✓</div><h3>WILD PLAN</h3><p>Plano de ação individualizado construído por Clara e time.</p></article><article class="wild-delivery"><div class="check">✓</div><h3>WILD CLUB SESSIONS</h3><p>2 encontros por mês no Club: 1 encontro estratégico com Clara + 1 encontro executivo com o time.</p></article><article class="wild-delivery"><div class="check">✓</div><h3>WILD HUB</h3><p>Notion central com protocolos, respostas e templates de posicionamento, conteúdo e portfólio de produtos, com ênfase no Alto Ticket.</p></article><article class="wild-delivery"><div class="check">✓</div><h3>WILD STRATEGIST</h3><p>Cada empresária possui uma especialista WILD à disposição para acompanhamento.</p></article><article class="wild-delivery"><div class="check">✓</div><h3>WILD COMMUNITY</h3><p>WhatsApp privado com as empresárias WILD. Clara responde, provoca, analisa e conduz.</p></article><article class="wild-delivery"><div class="check">✓</div><h3>WILD SUMMIT</h3><p>Prioridade no WILD SUMMIT, evento presencial anual na Europa ou no Brasil.</p></article></div>
         </div><div class="page-id">WILD · 04 / 08</div>
       </section>
 
-      <section class="slide wild" id="wild-05" data-chapter="wild" aria-label="WILD 5 de 8 — Jornada de 90 dias">
-        <div class="frame"><div class="topline"><span class="chapter">Como funciona</span><span class="eyebrow">Da intenção ao movimento</span></div><div class="rule"></div><h2 class="display lg" style="margin-top:42px;max-width:1250px">90 dias para reduzir a distância entre <span class="gold">visão e execução.</span></h2>
-          <div class="timeline"><div class="phase"><h3>01 · DIAGNÓSTICO</h3><p>Momento atual, posicionamento, portfólio e oportunidades.</p></div><div class="phase"><h3>02 · DIRECIONAMENTO</h3><p>Plano estratégico e prioridades que merecem foco.</p></div><div class="phase"><h3>03 · CONEXÃO</h3><p>Acesso ao grupo seleto e às empresárias do ecossistema.</p></div><div class="phase"><h3>04 · EXECUÇÃO</h3><p>Acompanhamento das ações e suporte especializado.</p></div><div class="phase"><h3>05 · ACELERAÇÃO</h3><p>Revisão dos movimentos, aprofundamento e próximos passos.</p></div></div><div class="ninety">90</div>
+      <section class="slide wild" id="wild-05" data-chapter="wild" aria-label="WILD 5 de 8 — Jornada de 6 meses">
+        <div class="frame"><div class="topline"><span class="chapter">Como funciona</span><span class="eyebrow">Da intenção ao movimento</span></div><div class="rule"></div><h2 class="display lg" style="margin-top:42px;max-width:1250px">6 meses para reduzir a distância entre <span class="gold">visão e execução.</span></h2>
+          <div class="timeline"><div class="phase"><h3>01 · DIAGNÓSTICO</h3><p>Momento atual, posicionamento, portfólio e oportunidades.</p></div><div class="phase"><h3>02 · DIRECIONAMENTO</h3><p>Plano estratégico e prioridades que merecem foco.</p></div><div class="phase"><h3>03 · CONEXÃO</h3><p>Acesso ao grupo seleto e às empresárias do ecossistema.</p></div><div class="phase"><h3>04 · EXECUÇÃO</h3><p>Acompanhamento das ações e suporte especializado.</p></div><div class="phase"><h3>05 · ACELERAÇÃO</h3><p>Revisão dos movimentos, aprofundamento e próximos passos.</p></div></div><div class="ninety">6M</div>
         </div><div class="page-id">WILD · 05 / 08</div>
       </section>
 
       <section class="slide wild" id="wild-06" data-chapter="wild" aria-label="WILD 6 de 8 — Transformação">
-        <div class="frame"><div class="topline"><span class="chapter">O que pode mudar</span><span class="eyebrow">Em 90 dias</span></div><div class="rule"></div>
+        <div class="frame"><div class="topline"><span class="chapter">O que pode mudar</span><span class="eyebrow">Em 6 meses</span></div><div class="rule"></div>
           <div class="wild-outcome"><div><span class="tag">O poder da proximidade</span><h2 class="statement" style="margin-top:30px;color:var(--cream)">Algumas decisões mudam quando você tem <span class="gold">a pessoa certa por perto.</span></h2><p class="sub" style="margin-top:30px">Menos teoria. Mais decisão.<br>Menos tentativa. Mais direcionamento.</p></div><div class="transform-list"><div class="transform"><span>01</span><span>Fortalecer posicionamento e relevância</span></div><div class="transform"><span>02</span><span>Refinar o portfólio de produtos e serviços</span></div><div class="transform"><span>03</span><span>Decidir com mais clareza e segurança</span></div><div class="transform"><span>04</span><span>Identificar oportunidades de crescimento</span></div><div class="transform"><span>05</span><span>Ampliar influência e conexões estratégicas</span></div><div class="transform"><span>06</span><span>Acelerar movimentos importantes do negócio</span></div></div></div>
         </div><div class="page-id">WILD · 06 / 08</div>
       </section>
 
       <section class="slide wild" id="wild-07" data-chapter="wild" aria-label="WILD 7 de 8 — Investimento e seleção">
         <div class="frame"><div class="topline"><span class="chapter">Investimento & seleção</span><span class="eyebrow">Primeiro ciclo</span></div><div class="rule"></div>
-          <div class="wild-invest"><div><span class="tag">3 meses de acompanhamento imersivo</span><h2 class="display md" style="margin-top:28px">Quanto vale estar mais perto de quem já está <span class="gold">onde você quer chegar?</span></h2><div class="wild-price">R$ 30.000</div><p class="sub" style="font-size:25px">Condição de lançamento para entrada no primeiro ciclo.</p><div class="future"><span>Investimento previsto para a evolução da experiência</span><b>R$ 100.000</b></div></div>
+          <div class="wild-invest"><div><span class="tag">6 meses de acompanhamento imersivo</span><h2 class="display md" style="margin-top:28px">Quanto vale estar mais perto de quem já está <span class="gold">onde você quer chegar?</span></h2><div class="wild-price">R$ 30.000</div><p class="sub" style="font-size:25px">Condição de lançamento para entrada no primeiro ciclo.</p><div class="future"><span>Investimento previsto para a evolução da experiência</span><b>R$ 100.000</b></div></div>
             <div><div class="kicker">Entrada por curadoria</div><h3 class="display sm" style="margin:20px 0 32px">Não é colocar o maior número de mulheres na sala.<br><span class="gold">É colocar as mulheres certas.</span></h3><div class="criteria"><div class="criterion"><h3>MATURIDADE</h3><p>Para aproveitar um ambiente empresarial de alto nível.</p></div><div class="criterion"><h3>MOMENTO</h3><p>Para que a experiência faça sentido agora.</p></div><div class="criterion"><h3>AMBIÇÃO</h3><p>Para ampliar influência e relevância.</p></div><div class="criterion"><h3>POTENCIAL DE TROCA</h3><p>Para contribuir e crescer dentro do círculo.</p></div></div></div></div>
         </div><div class="page-id">WILD · 07 / 08</div>
       </section>
@@ -278,14 +303,32 @@
       const proofLightbox=document.getElementById('proofLightbox');
       const proofLightboxImage=document.getElementById('proofLightboxImage');
       let proofTrigger=null;
+      const carouselController=(()=>{
+        const shell=document.querySelector('[data-carousel]');
+        if(!shell)return{sync(){},snap(){}};
+        const track=shell.querySelector('.proof-carousel-track');
+        const originals=[...track.children];
+        originals.slice(0,4).forEach(card=>{const clone=card.cloneNode(true);clone.setAttribute('aria-hidden','true');clone.tabIndex=-1;track.appendChild(clone)});
+        const dotsWrap=document.querySelector('.proof-carousel-dots');
+        const dots=originals.map((_,i)=>{const dot=document.createElement('button');dot.type='button';dot.setAttribute('aria-label',`Ir para a prova ${i+1}`);dot.addEventListener('click',()=>jump(i));dotsWrap.appendChild(dot);return dot});
+        let current=0,running=false;
+        const step=()=>shell.clientWidth?((shell.clientWidth-60)/4)+20:0;
+        const updateDots=()=>dots.forEach((dot,i)=>dot.classList.toggle('active',i===current));
+        function snap(){track.style.transition='none';track.style.transform=`translate3d(${-current*step()}px,0,0)`;updateDots()}
+        function animateNext(){if(running||!shell.closest('.slide')?.classList.contains('active')||proofLightbox.classList.contains('open')||!step())return;running=true;track.style.transition='transform 6000ms linear';track.style.transform=`translate3d(${-(current+1)*step()}px,0,0)`}
+        function jump(i){running=false;current=i;snap();requestAnimationFrame(()=>requestAnimationFrame(animateNext))}
+        track.addEventListener('transitionend',e=>{if(e.propertyName!=='transform')return;current+=1;if(current>=originals.length){current=0;snap()}else updateDots();running=false;requestAnimationFrame(animateNext)});
+        updateDots();
+        return{sync(){if(shell.closest('.slide')?.classList.contains('active')&&!running){snap();requestAnimationFrame(()=>requestAnimationFrame(animateNext))}},snap};
+      })();
       let index=Math.min(Math.max(Number(localStorage.getItem('wild-deck-slide')||0),0),slides.length-1);
       function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);deck.style.transform=`translate(-50%, -50%) scale(${s})`}
-      function show(n){index=(n+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('active',i===index));counter.textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;chapterButtons.forEach(b=>b.classList.add('active'));localStorage.setItem('wild-deck-slide',index);location.hash=slides[index].id}
+      function show(n){index=(n+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('active',i===index));counter.textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;chapterButtons.forEach(b=>b.classList.add('active'));localStorage.setItem('wild-deck-slide',index);location.hash=slides[index].id;carouselController.sync()}
       document.getElementById('prev').addEventListener('click',()=>show(index-1));
       document.getElementById('next').addEventListener('click',()=>show(index+1));
       chapterButtons.forEach(b=>b.addEventListener('click',()=>show(Number(b.dataset.jump))));
-      function closeProof(){if(!proofLightbox.classList.contains('open'))return;proofLightbox.classList.remove('open');proofLightbox.setAttribute('aria-hidden','true');proofLightboxImage.removeAttribute('src');proofTrigger?.focus()}
-      document.querySelectorAll('[data-proof]').forEach(button=>button.addEventListener('click',()=>{proofTrigger=button;proofLightboxImage.src=button.dataset.proof;proofLightboxImage.alt=button.querySelector('img')?.alt||'Prova social ampliada';proofLightbox.classList.add('open');proofLightbox.setAttribute('aria-hidden','false');document.getElementById('closeProof').focus()}));
+      function closeProof(){if(!proofLightbox.classList.contains('open'))return;proofLightbox.classList.remove('open');proofLightbox.setAttribute('aria-hidden','true');proofLightboxImage.removeAttribute('src');proofTrigger?.focus();carouselController.sync()}
+      document.addEventListener('click',e=>{const button=e.target.closest('[data-proof]');if(!button)return;proofTrigger=button;proofLightboxImage.src=button.dataset.proof;proofLightboxImage.alt=button.querySelector('img')?.alt||'Prova social ampliada';proofLightbox.classList.add('open');proofLightbox.setAttribute('aria-hidden','false');document.getElementById('closeProof').focus()});
       document.getElementById('closeProof').addEventListener('click',closeProof);
       proofLightbox.addEventListener('click',e=>{if(e.target===proofLightbox)closeProof()});
       addEventListener('keydown',e=>{if(proofLightbox.classList.contains('open')){if(e.key==='Escape')closeProof();return}if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1)}if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1);if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.()});
