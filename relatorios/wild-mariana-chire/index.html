@@ -82,37 +82,47 @@
     .metric p{font-size:20px;line-height:1.38;color:rgba(243,240,232,.61)}
     .result-verdict{margin-top:34px;padding-top:28px;border-top:1px solid rgba(243,240,232,.11);font-family:"Cormorant Garamond",Georgia,serif;font-size:38px;line-height:1.12;color:var(--cream)}
 
-    /* Slide 3 — architecture */
-    .drivers .content{display:grid;grid-template-columns:.7fr 1.3fr;gap:84px;align-items:center}
-    .drivers-intro p{margin-top:28px;max-width:530px}
+    /* Slide 3 — strengths to preserve */
+    .drivers .content{display:grid;grid-template-columns:.58fr 1.42fr;gap:72px;align-items:center}
+    .drivers-intro p{margin-top:26px;max-width:500px}
     .driver-list{border-top:1px solid var(--line)}
-    .driver-row{display:grid;grid-template-columns:78px 350px 1fr;gap:26px;align-items:center;min-height:142px;border-bottom:1px solid rgba(243,240,232,.10)}
-    .driver-n{font-family:"Cormorant Garamond",Georgia,serif;font-size:54px;color:var(--gold-soft)}
-    .driver-row h3{font-size:25px;letter-spacing:.01em}
-    .driver-row p{font-size:18px;line-height:1.42;color:rgba(243,240,232,.58)}
+    .driver-row{display:grid;grid-template-columns:62px 285px 1fr;gap:22px;align-items:center;min-height:95px;border-bottom:1px solid rgba(243,240,232,.10)}
+    .driver-n{font-family:"Cormorant Garamond",Georgia,serif;font-size:43px;color:var(--gold-soft)}
+    .driver-row h3{font-size:22px;letter-spacing:.01em}
+    .driver-row p{font-size:17px;line-height:1.36;color:rgba(243,240,232,.59)}
     .driver-row strong{color:var(--cream);font-weight:600}
 
-    /* Slide 4 — map */
-    .map .content{display:grid;grid-template-rows:auto 1fr;padding-top:52px}
-    .map-head{display:flex;align-items:end;justify-content:space-between;gap:60px}
-    .map-head p{max-width:590px;padding-bottom:8px;text-align:right}
-    .bands{display:grid;grid-template-rows:repeat(3,1fr);margin:45px 0 42px;border-top:1px solid var(--line)}
-    .band{display:grid;grid-template-columns:300px 1fr 1fr 1fr;gap:0;align-items:center;border-bottom:1px solid rgba(243,240,232,.11)}
-    .band-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:48px;color:var(--gold-soft)}
-    .band-item{height:100%;display:flex;align-items:center;padding:22px 32px;border-left:1px solid rgba(243,240,232,.09);font-size:20px;line-height:1.3;color:rgba(243,240,232,.72)}
-    .band:nth-child(2){background:rgba(49,91,58,.07)}
-    .band:nth-child(3){background:rgba(43,8,11,.12)}
+    /* Slide 4 — what not to repeat */
+    .stop .content{display:grid;grid-template-rows:auto 1fr;padding-top:34px;min-height:0}
+    .stop-head{display:grid;grid-template-columns:.76fr 1.24fr;gap:72px;align-items:end}
+    .stop-head h2{font-size:77px}
+    .stop-head p{font-size:21px;line-height:1.42;color:rgba(243,240,232,.66);padding-bottom:7px}
+    .stop-table{margin:28px 0 30px;border-top:1px solid var(--line);min-height:0}
+    .stop-header,.stop-row{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:0}
+    .stop-header{height:40px;align-items:center;color:var(--gold-soft);font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+    .stop-header span,.stop-row>div{padding-left:26px;border-left:1px solid rgba(243,240,232,.09)}
+    .stop-header span:first-child,.stop-row>div:first-child{padding-left:0;border-left:0}
+    .stop-row{min-height:94px;align-items:center;border-top:1px solid rgba(243,240,232,.09)}
+    .stop-row h3{font-size:19px;line-height:1.18;color:var(--cream);margin-bottom:5px}
+    .stop-row p{font-size:16.8px;line-height:1.28;color:rgba(243,240,232,.66)}
+    .stop-row .replacement h3{color:var(--gold-soft)}
+    .stop-row:nth-child(even){background:rgba(49,91,58,.045)}
+    .quote-inline{color:rgba(243,240,232,.8);font-weight:600}
 
-    /* Slide 5 — direction */
-    .direction .content{display:grid;grid-template-columns:1.04fr .96fr;gap:90px;align-items:center}
-    .direction-main h2{font-size:100px;max-width:920px}
-    .direction-main p{margin-top:34px;max-width:790px;font-family:"Cormorant Garamond",Georgia,serif;font-size:38px;line-height:1.16;color:rgba(243,240,232,.72)}
-    .action-list{border-top:1px solid var(--line)}
-    .action{display:grid;grid-template-columns:70px 1fr;gap:24px;align-items:center;min-height:112px;border-bottom:1px solid rgba(243,240,232,.10)}
-    .action span:first-child{font-family:"Cormorant Garamond",Georgia,serif;font-size:48px;color:var(--gold-soft)}
-    .action strong{display:block;font-size:21px;margin-bottom:6px}.action p{font-size:17px;line-height:1.35;color:rgba(243,240,232,.56)}
-    .signature{margin-top:34px;padding-top:25px;border-top:1px solid rgba(243,240,232,.10);display:flex;justify-content:space-between;gap:34px;color:rgba(243,240,232,.52);font-size:16px;line-height:1.45}
-    .signature strong{color:var(--gold-soft);font-weight:600}
+    /* Slide 5 — pitch blueprint */
+    .blueprint .content{display:grid;grid-template-columns:.67fr 1.33fr;gap:72px;align-items:center;min-height:0}
+    .blueprint-main h2{font-size:82px;max-width:700px}
+    .blueprint-main>.body-copy{margin-top:28px;max-width:650px;font-size:22px}
+    .priority-block{margin-top:34px;padding-top:24px;border-top:1px solid rgba(243,240,232,.11)}
+    .priority-block small{display:block;color:var(--gold-soft);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:13px}
+    .priority-block p{font-size:18px;line-height:1.55;color:rgba(243,240,232,.66)}
+    .priority-block b{color:var(--cream);font-weight:600}
+    .pitch-flow{border-top:1px solid var(--line)}
+    .pitch-step{display:grid;grid-template-columns:100px 220px 1fr;gap:20px;align-items:center;min-height:78px;border-bottom:1px solid rgba(243,240,232,.10)}
+    .pitch-step time{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;color:var(--gold-soft)}
+    .pitch-step h3{font-size:19px}.pitch-step p{font-size:17px;line-height:1.3;color:rgba(243,240,232,.65)}
+    .pitch-note{margin-top:22px;display:flex;justify-content:space-between;gap:34px;color:rgba(243,240,232,.48);font-size:14px;line-height:1.4}
+    .pitch-note strong{color:var(--gold-soft);font-weight:600}
 
     .controls{position:fixed;left:50%;bottom:18px;z-index:20;display:flex;align-items:center;gap:8px;transform:translateX(-50%);padding:6px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(0,0,0,.74);backdrop-filter:blur(14px);opacity:.34;transition:opacity .2s}
     .controls:hover,.controls:focus-within{opacity:1}
@@ -155,7 +165,7 @@
             <div class="line"></div>
             <h2 id="slide2-title">Conversão <span class="gold">excelente.</span><br>Base pequena. Sinal forte.</h2>
             <p class="body-copy">Imersão comunicada das 9h às 16h, com intervalo para almoço. A experiência cumpriu o formato proposto e produziu decisão dentro da própria sala.</p>
-            <div class="result-verdict">O trabalho agora não é reconstruir o que funcionou. É elevar posicionamento e replicabilidade.</div>
+            <div class="result-verdict">A ativação gerou <span class="gold">5 vendas ligadas ao movimento:</span> 4 na sala e 1 fora. É validação comercial — não promessa de escala.</div>
           </div>
           <div class="score-scene" aria-label="Indicadores do evento">
             <article class="metric hero-metric"><small>Conversão direta</small><strong>50%</strong><p>4 vendas entre 8 participantes dentro do evento.</p></article>
@@ -167,60 +177,71 @@
       </section>
 
       <section class="slide drivers" id="slide-3" aria-labelledby="slide3-title">
-        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">Arquitetura da conversão</div></header>
+        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">Forças a preservar</div></header>
         <div class="content">
           <div class="drivers-intro">
-            <span class="tag">Por que funcionou</span>
+            <span class="tag">O que deve permanecer</span>
             <div class="line"></div>
-            <h2 id="slide3-title">A venda nasceu da <span class="gold">experiência.</span></h2>
-            <p class="body-copy">A decisão não veio de um único argumento. Veio da combinação entre autoridade, proximidade, demonstração prática e uma condição de fundadora relevante.</p>
+            <h2 id="slide3-title">A potência está na <span class="gold">entrega ao vivo.</span></h2>
+            <p class="body-copy">O refinamento não pode retirar a espontaneidade, o olhar diagnóstico e a sensação de cuidado individual que diferenciam Mariana.</p>
           </div>
           <div class="driver-list">
-            <div class="driver-row"><span class="driver-n">01</span><h3>Mentoria boutique</h3><p><strong>Grupo pequeno e atenção real.</strong> Cada mulher se sentiu vista e compreendida.</p></div>
-            <div class="driver-row"><span class="driver-n">02</span><h3>Método autoral</h3><p><strong>Assinatura visual + Método CHIRÉ.</strong> A solução possui linguagem e mecanismo próprios.</p></div>
-            <div class="driver-row"><span class="driver-n">03</span><h3>Prova ao vivo</h3><p><strong>Análises, correções e depoimentos.</strong> A audiência testemunhou a entrega antes da decisão.</p></div>
-            <div class="driver-row"><span class="driver-n">04</span><h3>Condição fundadora</h3><p><strong>Urgência com significado.</strong> O primeiro ciclo criou pertencimento e velocidade de ação.</p></div>
+            <div class="driver-row"><span class="driver-n">01</span><h3>Domínio técnico</h3><p><strong>Leitura rápida e repertório.</strong> Mariana identifica incoerências e traduz imagem em decisão prática.</p></div>
+            <div class="driver-row"><span class="driver-n">02</span><h3>Personalização</h3><p><strong>Cada participante foi vista.</strong> A atenção individual sustentou confiança e valor percebido.</p></div>
+            <div class="driver-row"><span class="driver-n">03</span><h3>Método CHIRÉ</h3><p><strong>Confiante, Harmônica, Inesquecível, Rara e Escolhida.</strong> É o mecanismo proprietário da oferta.</p></div>
+            <div class="driver-row"><span class="driver-n">04</span><h3>Prova em tempo real</h3><p><strong>Análises, correções e depoimentos espontâneos.</strong> A entrega foi demonstrada antes da decisão.</p></div>
+            <div class="driver-row"><span class="driver-n">05</span><h3>Ambiente boutique</h3><p><strong>Comunidade + acompanhamento longitudinal.</strong> A Confraria apareceu como ambiente de aplicação, não como conteúdo isolado.</p></div>
+            <div class="driver-row"><span class="driver-n">06</span><h3>Condição fundadora</h3><p><strong>Relevância suficiente para circular.</strong> A condição gerou 4 vendas na sala e mais 1 fora do workshop.</p></div>
           </div>
         </div>
-        <footer class="footer"><span>Autoridade · proximidade · aplicação · decisão</span><span><strong>03</strong> / 05</span></footer>
+        <footer class="footer"><span>Preservar: autoridade · diagnóstico · personalização · método</span><span><strong>03</strong> / 05</span></footer>
       </section>
 
-      <section class="slide map" id="slide-4" aria-labelledby="slide4-title">
-        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">Mapa de otimização</div></header>
+      <section class="slide stop" id="slide-4" aria-labelledby="slide4-title">
+        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">O que não repetir</div></header>
         <div class="content">
-          <div class="map-head">
-            <h2 id="slide4-title">Preservar a potência.<br><span class="gold">Refinar a arquitetura.</span></h2>
-            <p class="body-copy">Os ajustes existem para proteger a conversão quando a audiência for maior ou menos aquecida.</p>
+          <div class="stop-head">
+            <h2 id="slide4-title">Clareza também é <span class="gold">posicionamento.</span></h2>
+            <p>O pitch converteu, mas alguns elementos reduzem valor, criam risco ou dependem demais da intimidade com a audiência. Nas próximas Confrarias, devem sair — não apenas ser suavizados.</p>
           </div>
-          <div class="bands">
-            <div class="band"><div class="band-title">Manter</div><div class="band-item">Formato imersivo e experiência boutique</div><div class="band-item">Análises ao vivo e personalização</div><div class="band-item">Método CHIRÉ e condição fundadora</div></div>
-            <div class="band"><div class="band-title">Refinar</div><div class="band-item">Promessa e ICP prioritário</div><div class="band-item">Jornada, cadência e limites da entrega</div><div class="band-item">Bloco comercial, CTA e preparação técnica</div></div>
-            <div class="band"><div class="band-title">Substituir</div><div class="band-item">Linguagem que reduz valor percebido</div><div class="band-item">Pressão nominal por condução seletiva</div><div class="band-item">Promessas amplas por evidências específicas</div></div>
+          <div class="stop-table" aria-label="Elementos a retirar e respectivas substituições">
+            <div class="stop-header"><span>Retirar</span><span>Por que enfraquece</span><span>Usar no lugar</span></div>
+            <div class="stop-row"><div><h3>Linguagem de liquidação</h3><p>“De graça”, “barato”, “desconto”, “200 pilas”.</p></div><div><h3>Comprime valor percebido</h3><p>Faz uma experiência de 12 meses parecer uma compra por preço.</p></div><div class="replacement"><h3>Linguagem de investimento</h3><p><span class="quote-inline">“Incluído na condição de fundadora”</span> e <span class="quote-inline">“investimento inicial”</span>.</p></div></div>
+            <div class="stop-row"><div><h3>Pressão pública ou nominal</h3><p>Chamar participantes pelo nome para decidir diante do grupo.</p></div><div><h3>Constrange e não escala</h3><p>A decisão pode acontecer para aliviar a exposição, não por convicção.</p></div><div class="replacement"><h3>CTA privado e seletivo</h3><p>Convite claro, espaço para decisão e conversa individual ao final.</p></div></div>
+            <div class="stop-row"><div><h3>Urgência contraditória</h3><p>Misturar continuidade da Confraria com fechamento total da oportunidade.</p></div><div><h3>Abala credibilidade</h3><p>A audiência deixa de saber o que realmente termina e quando.</p></div><div class="replacement"><h3>Prazo exato</h3><p><span class="quote-inline">“A Confraria continua. A condição de fundadora termina amanhã, às 13h.”</span></p></div></div>
+            <div class="stop-row"><div><h3>Promessas categóricas</h3><p>“Garanto resultado” ou vínculo direto entre imagem e faturamento.</p></div><div><h3>Cria risco e expectativa irreal</h3><p>Resultados dependem de contexto, execução e variáveis do negócio.</p></div><div class="replacement"><h3>Compromisso com processo</h3><p>Diagnóstico, plano, aplicação, feedback e refinamento documentados.</p></div></div>
+            <div class="stop-row"><div><h3>Benefícios ainda indefinidos</h3><p>Vouchers, networking ou entregas futuras apresentadas como certas.</p></div><div><h3>Gera expectativa sem controle</h3><p>Escopo aberto enfraquece operação e percepção de profissionalismo.</p></div><div class="replacement"><h3>Escopo fechado</h3><p>Apresentar apenas cadência, acessos, limites e benefícios confirmados.</p></div></div>
+            <div class="stop-row"><div><h3>Improviso técnico + pitch longo</h3><p>Preço, checkout, compartilhamento e oferta ajustados ao vivo.</p></div><div><h3>Drena energia e introduz dúvida</h3><p>O excesso de explicação reduz o impacto da decisão.</p></div><div class="replacement"><h3>Pitch ensaiado de 20–30 min</h3><p>Uma versão única de investimento, prazo, benefícios e CTA.</p></div></div>
           </div>
         </div>
-        <footer class="footer"><span>Otimizar sem descaracterizar</span><span><strong>04</strong> / 05</span></footer>
+        <footer class="footer"><span>Retirar o ruído sem retirar a personalidade</span><span><strong>04</strong> / 05</span></footer>
       </section>
 
-      <section class="slide direction" id="slide-5" aria-labelledby="slide5-title">
-        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">Direção estratégica</div></header>
+      <section class="slide blueprint" id="slide-5" aria-labelledby="slide5-title">
+        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">Arquitetura recomendada</div></header>
         <div class="content">
-          <div class="direction-main">
-            <span class="tag">Próximo nível</span>
+          <div class="blueprint-main">
+            <span class="tag">Próxima Confraria</span>
             <div class="line"></div>
-            <h2 id="slide5-title">Transformar potência pessoal em <span class="gold">processo replicável.</span></h2>
-            <p>A oferta já demonstrou força. Agora, sua arquitetura precisa sustentar a mesma percepção de valor sem depender apenas da intimidade com a audiência.</p>
+            <h2 id="slide5-title">Um pitch de <span class="gold">20–30 minutos.</span> Cada minuto com função.</h2>
+            <p class="body-copy">Não é reduzir a imersão de dia inteiro. É proteger o bloco comercial com ordem, ritmo e uma única versão da oferta.</p>
+            <div class="priority-block"><small>Fechar antes de apresentar</small><p><b>1.</b> ICP prioritário · <b>2.</b> transformação central · <b>3.</b> jornada de 12 meses · <b>4.</b> escopo e limites · <b>5.</b> investimento, prazo e CTA.</p></div>
           </div>
           <div>
-            <div class="action-list">
-              <div class="action"><span>01</span><div><strong>Uma promessa central</strong><p>Reconhecida, lembrada e escolhida por meio de uma assinatura visual persuasiva.</p></div></div>
-              <div class="action"><span>02</span><div><strong>Uma jornada visível</strong><p>Diagnosticar, construir, aplicar, receber feedback, refinar e consolidar.</p></div></div>
-              <div class="action"><span>03</span><div><strong>Um pitch mais preciso</strong><p>Condução de 20–30 minutos, oferta clara, objeções previstas e CTA único.</p></div></div>
-              <div class="action"><span>04</span><div><strong>Uma experiência protegida</strong><p>Roteiro, timekeeping, suporte técnico e critérios transparentes.</p></div></div>
+            <div class="pitch-flow" aria-label="Roteiro recomendado do pitch">
+              <div class="pitch-step"><time>00–03</time><h3>Diagnóstico</h3><p>Retomar a dor observada durante a imersão — sem reensinar o conteúdo.</p></div>
+              <div class="pitch-step"><time>03–06</time><h3>Transformação</h3><p>Declarar uma promessa central: reconhecida, lembrada e escolhida.</p></div>
+              <div class="pitch-step"><time>06–09</time><h3>Mecanismo</h3><p>Apresentar o Método CHIRÉ como caminho proprietário para a mudança.</p></div>
+              <div class="pitch-step"><time>09–13</time><h3>Jornada</h3><p>Mostrar como os 12 meses avançam do diagnóstico à consolidação.</p></div>
+              <div class="pitch-step"><time>13–16</time><h3>Prova</h3><p>Usar um case ou depoimento específico ligado à transformação.</p></div>
+              <div class="pitch-step"><time>16–20</time><h3>Escopo</h3><p>Explicar cadência, acessos, entregas, benefícios e limites confirmados.</p></div>
+              <div class="pitch-step"><time>20–23</time><h3>Investimento</h3><p>Apresentar uma única condição e a urgência legítima da turma fundadora.</p></div>
+              <div class="pitch-step"><time>23–30</time><h3>CTA + objeções</h3><p>Orientar o próximo passo, abrir perguntas e conduzir decisões privadas.</p></div>
             </div>
-            <div class="signature"><span><strong>Especialista Wild</strong><br>Raquel Nascimento</span><span>Análise baseada na transcrição integral e nos principais momentos visuais do evento.</span></div>
+            <div class="pitch-note"><span><strong>Especialista Wild</strong><br>Raquel Nascimento</span><span>Você já provou que gera desejo e decisão. Agora, faça a conversão depender menos do improviso e mais de uma arquitetura intencional.</span></div>
           </div>
         </div>
-        <footer class="footer"><span>Oferta validada · posicionamento em evolução</span><span><strong>05</strong> / 05</span></footer>
+        <footer class="footer"><span>Preservar potência · elevar clareza · construir replicabilidade</span><span><strong>05</strong> / 05</span></footer>
       </section>
     </div>
   </main>
