@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#070a08">
+  <meta name="description" content="Relatório Estratégico WILD CLUB™ — análise do evento e do pitch de Mariana Chiré.">
+  <title>Relatório Estratégico | Mariana Chiré · WILD CLUB™</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --wild:#070a08;
+      --wild-2:#0d120e;
+      --cream:#f3f0e8;
+      --paper:#faf8f2;
+      --gold:#c99c4c;
+      --gold-soft:#e5ca91;
+      --green:#315b3a;
+      --green-light:#78947d;
+      --wine:#2b080b;
+      --muted:rgba(243,240,232,.62);
+      --line:rgba(229,202,145,.22);
+      --ease:cubic-bezier(.2,.72,.25,1);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020302}
+    body{font-family:Urbanist,Arial,sans-serif;color:var(--cream);-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+    button{font:inherit}
+    .viewport{position:fixed;inset:0;display:grid;place-items:center;background:#020302}
+    .deck{position:absolute;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;transform-origin:center;background:var(--wild);box-shadow:0 30px 120px rgba(0,0,0,.72)}
+    .slide{position:absolute;inset:0;padding:0 104px;display:grid;grid-template-rows:104px 1fr 74px;opacity:0;visibility:hidden;transform:translateX(34px);transition:opacity .42s var(--ease),transform .5s var(--ease),visibility .42s;background:
+      radial-gradient(circle at 84% 15%,rgba(201,156,76,.10),transparent 25%),
+      radial-gradient(circle at 12% 88%,rgba(49,91,58,.12),transparent 28%),
+      linear-gradient(135deg,#070a08 0%,#0a0e0b 56%,#070a08 100%);isolation:isolate}
+    .slide::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E")}
+    .slide::after{content:"W";position:absolute;right:-14px;bottom:-155px;font-family:"Cormorant Garamond",Georgia,serif;font-size:610px;line-height:1;color:rgba(229,202,145,.022);z-index:-1}
+    .slide.active{opacity:1;visibility:visible;transform:none;z-index:2}
+    .slide.exit-left{transform:translateX(-34px)}
+    .masthead,.content,.footer{position:relative;z-index:2}
+    .masthead{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .brand{font-size:20px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}.brand span{color:var(--gold-soft)}
+    .section-label{font-size:16px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft)}
+    .footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(243,240,232,.09);font-size:14px;letter-spacing:.10em;text-transform:uppercase;color:rgba(243,240,232,.42)}
+    .footer strong{color:var(--gold-soft);font-weight:600}
+    h1,h2,h3,p{margin:0}
+    h1,h2,.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500}
+    h1{font-size:150px;line-height:.84;letter-spacing:-.045em}
+    h2{font-size:92px;line-height:.94;letter-spacing:-.03em;text-wrap:balance}
+    h3{font-size:28px;line-height:1.14}
+    .gold{color:var(--gold-soft)}
+    .muted{color:var(--muted)}
+    .tag{display:inline-flex;align-items:center;width:max-content;min-height:44px;padding:0 18px;border:1px solid rgba(229,202,145,.38);border-radius:999px;color:var(--gold-soft);font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+    .line{width:84px;height:2px;background:var(--gold);margin:28px 0}
+    .body-copy{font-size:25px;line-height:1.46;color:rgba(243,240,232,.72)}
+
+    /* Slide 1 — cover */
+    .cover .content{display:grid;grid-template-columns:1.2fr .8fr;gap:96px;align-items:center}
+    .cover-kicker{display:flex;align-items:center;gap:20px;color:var(--gold-soft);font-size:17px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:36px}
+    .cover-kicker::before{content:"";width:68px;height:2px;background:var(--gold)}
+    .cover h1{max-width:1150px}
+    .cover h1 span{display:block}
+    .cover h1 .outline{color:transparent;-webkit-text-stroke:1.5px rgba(243,240,232,.82)}
+    .cover-aside{padding:42px 0 42px 62px;border-left:1px solid var(--line);display:grid;gap:30px}
+    .identity{padding-bottom:26px;border-bottom:1px solid rgba(243,240,232,.1)}
+    .identity:last-child{border-bottom:0;padding-bottom:0}
+    .identity small{display:block;color:var(--gold-soft);font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+    .identity strong{font-family:"Cormorant Garamond",Georgia,serif;font-size:39px;font-weight:500}
+    .cover-note{margin-top:42px;font-size:21px;color:rgba(243,240,232,.58);letter-spacing:.02em}
+
+    /* Slide 2 — result */
+    .result .content{display:grid;grid-template-columns:.86fr 1.14fr;gap:92px;align-items:center}
+    .result-title p{margin-top:26px;max-width:650px}
+    .score-scene{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .metric{min-height:278px;padding:42px 44px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;background:rgba(255,255,255,.018)}
+    .metric.hero-metric{grid-row:span 2;min-height:556px;background:linear-gradient(145deg,rgba(201,156,76,.10),rgba(255,255,255,.018))}
+    .metric small{font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+    .metric strong{font-family:"Cormorant Garamond",Georgia,serif;font-size:98px;font-weight:500;line-height:.82}
+    .metric.hero-metric strong{font-size:210px;color:var(--gold-soft)}
+    .metric p{font-size:20px;line-height:1.38;color:rgba(243,240,232,.61)}
+    .result-verdict{margin-top:34px;padding-top:28px;border-top:1px solid rgba(243,240,232,.11);font-family:"Cormorant Garamond",Georgia,serif;font-size:38px;line-height:1.12;color:var(--cream)}
+
+    /* Slide 3 — architecture */
+    .drivers .content{display:grid;grid-template-columns:.7fr 1.3fr;gap:84px;align-items:center}
+    .drivers-intro p{margin-top:28px;max-width:530px}
+    .driver-list{border-top:1px solid var(--line)}
+    .driver-row{display:grid;grid-template-columns:78px 350px 1fr;gap:26px;align-items:center;min-height:142px;border-bottom:1px solid rgba(243,240,232,.10)}
+    .driver-n{font-family:"Cormorant Garamond",Georgia,serif;font-size:54px;color:var(--gold-soft)}
+    .driver-row h3{font-size:25px;letter-spacing:.01em}
+    .driver-row p{font-size:18px;line-height:1.42;color:rgba(243,240,232,.58)}
+    .driver-row strong{color:var(--cream);font-weight:600}
+
+    /* Slide 4 — map */
+    .map .content{display:grid;grid-template-rows:auto 1fr;padding-top:52px}
+    .map-head{display:flex;align-items:end;justify-content:space-between;gap:60px}
+    .map-head p{max-width:590px;padding-bottom:8px;text-align:right}
+    .bands{display:grid;grid-template-rows:repeat(3,1fr);margin:45px 0 42px;border-top:1px solid var(--line)}
+    .band{display:grid;grid-template-columns:300px 1fr 1fr 1fr;gap:0;align-items:center;border-bottom:1px solid rgba(243,240,232,.11)}
+    .band-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:48px;color:var(--gold-soft)}
+    .band-item{height:100%;display:flex;align-items:center;padding:22px 32px;border-left:1px solid rgba(243,240,232,.09);font-size:20px;line-height:1.3;color:rgba(243,240,232,.72)}
+    .band:nth-child(2){background:rgba(49,91,58,.07)}
+    .band:nth-child(3){background:rgba(43,8,11,.12)}
+
+    /* Slide 5 — direction */
+    .direction .content{display:grid;grid-template-columns:1.04fr .96fr;gap:90px;align-items:center}
+    .direction-main h2{font-size:100px;max-width:920px}
+    .direction-main p{margin-top:34px;max-width:790px;font-family:"Cormorant Garamond",Georgia,serif;font-size:38px;line-height:1.16;color:rgba(243,240,232,.72)}
+    .action-list{border-top:1px solid var(--line)}
+    .action{display:grid;grid-template-columns:70px 1fr;gap:24px;align-items:center;min-height:112px;border-bottom:1px solid rgba(243,240,232,.10)}
+    .action span:first-child{font-family:"Cormorant Garamond",Georgia,serif;font-size:48px;color:var(--gold-soft)}
+    .action strong{display:block;font-size:21px;margin-bottom:6px}.action p{font-size:17px;line-height:1.35;color:rgba(243,240,232,.56)}
+    .signature{margin-top:34px;padding-top:25px;border-top:1px solid rgba(243,240,232,.10);display:flex;justify-content:space-between;gap:34px;color:rgba(243,240,232,.52);font-size:16px;line-height:1.45}
+    .signature strong{color:var(--gold-soft);font-weight:600}
+
+    .controls{position:fixed;left:50%;bottom:18px;z-index:20;display:flex;align-items:center;gap:8px;transform:translateX(-50%);padding:6px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(0,0,0,.74);backdrop-filter:blur(14px);opacity:.34;transition:opacity .2s}
+    .controls:hover,.controls:focus-within{opacity:1}
+    .control-btn{width:42px;height:42px;border:0;border-radius:50%;background:transparent;color:#fff;cursor:pointer;font-size:21px}
+    .control-btn:hover{background:rgba(255,255,255,.12)}
+    .control-btn:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+    .dots{display:flex;gap:8px;padding:0 8px}.dot{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.26);cursor:pointer}.dot.active{width:24px;background:var(--gold-soft)}
+    @media(prefers-reduced-motion:reduce){.slide{transition:none}}
+    @media print{
+      @page{size:16in 9in;margin:0}
+      html,body{overflow:visible;background:#fff}.viewport{position:static;display:block;background:#fff}.deck{position:static;width:1920px!important;height:auto!important;transform:none!important;box-shadow:none;overflow:visible}.slide{position:relative;width:1920px;height:1080px;opacity:1!important;visibility:visible!important;transform:none!important;break-after:page;page-break-after:always}.controls,.hint{display:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="viewport" aria-label="Relatório Estratégico WILD CLUB">
+    <div class="deck" id="deck">
+      <section class="slide cover active" id="slide-1" aria-labelledby="slide1-title">
+        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">Relatório Estratégico</div></header>
+        <div class="content">
+          <div>
+            <div class="cover-kicker">Análise de evento & pitch</div>
+            <h1 id="slide1-title"><span class="gold">Mariana</span><span class="outline">Chiré.</span></h1>
+            <p class="cover-note">Da potência boutique à arquitetura comercial replicável.</p>
+          </div>
+          <aside class="cover-aside" aria-label="Identificação do relatório">
+            <div class="identity"><small>Especialista Wild</small><strong>Raquel Nascimento</strong></div>
+            <div class="identity"><small>Wild</small><strong>Mariana Chiré</strong></div>
+            <div class="identity"><small>Escopo</small><strong>Experiência, oferta e conversão</strong></div>
+          </aside>
+        </div>
+        <footer class="footer"><span>WILD CLUB™ · Relatório Estratégico</span><span><strong>01</strong> / 05</span></footer>
+      </section>
+
+      <section class="slide result" id="slide-2" aria-labelledby="slide2-title">
+        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">Leitura executiva</div></header>
+        <div class="content">
+          <div class="result-title">
+            <span class="tag">Oferta validada</span>
+            <div class="line"></div>
+            <h2 id="slide2-title">Conversão <span class="gold">excelente.</span><br>Base pequena. Sinal forte.</h2>
+            <p class="body-copy">Imersão comunicada das 9h às 16h, com intervalo para almoço. A experiência cumpriu o formato proposto e produziu decisão dentro da própria sala.</p>
+            <div class="result-verdict">O trabalho agora não é reconstruir o que funcionou. É elevar posicionamento e replicabilidade.</div>
+          </div>
+          <div class="score-scene" aria-label="Indicadores do evento">
+            <article class="metric hero-metric"><small>Conversão direta</small><strong>50%</strong><p>4 vendas entre 8 participantes dentro do evento.</p></article>
+            <article class="metric"><small>Participantes</small><strong>8</strong><p>Grupo boutique com alta proximidade e personalização.</p></article>
+            <article class="metric"><small>Efeito de propagação</small><strong>+1</strong><p>Venda para uma cliente que não estava no workshop.</p></article>
+          </div>
+        </div>
+        <footer class="footer"><span>Base de cálculo: 4 vendas / 8 participantes</span><span><strong>02</strong> / 05</span></footer>
+      </section>
+
+      <section class="slide drivers" id="slide-3" aria-labelledby="slide3-title">
+        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">Arquitetura da conversão</div></header>
+        <div class="content">
+          <div class="drivers-intro">
+            <span class="tag">Por que funcionou</span>
+            <div class="line"></div>
+            <h2 id="slide3-title">A venda nasceu da <span class="gold">experiência.</span></h2>
+            <p class="body-copy">A decisão não veio de um único argumento. Veio da combinação entre autoridade, proximidade, demonstração prática e uma condição de fundadora relevante.</p>
+          </div>
+          <div class="driver-list">
+            <div class="driver-row"><span class="driver-n">01</span><h3>Mentoria boutique</h3><p><strong>Grupo pequeno e atenção real.</strong> Cada mulher se sentiu vista e compreendida.</p></div>
+            <div class="driver-row"><span class="driver-n">02</span><h3>Método autoral</h3><p><strong>Assinatura visual + Método CHIRÉ.</strong> A solução possui linguagem e mecanismo próprios.</p></div>
+            <div class="driver-row"><span class="driver-n">03</span><h3>Prova ao vivo</h3><p><strong>Análises, correções e depoimentos.</strong> A audiência testemunhou a entrega antes da decisão.</p></div>
+            <div class="driver-row"><span class="driver-n">04</span><h3>Condição fundadora</h3><p><strong>Urgência com significado.</strong> O primeiro ciclo criou pertencimento e velocidade de ação.</p></div>
+          </div>
+        </div>
+        <footer class="footer"><span>Autoridade · proximidade · aplicação · decisão</span><span><strong>03</strong> / 05</span></footer>
+      </section>
+
+      <section class="slide map" id="slide-4" aria-labelledby="slide4-title">
+        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">Mapa de otimização</div></header>
+        <div class="content">
+          <div class="map-head">
+            <h2 id="slide4-title">Preservar a potência.<br><span class="gold">Refinar a arquitetura.</span></h2>
+            <p class="body-copy">Os ajustes existem para proteger a conversão quando a audiência for maior ou menos aquecida.</p>
+          </div>
+          <div class="bands">
+            <div class="band"><div class="band-title">Manter</div><div class="band-item">Formato imersivo e experiência boutique</div><div class="band-item">Análises ao vivo e personalização</div><div class="band-item">Método CHIRÉ e condição fundadora</div></div>
+            <div class="band"><div class="band-title">Refinar</div><div class="band-item">Promessa e ICP prioritário</div><div class="band-item">Jornada, cadência e limites da entrega</div><div class="band-item">Bloco comercial, CTA e preparação técnica</div></div>
+            <div class="band"><div class="band-title">Substituir</div><div class="band-item">Linguagem que reduz valor percebido</div><div class="band-item">Pressão nominal por condução seletiva</div><div class="band-item">Promessas amplas por evidências específicas</div></div>
+          </div>
+        </div>
+        <footer class="footer"><span>Otimizar sem descaracterizar</span><span><strong>04</strong> / 05</span></footer>
+      </section>
+
+      <section class="slide direction" id="slide-5" aria-labelledby="slide5-title">
+        <header class="masthead"><div class="brand">WILD <span>CLUB™</span></div><div class="section-label">Direção estratégica</div></header>
+        <div class="content">
+          <div class="direction-main">
+            <span class="tag">Próximo nível</span>
+            <div class="line"></div>
+            <h2 id="slide5-title">Transformar potência pessoal em <span class="gold">processo replicável.</span></h2>
+            <p>A oferta já demonstrou força. Agora, sua arquitetura precisa sustentar a mesma percepção de valor sem depender apenas da intimidade com a audiência.</p>
+          </div>
+          <div>
+            <div class="action-list">
+              <div class="action"><span>01</span><div><strong>Uma promessa central</strong><p>Reconhecida, lembrada e escolhida por meio de uma assinatura visual persuasiva.</p></div></div>
+              <div class="action"><span>02</span><div><strong>Uma jornada visível</strong><p>Diagnosticar, construir, aplicar, receber feedback, refinar e consolidar.</p></div></div>
+              <div class="action"><span>03</span><div><strong>Um pitch mais preciso</strong><p>Condução de 20–30 minutos, oferta clara, objeções previstas e CTA único.</p></div></div>
+              <div class="action"><span>04</span><div><strong>Uma experiência protegida</strong><p>Roteiro, timekeeping, suporte técnico e critérios transparentes.</p></div></div>
+            </div>
+            <div class="signature"><span><strong>Especialista Wild</strong><br>Raquel Nascimento</span><span>Análise baseada na transcrição integral e nos principais momentos visuais do evento.</span></div>
+          </div>
+        </div>
+        <footer class="footer"><span>Oferta validada · posicionamento em evolução</span><span><strong>05</strong> / 05</span></footer>
+      </section>
+    </div>
+  </main>
+
+  <nav class="controls" aria-label="Controles da apresentação">
+    <button class="control-btn" id="prev" aria-label="Slide anterior">←</button>
+    <div class="dots" id="dots" aria-label="Navegação por slides"></div>
+    <button class="control-btn" id="next" aria-label="Próximo slide">→</button>
+    <button class="control-btn" id="fullscreen" aria-label="Tela cheia">⛶</button>
+  </nav>
+
+  <script>
+    const deck=document.getElementById('deck');
+    const slides=[...document.querySelectorAll('.slide')];
+    const dots=document.getElementById('dots');
+    let current=Math.max(0,Math.min(slides.length-1,Number(localStorage.getItem('wild-mariana-report-slide'))||0));
+    slides.forEach((_,index)=>{const dot=document.createElement('button');dot.className='dot';dot.setAttribute('aria-label',`Ir para o slide ${index+1}`);dot.addEventListener('click',()=>show(index));dots.appendChild(dot)});
+    function fitDeck(){const scale=Math.min(innerWidth/1920,innerHeight/1080);deck.style.transform=`translate(-50%, -50%) scale(${scale})`}
+    function hashIndex(){return slides.findIndex(slide=>`#${slide.id}`===location.hash)}
+    function show(index,syncHash=true){const nextIndex=(index+slides.length)%slides.length;slides.forEach((slide,i)=>{slide.classList.toggle('exit-left',i<nextIndex);slide.classList.toggle('active',i===nextIndex)});[...dots.children].forEach((dot,i)=>dot.classList.toggle('active',i===nextIndex));current=nextIndex;localStorage.setItem('wild-mariana-report-slide',String(current));if(syncHash)history.replaceState(null,'',`#slide-${current+1}`)}
+    document.getElementById('prev').addEventListener('click',()=>show(current-1));
+    document.getElementById('next').addEventListener('click',()=>show(current+1));
+    document.getElementById('fullscreen').addEventListener('click',()=>document.documentElement.requestFullscreen?.());
+    addEventListener('keydown',event=>{if(['ArrowRight','PageDown',' '].includes(event.key)){event.preventDefault();show(current+1)}if(['ArrowLeft','PageUp'].includes(event.key)){event.preventDefault();show(current-1)}if(event.key==='Home')show(0);if(event.key==='End')show(slides.length-1);if(event.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.()});
+    addEventListener('resize',fitDeck);
+    addEventListener('hashchange',()=>{const requested=hashIndex();if(requested>=0&&requested!==current)show(requested,false)});
+    const requested=hashIndex();if(requested>=0)current=requested;
+    fitDeck();show(current,requested<0);
+    setTimeout(()=>{const lateHash=hashIndex();if(lateHash>=0&&lateHash!==current)show(lateHash,false)},0);
+  </script>
+</body>
+</html>
