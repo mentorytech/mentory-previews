@@ -660,6 +660,417 @@
       .preview-tag { font-size: 7px; }
     }
 
+    /* Full page expansion */
+    .content-section,
+    .demo-section {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 900px;
+    }
+    .content-section {
+      position: relative;
+      padding: 96px 0;
+      border-top: 1px solid rgba(255,255,255,.055);
+    }
+    .content-section.soft { background: #0a110a; }
+    .content-section.cream {
+      background: var(--cream);
+      color: #111511;
+      border-top: 0;
+    }
+    .content-section .section-kicker {
+      margin: 0 0 14px;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .cream .section-kicker { color: #526746; }
+    .content-section h2 { max-width: 820px; }
+    .lead-copy {
+      max-width: 680px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.72;
+    }
+    .cream .lead-copy { color: rgba(17,21,17,.68); }
+
+    .authority-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(520px, 1.18fr);
+      gap: 72px;
+      align-items: center;
+    }
+    .authority-copy h2 { font-size: clamp(47px, 4.8vw, 70px); }
+    .authority-copy p:last-child {
+      max-width: 550px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .authority-proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.018);
+    }
+    .proof-cell {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 26px 22px;
+    }
+    .proof-cell + .proof-cell { border-left: 1px solid var(--line-white); }
+    .proof-cell small {
+      color: rgba(255,255,255,.40);
+      font-size: 9px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .proof-cell strong {
+      display: block;
+      color: var(--cream);
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 37px;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .proof-cell span { color: rgba(255,255,255,.58); font-size: 12px; line-height: 1.5; }
+
+    .application-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .78fr) minmax(520px, 1.22fr);
+      gap: 72px;
+      align-items: start;
+    }
+    .application-copy { position: sticky; top: 26px; }
+    .application-copy h2 { font-size: clamp(48px, 4.7vw, 68px); }
+    .application-points {
+      display: grid;
+      gap: 14px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .application-points li {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: rgba(17,21,17,.68);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .application-points b {
+      display: grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border: 1px solid rgba(75,100,61,.35);
+      color: #4b643d;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 15px;
+      font-weight: 400;
+    }
+    .application-form {
+      padding: 34px;
+      border: 1px solid rgba(17,21,17,.13);
+      background: #fff;
+      box-shadow: 0 28px 80px rgba(19,30,17,.12);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label {
+      color: rgba(17,21,17,.72);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 50px;
+      border: 1px solid rgba(17,21,17,.16);
+      border-radius: 0;
+      background: #fbfaf7;
+      color: #111511;
+      padding: 12px 14px;
+      font-family: "DM Sans", Arial, sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .field textarea { min-height: 88px; resize: vertical; line-height: 1.5; }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus { border-color: #4b643d; box-shadow: 0 0 0 3px rgba(75,100,61,.10); }
+    .field [aria-invalid="true"] { border-color: #9b3f32; box-shadow: 0 0 0 3px rgba(155,63,50,.08); }
+    .field-error { min-height: 15px; color: #87362d; font-size: 10px; }
+    .form-summary {
+      margin: 0 0 18px;
+      padding: 12px 14px;
+      border: 1px solid rgba(155,63,50,.28);
+      background: rgba(155,63,50,.06);
+      color: #6f2922;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .form-submit {
+      width: 100%;
+      min-height: 54px;
+      margin-top: 5px;
+      border: 1px solid #4b643d;
+      border-radius: 0;
+      background: #4b643d;
+      color: #fff;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+    .form-privacy { margin: 11px 0 0; color: rgba(17,21,17,.48); font-size: 10px; line-height: 1.5; text-align: center; }
+    .form-success {
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      padding: 40px;
+      border: 1px solid rgba(75,100,61,.22);
+      background: #f7f7f1;
+      text-align: center;
+    }
+    .form-success strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #24311e;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 38px;
+      font-weight: 400;
+    }
+    .form-success p { max-width: 470px; margin: 0; color: rgba(17,21,17,.66); line-height: 1.65; }
+    [hidden] { display: none !important; }
+
+    .problem-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(430px, .98fr);
+      gap: 80px;
+      align-items: center;
+    }
+    .problem-layout h2 { font-size: clamp(50px, 5vw, 72px); }
+    .problem-layout .lead-copy strong { color: var(--cream); }
+    .bottleneck-map {
+      position: relative;
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      background: radial-gradient(circle at 50% 50%, rgba(75,100,61,.22), transparent 48%);
+      overflow: hidden;
+    }
+    .bottleneck-map::before,
+    .bottleneck-map::after {
+      content: "";
+      position: absolute;
+      background: rgba(232,195,147,.16);
+    }
+    .bottleneck-map::before { width: 1px; height: 72%; }
+    .bottleneck-map::after { width: 72%; height: 1px; }
+    .founder-core {
+      position: relative;
+      z-index: 2;
+      width: 150px;
+      height: 150px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      border: 1px solid rgba(232,195,147,.45);
+      border-radius: 50%;
+      background: #111a11;
+      color: var(--cream);
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 28px;
+      line-height: .95;
+      text-align: center;
+    }
+    .satellite {
+      position: absolute;
+      z-index: 2;
+      min-width: 124px;
+      padding: 12px 14px;
+      border: 1px solid var(--line-white);
+      background: #0c130c;
+      color: rgba(255,255,255,.66);
+      font-size: 10px;
+      letter-spacing: .10em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .satellite.s1 { top: 42px; left: 50%; transform: translateX(-50%); }
+    .satellite.s2 { top: 50%; right: 24px; transform: translateY(-50%); }
+    .satellite.s3 { bottom: 42px; left: 50%; transform: translateX(-50%); }
+    .satellite.s4 { top: 50%; left: 24px; transform: translateY(-50%); }
+
+    .diagnostic-head { display: grid; grid-template-columns: 1fr .7fr; gap: 70px; align-items: end; }
+    .diagnostic-list { margin-top: 46px; border-top: 1px solid var(--line-white); }
+    .diagnostic-row {
+      display: grid;
+      grid-template-columns: 86px minmax(220px, .58fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
+      min-height: 122px;
+      border-bottom: 1px solid var(--line-white);
+    }
+    .diagnostic-row .num { color: var(--gold); font-family: "Instrument Serif", Georgia, serif; font-size: 26px; }
+    .diagnostic-row h3 { margin: 0; font-family: "Instrument Serif", Georgia, serif; font-size: 29px; font-weight: 400; }
+    .diagnostic-row p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+    .journey-track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 42px;
+      border: 1px solid rgba(17,21,17,.14);
+    }
+    .journey-step { min-height: 310px; padding: 30px; }
+    .journey-step + .journey-step { border-left: 1px solid rgba(17,21,17,.12); }
+    .journey-step .step-no { color: #526746; font-family: "Instrument Serif", Georgia, serif; font-size: 30px; }
+    .journey-step h3 { margin: 76px 0 14px; font-family: "Instrument Serif", Georgia, serif; font-size: 31px; font-weight: 400; }
+    .journey-step p { margin: 0; color: rgba(17,21,17,.64); font-size: 14px; line-height: 1.65; }
+    .journey-note { margin: 18px 0 0; color: rgba(17,21,17,.46); font-size: 11px; }
+
+    .identity-section { padding: 0; overflow: hidden; }
+    .identity-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(390px, .65fr); min-height: 680px; }
+    .identity-copy { display: flex; flex-direction: column; justify-content: center; padding: 90px max(42px, calc((100vw - var(--max)) / 2)); padding-right: 70px; }
+    .identity-copy h2 { font-size: clamp(58px, 6.3vw, 92px); }
+    .identity-copy p { max-width: 670px; margin: 24px 0 0; color: var(--muted); font-size: 16px; line-height: 1.72; }
+    .identity-line { margin-top: 34px; color: var(--gold); font-family: "Instrument Serif", Georgia, serif; font-size: 30px; font-style: italic; }
+    .identity-photo { position: relative; min-height: 680px; overflow: hidden; background: #111a11; }
+    .identity-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #070c07 0%, transparent 28%), linear-gradient(180deg, transparent 56%, rgba(7,12,7,.72)); }
+    .identity-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; filter: saturate(.72) contrast(1.05); }
+
+    .cases-head { display: grid; grid-template-columns: 1fr .6fr; gap: 80px; align-items: end; }
+    .case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 42px; }
+    .case-card { min-width: 0; border: 1px solid var(--line-white); background: rgba(255,255,255,.018); }
+    .case-media { height: 190px; overflow: hidden; background: #131b13; }
+    .case-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.78) contrast(1.02); }
+    .case-card:first-child .case-media img { object-position: center 25%; }
+    .case-body { min-height: 250px; display: flex; flex-direction: column; padding: 22px; }
+    .case-body blockquote { margin: 0; color: rgba(255,255,255,.76); font-family: "Instrument Serif", Georgia, serif; font-size: 24px; line-height: 1.18; }
+    .case-person { margin-top: auto; padding-top: 20px; color: var(--gold); font-size: 10px; font-weight: 600; letter-spacing: .10em; text-transform: uppercase; }
+    .case-disclaimer { margin: 18px 0 0; color: rgba(255,255,255,.35); font-size: 10px; line-height: 1.55; }
+
+    .not-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 44px; border-top: 1px solid rgba(17,21,17,.13); border-bottom: 1px solid rgba(17,21,17,.13); }
+    .not-item { min-height: 300px; padding: 30px; }
+    .not-item + .not-item { border-left: 1px solid rgba(17,21,17,.12); }
+    .not-item .not-no { color: #526746; font-family: "Instrument Serif", Georgia, serif; font-size: 29px; }
+    .not-item h3 { margin: 70px 0 14px; font-family: "Instrument Serif", Georgia, serif; font-size: 31px; font-weight: 400; }
+    .not-item p { margin: 0; color: rgba(17,21,17,.64); font-size: 14px; line-height: 1.65; }
+
+    .qualification-grid { display: grid; grid-template-columns: 1fr .72fr; gap: 72px; align-items: start; }
+    .criteria-list { display: grid; gap: 0; margin-top: 36px; border-top: 1px solid var(--line-white); }
+    .criteria-item { display: grid; grid-template-columns: 36px 1fr; gap: 16px; align-items: center; min-height: 68px; border-bottom: 1px solid var(--line-white); color: rgba(255,255,255,.76); font-size: 14px; }
+    .criteria-item span:first-child { color: var(--gold); font-family: "Instrument Serif", Georgia, serif; font-size: 21px; }
+    .qualification-aside { padding: 34px; border: 1px solid var(--line); background: rgba(232,195,147,.035); }
+    .qualification-aside h3 { margin: 0 0 18px; font-family: "Instrument Serif", Georgia, serif; font-size: 36px; font-weight: 400; }
+    .qualification-aside p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+    .faq-wrap { max-width: 940px; margin-inline: auto; }
+    .faq-wrap h2 { max-width: 720px; }
+    .faq-list { margin-top: 40px; border-top: 1px solid rgba(17,21,17,.14); }
+    .faq-list details { border-bottom: 1px solid rgba(17,21,17,.14); }
+    .faq-list summary {
+      min-height: 82px;
+      display: grid;
+      grid-template-columns: 1fr 40px;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+      list-style: none;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 27px;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid rgba(17,21,17,.18); color: #526746; font-family: "DM Sans", Arial, sans-serif; font-size: 20px; }
+    .faq-list details[open] summary::after { content: "×"; }
+    .faq-answer { max-width: 760px; padding: 0 0 28px; color: rgba(17,21,17,.66); font-size: 15px; line-height: 1.7; }
+
+    .final-section {
+      min-height: 650px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 25%, rgba(75,100,61,.26), transparent 40%), #070c07;
+    }
+    .final-section::before { content: ""; position: absolute; inset: 0; background: url("assets/elevation-hero-texture.webp") center / cover no-repeat; opacity: .12; }
+    .final-section .container { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+    .final-section h2 { max-width: 930px; font-size: clamp(54px, 6vw, 88px); }
+    .final-section .lead-copy { max-width: 650px; text-align: center; }
+    .final-cta { margin-top: 30px; }
+
+    @media (max-width: 980px) {
+      .authority-layout, .application-layout, .problem-layout, .diagnostic-head, .cases-head, .qualification-grid { grid-template-columns: 1fr; gap: 34px; }
+      .application-copy { position: static; }
+      .authority-proof { grid-template-columns: repeat(3, 1fr); }
+      .case-grid { grid-template-columns: repeat(2, 1fr); }
+      .identity-grid { grid-template-columns: 1fr .62fr; }
+      .identity-copy { padding: 76px 42px; }
+    }
+
+    @media (max-width: 700px) {
+      .content-section { padding: 68px 0; }
+      .lead-copy { font-size: 15px; line-height: 1.65; }
+      .authority-copy h2, .application-copy h2, .problem-layout h2 { font-size: 46px; }
+      .authority-proof { grid-template-columns: 1fr; }
+      .proof-cell { min-height: 145px; }
+      .proof-cell + .proof-cell { border-left: 0; border-top: 1px solid var(--line-white); }
+      .application-form { padding: 22px 18px; }
+      .form-grid { grid-template-columns: 1fr; gap: 12px; }
+      .field.full { grid-column: auto; }
+      .field input, .field select, .field textarea { min-height: 50px; font-size: 15px; }
+      .bottleneck-map { min-height: 390px; }
+      .founder-core { width: 130px; height: 130px; font-size: 25px; }
+      .satellite { min-width: 100px; padding: 10px; font-size: 8px; }
+      .satellite.s2 { right: 12px; }
+      .satellite.s4 { left: 12px; }
+      .diagnostic-list { margin-top: 30px; }
+      .diagnostic-row { grid-template-columns: 46px 1fr; gap: 14px; padding: 22px 0; }
+      .diagnostic-row p { grid-column: 2; }
+      .journey-track, .not-grid { grid-template-columns: 1fr; }
+      .journey-step, .not-item { min-height: 0; padding: 26px 22px; }
+      .journey-step + .journey-step, .not-item + .not-item { border-left: 0; border-top: 1px solid rgba(17,21,17,.12); }
+      .journey-step h3, .not-item h3 { margin-top: 34px; }
+      .identity-grid { grid-template-columns: 1fr; }
+      .identity-copy { padding: 68px 20px; }
+      .identity-copy h2 { font-size: 53px; }
+      .identity-photo { min-height: 520px; }
+      .identity-photo::after { background: linear-gradient(180deg, #070c07 0%, transparent 24%, rgba(7,12,7,.58)); }
+      .case-grid { grid-template-columns: 1fr; }
+      .case-card { display: grid; grid-template-columns: 118px 1fr; }
+      .case-media { height: 100%; min-height: 250px; }
+      .case-body { min-height: 250px; padding: 18px; }
+      .case-body blockquote { font-size: 21px; }
+      .qualification-aside { padding: 26px 22px; }
+      .faq-list summary { min-height: 76px; font-size: 23px; }
+      .final-section { min-height: 600px; }
+      .final-section h2 { font-size: 52px; }
+    }
+
+    @media (max-width: 380px) {
+      .content-section h2, .authority-copy h2, .application-copy h2, .problem-layout h2 { font-size: 42px; }
+      .case-card { grid-template-columns: 102px 1fr; }
+      .case-body blockquote { font-size: 19px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -678,7 +1089,7 @@
       </div>
     </header>
 
-    <section class="hero" id="top" aria-labelledby="hero-title">
+    <section class="hero" id="top" data-section="1" aria-labelledby="hero-title">
       <div class="container hero-inner">
         <span class="eyebrow">Para empresários com empresa validada</span>
         <h1 id="hero-title"><em>Sua empresa fatura.</em> Mas ainda depende de você para crescer.</h1>
@@ -697,7 +1108,7 @@
           </span>
         </button>
 
-        <button class="primary-cta" type="button" data-primary-cta data-preview-action="cta">
+        <button class="primary-cta" type="button" data-primary-cta data-scroll-application>
           Solicitar uma análise estratégica
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -713,7 +1124,153 @@
       </div>
     </section>
 
-    <section class="demo-section" aria-labelledby="demo-title">
+    <section class="content-section soft" data-section="2" aria-labelledby="authority-title">
+      <div class="container authority-layout">
+        <div class="authority-copy">
+          <p class="section-kicker">Estratégia aplicada</p>
+          <h2 id="authority-title">Construída dentro de <em>empresas reais.</em></h2>
+          <p>A Arquitetura de Receita nasceu da leitura de operações que já vendiam, mas precisavam crescer com mais previsibilidade, rentabilidade e direção.</p>
+        </div>
+        <div class="authority-proof" aria-label="Base pública da metodologia">
+          <div class="proof-cell">
+            <small>Experiência pública</small>
+            <strong>500+</strong>
+            <span>empresários transformados pela metodologia Mentory e Elevation</span>
+          </div>
+          <div class="proof-cell">
+            <small>Metodologia</small>
+            <strong>3 anos</strong>
+            <span>de aplicação, aprendizado e refinamento com empresários</span>
+          </div>
+          <div class="proof-cell">
+            <small>Arquitetura</small>
+            <strong>3 sistemas</strong>
+            <span>aquisição, produtos, margem e LTV conectados por uma só direção</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section cream" data-section="3" id="aplicacao" aria-labelledby="application-title">
+      <div class="container application-layout">
+        <div class="application-copy">
+          <p class="section-kicker">Diagnóstico inicial</p>
+          <h2 id="application-title">Descubra se existe aderência entre o seu momento e o nosso sistema.</h2>
+          <p class="lead-copy">Preencha a aplicação para que meu time compreenda o estágio da sua empresa, a restrição dominante e a decisão que você precisa tomar agora.</p>
+          <ul class="application-points">
+            <li><b>01</b><span>Leitura dos três sistemas da Arquitetura de Receita.</span></li>
+            <li><b>02</b><span>Qualificação do contexto, da operação e do estágio empresarial.</span></li>
+            <li><b>03</b><span>Encaminhamento para uma conversa estratégica quando houver aderência.</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <form class="application-form" data-application-form novalidate aria-label="Aplicação para análise estratégica">
+            <div class="form-summary" data-form-summary hidden tabindex="-1">Revise os campos indicados antes de continuar.</div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Nome completo</label>
+                <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+                <span class="field-error" id="name-error"></span>
+              </div>
+              <div class="field">
+                <label for="email">Email corporativo</label>
+                <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+                <span class="field-error" id="email-error"></span>
+              </div>
+              <div class="field">
+                <label for="phone">WhatsApp com DDI</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required aria-describedby="phone-error">
+                <span class="field-error" id="phone-error"></span>
+              </div>
+              <div class="field">
+                <label for="company">Empresa</label>
+                <input id="company" name="company" type="text" autocomplete="organization" required aria-describedby="company-error">
+                <span class="field-error" id="company-error"></span>
+              </div>
+              <div class="field">
+                <label for="segment">Segmento</label>
+                <input id="segment" name="segment" type="text" required aria-describedby="segment-error">
+                <span class="field-error" id="segment-error"></span>
+              </div>
+              <div class="field">
+                <label for="revenue">Faturamento mensal</label>
+                <select id="revenue" name="revenue" required aria-describedby="revenue-error">
+                  <option value="">Selecione</option>
+                  <option value="under-100k">Até R$ 100 mil</option>
+                  <option value="100k-300k">De R$ 100 mil a R$ 300 mil</option>
+                  <option value="300k-1m">De R$ 300 mil a R$ 1 milhão</option>
+                  <option value="1m-plus">Acima de R$ 1 milhão</option>
+                </select>
+                <span class="field-error" id="revenue-error"></span>
+              </div>
+              <div class="field">
+                <label for="team">Tamanho do time</label>
+                <select id="team" name="team" required aria-describedby="team-error">
+                  <option value="">Selecione</option>
+                  <option value="1-5">De 1 a 5 pessoas</option>
+                  <option value="6-15">De 6 a 15 pessoas</option>
+                  <option value="16-50">De 16 a 50 pessoas</option>
+                  <option value="51-plus">Mais de 50 pessoas</option>
+                </select>
+                <span class="field-error" id="team-error"></span>
+              </div>
+              <div class="field">
+                <label for="bottleneck">Principal gargalo</label>
+                <select id="bottleneck" name="bottleneck" required aria-describedby="bottleneck-error">
+                  <option value="">Selecione</option>
+                  <option value="aquisicao">Aquisição</option>
+                  <option value="produtos">Produtos</option>
+                  <option value="margem">Margem e LTV</option>
+                  <option value="fundador">Dependência do fundador</option>
+                </select>
+                <span class="field-error" id="bottleneck-error"></span>
+              </div>
+              <div class="field full">
+                <label for="goal">Meta para os próximos 12 meses</label>
+                <textarea id="goal" name="goal" required aria-describedby="goal-error"></textarea>
+                <span class="field-error" id="goal-error"></span>
+              </div>
+              <div class="field full">
+                <label for="dependency">O que ainda depende diretamente de você?</label>
+                <textarea id="dependency" name="dependency" required aria-describedby="dependency-error"></textarea>
+                <span class="field-error" id="dependency-error"></span>
+              </div>
+              <div class="field full">
+                <button class="form-submit" type="submit">Continuar minha aplicação</button>
+                <p class="form-privacy">Prévia segura. Nenhuma informação preenchida é enviada ou armazenada.</p>
+              </div>
+            </div>
+          </form>
+          <div class="form-success" data-form-success hidden tabindex="-1">
+            <div>
+              <strong>Simulação concluída.</strong>
+              <p>Na versão final, meu time receberá os dados, avaliará a aderência e apresentará o próximo passo indicado.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section soft" data-section="4" aria-labelledby="problem-title">
+      <div class="container problem-layout">
+        <div>
+          <p class="section-kicker">Isso acontece na sua empresa?</p>
+          <h2 id="problem-title">Você construiu uma empresa real. Mas ainda opera como o principal sistema dela.</h2>
+          <p class="lead-copy">O produto funciona. As vendas acontecem. O time existe. Mesmo assim, campanhas precisam da sua aprovação, produtos nascem de reuniões improvisadas e a margem só recebe atenção quando o caixa aperta.</p>
+          <p class="lead-copy">Você não está diante de um problema de dedicação. <strong>Está diante de um problema de arquitetura.</strong></p>
+        </div>
+        <div class="bottleneck-map" aria-label="Representação de decisões concentradas no empresário">
+          <span class="satellite s1">Campanhas</span>
+          <span class="satellite s2">Produtos</span>
+          <span class="satellite s3">Margem</span>
+          <span class="satellite s4">Operação</span>
+          <span class="founder-core">Tudo passa pelo dono</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" data-section="5" aria-labelledby="demo-title">
       <div class="container">
         <div class="section-head">
           <div>
@@ -782,8 +1339,139 @@
       </div>
     </section>
 
+    <section class="content-section soft" data-section="6" aria-labelledby="diagnostic-title">
+      <div class="container">
+        <div class="diagnostic-head">
+          <div>
+            <p class="section-kicker">A restrição dominante</p>
+            <h2 id="diagnostic-title">O primeiro movimento não é fazer mais. <em>É localizar a restrição certa.</em></h2>
+          </div>
+          <p class="lead-copy">Prioridade deixa de ser opinião quando a empresa enxerga onde a receita trava, o que consome o dono e qual sistema precisa ser corrigido primeiro.</p>
+        </div>
+        <div class="diagnostic-list">
+          <div class="diagnostic-row"><span class="num">01</span><h3>Onde a receita está travando</h3><p>Localizar o limite na demanda, na conversão, no portfólio, na margem ou na expansão da base.</p></div>
+          <div class="diagnostic-row"><span class="num">02</span><h3>O que está consumindo o dono</h3><p>Separar decisões estratégicas de tarefas e aprovações que precisam de processo, indicador e responsável.</p></div>
+          <div class="diagnostic-row"><span class="num">03</span><h3>Qual sistema vem primeiro</h3><p>Definir uma sequência de implementação para impedir que várias frentes diluam a capacidade do time.</p></div>
+          <div class="diagnostic-row"><span class="num">04</span><h3>Quais ativos já existem</h3><p>Aproveitar produtos, canais, provas, pessoas e processos antes de acrescentar complexidade.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section cream" data-section="7" aria-labelledby="journey-title">
+      <div class="container">
+        <p class="section-kicker">Depois da aplicação</p>
+        <h2 id="journey-title">O que acontece <em>depois da aplicação.</em></h2>
+        <p class="lead-copy">A sessão estratégica existe para educar, qualificar e organizar a leitura do momento empresarial antes de qualquer decisão de continuidade.</p>
+        <div class="journey-track">
+          <article class="journey-step"><span class="step-no">01</span><h3>Leitura do momento atual</h3><p>Meu time analisa as informações enviadas, o estágio da empresa e a maturidade nos três sistemas.</p></article>
+          <article class="journey-step"><span class="step-no">02</span><h3>Conversa estratégica</h3><p>A conversa aprofunda o contexto, identifica a restrição dominante e organiza os critérios da próxima decisão.</p></article>
+          <article class="journey-step"><span class="step-no">03</span><h3>Direcionamento</h3><p>Quando existe aderência, apresentamos o caminho indicado, o escopo correspondente e as responsabilidades de cada lado.</p></article>
+        </div>
+        <p class="journey-note">A continuidade, o escopo e o produto recomendado dependem da análise de aderência.</p>
+      </div>
+    </section>
+
+    <section class="content-section identity-section" data-section="8" aria-labelledby="identity-title">
+      <div class="identity-grid">
+        <div class="identity-copy">
+          <p class="section-kicker">Mudança de identidade</p>
+          <h2 id="identity-title">O empresário deixa de ser o sistema e passa a ser <em>o arquiteto.</em></h2>
+          <p>O seu papel não é desaparecer da empresa. É sair da condição em que cada resultado depende da sua intervenção e assumir o lugar em que você define direção, critérios, prioridades e ritmo.</p>
+          <p>A empresa precisa continuar reconhecendo a sua inteligência sem exigir a sua presença em cada etapa.</p>
+          <div class="identity-line">Quem não depende de sistema depende da sorte.</div>
+        </div>
+        <div class="identity-photo"><img src="assets/ed-portrait.webp" width="900" height="1293" loading="lazy" alt="Ed Souza, Arquiteto de Receita"></div>
+      </div>
+    </section>
+
+    <section class="content-section soft" data-section="9" aria-labelledby="cases-title">
+      <div class="container">
+        <div class="cases-head">
+          <div><p class="section-kicker">Resultados públicos</p><h2 id="cases-title">Decisões que viraram <em>estrutura.</em></h2></div>
+          <p class="lead-copy">Casos publicados pela Mentory International e pelo programa Elevation mostram o efeito de sistemas aplicados em contextos empresariais reais.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card">
+            <div class="case-media"><img src="assets/case-mayara.webp" width="253" height="165" loading="lazy" alt="Mayara Campos"></div>
+            <div class="case-body"><blockquote>“Adicionei 1 milhão de receita ao meu negócio de estética em poucos meses com um simples funil e poucas pessoas no meu time.”</blockquote><div class="case-person">Mayara Campos</div></div>
+          </article>
+          <article class="case-card">
+            <div class="case-media"><img src="assets/case-bawal.webp" width="253" height="295" loading="lazy" alt="Bárbara e Waldy"></div>
+            <div class="case-body"><blockquote>“Conquistamos mais de 1 milhão em vendas e estrutura após as implementações.”</blockquote><div class="case-person">Bárbara e Waldy</div></div>
+          </article>
+          <article class="case-card">
+            <div class="case-media"><img src="assets/case-duchini.webp" width="253" height="295" loading="lazy" alt="May e Thalles Duchini"></div>
+            <div class="case-body"><blockquote>“Potencializamos nosso posicionamento, estruturamos nosso time e escalamos nosso negócio para múltiplos milhões.”</blockquote><div class="case-person">May e Thalles Duchini</div></div>
+          </article>
+          <article class="case-card">
+            <div class="case-media"><img src="assets/case-genisson.webp" width="253" height="295" loading="lazy" alt="Genisson Gabriel"></div>
+            <div class="case-body"><blockquote>“Adicionei ao meu negócio mais de 6 dígitos após utilizar o funil de reunião secreta.”</blockquote><div class="case-person">Genisson Gabriel</div></div>
+          </article>
+        </div>
+        <p class="case-disclaimer">Resultados individuais variam conforme contexto, ponto de partida, decisões e execução de cada empresa.</p>
+      </div>
+    </section>
+
+    <section class="content-section cream" data-section="10" aria-labelledby="not-title">
+      <div class="container">
+        <p class="section-kicker">O que esta experiência não é</p>
+        <h2 id="not-title">Não é informação acumulada. Não é aconselhamento solto. Não é execução sem direção.</h2>
+        <div class="not-grid">
+          <article class="not-item"><span class="not-no">01</span><h3>Não é uma biblioteca de aulas</h3><p>Informação sem prioridade acrescenta peso. O valor está em localizar a decisão certa, estabelecer sequência e transformar direção em sistema.</p></article>
+          <article class="not-item"><span class="not-no">02</span><h3>Não é uma terceirização cega</h3><p>A empresa precisa manter visão, critérios e domínio dos ativos estratégicos em vez de entregar todas as chaves para fora.</p></article>
+          <article class="not-item"><span class="not-no">03</span><h3>Não é conversa sem implementação</h3><p>Relacionamento só acelera decisões quando existe processo, responsável, indicador e cadência para transformar direção em movimento.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section soft" data-section="11" aria-labelledby="qualification-title">
+      <div class="container qualification-grid">
+        <div>
+          <p class="section-kicker">Qualificação</p>
+          <h2 id="qualification-title">Para quem esta conversa <em>faz sentido.</em></h2>
+          <div class="criteria-list">
+            <div class="criteria-item"><span>01</span><span>Empresários com empresa validada, produto e vendas existentes.</span></div>
+            <div class="criteria-item"><span>02</span><span>Faturamento a partir de R$ 100 mil por mês ou R$ 1 milhão por ano.</span></div>
+            <div class="criteria-item"><span>03</span><span>Operação que precisa fortalecer aquisição, portfólio, margem ou LTV.</span></div>
+            <div class="criteria-item"><span>04</span><span>Disposição para revisar números, prioridades e responsabilidades.</span></div>
+            <div class="criteria-item"><span>05</span><span>Consciência de que o próximo nível exige sistema, não mais improviso.</span></div>
+          </div>
+        </div>
+        <aside class="qualification-aside">
+          <h3>Este ainda não é o seu momento se...</h3>
+          <p>O negócio está em fase de ideia, a primeira solução ainda não foi validada ou você procura uma resposta que funcione sem participação, critério e responsabilidade do empresário.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="content-section cream" data-section="12" aria-labelledby="faq-title">
+      <div class="container faq-wrap">
+        <p class="section-kicker">Perguntas frequentes</p>
+        <h2 id="faq-title">Tudo o que você precisa saber antes de avançar.</h2>
+        <div class="faq-list">
+          <details><summary>O que acontece na sessão estratégica?</summary><div class="faq-answer">Analisamos o contexto da empresa, aprofundamos a restrição dominante e verificamos se existe aderência com o caminho proposto.</div></details>
+          <details><summary>Preciso ter um time estruturado?</summary><div class="faq-answer">A composição muda de empresa para empresa. O ponto central é existir uma operação real, com produto e vendas, que possa ser analisada.</div></details>
+          <details><summary>A sessão inclui implementação?</summary><div class="faq-answer">A sessão é diagnóstica. Qualquer continuidade, escopo e produto recomendado só são definidos depois da análise de aderência.</div></details>
+          <details><summary>Como sei se estou pronto?</summary><div class="faq-answer">Se a empresa já vende, possui uma entrega validada e o crescimento continua concentrado em você, existe um problema real para diagnosticar.</div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section final-section" data-section="13" aria-labelledby="final-title">
+      <div class="container">
+        <p class="section-kicker">Próxima decisão</p>
+        <h2 id="final-title">Sua empresa não precisa de mais uma frente aberta. Precisa da arquitetura certa para a próxima decisão.</h2>
+        <p class="lead-copy">Se a empresa já provou que consegue vender, a análise pode revelar qual sistema precisa mudar primeiro.</p>
+        <button class="primary-cta final-cta" type="button" data-final-cta data-scroll-application>
+          Solicitar minha análise estratégica
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="microcopy">Aplicação sujeita à aderência entre o estágio da empresa e o caminho recomendado.</p>
+      </div>
+    </section>
+
     <footer class="gate-footer">
-      <div class="container">Prévia segura para validação de direção visual. Nenhum dado é enviado.</div>
+      <div class="container">Prévia segura para validação. Nenhum dado é enviado ou armazenado.</div>
     </footer>
   </main>
 
@@ -867,6 +1555,56 @@
 
       document.querySelectorAll('[data-preview-action]').forEach(button => {
         button.addEventListener('click', () => showFeedback(button.dataset.previewAction));
+      });
+
+      const applicationForm = document.querySelector('[data-application-form]');
+      const formSummary = document.querySelector('[data-form-summary]');
+      const formSuccess = document.querySelector('[data-form-success]');
+
+      document.querySelectorAll('[data-scroll-application]').forEach(button => {
+        button.addEventListener('click', () => {
+          applicationForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      });
+
+      applicationForm.querySelectorAll('input, select, textarea').forEach(field => {
+        field.addEventListener('input', () => {
+          if (!field.checkValidity()) return;
+          field.removeAttribute('aria-invalid');
+          const error = document.querySelector(`#${field.id}-error`);
+          if (error) error.textContent = '';
+        });
+        field.addEventListener('change', () => {
+          if (!field.checkValidity()) return;
+          field.removeAttribute('aria-invalid');
+          const error = document.querySelector(`#${field.id}-error`);
+          if (error) error.textContent = '';
+        });
+      });
+
+      applicationForm.addEventListener('submit', event => {
+        event.preventDefault();
+        const requiredFields = [...applicationForm.querySelectorAll('[required]')];
+        const invalidFields = requiredFields.filter(field => !field.checkValidity());
+
+        if (invalidFields.length) {
+          requiredFields.forEach(field => {
+            const invalid = !field.checkValidity();
+            if (invalid) field.setAttribute('aria-invalid', 'true');
+            else field.removeAttribute('aria-invalid');
+            const error = document.querySelector(`#${field.id}-error`);
+            if (error) error.textContent = invalid ? 'Preencha este campo para continuar.' : '';
+          });
+          formSummary.hidden = false;
+          formSummary.focus();
+          invalidFields[0].focus({ preventScroll: true });
+          return;
+        }
+
+        formSummary.hidden = true;
+        applicationForm.hidden = true;
+        formSuccess.hidden = false;
+        formSuccess.focus();
       });
       document.querySelector('[data-feedback-close]').addEventListener('click', () => {
         feedback.classList.remove('is-visible');
