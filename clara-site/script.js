@@ -20,6 +20,23 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('img[data-src]').forEach(loadDeferredImage);
 }
 
+const enablePressMotion = () => document.body.classList.add('press-motion-ready');
+['pointerdown', 'keydown', 'scroll'].forEach((eventName) => {
+  window.addEventListener(eventName, enablePressMotion, { once: true, passive: eventName !== 'keydown' });
+});
+
+const eventCarousel = document.querySelector('.event-carousel');
+if (eventCarousel && 'IntersectionObserver' in window) {
+  const eventMotionObserver = new IntersectionObserver((entries, observer) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    document.body.classList.add('event-motion-ready');
+    observer.disconnect();
+  }, { rootMargin: '240px 0px' });
+  eventMotionObserver.observe(eventCarousel);
+} else if (eventCarousel) {
+  document.body.classList.add('event-motion-ready');
+}
+
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', (event) => {
     const target = document.querySelector(anchor.getAttribute('href'));
