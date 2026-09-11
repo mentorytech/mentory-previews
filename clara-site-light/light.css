@@ -73,6 +73,7 @@ details p{color:#262626}
 .method-card{background:#fff;border-color:rgba(0,0,0,.11);box-shadow:0 22px 60px rgba(0,0,0,.07)}
 .method-card.tall{background:#fff;border-top:3px solid var(--gold)}
 .method-card span{color:#3c3c3c}
+.section-icon,.service-icon,.method-icon{background:#fff;border-color:rgba(0,0,0,.18);color:var(--gold)}
 .image-card{background:#fff}
 .image-card img{filter:saturate(.84) brightness(.94)}
 .video-frame{background:#fff;box-shadow:0 30px 74px rgba(0,0,0,.12)}
@@ -84,8 +85,8 @@ details p{color:#262626}
 .quote-block p{color:#171713}
 
 .cases-head h2,
-.cases-head p,
-.cases-counter{color:#171713}
+.cases-head p{color:#171713}
+.cases-progress__track{background:rgba(0,0,0,.14)}
 .cases-track:focus-visible{outline-color:#1e6a43}
 .case-slide{background:#fff;border-color:rgba(0,0,0,.13);box-shadow:0 18px 48px rgba(0,0,0,.08)}
 .case-source{color:#7a4a00}

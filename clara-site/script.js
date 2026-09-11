@@ -60,6 +60,7 @@ spotifyActivator?.addEventListener('click', () => {
 const casesTrack = document.querySelector('[data-cases-track]');
 const caseSlides = Array.from(document.querySelectorAll('[data-case-slide]'));
 const casesCounter = document.querySelector('[data-cases-counter]');
+const casesProgress = document.querySelector('[data-cases-progress]');
 const casesPrev = document.querySelector('[data-cases-prev]');
 const casesNext = document.querySelector('[data-cases-next]');
 
@@ -73,10 +74,9 @@ if (casesTrack && caseSlides.length) {
   };
 
   const updateCasesCounter = () => {
-    if (!casesCounter) return;
-    const current = String(currentCaseIndex() + 1).padStart(2, '0');
-    const total = String(caseSlides.length).padStart(2, '0');
-    casesCounter.textContent = `${current} / ${total}`;
+    const current = currentCaseIndex() + 1;
+    if (casesCounter) casesCounter.textContent = `Case ${current} de ${caseSlides.length}`;
+    if (casesProgress) casesProgress.style.transform = `scaleX(${current / caseSlides.length})`;
   };
 
   const visibleCaseCount = () => Math.max(1, Math.round(casesTrack.clientWidth / caseSlides[0].getBoundingClientRect().width));
