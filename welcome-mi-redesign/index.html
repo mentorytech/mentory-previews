@@ -373,15 +373,6 @@
       padding: clamp(82px, 10vw, 150px) var(--pad);
     }
 
-    .journey,
-    .miranda,
-    .founder,
-    .support,
-    footer {
-      content-visibility: auto;
-      contain-intrinsic-size: auto 1000px;
-    }
-
     .container {
       width: min(100%, var(--container));
       margin-inline: auto;
@@ -606,19 +597,7 @@
       position: relative;
       min-height: 790px;
       overflow: hidden;
-      background: #332a24;
-    }
-
-    .founder-media picture,
-    .founder-media img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .founder-media img {
-      object-fit: cover;
-      object-position: center 19%;
-      filter: saturate(.9) contrast(1.02);
+      background: #332a24 url("assets/clara-welcome-1200.webp") center 19% / cover no-repeat;
     }
 
     .founder-media::after {
@@ -943,7 +922,10 @@
 
       .founder-grid { min-height: 0; grid-template-columns: 1fr; }
       .founder-media { min-height: 540px; }
-      .founder-media img { object-position: center 17%; }
+      .founder-media {
+        background-image: url("assets/clara-welcome-720.webp");
+        background-position: center 17%;
+      }
       .founder-copy { padding: 70px var(--pad) 82px; }
       .founder-copy h2 { font-size: clamp(55px, 15.5vw, 71px); }
       .founder-copy .statement { font-size: 17px; }
@@ -1093,19 +1075,14 @@
         </div>
 
         <div class="product-stage">
-          <img src="assets/miranda-interface.webp" width="420" height="562" alt="Interface da plataforma MIranda" loading="lazy" decoding="async">
+          <img src="assets/miranda-interface.webp" width="420" height="562" alt="Interface da plataforma MIranda" loading="eager" decoding="async">
         </div>
       </div>
     </section>
 
     <section class="founder" aria-labelledby="founder-title">
       <div class="founder-grid">
-        <figure class="founder-media">
-          <picture>
-            <source media="(max-width: 720px)" srcset="assets/clara-welcome-720.webp">
-            <img src="assets/clara-welcome-1200.webp" width="1200" height="1800" alt="Clara do Vale em composição editorial com estampa de onça" loading="lazy" decoding="async">
-          </picture>
-        </figure>
+        <figure class="founder-media" role="img" aria-label="Clara do Vale em composição editorial com estampa de onça"></figure>
 
         <div class="founder-copy">
           <p class="eyebrow">Da Clara para você</p>
