@@ -512,17 +512,22 @@
 
     .miranda-grid {
       display: grid;
-      grid-template-columns: minmax(0, .92fr) minmax(360px, .72fr);
+      grid-template-columns: minmax(0, .82fr) minmax(520px, 1.18fr);
       align-items: center;
-      gap: clamp(54px, 9vw, 130px);
+      gap: clamp(44px, 6vw, 82px);
     }
 
     .miranda-copy h2 {
       max-width: 690px;
       margin-bottom: 24px;
-      font-size: clamp(58px, 6.8vw, 102px);
-      line-height: .9;
+      font-size: clamp(54px, 5.4vw, 82px);
+      line-height: .91;
       text-transform: uppercase;
+    }
+
+    .miranda-copy h2 .community-emphasis {
+      display: block;
+      color: var(--gold-bright);
     }
 
     .miranda-copy > p {
@@ -551,13 +556,23 @@
     .miranda-points li:nth-child(odd) { border-right: 1px solid var(--line-dark); }
     .miranda-points li:nth-child(even) { padding-left: 18px; }
 
+    .miranda-points .community-point {
+      grid-column: 1 / -1;
+      padding-left: 0;
+      border-right: 0;
+      color: var(--gold-bright);
+      font-weight: 600;
+    }
+
     .product-stage {
       position: relative;
-      min-height: 620px;
+      min-height: 560px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 48px 20px;
+      margin: 0;
+      padding: 58px 22px 28px;
       border: 1px solid var(--line-dark);
       background:
         linear-gradient(135deg, rgba(255,255,255,.04), transparent 52%),
@@ -565,7 +580,7 @@
     }
 
     .product-stage::before {
-      content: "PLATAFORMA MARCA IRRESISTÍVEL";
+      content: "MI COMMUNITY · DENTRO DA MIRANDA";
       position: absolute;
       top: 20px;
       left: 22px;
@@ -576,10 +591,20 @@
     }
 
     .product-stage img {
-      width: min(100%, 360px);
+      width: min(100%, 760px);
       height: auto;
       border: 1px solid rgba(255,255,255,.2);
       box-shadow: 0 32px 75px rgba(0,0,0,.45);
+    }
+
+    .product-stage figcaption {
+      width: 100%;
+      margin-top: 18px;
+      color: var(--white);
+      font-size: 11px;
+      line-height: 1.5;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
     .founder {
@@ -835,7 +860,7 @@
       .support-top { grid-template-columns: 1fr; gap: 26px; }
 
       .journey-layout { grid-template-columns: .8fr 1.2fr; }
-      .miranda-grid { grid-template-columns: 1fr 340px; }
+      .miranda-grid { grid-template-columns: 1fr; }
       .founder-grid { grid-template-columns: minmax(360px, .82fr) minmax(0, 1.18fr); }
       .footer-inner { grid-template-columns: 160px 1fr; }
       .footer-nav { grid-column: 1 / -1; }
@@ -917,8 +942,10 @@
       .miranda-points { grid-template-columns: 1fr; }
       .miranda-points li:nth-child(odd) { border-right: 0; }
       .miranda-points li:nth-child(even) { padding-left: 0; }
-      .product-stage { min-height: 520px; }
-      .product-stage img { width: min(100%, 310px); }
+      .miranda-points .community-point { grid-column: auto; }
+      .product-stage { min-height: 0; padding: 56px 10px 22px; }
+      .product-stage img { width: 100%; }
+      .product-stage figcaption { padding: 0 8px; }
 
       .founder-grid { min-height: 0; grid-template-columns: 1fr; }
       .founder-media { min-height: 540px; }
@@ -1063,20 +1090,25 @@
       <div class="container miranda-grid">
         <div class="miranda-copy">
           <p class="eyebrow">Sua camada de inteligência</p>
-          <h2 id="miranda-title">O método mostra o caminho. A MIranda ajuda você a implementar.</h2>
-          <p>A MIranda foi criada para apoiar suas decisões de posicionamento, comunicação e execução de marca dentro do ecossistema do MI.</p>
+          <h2 id="miranda-title">O método mostra o caminho. A MIranda ajuda a implementar. <span class="community-emphasis">E conecta você à comunidade.</span></h2>
+          <p>A MIranda reúne o método, as ferramentas e a MI Community no mesmo ambiente. É ali que você acessa conteúdo, eventos, desafios e conexões com outras integrantes do Clã.</p>
           <ul class="miranda-points">
             <li>Mais clareza para construir sua marca</li>
             <li>Orientações alinhadas ao método</li>
             <li>Estratégia transformada em ação</li>
             <li>Recursos do MI em um só lugar</li>
+            <li class="community-point">Comunidade, eventos e networking dentro da MIranda</li>
           </ul>
-          <a class="button button-primary" href="https://plataforma.marcairresistivel.com/" target="_blank" rel="noopener noreferrer">Acessar a MIranda</a>
+          <a class="button button-primary" href="https://plataforma.marcairresistivel.com/" target="_blank" rel="noopener noreferrer">Acessar MIranda e comunidade</a>
         </div>
 
-        <div class="product-stage">
-          <img src="assets/miranda-interface.webp" width="420" height="562" alt="Interface da plataforma MIranda" loading="eager" decoding="async">
-        </div>
+        <figure class="product-stage">
+          <picture>
+            <source media="(max-width: 760px)" srcset="assets/mi-community-interface-mobile.webp">
+            <img src="assets/mi-community-interface.webp" width="1554" height="951" alt="Interface da MIranda com a opção MI Community destacada no menu principal" loading="eager" decoding="async">
+          </picture>
+          <figcaption>A MI Community está no menu principal da MIranda.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -1110,7 +1142,7 @@
 
         <nav class="quick-links" aria-label="Atalhos principais">
           <a class="quick-link" href="https://alunos.mentoryinternational.com/" target="_blank" rel="noopener noreferrer"><small>Aulas e orientações</small><strong>Área de aluna</strong></a>
-          <a class="quick-link" href="https://plataforma.marcairresistivel.com/" target="_blank" rel="noopener noreferrer"><small>Inteligência de marca</small><strong>MIranda</strong></a>
+          <a class="quick-link" href="https://plataforma.marcairresistivel.com/" target="_blank" rel="noopener noreferrer"><small>Ferramentas e comunidade</small><strong>MIranda</strong></a>
           <a class="quick-link" href="mailto:suporte@mentoryacademy.com.br"><small>Preciso de ajuda</small><strong>Suporte</strong></a>
         </nav>
 
@@ -1128,6 +1160,10 @@
             <details>
               <summary>Onde acesso a MIranda?</summary>
               <p>Acesse plataforma.marcairresistivel.com e siga as instruções de acesso disponíveis para a sua conta.</p>
+            </details>
+            <details>
+              <summary>Onde encontro a MI Community?</summary>
+              <p>A MI Community fica dentro da MIranda. Acesse plataforma.marcairresistivel.com e selecione “MI Community” no menu principal.</p>
             </details>
             <details>
               <summary>Como falo com o suporte?</summary>
