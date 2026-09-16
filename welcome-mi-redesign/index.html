@@ -51,6 +51,8 @@
       --gold: #c9a227;
       --gold-bright: #d7a033;
       --gold-dark: #7a4b06;
+      --cta-green: #188447;
+      --cta-green-hover: #0f6f38;
       --ink: #13120b;
       --line-dark: rgba(255,255,255,.16);
       --line-light: rgba(19,18,11,.16);
@@ -276,23 +278,25 @@
     }
 
     .button-primary {
-      color: var(--black);
-      background: var(--gold);
-      box-shadow: 0 16px 45px rgba(201,162,39,.15);
+      color: var(--white);
+      background: var(--cta-green);
+      border-color: var(--cta-green);
+      box-shadow: 0 16px 45px rgba(24,132,71,.2);
     }
 
     .button-primary:hover {
-      background: var(--gold-bright);
+      background: var(--cta-green-hover);
+      border-color: var(--cta-green-hover);
       transform: translateY(-2px);
     }
 
     .button-dark {
       color: var(--white);
-      background: var(--black);
-      border-color: var(--black);
+      background: var(--cta-green);
+      border-color: var(--cta-green);
     }
 
-    .button-dark:hover { background: #29271f; }
+    .button-dark:hover { background: var(--cta-green-hover); border-color: var(--cta-green-hover); }
 
     .text-link {
       display: inline-flex;
