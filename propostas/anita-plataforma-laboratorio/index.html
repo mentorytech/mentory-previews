@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Proposta · Plataforma do Laboratório para Anita · Mentory International</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,137 +13,180 @@
   --ink:#1d1d1f; --paper:#ffffff; --mist:#f5f5f7; --line:#d2d2d7; --gray:#6e6e73;
   --black:#0b0b0c; --gold:#b8922a; --gold-l:#d4a843; --gold-soft:#f6efdc;
   --ok:#2f7d4f; --ok-soft:#e5f2ea; --warn:#a8641b; --warn-soft:#f8ecdd;
-  --radius:22px; --maxw:1040px; --pad:clamp(24px,5vw,40px);
   --font:"DM Sans",-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.22,.8,.2,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
-section{padding:clamp(64px,9vw,112px) 0}
-section.mist{background:var(--mist)}
-section.dark{background:var(--black);color:#fff}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--black)}
+body{font-family:var(--font);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+p{margin:0 0 12px}
 h1,h2,h3{margin:0;letter-spacing:-.025em;text-wrap:balance}
-h1{font-size:clamp(38px,6.4vw,72px);line-height:1.02;font-weight:700}
-h2{font-size:clamp(30px,4.4vw,50px);line-height:1.06;font-weight:700;margin-bottom:18px}
-h3{font-size:21px;line-height:1.25;font-weight:600;margin-bottom:8px}
-p{margin:0 0 14px}
-.eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
-.lead{font-size:clamp(18px,2vw,21px);color:var(--gray);max-width:62ch}
-.dark .lead{color:#b9b9be}
-.mono{font-family:var(--mono);font-size:.86em}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
-/* topo */
-.top{position:sticky;top:0;z-index:20;background:rgba(11,11,12,.92);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-.top img{height:22px;width:auto}
-.top span{color:#a1a1a6;font-size:13px;letter-spacing:.04em}
+/* ---------- deck ---------- */
+.deck{position:fixed;inset:0;overflow:hidden}
+.track{display:flex;height:100%;will-change:transform;transition:transform .75s var(--ease)}
+.slide{flex:0 0 100vw;width:100vw;height:100%;position:relative;overflow:hidden;background:var(--paper)}
+.slide.mist{background:var(--mist)}
+.slide.dark{background:var(--black);color:#fff}
+.stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform:translate(-50%,-50%) scale(var(--s,1));padding:96px 76px 78px;display:flex;flex-direction:column;justify-content:center}
+.brand{position:absolute;top:36px;left:76px;right:76px;display:flex;justify-content:space-between;align-items:center;font-size:13px;letter-spacing:.05em;color:#86868b}
+.brand img{height:20px;width:auto}
+.slide:not(.dark) .brand img{filter:brightness(0)}
 
-/* hero */
-.hero{padding-top:clamp(72px,10vw,128px)}
-.hero h1 em{font-style:normal;color:var(--gold-l)}
-.hero .lead{margin-top:22px}
-.byline{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:38px;padding-top:22px;border-top:1px solid #2a2a2e;font-size:14px;color:#a1a1a6}
-.byline b{color:#fff;font-weight:500}
+/* ---------- tipografia no slide ---------- */
+h1{font-size:68px;line-height:1.02;font-weight:700}
+h1 em{font-style:normal;color:var(--gold-l)}
+h2{font-size:42px;line-height:1.08;font-weight:700;margin-bottom:14px}
+h3{font-size:20px;line-height:1.25;font-weight:600;margin-bottom:6px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.lead{font-size:19px;color:var(--gray);max-width:60ch;margin:0}
+.dark .lead{color:#b9b9be}
+.mono{font-family:var(--mono);font-size:.86em}
 
-/* grids */
-.grid{display:grid;gap:18px}
+/* ---------- blocos ---------- */
+.grid{display:grid;gap:16px}
 .g2{grid-template-columns:repeat(2,1fr)}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g4{grid-template-columns:repeat(4,1fr)}
-.tile{background:var(--paper);border-radius:var(--radius);padding:28px}
-section:not(.mist) .tile{background:var(--mist)}
-.tile p{color:var(--gray);font-size:15.5px;margin:0}
-.stat b{display:block;font-size:clamp(34px,4.2vw,48px);font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:8px;font-variant-numeric:tabular-nums}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.tile{border-radius:20px;padding:24px}
+.slide.mist .tile{background:var(--paper)}
+.slide:not(.mist):not(.dark) .tile{background:var(--mist)}
+.slide.dark .tile{background:#161618}
+.tile p{color:var(--gray);font-size:15px;margin:0}
+.dark .tile p{color:#a1a1a6}
+.stat b{display:block;font-size:52px;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:10px;font-variant-numeric:tabular-nums}
 .stat span{font-size:15px;color:var(--gray)}
-.icon{width:40px;height:40px;border-radius:12px;background:var(--gold-soft);color:var(--gold);display:grid;place-items:center;margin-bottom:18px}
-.icon svg{width:22px;height:22px}
-.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
-.list{list-style:none;padding:0;margin:14px 0 0}
-.list li{position:relative;padding-left:22px;margin-bottom:8px;font-size:15.5px;color:var(--ink)}
-.list li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--gold)}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:center}
-.note{margin-top:22px;padding:16px 20px;border-radius:16px;background:var(--gold-soft);color:#6b5413;font-size:15px}
+.icon{width:38px;height:38px;border-radius:11px;background:var(--gold-soft);color:var(--gold);display:grid;place-items:center;margin-bottom:14px}
+.icon svg{width:21px;height:21px}
+.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.03em;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:#8a6b17;margin-top:12px}
+.list{list-style:none;padding:0;margin:18px 0 0}
+.list li{position:relative;padding-left:20px;margin-bottom:9px;font-size:15.5px}
+.list li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.note{margin-top:18px;padding:14px 18px;border-radius:14px;background:var(--gold-soft);color:#6b5413;font-size:14.5px}
 .note b{color:#4d3c0c}
+.caption{text-align:center;color:var(--gray);font-size:12px;margin-top:10px}
+.byline{display:flex;gap:28px;margin-top:40px;padding-top:22px;border-top:1px solid #2a2a2e;font-size:14px;color:#a1a1a6}
+.byline b{color:#fff;font-weight:500}
+.hint{position:absolute;left:76px;bottom:34px;font-size:13px;color:#6e6e73;display:flex;align-items:center;gap:10px}
+.hint kbd{font-family:var(--mono);font-size:12px;border:1px solid #3a3a3e;border-radius:6px;padding:1px 7px;color:#a1a1a6}
 
-@media (max-width:860px){
-  .g3,.g4{grid-template-columns:repeat(2,1fr)}
-  .split{grid-template-columns:1fr}
+/* ---------- entrada animada ---------- */
+.anim .slide:not(.seen) .reveal{opacity:0}
+.anim .slide.enter .reveal{animation:rise .7s var(--ease) both;animation-delay:calc(var(--d,0) * 90ms + 280ms)}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- navegacao ---------- */
+.progress{position:fixed;left:0;top:0;height:3px;width:0;background:var(--gold);z-index:40;transition:width .75s var(--ease)}
+.nav{position:fixed;right:22px;bottom:20px;z-index:40;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 6px 24px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.06);color:var(--ink);transition:background .4s,color .4s}
+.on-dark .nav{background:rgba(34,34,36,.78);color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.1)}
+.nav button{appearance:none;border:0;background:transparent;color:inherit;cursor:pointer;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;padding:0}
+.nav button:hover{background:rgba(0,0,0,.07)}
+.on-dark .nav button:hover{background:rgba(255,255,255,.12)}
+.nav button:disabled{opacity:.28;cursor:default;background:transparent}
+.nav svg{width:20px;height:20px}
+.count{font-family:var(--mono);font-size:13px;min-width:62px;text-align:center;font-variant-numeric:tabular-nums}
+
+/* ---------- celular em pe: slide vira pagina com rolagem ---------- */
+@media (orientation:portrait) and (max-width:820px){
+  .stage{position:relative;left:auto;top:auto;width:100%;height:auto;min-height:100%;transform:none!important;padding:78px 22px 110px;justify-content:flex-start}
+  .slide{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+  .brand{left:22px;right:22px;top:24px}
+  h1{font-size:42px} h2{font-size:30px} .lead{font-size:17px}
+  .g2,.g3,.g4,.split{grid-template-columns:1fr!important;gap:14px}
+  .stat b{font-size:40px}
+  .hint{display:none}
+  .byline{flex-wrap:wrap;gap:8px 20px}
+  .nav{left:50%;right:auto;transform:translateX(-50%);bottom:max(16px,env(safe-area-inset-bottom))}
 }
-@media (max-width:560px){
-  .g2,.g3,.g4{grid-template-columns:1fr}
-  body{font-size:16px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+@media print{
+  @page{size:1280px 720px;margin:0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{height:auto;overflow:visible;background:none}
+  .deck{position:static;overflow:visible}
+  .track{display:block;transform:none!important;transition:none}
+  .slide{width:1280px;height:720px;break-after:page;page-break-after:always}
+  .stage{left:0;top:0;transform:none!important}
+  .nav,.progress,.hint{display:none!important}
+  .reveal{opacity:1!important;animation:none!important;transform:none!important}
 }
 </style>
 <style>
+/* cartao com icone ao lado */
+.tile.ht{display:grid;grid-template-columns:auto 1fr;column-gap:18px;align-items:start}
+.tile.ht .icon{grid-row:span 3;margin:2px 0 0}
+.tile.ht .tag{justify-self:start}
+
 /* ---------- celular ---------- */
-.phone{width:300px;max-width:100%;margin:0 auto;background:#111;border-radius:44px;padding:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.35),0 0 0 1px #2a2a2e}
-.screen{background:#fbfbfd;border-radius:33px;overflow:hidden;height:600px;position:relative;font-size:13px}
-.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:90px;height:24px;background:#111;border-radius:14px;z-index:5}
-.app-head{padding:46px 18px 12px;background:#fff;border-bottom:1px solid #ececf0}
-.app-head small{display:block;color:var(--gray);font-size:11px}
-.app-head strong{font-size:16px}
-.stage{position:relative;height:calc(100% - 96px)}
-.view{position:absolute;inset:0;padding:16px 16px 0;transition:opacity .5s ease,transform .5s ease}
-.cam{background:#1c1c1e;border-radius:18px;height:310px;position:relative;overflow:hidden;display:grid;place-items:center}
-.paper{width:78%;height:82%;background:#f4efe3;border-radius:6px;transform:rotate(-3deg);padding:14px 12px;box-shadow:0 8px 20px rgba(0,0,0,.4)}
-.paper i{display:block;height:6px;border-radius:3px;background:#cfc6b1;margin:0 0 10px}
-.paper i.hw{background:#5b6b8a;width:58%;height:5px;margin:-6px 0 12px 32%}
+.phone{width:286px;margin:0 auto;background:#111;border-radius:42px;padding:11px;box-shadow:0 30px 60px -20px rgba(0,0,0,.35),0 0 0 1px #2a2a2e}
+.screen{background:#fbfbfd;border-radius:32px;overflow:hidden;height:500px;position:relative;font-size:13px}
+.notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:86px;height:22px;background:#111;border-radius:13px;z-index:5}
+.app-head{padding:42px 16px 10px;background:#fff;border-bottom:1px solid #ececf0}
+.app-head small{display:block;color:var(--gray);font-size:10.5px}
+.app-head strong{font-size:15px}
+.stage-ph{position:relative;height:calc(100% - 88px)}
+.view{position:absolute;inset:0;padding:12px 13px 0;transition:opacity .5s ease,transform .5s ease;opacity:0;pointer-events:none}
+.view.v-review{opacity:1}
+.cam{background:#1c1c1e;border-radius:16px;height:270px;position:relative;overflow:hidden;display:grid;place-items:center}
+.paper{width:78%;height:82%;background:#f4efe3;border-radius:6px;transform:rotate(-3deg);padding:13px 11px;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.paper i{display:block;height:6px;border-radius:3px;background:#cfc6b1;margin:0 0 9px}
+.paper i.hw{background:#5b6b8a;width:58%;height:5px;margin:-5px 0 11px 32%}
 .scan{position:absolute;left:8%;right:8%;height:2px;background:var(--gold-l);box-shadow:0 0 14px 3px rgba(212,168,67,.7);top:12%;opacity:0}
-.frame{position:absolute;inset:9% 9%;border:2px solid rgba(255,255,255,.55);border-radius:10px}
-.shutter{margin:18px auto 0;width:62px;height:62px;border-radius:50%;border:4px solid #d2d2d7;background:#fff}
-.caption{text-align:center;color:var(--gray);font-size:12px;margin-top:10px}
-.field{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 12px;background:#fff;border:1px solid #ececf0;border-radius:12px;margin-bottom:7px}
-.field label{color:var(--gray);font-size:11.5px}
-.field b{font-weight:600;font-size:13px;font-variant-numeric:tabular-nums;transition:opacity .35s ease}
+.frame{position:absolute;inset:9%;border:2px solid rgba(255,255,255,.55);border-radius:10px}
+.shutter{margin:16px auto 0;width:56px;height:56px;border-radius:50%;border:4px solid #d2d2d7;background:#fff}
+.field{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 11px;background:#fff;border:1px solid #ececf0;border-radius:11px;margin-bottom:6px}
+.field label{color:var(--gray);font-size:11px}
+.field b{font-weight:600;font-size:12.5px;font-variant-numeric:tabular-nums;transition:opacity .35s ease}
 .field.pre b{color:var(--gray);font-weight:500}
 .field.flag{border-color:#e7c79a;background:var(--warn-soft)}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block;margin-left:6px;vertical-align:middle}
 .flag .dot{background:var(--warn)}
-.btn{display:block;text-align:center;background:var(--ink);color:#fff;border-radius:14px;padding:12px;font-weight:600;margin-top:10px}
-.btn.gold{background:var(--gold)}
-.done{display:grid;place-items:center;text-align:center;height:100%;padding-bottom:60px}
-.check{width:64px;height:64px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center;margin:0 auto 14px}
-.steps-bar{display:flex;gap:6px;justify-content:center;margin-top:18px}
-.steps-bar span{width:28px;height:4px;border-radius:2px;background:#d2d2d7;transition:background .4s}
+.btn{display:block;text-align:center;color:#fff;border-radius:13px;padding:11px;font-weight:600;margin-top:8px;background:var(--gold)}
+.done{display:grid;place-items:center;text-align:center;height:100%;padding-bottom:50px}
+.check{width:60px;height:60px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center;margin:0 auto 12px}
+.steps-bar{position:absolute;bottom:14px;left:0;right:0;display:flex;gap:6px;justify-content:center}
+.steps-bar span{width:26px;height:4px;border-radius:2px;background:#d2d2d7;transition:background .4s}
 .steps-bar span.on{background:var(--gold)}
-
-/* estado inicial sem JS: mostra a tela de conferencia */
-.view{opacity:0;pointer-events:none}
-.view.v-review{opacity:1}
 .anim .view{opacity:0;transform:translateY(10px)}
 .anim .view.show{opacity:1;transform:none}
 .anim .scanning .scan{animation:scan 1.6s ease-in-out infinite}
 @keyframes scan{0%{top:12%;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:86%;opacity:0}}
 .anim .v-review .field b{opacity:0}
-.anim .v-review.fill .field b{opacity:1}
+.anim .v-review .field.on b{opacity:1}
 
-/* ---------- painel desktop ---------- */
-.browser{background:#fff;border-radius:16px;box-shadow:0 30px 60px -24px rgba(0,0,0,.25),0 0 0 1px var(--line);overflow:hidden}
-.bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:#f2f2f4;border-bottom:1px solid var(--line)}
-.bar i{width:11px;height:11px;border-radius:50%;background:#d2d2d7}
-.bar span{margin-left:12px;font-size:12px;color:var(--gray);background:#fff;border-radius:7px;padding:3px 12px;flex:1;max-width:340px}
-.dash{display:grid;grid-template-columns:190px 1fr;min-height:400px;font-size:13.5px}
-.side{background:#fafafa;border-right:1px solid #ececf0;padding:18px 12px}
-.side p{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin:0 8px 10px}
-.side a{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:9px;color:var(--ink);text-decoration:none;margin-bottom:2px}
+/* ---------- painel ---------- */
+.browser{background:#fff;border-radius:14px;box-shadow:0 30px 60px -24px rgba(0,0,0,.25),0 0 0 1px var(--line);overflow:hidden}
+.bbar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#f2f2f4;border-bottom:1px solid var(--line)}
+.bbar i{width:10px;height:10px;border-radius:50%;background:#d2d2d7}
+.bbar span{margin-left:10px;font-size:11.5px;color:var(--gray);background:#fff;border-radius:7px;padding:2px 12px;flex:1;max-width:300px}
+.dash{display:grid;grid-template-columns:160px 1fr;font-size:13px}
+.side{background:#fafafa;border-right:1px solid #ececf0;padding:16px 10px}
+.side p{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin:0 8px 8px}
+.side a{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:8px;color:var(--ink);margin-bottom:2px}
 .side a.on{background:var(--gold-soft);color:#6b5413;font-weight:600}
-.side svg{width:16px;height:16px;flex:none}
-.main{padding:22px}
-.main h4{margin:0 0 4px;font-size:19px;letter-spacing:-.01em}
-.main .sub{color:var(--gray);font-size:13px;margin:0 0 16px}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
-.kpi{border:1px solid #ececf0;border-radius:12px;padding:12px 14px}
-.kpi b{display:block;font-size:24px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.kpi span{color:var(--gray);font-size:12px}
-.row{display:flex;align-items:center;gap:12px;padding:11px 12px;border:1px solid #ececf0;border-radius:12px;margin-bottom:8px}
+.side svg{width:15px;height:15px;flex:none}
+.main{padding:18px}
+.main h4{margin:0 0 2px;font-size:18px;letter-spacing:-.01em}
+.main .sub{color:var(--gray);font-size:12px;margin:0 0 12px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.kpi{border:1px solid #ececf0;border-radius:11px;padding:10px 12px}
+.kpi b{display:block;font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi span{color:var(--gray);font-size:11.5px}
+.row{display:flex;align-items:center;gap:11px;padding:9px 11px;border:1px solid #ececf0;border-radius:11px;margin-bottom:7px}
+.row .ri{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;flex:none;background:var(--gold-soft);color:var(--gold)}
+.row .ri svg{width:17px;height:17px}
+.row .ri.w{background:var(--warn-soft);color:var(--warn)}
+.row .ri.k{background:var(--ok-soft);color:var(--ok)}
 .row .what{flex:1;min-width:0}
 .row .what b{display:block;font-weight:600}
-.row .what span{color:var(--gray);font-size:12.5px}
-.pill{font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.row .what span{color:var(--gray);font-size:12px}
+.pill{font-size:11px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap}
 .pill.warn{background:var(--warn-soft);color:var(--warn)}
 .pill.ok{background:var(--ok-soft);color:var(--ok)}
 .pill.gold{background:var(--gold-soft);color:#6b5413}
@@ -151,60 +194,72 @@ section:not(.mist) .tile{background:var(--mist)}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(168,100,27,0)}50%{box-shadow:0 0 0 4px rgba(168,100,27,.16)}}
 
 /* ---------- estoque ---------- */
-.tank-wrap{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
-.tank{width:150px;height:210px;border-radius:26px 26px 36px 36px;background:linear-gradient(#e9e9ee,#d7d7de);position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:44px 14px 16px;box-shadow:inset 0 -8px 16px rgba(0,0,0,.06)}
-.tank::before{content:"";position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:56px;height:26px;border-radius:9px;background:#c8c8cf}
-.can{background:#fff;border-radius:8px;display:flex;flex-direction:column;gap:4px;padding:6px 5px;transition:box-shadow .4s,background .4s}
+.tank-box{display:flex;flex-direction:column;align-items:center;gap:30px}
+.tank{width:190px;height:260px;border-radius:30px 30px 44px 44px;background:linear-gradient(#e9e9ee,#d7d7de);position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:54px 16px 20px;box-shadow:inset 0 -8px 16px rgba(0,0,0,.06)}
+.tank::before{content:"";position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:66px;height:30px;border-radius:10px;background:#c8c8cf}
+.can{background:#fff;border-radius:9px;display:flex;flex-direction:column;gap:5px;padding:7px 6px;transition:box-shadow .4s}
 .can i{flex:1;border-radius:3px;background:#ececf0;transition:background .4s}
 .can.hit{box-shadow:0 0 0 2px var(--gold)}
 .can i.hit{background:var(--gold)}
-.path{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px}
-.path span{padding:7px 12px;border-radius:10px;background:var(--mist);font-weight:500;transition:background .4s,color .4s}
+.path{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;align-items:center;font-size:15px}
+.path span{padding:8px 13px;border-radius:10px;background:var(--mist);font-weight:500;transition:background .4s,color .4s}
 .path span.on{background:var(--gold);color:#fff}
 .path em{font-style:normal;color:#b0b0b6}
 
 /* ---------- cronograma ---------- */
-.timeline{position:relative;margin-top:36px}
-.phase{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:20px 0;border-top:1px solid var(--line)}
-.phase:last-child{border-bottom:1px solid var(--line)}
-.phase .when{font-family:var(--mono);font-size:13px;color:var(--gold);padding-top:3px}
-.phase h3{font-size:19px;margin-bottom:4px}
-.phase p{color:var(--gray);font-size:15.5px;margin:0}
+.tl{display:grid;grid-template-columns:repeat(5,1fr);margin-top:40px}
+.st{position:relative;padding:26px 20px 0 0;border-top:2px solid var(--line)}
+.st::after{content:"";position:absolute;left:0;right:0;top:-2px;height:2px;background:var(--gold);transform-origin:left}
+.st::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--paper)}
+.st .when{font-family:var(--mono);font-size:12.5px;color:var(--gold)}
+.st h3{font-size:18px;margin:6px 0}
+.st p{font-size:14.5px;color:var(--gray);margin:0;line-height:1.5}
+.anim .slide.enter .st::after{animation:grow .6s var(--ease) both;animation-delay:calc(var(--d,0) * 160ms + 400ms)}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.lane{margin-top:34px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;padding:16px 20px;border-radius:14px;background:var(--gold-soft)}
+.lane b{font-size:16px;color:#4d3c0c}
+.lane span{display:block;font-size:14px;color:#6b5413}
+.lane .rail{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-l) 70%,rgba(212,168,67,.25) 100%)}
 
 /* ---------- investimento ---------- */
-.price{background:var(--black);color:#fff;border-radius:28px;padding:clamp(28px,5vw,48px)}
-.price .eyebrow{margin-bottom:10px}
-.amount{font-size:clamp(44px,7vw,72px);font-weight:700;letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums}
-.amount small{font-size:.34em;font-weight:500;color:#a1a1a6;letter-spacing:0;margin-left:6px}
-.price p{color:#b9b9be;margin:12px 0 0;font-size:15.5px}
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.inc{background:var(--paper);border-radius:28px;padding:clamp(28px,5vw,44px);margin-top:18px}
-.inc .list{columns:2;column-gap:32px}
-.inc .list li{break-inside:avoid}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.price{background:var(--black);color:#fff;border-radius:24px;padding:32px 36px}
+.amount{font-size:64px;font-weight:700;letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums}
+.amount small{font-size:22px;font-weight:500;color:#a1a1a6;letter-spacing:0;margin-left:6px}
+.price p{color:#b9b9be;margin:12px 0 0;font-size:15px}
+.inc{background:var(--paper);border-radius:24px;padding:24px 32px;margin-top:16px}
+.inc h3{font-size:17px}
+.inc .list{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 28px;margin-top:10px}
+.inc .list li{margin:0;font-size:15px}
 
-/* ---------- proximos passos ---------- */
-.next{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;text-align:left}
-.next .n{font-family:var(--mono);color:var(--gold);font-size:14px;margin-bottom:10px;display:block}
-.dark .next .tile{background:#161618}
-.dark .next .tile p{color:#a1a1a6}
-.foot{background:var(--black);border-top:1px solid #1f1f22;padding:34px 0;color:#86868b;font-size:13px}
-.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.foot img{height:20px;width:auto;opacity:.9}
+/* ---------- fechamento ---------- */
+.next .n{font-family:var(--mono);color:var(--gold);font-size:14px;display:block;margin-bottom:10px}
+.closing{display:flex;justify-content:space-between;align-items:center;margin-top:44px;padding-top:22px;border-top:1px solid #2a2a2e;color:#86868b;font-size:13px}
+.closing img{height:22px;width:auto}
 
-@media (max-width:860px){
+@media (orientation:portrait) and (max-width:820px){
+  .phone{transform:scale(.92);transform-origin:top center;margin-bottom:-40px}
   .dash{grid-template-columns:1fr}
   .side{display:none}
-  .price-grid,.next{grid-template-columns:1fr}
-  .inc .list{columns:1}
-  .tank-wrap{grid-template-columns:1fr;justify-items:center}
+  .kpis{grid-template-columns:1fr 1fr 1fr}
+  .tl{grid-template-columns:1fr;gap:0}
+  .st{padding:18px 0 18px 26px;border-top:0;border-left:2px solid var(--line)}
+  .st::after{left:-2px;right:auto;top:0;bottom:0;width:2px;height:auto;transform-origin:top}
+  .st::before{top:22px;left:-8px}
+  @keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  .lane{grid-template-columns:1fr}
+  .price-grid{grid-template-columns:1fr}
+  .amount{font-size:48px}
+  .inc .list{grid-template-columns:1fr}
+  .closing{flex-direction:column;align-items:flex-start;gap:12px}
 }
-@media (max-width:560px){
-  .kpis{grid-template-columns:1fr 1fr}
-  .phase{grid-template-columns:1fr;gap:6px}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  html{scroll-behavior:auto}
+@media print{
+  .view{opacity:0!important} .v-review{opacity:1!important;transform:none!important}
+  .field b{opacity:1!important}
+  .path span{background:var(--gold)!important;color:#fff!important}
+  .st::after{transform:none!important}
+  .tank .can:nth-child(3){box-shadow:0 0 0 2px var(--gold)!important}
+  .tank .can:nth-child(3) i:nth-child(3){background:var(--gold)!important}
 }
 </style>
 </head>
@@ -215,390 +270,483 @@ section:not(.mist) .tile{background:var(--mist)}
     <symbol id="i-flask" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6.5L4.5 19A1.5 1.5 0 0 0 5.8 21h12.4a1.5 1.5 0 0 0 1.3-2L14 9.5V3"/><path d="M7 15h10"/></g></symbol>
     <symbol id="i-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></g></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></g></symbol>
-    <symbol id="i-cam" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></g></symbol>
     <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></g></symbol>
     <symbol id="i-steth" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></g></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></g></symbol>
     <symbol id="i-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></g></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 
-<header class="top">
-  <div class="wrap">
-    <img src="mentory-logo.svg" alt="Mentory International" width="212" height="42">
-    <span>Proposta · Anita</span>
-  </div>
-</header>
+<div class="progress" id="progress"></div>
 
-<section class="dark hero">
-  <div class="wrap">
-    <p class="eyebrow">Proposta de implementação</p>
-    <h1>A rotina do laboratório, <em>sem planilha.</em></h1>
-    <p class="lead">Uma plataforma no computador e no celular para registrar coletas, controlar o estoque de sêmen e embriões e manter a documentação do MAPA em dia. O veterinário tira uma foto da ficha e o sistema adianta o preenchimento.</p>
-    <div class="byline">
+<main class="deck" id="deck" aria-roledescription="apresentação">
+<div class="track" id="track">
+
+<!-- 1 capa -->
+<section class="slide dark" aria-label="Capa">
+  <div class="stage">
+    <div class="brand"><img src="mentory-logo.svg" alt="Mentory International" width="212" height="42"><span>Proposta · Anita</span></div>
+    <p class="eyebrow reveal" style="--d:0">Proposta de implementação</p>
+    <h1 class="reveal" style="--d:1">A rotina do laboratório,<br><em>sem planilha.</em></h1>
+    <p class="lead reveal" style="--d:2;margin-top:24px;max-width:56ch">Uma plataforma no computador e no celular para registrar coletas, controlar o estoque de sêmen e embriões e manter a documentação do MAPA em dia. O veterinário tira uma foto da ficha e o sistema adianta o preenchimento.</p>
+    <div class="byline reveal" style="--d:3">
       <span>Para <b>Anita</b></span>
       <span>Por <b>Mentory Tech</b></span>
       <span>Setembro de 2026</span>
     </div>
+    <p class="hint">Avance com <kbd>&rarr;</kbd> ou deslize para o lado</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Ponto de partida</p>
-    <h2>Hoje, a operação cabe em 12 planilhas.</h2>
-    <p class="lead">Analisamos as fichas e os controles do laboratório. Eles registram tudo o que o MAPA pede, mas cobram caro de quem preenche.</p>
-    <div class="grid g4" style="margin-top:36px">
-      <div class="tile stat"><b>12</b><span>fichas e planilhas em uso para coleta, estoque e documentação</span></div>
-      <div class="tile stat"><b>27</b><span>colunas só no controle de estoque de sêmen</span></div>
-      <div class="tile stat"><b>2x</b><span>o mesmo dado escrito: primeiro na ficha, depois na planilha</span></div>
-      <div class="tile stat"><b>0</b><span>avisos automáticos antes de GTA, AIE ou Mormo vencerem</span></div>
+<!-- 2 ponto de partida -->
+<section class="slide" aria-label="Ponto de partida">
+  <div class="stage">
+    <div class="brand"><img src="mentory-logo.svg" alt="" width="212" height="42"><span>Ponto de partida</span></div>
+    <p class="eyebrow reveal" style="--d:0">Ponto de partida</p>
+    <h2 class="reveal" style="--d:1">Hoje, a operação cabe em 12 planilhas.</h2>
+    <p class="lead reveal" style="--d:2">Analisamos as fichas e os controles do laboratório. Eles registram tudo o que o MAPA pede, mas cobram caro de quem preenche.</p>
+    <div class="grid g4" style="margin-top:44px">
+      <div class="tile stat reveal" style="--d:3"><b>12</b><span>fichas e planilhas em uso para coleta, estoque e documentação</span></div>
+      <div class="tile stat reveal" style="--d:4"><b>27</b><span>colunas só no controle de estoque de sêmen</span></div>
+      <div class="tile stat reveal" style="--d:5"><b>2x</b><span>o mesmo dado escrito: primeiro na ficha, depois na planilha</span></div>
+      <div class="tile stat reveal" style="--d:6"><b>0</b><span>avisos automáticos antes de GTA, AIE ou Mormo vencerem</span></div>
     </div>
   </div>
 </section>
 
-<section class="mist">
-  <div class="wrap">
-    <p class="eyebrow">O que vamos construir</p>
-    <h2>Quatro módulos, na ordem em que o trabalho acontece.</h2>
-    <p class="lead">Cada módulo substitui planilhas específicas. Juntos, aposentam as 12.</p>
-    <div class="grid g2" style="margin-top:36px">
-      <div class="tile">
+<!-- 3 modulos -->
+<section class="slide mist" aria-label="Os quatro módulos">
+  <div class="stage">
+    <div class="brand"><img src="mentory-logo.svg" alt="" width="212" height="42"><span>O que vamos construir</span></div>
+    <p class="eyebrow reveal" style="--d:0">O que vamos construir</p>
+    <h2 class="reveal" style="--d:1">Quatro módulos, na ordem em que o trabalho acontece.</h2>
+    <div class="grid g2" style="margin-top:22px">
+      <div class="tile ht reveal" style="--d:2">
         <div class="icon"><svg><use href="#i-clip"/></svg></div>
         <h3>Animais e documentação</h3>
-        <p>Entrada e saída de animais, exame clínico, GTA, AIE e Mormo com aviso antes de vencer, e inscrição de reprodução no MAPA com abertura e baixa.</p>
-        <p style="margin-top:14px"><span class="tag">Substitui 2 planilhas</span></p>
+        <p>Entrada e saída de animais, exame clínico, GTA, AIE e Mormo com aviso antes de vencer, e inscrição de reprodução no MAPA.</p>
+        <span class="tag">Substitui 2 planilhas</span>
       </div>
-      <div class="tile">
+      <div class="tile ht reveal" style="--d:3">
         <div class="icon"><svg><use href="#i-flask"/></svg></div>
         <h3>Coleta e processamento</h3>
-        <p>Espermograma completo, coleta e transferência de embrião, controle das doadoras. Cada registro gera a ficha em PDF pronta para a assinatura do responsável técnico.</p>
-        <p style="margin-top:14px"><span class="tag">Substitui 6 planilhas</span></p>
+        <p>Espermograma, coleta e transferência de embrião, controle das doadoras. Cada registro gera a ficha em PDF para assinatura do RT.</p>
+        <span class="tag">Substitui 6 planilhas</span>
       </div>
-      <div class="tile">
+      <div class="tile ht reveal" style="--d:4">
         <div class="icon"><svg><use href="#i-box"/></svg></div>
         <h3>Estoque de sêmen e embriões</h3>
-        <p>Cada dose localizada em botijão, caneco, raque e palheta. Entrada nacional ou importada, saída com nota fiscal e identificação de quem retirou.</p>
-        <p style="margin-top:14px"><span class="tag">Substitui 3 planilhas</span></p>
+        <p>Cada dose localizada em botijão, caneco, raque e palheta. Saída com nota fiscal e identificação de quem retirou.</p>
+        <span class="tag">Substitui 3 planilhas</span>
       </div>
-      <div class="tile">
+      <div class="tile ht reveal" style="--d:5">
         <div class="icon"><svg><use href="#i-cal"/></svg></div>
         <h3>Rotina do dia</h3>
-        <p>Verificação do nível de nitrogênio dos botijões, conferência do RT e um painel com tudo o que vence ou está pendente hoje.</p>
-        <p style="margin-top:14px"><span class="tag">Substitui 1 planilha</span></p>
+        <p>Verificação do nitrogênio dos botijões, conferência do RT e um painel com tudo o que vence ou está pendente hoje.</p>
+        <span class="tag">Substitui 1 planilha</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="preview-foto">
-  <div class="wrap split">
-    <div>
-      <p class="eyebrow">Preview · Leitura por foto</p>
-      <h2>O veterinário fotografa. O sistema preenche.</h2>
-      <p class="lead">Ele continua usando a ficha de papel, se preferir. No fim da coleta, tira uma foto e o sistema adianta os campos.</p>
-      <ul class="list">
-        <li><b>Garanhão, raça e RGD aparecem sozinhos</b>, puxados do cadastro. Ninguém digita de novo.</li>
-        <li><b>Os números da ficha são lidos da foto</b>: volume, vigor, motilidade, concentração, partida e doses.</li>
-        <li><b>O que gerar dúvida fica destacado.</b> Ele confere só aquele campo, não a ficha inteira.</li>
-        <li><b>Um toque salva tudo</b>: grava no livro de registro, gera a ficha em PDF e coloca as doses no estoque.</li>
-      </ul>
-      <div class="note"><b>Em validação.</b> A leitura por foto passa por testes com fichas reais do laboratório antes de entrar em operação. O preenchimento direto na tela funciona desde o primeiro dia.</div>
-    </div>
-
-    <div>
-    <div class="phone" role="img" aria-label="Celular mostrando a foto de uma ficha de coleta, os campos preenchidos automaticamente e a confirmação do registro">
-      <div class="screen" id="phone">
-        <div class="notch"></div>
-        <div class="app-head">
-          <small>Quality Laboratório Veterinário</small>
-          <strong id="phone-title">Confira os dados</strong>
-        </div>
-        <div class="stage">
-
-          <div class="view v-cam">
-            <div class="cam">
-              <div class="paper">
-                <i style="width:70%"></i><i style="width:40%"></i>
-                <i style="width:85%"></i><i class="hw"></i>
-                <i style="width:85%"></i><i class="hw" style="width:34%"></i>
-                <i style="width:85%"></i><i class="hw" style="width:46%"></i>
-                <i style="width:85%"></i><i class="hw" style="width:28%"></i>
-                <i style="width:60%"></i>
+<!-- 4 leitura por foto -->
+<section class="slide" aria-label="Preview da leitura por foto" data-demo="phone">
+  <div class="stage">
+    <div class="brand"><img src="mentory-logo.svg" alt="" width="212" height="42"><span>Preview · Leitura por foto</span></div>
+    <div class="split" style="grid-template-columns:1.15fr 1fr">
+      <div>
+        <p class="eyebrow reveal" style="--d:0">Preview · Leitura por foto</p>
+        <h2 class="reveal" style="--d:1">O veterinário fotografa.<br>O sistema preenche.</h2>
+        <ul class="list reveal" style="--d:2">
+          <li><b>Garanhão, raça e RGD aparecem sozinhos</b>, puxados do cadastro.</li>
+          <li><b>Os números da ficha são lidos da foto</b>: volume, vigor, motilidade, concentração, partida e doses.</li>
+          <li><b>O que gerar dúvida fica destacado</b> para conferir só aquele campo.</li>
+          <li><b>Um toque salva tudo</b>: livro de registro, ficha em PDF e doses no estoque.</li>
+        </ul>
+        <div class="note reveal" style="--d:3"><b>Em validação.</b> A leitura por foto passa por testes com fichas reais do laboratório antes de entrar em operação. O preenchimento direto na tela funciona desde o primeiro dia.</div>
+        <p class="reveal" style="--d:4;font-size:12px;color:var(--gray);margin-top:12px">Exemplo com dados da planilha do laboratório</p>
+      </div>
+      <div class="phone reveal" style="--d:2" role="img" aria-label="Celular mostrando a foto de uma ficha, os campos preenchidos e a confirmação do registro">
+        <div class="screen" id="phone">
+          <div class="notch"></div>
+          <div class="app-head"><small>Quality Laboratório Veterinário</small><strong id="phone-title">Confira os dados</strong></div>
+          <div class="stage-ph">
+            <div class="view v-cam">
+              <div class="cam">
+                <div class="paper">
+                  <i style="width:70%"></i><i style="width:40%"></i>
+                  <i style="width:85%"></i><i class="hw"></i>
+                  <i style="width:85%"></i><i class="hw" style="width:34%"></i>
+                  <i style="width:85%"></i><i class="hw" style="width:46%"></i>
+                  <i style="width:85%"></i><i class="hw" style="width:28%"></i>
+                  <i style="width:60%"></i>
+                </div>
+                <div class="frame"></div>
+                <div class="scan"></div>
               </div>
-              <div class="frame"></div>
-              <div class="scan"></div>
+              <div class="shutter"></div>
+              <p class="caption" id="cam-caption">Enquadre a ficha de coleta</p>
             </div>
-            <div class="shutter"></div>
-            <p class="caption" id="cam-caption">Enquadre a ficha de coleta</p>
-          </div>
-
-          <div class="view v-review">
-            <div class="field pre"><label>Garanhão</label><b>Big Diego Bars HJG</b></div>
-            <div class="field pre"><label>Raça · RGD</label><b>QM · P423555</b></div>
-            <div class="field"><label>Volume (ml)</label><b>42<span class="dot"></span></b></div>
-            <div class="field"><label>Vigor (0 a 5)</label><b>4<span class="dot"></span></b></div>
-            <div class="field"><label>Motilidade (%)</label><b>70<span class="dot"></span></b></div>
-            <div class="field flag"><label>Concentração (sptz/ml)</label><b>180 mi<span class="dot"></span></b></div>
-            <div class="field"><label>Partida · Doses</label><b>P-0917 · 12<span class="dot"></span></b></div>
-            <div class="btn gold">Confirmar e salvar</div>
-          </div>
-
-          <div class="view v-done">
-            <div class="done">
-              <div>
-                <div class="check"><svg width="30" height="30"><use href="#i-check"/></svg></div>
-                <strong style="font-size:17px">Coleta registrada</strong>
-                <p style="color:var(--gray);font-size:12.5px;margin:8px 0 0;line-height:1.7">Livro CCPS atualizado<br>Ficha em PDF gerada<br>12 doses no estoque</p>
-              </div>
+            <div class="view v-review">
+              <div class="field pre"><label>Garanhão</label><b>Big Diego Bars HJG</b></div>
+              <div class="field pre"><label>Raça · RGD</label><b>QM · P423555</b></div>
+              <div class="field"><label>Volume (ml)</label><b>42<span class="dot"></span></b></div>
+              <div class="field"><label>Vigor (0 a 5)</label><b>4<span class="dot"></span></b></div>
+              <div class="field"><label>Motilidade (%)</label><b>70<span class="dot"></span></b></div>
+              <div class="field flag"><label>Concentração (sptz/ml)</label><b>180 mi<span class="dot"></span></b></div>
+              <div class="field"><label>Partida · Doses</label><b>P-0917 · 12<span class="dot"></span></b></div>
+              <div class="btn">Confirmar e salvar</div>
+            </div>
+            <div class="view v-done">
+              <div class="done"><div>
+                <div class="check"><svg width="28" height="28"><use href="#i-check"/></svg></div>
+                <strong style="font-size:16px">Coleta registrada</strong>
+                <p style="color:var(--gray);font-size:12px;margin:8px 0 0;line-height:1.7">Livro CCPS atualizado<br>Ficha em PDF gerada<br>12 doses no estoque</p>
+              </div></div>
             </div>
           </div>
-
-        </div>
-        <div class="steps-bar" style="position:absolute;bottom:18px;left:0;right:0"><span></span><span class="on"></span><span></span></div>
-      </div>
-    </div>
-    <p class="caption" style="margin-top:18px">Exemplo com dados da planilha do laboratório</p>
-    </div>
-  </div>
-</section>
-
-<section class="mist" id="preview-rotina">
-  <div class="wrap">
-    <p class="eyebrow">Preview · Rotina do dia</p>
-    <h2>O que precisa de atenção aparece primeiro.</h2>
-    <p class="lead">Ao abrir a plataforma, a equipe vê o dia: coletas, vencimentos e verificações pendentes. Nada depende de alguém lembrar de abrir a planilha.</p>
-
-    <div class="browser" style="margin-top:40px" role="img" aria-label="Painel Rotina do dia com indicadores e lista de pendências">
-      <div class="bar"><i></i><i></i><i></i><span>Rotina do dia</span></div>
-      <div class="dash">
-        <nav class="side" aria-hidden="true">
-          <p>Laboratório</p>
-          <a class="on"><svg><use href="#i-cal"/></svg>Rotina do dia</a>
-          <a><svg><use href="#i-clip"/></svg>Animais</a>
-          <a><svg><use href="#i-flask"/></svg>Coletas</a>
-          <a><svg><use href="#i-box"/></svg>Estoque</a>
-          <a><svg><use href="#i-shield"/></svg>Documentos</a>
-          <a><svg><use href="#i-users"/></svg>Produtores</a>
-        </nav>
-        <div class="main">
-          <h4>Rotina do dia</h4>
-          <p class="sub">Quinta-feira, 17 de setembro</p>
-          <div class="kpis">
-            <div class="kpi"><b>4</b><span>coletas hoje</span></div>
-            <div class="kpi"><b>3</b><span>documentos vencendo em 15 dias</span></div>
-            <div class="kpi"><b>1.284</b><span>doses em estoque</span></div>
-          </div>
-          <div class="row alert">
-            <div class="icon" style="width:34px;height:34px;margin:0;border-radius:10px;background:var(--warn-soft);color:var(--warn)"><svg style="width:18px;height:18px"><use href="#i-bell"/></svg></div>
-            <div class="what"><b>Nível de N2 · Botijão 2</b><span>Ainda não verificado hoje</span></div>
-            <span class="pill warn">Pendente</span>
-          </div>
-          <div class="row alert">
-            <div class="icon" style="width:34px;height:34px;margin:0;border-radius:10px;background:var(--warn-soft);color:var(--warn)"><svg style="width:18px;height:18px"><use href="#i-shield"/></svg></div>
-            <div class="what"><b>AIE · Doadora 14</b><span>Exame vence em 23/09</span></div>
-            <span class="pill warn">Em 6 dias</span>
-          </div>
-          <div class="row">
-            <div class="icon" style="width:34px;height:34px;margin:0;border-radius:10px"><svg style="width:18px;height:18px"><use href="#i-shield"/></svg></div>
-            <div class="what"><b>GTA · Big Diego Bars HJG</b><span>Vence em 16/10</span></div>
-            <span class="pill gold">Em 29 dias</span>
-          </div>
-          <div class="row">
-            <div class="icon" style="width:34px;height:34px;margin:0;border-radius:10px;background:var(--ok-soft);color:var(--ok)"><svg style="width:18px;height:18px"><use href="#i-flask"/></svg></div>
-            <div class="what"><b>Coleta · Big Diego Bars HJG</b><span>12 doses, partida P-0917, ficha em PDF gerada</span></div>
-            <span class="pill ok">Concluída</span>
-          </div>
+          <div class="steps-bar"><span></span><span class="on"></span><span></span></div>
         </div>
       </div>
     </div>
-    <p class="caption" style="margin-top:14px;text-align:center;color:var(--gray);font-size:12px">Exemplo ilustrativo</p>
   </div>
 </section>
 
-<section id="preview-estoque">
-  <div class="wrap split">
-    <div class="tank-wrap" role="img" aria-label="Botijão com canecos, destacando a posição de uma dose">
-      <div class="tank" id="tank">
-        <div class="can"><i></i><i></i><i></i><i></i></div>
-        <div class="can"><i></i><i></i><i></i><i></i></div>
-        <div class="can hit"><i></i><i></i><i class="hit"></i><i></i></div>
-        <div class="can"><i></i><i></i><i></i><i></i></div>
-        <div class="can"><i></i><i></i><i></i><i></i></div>
-        <div class="can"><i></i><i></i><i></i><i></i></div>
+<!-- 5 rotina do dia -->
+<section class="slide mist" aria-label="Preview da rotina do dia">
+  <div class="stage">
+    <div class="brand"><img src="mentory-logo.svg" alt="" width="212" height="42"><span>Preview · Rotina do dia</span></div>
+    <div class="split" style="grid-template-columns:340px 1fr;gap:48px">
+      <div>
+        <p class="eyebrow reveal" style="--d:0">Preview · Rotina do dia</p>
+        <h2 class="reveal" style="--d:1;font-size:38px">O que precisa de atenção aparece primeiro.</h2>
+        <p class="lead reveal" style="--d:2;font-size:17px">Ao abrir a plataforma, a equipe vê o dia: coletas, vencimentos e verificações pendentes.</p>
+        <ul class="list reveal" style="--d:3">
+          <li>Aviso antes de GTA, AIE ou Mormo vencer</li>
+          <li>Nitrogênio de cada botijão, com responsável</li>
+          <li>Tudo registrado com quem fez e quando</li>
+        </ul>
       </div>
-      <div class="path" id="path">
-        <span class="on">Botijão 2</span><em>/</em>
-        <span class="on">Caneco 3</span><em>/</em>
-        <span class="on">Raque B</span><em>/</em>
-        <span class="on">Palheta 07</span>
+      <div class="reveal" style="--d:2">
+        <div class="browser" role="img" aria-label="Painel Rotina do dia com indicadores e lista de pendências">
+          <div class="bbar"><i></i><i></i><i></i><span>Rotina do dia</span></div>
+          <div class="dash">
+            <nav class="side" aria-hidden="true">
+              <p>Laboratório</p>
+              <a class="on"><svg><use href="#i-cal"/></svg>Rotina do dia</a>
+              <a><svg><use href="#i-clip"/></svg>Animais</a>
+              <a><svg><use href="#i-flask"/></svg>Coletas</a>
+              <a><svg><use href="#i-box"/></svg>Estoque</a>
+              <a><svg><use href="#i-shield"/></svg>Documentos</a>
+              <a><svg><use href="#i-users"/></svg>Produtores</a>
+            </nav>
+            <div class="main">
+              <h4>Rotina do dia</h4>
+              <p class="sub">Quinta-feira, 17 de setembro</p>
+              <div class="kpis">
+                <div class="kpi"><b>4</b><span>coletas hoje</span></div>
+                <div class="kpi"><b>3</b><span>documentos vencendo em 15 dias</span></div>
+                <div class="kpi"><b>1.284</b><span>doses em estoque</span></div>
+              </div>
+              <div class="row alert"><div class="ri w"><svg><use href="#i-bell"/></svg></div><div class="what"><b>Nível de N2 · Botijão 2</b><span>Ainda não verificado hoje</span></div><span class="pill warn">Pendente</span></div>
+              <div class="row alert"><div class="ri w"><svg><use href="#i-shield"/></svg></div><div class="what"><b>AIE · Doadora 14</b><span>Exame vence em 23/09</span></div><span class="pill warn">Em 6 dias</span></div>
+              <div class="row"><div class="ri"><svg><use href="#i-shield"/></svg></div><div class="what"><b>GTA · Big Diego Bars HJG</b><span>Vence em 16/10</span></div><span class="pill gold">Em 29 dias</span></div>
+              <div class="row"><div class="ri k"><svg><use href="#i-flask"/></svg></div><div class="what"><b>Coleta · Big Diego Bars HJG</b><span>12 doses, partida P-0917, ficha em PDF gerada</span></div><span class="pill ok">Concluída</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="caption">Exemplo ilustrativo</p>
       </div>
-    </div>
-    <div>
-      <p class="eyebrow">Preview · Estoque</p>
-      <h2>Cada dose, no lugar exato.</h2>
-      <p class="lead">Hoje, achar uma palheta exige cruzar colunas da planilha. Na plataforma, a busca pelo garanhão mostra o botijão, o caneco e a posição.</p>
-      <ul class="list">
-        <li>Sêmen e embriões no mesmo controle, nacionais ou importados</li>
-        <li>Saída com nota fiscal, destino e identificação de quem retirou</li>
-        <li>Histórico completo de cada dose, da coleta à entrega</li>
-      </ul>
     </div>
   </div>
 </section>
 
-<section class="mist">
-  <div class="wrap">
-    <p class="eyebrow">Quem acessa</p>
-    <h2>Cada pessoa vê o que é dela.</h2>
-    <div class="grid g3" style="margin-top:36px">
-      <div class="tile">
+<!-- 6 estoque -->
+<section class="slide" aria-label="Preview do estoque" data-demo="tank">
+  <div class="stage">
+    <div class="brand"><img src="mentory-logo.svg" alt="" width="212" height="42"><span>Preview · Estoque</span></div>
+    <div class="split" style="grid-template-columns:1fr 1.1fr">
+      <div class="tank-box reveal" style="--d:1" role="img" aria-label="Botijão com canecos, destacando a posição de uma dose">
+        <div class="tank" id="tank">
+          <div class="can"><i></i><i></i><i></i><i></i></div>
+          <div class="can"><i></i><i></i><i></i><i></i></div>
+          <div class="can hit"><i></i><i></i><i class="hit"></i><i></i></div>
+          <div class="can"><i></i><i></i><i></i><i></i></div>
+          <div class="can"><i></i><i></i><i></i><i></i></div>
+          <div class="can"><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="path" id="path">
+          <span class="on">Botijão 2</span><em>/</em><span class="on">Caneco 3</span><em>/</em><span class="on">Raque B</span><em>/</em><span class="on">Palheta 07</span>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow reveal" style="--d:0">Preview · Estoque</p>
+        <h2 class="reveal" style="--d:1">Cada dose, no lugar exato.</h2>
+        <p class="lead reveal" style="--d:2">Hoje, achar uma palheta exige cruzar colunas da planilha. Na plataforma, a busca pelo garanhão mostra o botijão, o caneco e a posição.</p>
+        <ul class="list reveal" style="--d:3">
+          <li>Sêmen e embriões no mesmo controle, nacionais ou importados</li>
+          <li>Saída com nota fiscal, destino e identificação de quem retirou</li>
+          <li>Histórico completo de cada dose, da coleta à entrega</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 acessos -->
+<section class="slide mist" aria-label="Quem acessa">
+  <div class="stage">
+    <div class="brand"><img src="mentory-logo.svg" alt="" width="212" height="42"><span>Quem acessa</span></div>
+    <p class="eyebrow reveal" style="--d:0">Quem acessa</p>
+    <h2 class="reveal" style="--d:1">Cada pessoa vê o que é dela.</h2>
+    <div class="grid g3" style="margin-top:34px">
+      <div class="tile reveal" style="--d:2">
         <div class="icon"><svg><use href="#i-users"/></svg></div>
         <h3>Produtores</h3>
         <p>Cada produtor tem o próprio login e acompanha seus animais, doses em estoque e documentos, sem ver os dados de outros produtores.</p>
       </div>
-      <div class="tile">
+      <div class="tile reveal" style="--d:3">
         <div class="icon"><svg><use href="#i-steth"/></svg></div>
         <h3>Veterinários</h3>
         <p>Um login só para atender vários produtores. Ele troca de propriedade em um toque e registra a coleta pelo celular, na hora.</p>
       </div>
-      <div class="tile">
+      <div class="tile reveal" style="--d:4">
         <div class="icon"><svg><use href="#i-shield"/></svg></div>
         <h3>Laboratório</h3>
         <p>Visão completa da operação. Cada registro guarda quem preencheu, quem conferiu e quando.</p>
       </div>
     </div>
-    <div class="note" style="background:var(--paper);color:var(--ink)"><b style="color:var(--ink)">Os dados são seus.</b> Exportação completa a qualquer momento.</div>
+    <div class="note reveal" style="--d:5;background:var(--paper);color:var(--ink)"><b style="color:var(--ink)">Os dados são seus.</b> Exportação completa a qualquer momento.</div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Como entregamos</p>
-    <h2>Cerca de 10 semanas até a operação piloto.</h2>
-    <p class="lead">A plataforma entra em uso por partes. Cada etapa já substitui planilhas, sem esperar o fim do projeto.</p>
-    <div class="timeline">
-      <div class="phase"><span class="when">Semanas 1 e 2</span><div><h3>Fundação e cadastros</h3><p>Acessos do laboratório, produtores e veterinários. Cadastro de animais, garanhões e proprietários, com importação do que já está nas planilhas.</p></div></div>
-      <div class="phase"><span class="when">Semanas 3 e 4</span><div><h3>Animais e documentação</h3><p>Entrada e saída, exame clínico, GTA, AIE e Mormo com aviso de vencimento, inscrição de reprodução no MAPA.</p></div></div>
-      <div class="phase"><span class="when">Semanas 5 e 6</span><div><h3>Coleta e processamento</h3><p>Espermograma, coleta e transferência de embrião, controle das doadoras e fichas em PDF para assinatura.</p></div></div>
-      <div class="phase"><span class="when">Semanas 7 e 8</span><div><h3>Estoque e rotina do dia</h3><p>Localização de cada dose, saídas com nota fiscal, verificação de nitrogênio e painel de pendências.</p></div></div>
-      <div class="phase"><span class="when">Desde a semana 1</span><div><h3>Leitura por foto</h3><p>Testes com fichas reais do laboratório em paralelo ao desenvolvimento. Entra na plataforma quando a leitura estiver confiável.</p></div></div>
-      <div class="phase"><span class="when">Semanas 9 e 10</span><div><h3>Operação piloto</h3><p>Uso real com a equipe, treinamento e ajustes finos a partir do dia a dia.</p></div></div>
+<!-- 8 cronograma -->
+<section class="slide" aria-label="Cronograma">
+  <div class="stage">
+    <div class="brand"><img src="mentory-logo.svg" alt="" width="212" height="42"><span>Como entregamos</span></div>
+    <p class="eyebrow reveal" style="--d:0">Como entregamos</p>
+    <h2 class="reveal" style="--d:1">Cerca de 10 semanas até a operação piloto.</h2>
+    <p class="lead reveal" style="--d:2">A plataforma entra em uso por partes. Cada etapa já substitui planilhas, sem esperar o fim do projeto.</p>
+    <div class="tl">
+      <div class="st reveal" style="--d:3"><span class="when">Semanas 1 e 2</span><h3>Fundação e cadastros</h3><p>Acessos, cadastro de animais, garanhões e proprietários, importação das planilhas.</p></div>
+      <div class="st reveal" style="--d:4"><span class="when">Semanas 3 e 4</span><h3>Animais e documentação</h3><p>Entrada e saída, exame clínico, GTA, AIE e Mormo com aviso, inscrição no MAPA.</p></div>
+      <div class="st reveal" style="--d:5"><span class="when">Semanas 5 e 6</span><h3>Coleta e processamento</h3><p>Espermograma, embriões, doadoras e fichas em PDF para assinatura.</p></div>
+      <div class="st reveal" style="--d:6"><span class="when">Semanas 7 e 8</span><h3>Estoque e rotina</h3><p>Localização das doses, saídas com nota fiscal, nitrogênio e pendências.</p></div>
+      <div class="st reveal" style="--d:7"><span class="when">Semanas 9 e 10</span><h3>Operação piloto</h3><p>Uso real com a equipe, treinamento e ajustes a partir do dia a dia.</p></div>
+    </div>
+    <div class="lane reveal" style="--d:8">
+      <div><b>Leitura por foto</b><span>Testes com fichas reais desde a semana 1, em paralelo</span></div>
+      <div class="rail"></div>
     </div>
   </div>
 </section>
 
-<section class="mist">
-  <div class="wrap">
-    <p class="eyebrow">Investimento</p>
-    <h2>Valores.</h2>
-    <div class="price-grid" style="margin-top:36px">
-      <div class="price">
+<!-- 9 investimento -->
+<section class="slide mist" aria-label="Investimento">
+  <div class="stage">
+    <div class="brand"><img src="mentory-logo.svg" alt="" width="212" height="42"><span>Investimento</span></div>
+    <p class="eyebrow reveal" style="--d:0">Investimento</p>
+    <h2 class="reveal" style="--d:1">Valores.</h2>
+    <div class="price-grid">
+      <div class="price reveal" style="--d:2">
         <p class="eyebrow">Implementação</p>
         <div class="amount">R$ 30.000</div>
-        <p>Pagamento único. Cobre o desenvolvimento dos quatro módulos, a leitura por foto, a importação das planilhas e o treinamento da equipe.</p>
+        <p>Pagamento único. Cobre os quatro módulos, a leitura por foto, a importação das planilhas e o treinamento da equipe.</p>
       </div>
-      <div class="price">
+      <div class="price reveal" style="--d:3">
         <p class="eyebrow">Mensalidade</p>
         <div class="amount">R$ 1.000<small>/mês</small></div>
         <p>Plataforma em operação, com todos os custos de infraestrutura por nossa conta.</p>
       </div>
     </div>
-    <div class="inc">
+    <div class="inc reveal" style="--d:4">
       <h3>Incluído na mensalidade</h3>
       <ul class="list">
         <li>Servidor e hospedagem</li>
         <li>Banco de dados com backup diário</li>
-        <li>Armazenamento das fotos e das fichas em PDF</li>
+        <li>Fotos e fichas em PDF armazenadas</li>
         <li>Custo da leitura por foto</li>
-        <li>Acesso pelo computador e pelo celular</li>
+        <li>Acesso pelo computador e celular</li>
         <li>Manutenção, correções e atualizações</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="dark">
-  <div class="wrap">
-    <p class="eyebrow">Próximos passos</p>
-    <h1 style="font-size:clamp(34px,5.5vw,64px)">Como começamos.</h1>
-    <div class="next">
-      <div class="tile"><span class="n">01</span><h3>Alinhamento da proposta</h3><p>Revisão do escopo e ajustes finais.</p></div>
-      <div class="tile"><span class="n">02</span><h3>Aceite e formalização</h3><p>Assinatura do contrato.</p></div>
-      <div class="tile"><span class="n">03</span><h3>Kickoff e fichas de teste</h3><p>Início da implementação e envio de 15 a 20 fichas preenchidas para validar a leitura por foto.</p></div>
+<!-- 10 fechamento -->
+<section class="slide dark" aria-label="Próximos passos">
+  <div class="stage">
+    <div class="brand"><img src="mentory-logo.svg" alt="" width="212" height="42"><span>Próximos passos</span></div>
+    <p class="eyebrow reveal" style="--d:0">Próximos passos</p>
+    <h1 class="reveal" style="--d:1;font-size:60px">Como começamos.</h1>
+    <div class="grid g3 next" style="margin-top:40px">
+      <div class="tile reveal" style="--d:2"><span class="n">01</span><h3>Alinhamento da proposta</h3><p>Revisão do escopo e ajustes finais.</p></div>
+      <div class="tile reveal" style="--d:3"><span class="n">02</span><h3>Aceite e formalização</h3><p>Assinatura do contrato.</p></div>
+      <div class="tile reveal" style="--d:4"><span class="n">03</span><h3>Kickoff e fichas de teste</h3><p>Início da implementação e envio de 15 a 20 fichas preenchidas para validar a leitura por foto.</p></div>
+    </div>
+    <div class="closing reveal" style="--d:5">
+      <img src="mentory-logo.svg" alt="Mentory International" width="212" height="42">
+      <span>Proposta preparada para Anita · Setembro de 2026 · Documento confidencial</span>
     </div>
   </div>
 </section>
 
-<footer class="foot">
-  <div class="wrap">
-    <img src="mentory-logo.svg" alt="Mentory International" width="212" height="42">
-    <span>Proposta preparada para Anita · Setembro de 2026 · Documento confidencial</span>
-  </div>
-</footer>
+</div>
+</main>
 
-<style>.anim .v-review .field.on b{opacity:1}</style>
+<nav class="nav" aria-label="Navegação dos slides">
+  <button id="prev" type="button" aria-label="Slide anterior"><svg><use href="#i-left"/></svg></button>
+  <span class="count" id="count" aria-live="polite">1 / 10</span>
+  <button id="next" type="button" aria-label="Próximo slide"><svg><use href="#i-right"/></svg></button>
+</nav>
+
 <script>
 (function(){
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.documentElement.classList.add('anim');
-  var wait = function(ms){ return new Promise(function(r){ setTimeout(r, ms); }); };
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) root.classList.add('anim');
 
-  /* celular: foto -> conferencia -> salvo */
+  var track = document.getElementById('track');
+  var slides = [].slice.call(track.querySelectorAll('.slide'));
+  var n = slides.length, cur = 0;
+  var prevBtn = document.getElementById('prev'), nextBtn = document.getElementById('next');
+  var count = document.getElementById('count'), progress = document.getElementById('progress');
+  var portrait = window.matchMedia('(orientation: portrait) and (max-width: 820px)');
+
+  /* escala o slide 1280x720 para caber na tela */
+  function fit(){
+    var s = portrait.matches ? 1 : Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+    root.style.setProperty('--s', s);
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (portrait.addEventListener) portrait.addEventListener('change', fit); else portrait.addListener(fit);
+
+  var wait = function(ms){ return new Promise(function(r){ setTimeout(r, ms); }); };
+  var tok = { phone: 0, tank: 0 };
+  var demos = {};
+
+  function go(i, instant){
+    i = Math.max(0, Math.min(n - 1, i));
+    var el = slides[i];
+    if (instant) track.style.transition = 'none';
+    track.style.transform = 'translate3d(' + (-i * 100) + 'vw,0,0)';
+    if (instant) { void track.offsetHeight; track.style.transition = ''; }
+    slides.forEach(function(s, k){
+      var off = k !== i;
+      s.setAttribute('aria-hidden', off ? 'true' : 'false');
+      if ('inert' in s) s.inert = off;
+    });
+    el.classList.remove('enter'); void el.offsetWidth; el.classList.add('enter', 'seen');
+    el.scrollTop = 0;
+    cur = i;
+    count.textContent = (i + 1) + ' / ' + n;
+    prevBtn.disabled = i === 0;
+    nextBtn.disabled = i === n - 1;
+    progress.style.width = ((i + 1) / n * 100) + '%';
+    document.body.classList.toggle('on-dark', el.classList.contains('dark'));
+    if (history.replaceState) history.replaceState(null, '', '#' + (i + 1));
+    tok.phone++; tok.tank++;
+    var d = el.getAttribute('data-demo');
+    if (d && demos[d]) demos[d]();
+  }
+
+  prevBtn.addEventListener('click', function(){ go(cur - 1); });
+  nextBtn.addEventListener('click', function(){ go(cur + 1); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var onButton = e.target && e.target.tagName === 'BUTTON';
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !onButton)) { e.preventDefault(); go(cur + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(cur - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(n - 1); }
+  });
+
+  /* deslizar no celular e no trackpad */
+  var sx = 0, sy = 0;
+  var deck = document.getElementById('deck');
+  deck.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  deck.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) go(cur + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  var lock = 0;
+  deck.addEventListener('wheel', function(e){
+    var dx = e.deltaX, dy = portrait.matches ? 0 : e.deltaY;
+    var d = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+    if (Math.abs(d) < 30) return;
+    var now = Date.now();
+    if (now < lock) return;
+    lock = now + 900;
+    go(cur + (d > 0 ? 1 : -1));
+  }, { passive: true });
+
+  window.addEventListener('hashchange', function(){
+    var h = parseInt(location.hash.slice(1), 10);
+    if (!isNaN(h) && h - 1 !== cur) go(h - 1);
+  });
+
+  /* demo do celular: foto, conferencia, salvo */
   var phone = document.getElementById('phone');
-  if (phone) {
+  if (phone && !reduce) {
     var views = { cam: phone.querySelector('.v-cam'), review: phone.querySelector('.v-review'), done: phone.querySelector('.v-done') };
-    var title = document.getElementById('phone-title');
-    var caption = document.getElementById('cam-caption');
-    var bars = phone.querySelectorAll('.steps-bar span');
-    var fields = views.review.querySelectorAll('.field');
+    var title = document.getElementById('phone-title'), cap = document.getElementById('cam-caption');
+    var bars = phone.querySelectorAll('.steps-bar span'), fields = views.review.querySelectorAll('.field');
     var show = function(name, t, step){
       Object.keys(views).forEach(function(k){ views[k].classList.toggle('show', k === name); });
       title.textContent = t;
-      bars.forEach(function(b, i){ b.classList.toggle('on', i === step); });
+      [].forEach.call(bars, function(b, j){ b.classList.toggle('on', j === step); });
     };
-    (async function loop(){
-      while (true) {
-        fields.forEach(function(f){ f.classList.remove('on'); });
-        caption.textContent = 'Enquadre a ficha de coleta';
-        show('cam', 'Nova coleta', 0);
+    show('review', 'Confira os dados', 1);
+    [].forEach.call(fields, function(f){ f.classList.add('on'); });
+    demos.phone = async function(){
+      var my = tok.phone, alive = function(){ return my === tok.phone; };
+      await wait(700);
+      while (alive()) {
+        [].forEach.call(fields, function(f){ f.classList.remove('on'); });
         views.cam.classList.remove('scanning');
-        await wait(1300);
+        cap.textContent = 'Enquadre a ficha de coleta';
+        show('cam', 'Nova coleta', 0);
+        await wait(1400); if (!alive()) return;
         views.cam.classList.add('scanning');
-        caption.textContent = 'Lendo a ficha';
-        await wait(2200);
+        cap.textContent = 'Lendo a ficha';
+        await wait(2200); if (!alive()) return;
         show('review', 'Confira os dados', 1);
-        for (var i = 0; i < fields.length; i++) { await wait(260); fields[i].classList.add('on'); }
-        await wait(3200);
+        for (var j = 0; j < fields.length; j++) { await wait(260); if (!alive()) return; fields[j].classList.add('on'); }
+        await wait(3400); if (!alive()) return;
         show('done', 'Tudo certo', 2);
         await wait(2600);
       }
-    })();
+    };
   }
 
-  /* estoque: caminho ate a dose */
-  var path = document.getElementById('path');
-  var tank = document.getElementById('tank');
-  if (path && tank) {
-    var steps = path.querySelectorAll('span');
-    var can = tank.querySelectorAll('.can')[2];
-    var straw = can.querySelectorAll('i')[2];
-    (async function loop(){
-      while (true) {
-        steps.forEach(function(s){ s.classList.remove('on'); });
+  /* demo do estoque: caminho ate a dose */
+  var path = document.getElementById('path'), tank = document.getElementById('tank');
+  if (path && tank && !reduce) {
+    var steps = path.querySelectorAll('span'), can = tank.querySelectorAll('.can')[2], straw = can.querySelectorAll('i')[2];
+    demos.tank = async function(){
+      var my = tok.tank, alive = function(){ return my === tok.tank; };
+      while (alive()) {
+        [].forEach.call(steps, function(s){ s.classList.remove('on'); });
         can.classList.remove('hit'); straw.classList.remove('hit');
-        await wait(900);
-        for (var i = 0; i < steps.length; i++) {
-          steps[i].classList.add('on');
-          if (i === 1) can.classList.add('hit');
-          if (i === 3) straw.classList.add('hit');
-          await wait(650);
+        await wait(1000); if (!alive()) return;
+        for (var j = 0; j < steps.length; j++) {
+          steps[j].classList.add('on');
+          if (j === 1) can.classList.add('hit');
+          if (j === 3) straw.classList.add('hit');
+          await wait(650); if (!alive()) return;
         }
-        await wait(2800);
+        await wait(3000);
       }
-    })();
+    };
   }
+
+  var start = parseInt(location.hash.slice(1), 10);
+  go(isNaN(start) ? 0 : start - 1, true);
 })();
 </script>
 </body>
