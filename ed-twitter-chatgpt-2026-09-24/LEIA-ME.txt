@@ -1,0 +1,7 @@
+CARROSSEL ED SOUZA | CHATGPT ADS
+
+PNG: oito artes finais 1080 x 1350.
+Editáveis: abra editable/carrossel.html?edit=1 em um servidor local ou use os HTMLs individuais. A edição de texto não altera os PNGs automaticamente.
+Para reexportar, execute reexport.cjs com Node e Playwright instalados, conforme a instrução do próprio script.
+A legenda está em legenda.txt.
+Revisão editorial pendente. Nada publicado em redes. Se publicar após 24/09/2026, revise a palavra ontem no slide 2.
