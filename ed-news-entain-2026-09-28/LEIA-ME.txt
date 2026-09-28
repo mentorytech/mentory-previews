@@ -1,0 +1,5 @@
+CARROSSEL ED SOUZA — ENTAIN E RISCO DE RECEITA — 28/09/2026
+8 PNGs 1080×1350. Legenda e fontes incluídas. Template de notícias anterior preservado.
+Editáveis HTML: editable/carrossel.html?edit=1 ou cada slide-XX.html?edit=1. Mantenha assets e editable na estrutura original. Não são editáveis nativos de Canva.
+Editar HTML não atualiza PNGs. Para reexportar: npm install playwright; npx playwright install chromium; node reexport.cjs. Alternativamente defina CHROMIUM_PATH para Chromium instalado.
+Revisão editorial: Ed Souza. Publicação: aguardar gate Éden. Não publicado nas redes. Sem PDF.
