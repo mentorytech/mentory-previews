@@ -1,1 +1,69 @@
-body.clara-journal .review-strip{font-size:12px}body.clara-journal .button,body.clara-journal .search-form button{background:#23D171;border-color:#23D171;color:#0A0A0A;min-height:48px;min-width:48px}body.clara-journal .review-intro{padding-top:64px;padding-bottom:54px;border-bottom:1px solid var(--line)}body.clara-journal .review-intro h1{font-size:clamp(44px,5.5vw,78px);letter-spacing:-.03em;max-width:880px;margin:18px 0 24px}body.clara-journal .review-intro p:last-child{max-width:660px;font-size:18px}body.clara-journal .review-card{border-top:1px solid var(--line);padding:25px 0;min-height:260px;display:flex;flex-direction:column;gap:17px}body.clara-journal .review-card h3{font-family:var(--serif);font-size:31px;line-height:1.1}body.clara-journal .review-card h3 a{text-decoration:none}body.clara-journal .review-card .card-excerpt{font-size:15px;line-height:1.65}body.clara-journal .review-card .text-link{margin-top:auto;align-self:start}body.clara-journal .filter{background:transparent;color:var(--ink)}body.clara-journal .filter[aria-current=true]{background:var(--ink);color:#fff}body.clara-journal .pagination button{background:transparent;color:var(--ink);border:1px solid var(--line);min-width:44px;min-height:44px}body.clara-journal .pagination button[aria-current=page]{background:var(--ink);color:#fff}body.clara-journal .article-top{padding-bottom:32px}body.clara-journal .reading-layout{padding-bottom:70px}body.clara-journal .byline{font-size:13px}body.clara-journal .article-deck{font-size:18px}body.clara-journal .reading p{overflow-wrap:break-word}body.clara-journal .article-title{overflow-wrap:break-word}body.clara-journal .library{padding-top:48px}@media(max-width:600px){body.clara-journal .review-strip{font-size:11px;padding:10px 16px}body.clara-journal .main-nav{gap:16px}body.clara-journal .main-nav a{font-size:12px}body.clara-journal .review-intro{padding-top:34px;padding-bottom:32px}body.clara-journal .review-intro p:last-child{font-size:17px}body.clara-journal .review-card{min-height:0}body.clara-journal .review-card .card-excerpt{font-size:16px}body.clara-journal .article-deck{font-size:17px}body.clara-journal .article-title{font-size:44px}}@media(prefers-reduced-motion:reduce){body.clara-journal{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+/* Static review only. Never copied back to the WordPress theme. */
+body.clara-journal{--cream:#F5F1E8;--ink:#13120B;--gold:#B8922A;--sand:#EAE3D6;--line:#d6ccb9;font-size:16px}
+body.clara-journal *,body.clara-journal *::before,body.clara-journal *::after{font-style:normal}
+body.clara-journal .button,body.clara-journal .button:hover,body.clara-journal .search-form button{background:#23D171;border-color:#23D171;color:#0A0A0A;min-height:48px;min-width:48px;text-decoration:none!important;font-size:16px}
+body.clara-journal .review-strip{font-size:12px;line-height:1.55;padding:10px 20px}
+body.clara-journal .review-intro{padding:64px 0 54px;border-bottom:1px solid var(--line)}
+body.clara-journal .review-intro h1{font-size:clamp(44px,5.5vw,78px);letter-spacing:-.03em;max-width:880px;margin:18px 0 24px}
+body.clara-journal .review-intro p:last-child{max-width:660px;font-size:18px}
+body.clara-journal .review-card{border-top:1px solid var(--line);padding:25px 0;min-height:280px;display:flex;flex-direction:column;gap:17px}
+body.clara-journal .review-card h3{font-family:var(--serif);font-size:31px;line-height:1.1}
+body.clara-journal .review-card h3 a{text-decoration:none}
+body.clara-journal .review-card .card-excerpt{font-size:16px;line-height:1.7}
+body.clara-journal .review-card .text-link{margin-top:auto;align-self:start;font-size:16px}
+body.clara-journal .filter{background:transparent;color:var(--ink);min-height:48px}
+body.clara-journal .filter[aria-current=true],body.clara-journal .pagination button[aria-current=page]{background:var(--ink);color:#fff}
+body.clara-journal .pagination button{background:transparent;color:var(--ink);border:1px solid var(--line);min-width:48px;min-height:48px}
+body.clara-journal .article-top{padding-bottom:0}
+body.clara-journal .article-heading{grid-template-columns:minmax(0,1fr) 220px;gap:64px;padding-bottom:40px}
+body.clara-journal .article-title{overflow-wrap:break-word}
+body.clara-journal .byline{font-size:16px;align-self:end}
+body.clara-journal .byline strong{font-size:16px}
+body.clara-journal .byline p+p{margin-top:10px}
+body.clara-journal .reading-layout{grid-template-columns:230px minmax(0,760px);gap:64px;padding-top:30px;justify-content:space-between}
+body.clara-journal .reading{max-width:760px;font-size:18px;line-height:1.85}
+body.clara-journal .reading p{overflow-wrap:break-word}
+body.clara-journal .reading>p{margin-bottom:26px}
+body.clara-journal .reading>h2{margin-top:54px;padding-top:20px;border-top:1px solid var(--line);font-size:clamp(32px,3.5vw,43px);line-height:1.13}
+body.clara-journal .reading h3{font-family:var(--serif)}
+body.clara-journal .reading strong[data-semantic]{font-weight:600;text-decoration:underline;text-decoration-color:#B8922A70;text-decoration-thickness:2px;text-underline-offset:4px}
+body.clara-journal .toc{max-height:calc(100vh - 140px);overflow:auto;padding-right:8px}
+body.clara-journal .toc a{font-size:14px;min-height:48px}
+body.clara-journal .toc-level-3{padding-left:16px}
+body.clara-journal .article-summary{border-left:3px solid var(--gold);padding:26px 30px;background:#ebe3d4;margin-bottom:36px}
+body.clara-journal .article-summary .eyebrow{margin-bottom:13px}
+body.clara-journal .article-summary p:last-child{font-size:20px;line-height:1.65}
+body.clara-journal .concept-map{background:var(--ink);color:#fff;padding:30px;margin:46px 0;position:relative}
+body.clara-journal .concept-map figcaption{display:grid;gap:12px;margin-bottom:26px}
+body.clara-journal .concept-map figcaption>span:last-child{font-family:var(--serif);font-size:32px;line-height:1.12}
+body.clara-journal .concept-map .eyebrow{color:#fff}
+body.clara-journal .concept-map ul{display:grid;grid-template-columns:1fr 1fr;gap:20px;list-style:none;padding:0;margin:0}
+body.clara-journal .concept-map li{padding:0;margin:0;border-top:1px solid #B8922A80}
+body.clara-journal .concept-map a{display:flex;align-items:baseline;gap:12px;text-decoration:none;min-height:48px;padding-top:16px;font-size:16px;line-height:1.6;color:#fff}
+body.clara-journal .map-marker{flex:0 0 8px;height:8px;border:1px solid #d7b960;transform:rotate(45deg)}
+body.clara-journal .concept-map a:hover{text-decoration:underline}
+body.clara-journal .concept-map :focus-visible{outline-color:#23D171}
+body.clara-journal .article-highlight{margin:48px 0;padding:26px 0 26px 26px;border-left:2px solid var(--gold)}
+body.clara-journal .article-highlight .eyebrow{margin-bottom:16px}
+body.clara-journal .article-highlight p:last-child{font-family:var(--serif);font-size:clamp(27px,3vw,34px);line-height:1.3}
+body.clara-journal .article-video{padding:30px;background:var(--ink);color:#fff;margin:40px 0}
+body.clara-journal .article-video h2{font-size:36px;line-height:1.1;margin:16px 0 22px}
+body.clara-journal .article-video .video-frame{margin:0 0 20px;aspect-ratio:16/9}
+body.clara-journal .article-video .video-poster{object-fit:contain;width:100%;height:100%}
+body.clara-journal .article-video .video-note{font-size:16px;line-height:1.65;color:#fff}
+body.clara-journal .article-video .video-fallback{font-size:16px;min-height:48px;color:#fff;margin-top:14px}
+body.clara-journal .article-video .video-activate{font-size:16px;gap:12px;min-height:48px;inset:auto 16px 16px}
+body.clara-journal .article-video :focus-visible{outline-color:#fff}
+body.clara-journal .related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:30px}
+body.clara-journal .related-card{border-top:1px solid var(--line);padding-top:22px;display:flex;flex-direction:column;gap:18px;min-width:0}
+body.clara-journal .related-card h3{font-family:var(--serif);font-size:32px;line-height:1.12}
+body.clara-journal .related-card p:not(.eyebrow){font-size:16px}
+body.clara-journal .related-card h3 a{text-decoration:none}
+body.clara-journal .related-card .text-link{margin-top:auto;align-self:start;font-size:16px}
+body.clara-journal .back-link{margin-bottom:40px;font-size:16px}
+body.clara-journal .library{padding-top:48px}
+body.clara-journal .footer-bottom{font-size:12px}
+@media(max-width:1100px){body.clara-journal .reading-layout{grid-template-columns:190px minmax(0,1fr);gap:36px}body.clara-journal .article-heading{gap:36px}}
+@media(max-width:760px){body.clara-journal .review-strip{font-size:11px;padding:10px 16px}body.clara-journal .main-nav a{font-size:13px}body.clara-journal .review-intro{padding:34px 0 32px}body.clara-journal .review-intro h1{font-size:48px}body.clara-journal .review-card{min-height:0}body.clara-journal .article-heading{grid-template-columns:1fr;gap:24px}body.clara-journal .article-heading .article-title{font-size:clamp(38px,10vw,54px)}body.clara-journal .reading-layout{display:block;padding-top:12px}body.clara-journal .reading{font-size:17px}body.clara-journal .toc{position:static;max-height:none;overflow:visible;margin-bottom:32px}body.clara-journal .toc ol{grid-template-columns:1fr}body.clara-journal .toc a{font-size:16px;line-height:1.5}body.clara-journal .article-summary{padding:23px 20px}body.clara-journal .article-summary p:last-child{font-size:18px}body.clara-journal .concept-map{padding:24px 20px}body.clara-journal .concept-map ul{grid-template-columns:1fr;gap:14px}body.clara-journal .article-video{padding:24px 18px}body.clara-journal .article-video h2{font-size:32px}body.clara-journal .article-video .video-activate{position:static;box-shadow:none;width:100%;margin-top:12px}body.clara-journal .article-video .video-frame{aspect-ratio:auto;overflow:visible;background:transparent}body.clara-journal .article-video .video-poster,body.clara-journal .article-video iframe{aspect-ratio:16/9;width:100%;height:auto}body.clara-journal .related-grid{grid-template-columns:1fr;gap:30px}body.clara-journal .byline{font-size:16px}body.clara-journal .byline strong{font-size:16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body.clara-journal *{animation:none!important;transition:none!important}}
+@media print{body.clara-journal .concept-map,body.clara-journal .article-video{background:#fff;color:#000;border:1px solid #999}body.clara-journal .concept-map a,body.clara-journal .concept-map .eyebrow,body.clara-journal .article-video .video-note,body.clara-journal .article-video .video-fallback{color:#000}body.clara-journal .related{display:none}body.clara-journal .article-summary,body.clara-journal .concept-map{break-inside:avoid}}
