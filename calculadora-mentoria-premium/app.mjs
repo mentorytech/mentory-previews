@@ -1,5 +1,7 @@
 import {calculate} from './engine.mjs';
 import {captureAttribution,buildPayload,createSender} from './capture.mjs';
+import {initPhoneField} from './phone-field.mjs';
+const phoneField=initPhoneField();
 const attribution=captureAttribution(location.href,document.referrer),send=createSender();
 const $=s=>document.querySelector(s);
 const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
@@ -15,16 +17,17 @@ $('#calc-form').addEventListener('submit',event=>{
 $('#back').addEventListener('click',()=>{if(!state.busy){clearErrors();stage('calculator');}});
 $('#lead-form').addEventListener('submit',async event=>{
  event.preventDefault();if(state.busy||!state.answers)return;clearErrors();
+ phoneField.normalize?.();
  const fields=['name','email','phone'].map(id=>$('#'+id));
  fields.forEach(el=>el.value=el.value.trim());
  const invalid=fields.find(el=>!el.checkValidity()||(el.id==='name'&&el.value.length<2));
  if(invalid){invalid.setAttribute('aria-invalid','true');$('#capture-error').textContent='Preencha nome, email e WhatsApp válidos para continuar.';invalid.focus();return;}
  let phone;
- try{phone=window.libphonenumber.parsePhoneNumberWithError($('#phone').value,{extract:false});if(!$('#phone').value.startsWith('+')||!phone.isValid())throw new Error();}
- catch{$('#phone').setAttribute('aria-invalid','true');$('#capture-error').textContent='Informe um WhatsApp válido com + e o código do país.';$('#phone').focus();return;}
+ try{phone=phoneField.validate();}
+ catch(e){$('#phone').setAttribute('aria-invalid','true');$('#capture-error').textContent=window.libphonenumber?'Informe um WhatsApp válido para o país selecionado.':e.message;$('#phone').focus();return;}
  const lead={nome:$('#name').value,email:$('#email').value,telefone:phone.number,phone_country:phone.country||'non-geographic',phone_country_code:phone.countryCallingCode};
  state.busy=true;$('#processing').hidden=false;
- for(const el of $('#lead-form').querySelectorAll('input,button'))el.disabled=true;
+ for(const el of $('#lead-form').querySelectorAll('input,button,select'))el.disabled=true;
  try{
   await send(buildPayload(lead,state.answers,attribution));
   const a=state.answers,r=calculate(a);
@@ -35,6 +38,6 @@ $('#lead-form').addEventListener('submit',async event=>{
   $('#breakdown').replaceChildren(...entries.map(([label,value])=>{const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;row.append(dt,dd);return row;}));
   stage('result');
  }catch(e){$('#capture-error').textContent=e.message;}
- finally{state.busy=false;$('#processing').hidden=true;for(const el of $('#lead-form').querySelectorAll('input,button'))el.disabled=false;}
+ finally{state.busy=false;$('#processing').hidden=true;for(const el of $('#lead-form').querySelectorAll('input,button,select'))el.disabled=false;}
 });
 $('#recalculate').addEventListener('click',()=>{clearErrors();stage('calculator');});
